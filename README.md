@@ -1,4 +1,4 @@
-#Script.
+# Script
 
 Main scripts.
 
