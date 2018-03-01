@@ -4,14 +4,15 @@ Main scripts.
 
 If you're here, you know why.
 
+```
+script.ahk
+This is the main script that everyone opens to launch everything. Stupidly long code that could definitely be cleaned up by someone that doesn't mind going insane trying to do so.
+```
 
-- script.ahk
->This is the main script that everyone opens to launch everything. Stupidly long code that could definitely be cleaned up by someone that doesn't mind going insane trying to do so.
-
-
-- HSNET Config.ahk
->Main config file that is used on Windows 10 sites for the initial install and test run.
-
+```
+HSNET Config.ahk
+Main config file that is used on Windows 10 sites for the initial install and test run.
+```
 
 - Idle.ahk
 >Tool used to check for errors on sites automatically.
