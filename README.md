@@ -1,7 +1,7 @@
-# script
-Intellipharm Script.
-Enjoy? I dunno. 
+#Script.
 
-It is what it is.
+Main scripts.
+
+If you're here, you know why.
 
 Update
