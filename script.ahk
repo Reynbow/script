@@ -2433,8 +2433,9 @@ Gui, 86:Add, Button, yp+40 w217 h30 , Clients and Services
 Gui, 86:Add, Button, yp+40 w217 h30 gGroupAccount, Making a Group Account
 
 Gui, 86:Tab, DISPENSARY
-Gui, 86:Add, Button, x28 y120 w217 h30 , Aquarius
-Gui, 86:Add, Button, yp+40 w217 h30 gFNd, Fred Next
+Gui, 86:Add, Button, x28 y120 w102 h30 , Aquarius
+Gui, 86:Add, Button, x143 yp+0 y120 w102 h30 gAmfacd, Amfac
+Gui, 86:Add, Button, x28 yp+40 w217 h30 gFNd, Fred Next
 Gui, 86:Add, Button, yp+40 w102 h30 gLOTSd, LOTS
 Gui, 86:Add, Button, x143 yp+0 w102 h30 gLOTSNZd, LOTS NZ
 Gui, 86:Add, Button, x28 yp+40 w217 h30 gMINFd, MINFOS
@@ -2469,6 +2470,12 @@ Gui, 86:Add, Button, yp+40 w217 h30 , Install SIMPLE
 Gui, 86:Add, Button, yp+40 w217 h30 , Install Zed
 
 Gui, 86:Show, %Gui_Cord% w274 h513, %A_Space%
+return
+
+Amfacd:
+Gui, 86:Destroy
+run, G:\Support\Procedures and Documentation\Flow Chart Processes\AMFAC Dispx.pdf
+Reload
 return
 
 GroupAccount:
