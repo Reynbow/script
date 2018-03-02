@@ -52,6 +52,7 @@ Gui, Show, w200 h80,Updating...
 		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\script.exe, C:\AutoHotKey\script.exe,1
 		FileCopy, G:\Support\Public Staff Folders\Aaron\tools\LoyaltyInstall.exe, C:\AutoHotKey\Files\LoyaltyInstall.exe,1
 		FileCopy, G:\Support\Public Staff Folders\Aaron\tools\QAComplete.exe, C:\AutoHotKey\Files\QAComplete.exe,1
+		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\mainmenu_alt.png, C:\AutoHotKey\Files\mainmenu.png,1
 
 		sleep 1500
 		Gui, Destroy
