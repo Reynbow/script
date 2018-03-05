@@ -21,20 +21,17 @@ Gui, font, s8 bold cc5c8c6, Segoe UI
 
 ;========================= SITE CODE AND STORE NAME
 
-Gui, Add, Text, x10 y75 h20 w220 vPreviewCODE,
+Gui, Add, Text, x10 y90 h20 w220 vPreviewCODE,
 Gui, font, 
 Gui, font, s8 cc5c8c6, Segoe UI
 Gui, Add, Text, yp+25 h20 , SITE CODE:
-Gui, Add, Text, yp+25 h20 , Store Name:
 Gui, Add, Text, yp+25 w60 h20 , Spoke to:
-Gui, Add, Text, xp+185 yp+0 h20 , *
-Gui, Add, Edit, xp-80 yp-53 w100 h20 -E0x200 vSCODE,
-Gui, Add, Edit, yp+25 w100 h20 -E0x200 vStoreName,
+Gui, Add, Edit, xp+75 yp-25 w100 h20 -E0x200 vSCODE,
 Gui, Add, Edit, yp+25 w100 h20 -E0x200 vSpoke,
 
 ;========================= PC DETAILS
 
-Gui, Add, Text, xp-105 yp+40 h20 , Back Office PC details:
+Gui, Add, Text, xp-75 yp+40 h20 , Back Office PC details:
 Gui, Add, Text, yp+25 h20 , PC Name:
 Gui, Add, Edit, xp+60 yp-3 w100 h20 -E0x200 vPCName,
 
@@ -70,7 +67,7 @@ Gui, Add, Button, yp+41 w134 h30 , &Exit
 
 Gui, Add, Tab2, x250 y69 w365 h200 , Till 1|Till 2|Till 3|Till 4|Till 5|Till 6|Till 7|Till 8
 Gui, Add, Text, x275 y139 h20 , First Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT1A,
+Gui, Add, Edit, xp+100 w100 h20 -E0x200 vTillName1,
 Gui, Add, CheckBox, xp-100 yp+34 w160 h20 vT1_POINTS, Live points working
 Gui, Add, CheckBox, yp+25 h20 vT1_SHORTCUT, Shortcuts added to desktop
 Gui, Add, CheckBox, yp+25 w160 h20 vT1_LOCKSET, LOCKSET
@@ -80,7 +77,7 @@ Gui, Add, Radio, yp+25 h20 vT1_LEGACYNONE, Legacy not present`n/previously disab
 
 Gui, Tab, Till 2
 Gui, Add, Text, x275 y139 h20 , Second Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT2A,
+Gui, Add, Edit, xp+100 w100 h20 -E0x200 vTillName2,
 Gui, Add, CheckBox, xp-100 yp+34 w160 h20 vT2_POINTS, Live points working
 Gui, Add, CheckBox, yp+25 h20 vT2_SHORTCUT, Shortcuts added to desktop
 Gui, Add, CheckBox, yp+25 w160 h20 vT2_LOCKSET, LOCKSET
@@ -89,7 +86,7 @@ Gui, Add, Radio, yp+25 h20 vT2_LEGACYNONE, Legacy not present`n/previously disab
 
 Gui, Tab, Till 3
 Gui, Add, Text, x275 y139 h20 , Third Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT3A,
+Gui, Add, Edit, xp+100 w100 h20 -E0x200 vTillName3,
 Gui, Add, CheckBox, xp-100 yp+34 w160 h20 vT3_POINTS, Live points working
 Gui, Add, CheckBox, yp+25 h20 vT3_SHORTCUT, Shortcuts added to desktop
 Gui, Add, CheckBox, yp+25 w160 h20 vT3_LOCKSET, LOCKSET
@@ -98,7 +95,7 @@ Gui, Add, Radio, yp+25 h20 vT3_LEGACYNONE, Legacy not present`n/previously disab
 
 Gui, Tab, Till 4
 Gui, Add, Text, x275 y139 h20 , Fourth Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT4A,
+Gui, Add, Edit, xp+100 w100 h20 -E0x200 vTillName4,
 Gui, Add, CheckBox, xp-100 yp+34 w160 h20 vT4_POINTS, Live points working
 Gui, Add, CheckBox, yp+25 h20 vT4_SHORTCUT, Shortcuts added to desktop
 Gui, Add, CheckBox, yp+25 w160 h20 vT4_LOCKSET, LOCKSET
@@ -107,7 +104,7 @@ Gui, Add, Radio, yp+25 h20 vT4_LEGACYNONE, Legacy not present`n/previously disab
 
 Gui, Tab, Till 5
 Gui, Add, Text, x275 y139 h20 , Fifth Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT5A,
+Gui, Add, Edit, xp+100 w100 h20 -E0x200 vTillName5,
 Gui, Add, CheckBox, xp-100 yp+34 w160 h20 vT5_POINTS, Live points working
 Gui, Add, CheckBox, yp+25 h20 vT5_SHORTCUT, Shortcuts added to desktop
 Gui, Add, CheckBox, yp+25 w160 h20 vT5_LOCKSET, LOCKSET
@@ -116,7 +113,7 @@ Gui, Add, Radio, yp+25 h20 vT5_LEGACYNONE, Legacy not present`n/previously disab
 
 Gui, Tab, Till 6
 Gui, Add, Text, x275 y139 h20 , Sixth Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT6A,
+Gui, Add, Edit, xp+100 w100 h20 -E0x200 vTillName6,
 Gui, Add, CheckBox, xp-100 yp+34 w160 h20 vT6_POINTS, Live points working
 Gui, Add, CheckBox, yp+25 h20 vT6_SHORTCUT, Shortcuts added to desktop
 Gui, Add, CheckBox, yp+25 w160 h20 vT6_LOCKSET, LOCKSET
@@ -125,7 +122,7 @@ Gui, Add, Radio, yp+25 h20 vT6_LEGACYNONE, Legacy not present`n/previously disab
 
 Gui, Tab, Till 7
 Gui, Add, Text, x275 y139 h20 , Seventh Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT7A,
+Gui, Add, Edit, xp+100 w100 h20 -E0x200 vTillName7,
 Gui, Add, CheckBox, xp-100 yp+34 w160 h20 vT7_POINTS, Live points working
 Gui, Add, CheckBox, yp+25 h20 vT7_SHORTCUT, Shortcuts added to desktop
 Gui, Add, CheckBox, yp+25 w160 h20 vT7_LOCKSET, LOCKSET
@@ -134,14 +131,14 @@ Gui, Add, Radio, yp+25 h20 vT7_LEGACYNONE, Legacy not present`n/previously disab
 
 Gui, Tab, Till 8
 Gui, Add, Text, x275 y139 h20 , Eighth Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT8A,
+Gui, Add, Edit, xp+100 w100 h20 -E0x200 vTillName8,
 Gui, Add, CheckBox, xp-100 yp+34 w160 h20 vT8_POINTS, Live points working
 Gui, Add, CheckBox, yp+25 h20 vT8_SHORTCUT, Shortcuts added to desktop
 Gui, Add, CheckBox, yp+25 w160 h20 vT8_LOCKSET, LOCKSET
 Gui, Add, Radio, xp+180 yp-40 h20 vT8_LEGACYDIS, Legacy disabled by INT
 Gui, Add, Radio, yp+25 h20 vT8_LEGACYNONE, Legacy not present`n/previously disabled
 
-Gui, Show, x100 y100 ,%A_Space%
+Gui, Show, x-800 y100 ,%A_Space%
 
 loop
 {
@@ -162,13 +159,6 @@ loop
 return
 
 ButtonConfirm:
-IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-
-	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-	email.To := "ricky.white@intellipharm.com.au"
-	email.Subject := "LOYALTY INSTALL COMPLETE - " SCODE
-	email.Body := "LOYALTY INSTALL INFORMATION`n`nStore ID:`t`t" SCODE "`nCompleted by:`t   " Name "`n`n`n "
-	email.Send
 
 if (!SCODE){
 msgbox, 16, Warning, Please enter a SITE CODE ID, 
@@ -182,68 +172,62 @@ return
 
 Gui, Submit,
 
-DispSET 	:= DispSET ? "•• Disp Depts in Settings.dbf: " : ""
-SHARED 		:= SHARED ? "•• Intpharm folder shared " : ""
-RBStock 	:= RBStock ? "•• Redemption Barcode/s added in stock " : ""
-InDateEdit 	:= InDateEdit ? "•• Tags1 : " : ""
-TWCMROLL 	:= TWCMROLL ? "#TWCMROLL " : ""
-LOYV3 		:= LOYV3 ? "#LOYV3 " : ""
+DispSET 	:= DispSET ? "DONE" : ""
+SHARED 		:= SHARED ? "DONE" : ""
+RBStock 	:= RBStock ? "DONE" : ""
+InDateEdit 	:= InDateEdit ? "DONE" : ""
+TWCMROLL 	:= TWCMROLL ? "#TWCMROLL" : ""
+LOYV3 		:= LOYV3 ? "#LOYV3" : ""
 
 Addition	:= Addition ? "•• Still to be completed: " : ""
 
-T1_POINTS		:= T1_POINTS ? "[ TILL 1 ] Live points working " : ""
-T1_SHORTCUT		:= T1_SHORTCUT ? "[ TILL 1 ] Shortcuts added to desktop " : ""
-T1_LOCKSET		:= T1_LOCKSET ? "[ TILL 1 ] LOCKSET: " : ""
-T1_LEGACYDIS	:= T1_LEGACYDIS ? "[ TILL 1 ] Legacy disabled by INT " : ""
-T1_LEGACYNONE	:= T1_LEGACYNONE ? "[ TILL 1 ] Legacy not present`n/previously disabled " : ""
+T1_POINTS		:= T1_POINTS ? "Live points working`n" : ""
+T1_SHORTCUT		:= T1_SHORTCUT ? "Shortcuts added to desktop`n" : ""
+T1_LOCKSET		:= T1_LOCKSET ? "LOCKSET`n" : ""
+T1_LEGACYDIS	:= T1_LEGACYDIS ? "Legacy disabled by INT`n" : ""
+T1_LEGACYNONE	:= T1_LEGACYNONE ? "Legacy not present/previously disabled`n" : ""
 
-T2_POINTS		:= T2_POINTS ? "[ TILL 2 ] Live points working " : ""
-T2_SHORTCUT		:= T2_SHORTCUT ? "[ TILL 2 ] Shortcuts added to desktop " : ""
-T2_LOCKSET		:= T2_LOCKSET ? "[ TILL 2 ] LOCKSET: " : ""
-T2_LEGACYDIS	:= T2_LEGACYDIS ? "[ TILL 2 ] Legacy disabled by INT " : ""
-T2_LEGACYNONE	:= T2_LEGACYNONE ? "[ TILL 2 ] Legacy not present`n/previously disabled " : ""
+T2_POINTS		:= T2_POINTS ? "Live points working`n" : ""
+T2_SHORTCUT		:= T2_SHORTCUT ? "Shortcuts added to desktop`n" : ""
+T2_LOCKSET		:= T2_LOCKSET ? "LOCKSET`n" : ""
+T2_LEGACYDIS	:= T2_LEGACYDIS ? "Legacy disabled by INT`n" : ""
+T2_LEGACYNONE	:= T2_LEGACYNONE ? "Legacy not present/previously disabled`n" : ""
 
-T3_POINTS		:= T3_POINTS ? "[ TILL 3 ] Live points working " : ""
-T3_SHORTCUT		:= T3_SHORTCUT ? "[ TILL 3 ] Shortcuts added to desktop " : ""
-T3_LOCKSET		:= T3_LOCKSET ? "[ TILL 3 ] LOCKSET: " : ""
-T3_LEGACYDIS	:= T3_LEGACYDIS ? "[ TILL 3 ] Legacy disabled by INT " : ""
-T3_LEGACYNONE	:= T3_LEGACYNONE ? "[ TILL 3 ] Legacy not present`n/previously disabled " : ""
+T3_POINTS		:= T3_POINTS ? "Live points working`n" : ""
+T3_SHORTCUT		:= T3_SHORTCUT ? "Shortcuts added to desktop`n" : ""
+T3_LOCKSET		:= T3_LOCKSET ? "LOCKSET`n" : ""
+T3_LEGACYDIS	:= T3_LEGACYDIS ? "Legacy disabled by INT`n" : ""
+T3_LEGACYNONE	:= T3_LEGACYNONE ? "Legacy not present/previously disabled`n" : ""
 
-T4_POINTS		:= T4_POINTS ? "[ TILL 4 ] Live points working " : ""
-T4_SHORTCUT		:= T4_SHORTCUT ? "[ TILL 4 ] Shortcuts added to desktop " : ""
-T4_LOCKSET		:= T4_LOCKSET ? "[ TILL 4 ] LOCKSET: " : ""
-T4_LEGACYDIS	:= T4_LEGACYDIS ? "[ TILL 4 ] Legacy disabled by INT " : ""
-T4_LEGACYNONE	:= T4_LEGACYNONE ? "[ TILL 4 ] Legacy not present`n/previously disabled " : ""
+T4_POINTS		:= T4_POINTS ? "Live points working`n" : ""
+T4_SHORTCUT		:= T4_SHORTCUT ? "Shortcuts added to desktop`n" : ""
+T4_LOCKSET		:= T4_LOCKSET ? "LOCKSET`n" : ""
+T4_LEGACYDIS	:= T4_LEGACYDIS ? "Legacy disabled by INT`n" : ""
+T4_LEGACYNONE	:= T4_LEGACYNONE ? "Legacy not present/previously disabled`n" : ""
 
-T5_POINTS		:= T5_POINTS ? "[ TILL 5 ] Live points working " : ""
-T5_SHORTCUT		:= T5_SHORTCUT ? "[ TILL 5 ] Shortcuts added to desktop " : ""
-T5_LOCKSET		:= T5_LOCKSET ? "[ TILL 5 ] LOCKSET: " : ""
-T5_LEGACYDIS	:= T5_LEGACYDIS ? "[ TILL 5 ] Legacy disabled by INT " : ""
-T5_LEGACYNONE	:= T5_LEGACYNONE ? "[ TILL 5 ] Legacy not present`n/previously disabled " : ""
+T5_POINTS		:= T5_POINTS ? "Live points working`n" : ""
+T5_SHORTCUT		:= T5_SHORTCUT ? "Shortcuts added to desktop`n" : ""
+T5_LOCKSET		:= T5_LOCKSET ? "LOCKSET`n" : ""
+T5_LEGACYDIS	:= T5_LEGACYDIS ? "Legacy disabled by INT`n" : ""
+T5_LEGACYNONE	:= T5_LEGACYNONE ? "Legacy not present/previously disabled`n" : ""
 
-T6_POINTS		:= T6_POINTS ? "[ TILL 6 ] Live points working " : ""
-T6_SHORTCUT		:= T6_SHORTCUT ? "[ TILL 6 ] Shortcuts added to desktop " : ""
-T6_LOCKSET		:= T6_LOCKSET ? "[ TILL 6 ] LOCKSET: " : ""
-T6_LEGACYDIS	:= T6_LEGACYDIS ? "[ TILL 6 ] Legacy disabled by INT " : ""
-T6_LEGACYNONE	:= T6_LEGACYNONE ? "[ TILL 6 ] Legacy not present`n/previously disabled " : ""
+T6_POINTS		:= T6_POINTS ? "Live points working`n" : ""
+T6_SHORTCUT		:= T6_SHORTCUT ? "Shortcuts added to desktop`n" : ""
+T6_LOCKSET		:= T6_LOCKSET ? "LOCKSET`n" : ""
+T6_LEGACYDIS	:= T6_LEGACYDIS ? "Legacy disabled by INT`n" : ""
+T6_LEGACYNONE	:= T6_LEGACYNONE ? "Legacy not present/previously disabled`n" : ""
 
-T7_POINTS		:= T7_POINTS ? "[ TILL 7 ] Live points working " : ""
-T7_SHORTCUT		:= T7_SHORTCUT ? "[ TILL 7 ] Shortcuts added to desktop " : ""
-T7_LOCKSET		:= T7_LOCKSET ? "[ TILL 7 ] LOCKSET: " : ""
-T7_LEGACYDIS	:= T7_LEGACYDIS ? "[ TILL 7 ] Legacy disabled by INT " : ""
-T7_LEGACYNONE	:= T7_LEGACYNONE ? "[ TILL 7 ] Legacy not present`n/previously disabled " : ""
+T7_POINTS		:= T7_POINTS ? "Live points working`n" : ""
+T7_SHORTCUT		:= T7_SHORTCUT ? "Shortcuts added to desktop`n" : ""
+T7_LOCKSET		:= T7_LOCKSET ? "LOCKSET`n" : ""
+T7_LEGACYDIS	:= T7_LEGACYDIS ? "Legacy disabled by INT`n" : ""
+T7_LEGACYNONE	:= T7_LEGACYNONE ? "Legacy not present/previously disabled`n" : ""
 
-T8_POINTS		:= T8_POINTS ? "[ TILL 8 ] Live points working " : ""
-T8_SHORTCUT		:= T8_SHORTCUT ? "[ TILL 8 ] Shortcuts added to desktop " : ""
-T8_LOCKSET		:= T8_LOCKSET ? "[ TILL 8 ] LOCKSET: " : ""
-T8_LEGACYDIS	:= T8_LEGACYDIS ? "[ TILL 8 ] Legacy disabled by INT " : ""
-T8_LEGACYNONE	:= T8_LEGACYNONE ? "[ TILL 8 ] Legacy not present`n/previously disabled " : ""
-
-
-IniWrite %Prefix%, C:\AutoHotKey\settings.ini, Loyalty, Prefix
-IniWrite, %SCODE%, C:\AutoHotKey\settings.ini, Loyalty, Sitecode
-IniWrite, %StoreName%, C:\AutoHotKey\settings.ini, Loyalty, StoreName
-
+T8_POINTS		:= T8_POINTS ? "Live points working`n" : ""
+T8_SHORTCUT		:= T8_SHORTCUT ? "Shortcuts added to desktop`n" : ""
+T8_LOCKSET		:= T8_LOCKSET ? "LOCKSET`n" : ""
+T8_LEGACYDIS	:= T8_LEGACYDIS ? "Legacy disabled by INT`n" : ""
+T8_LEGACYNONE	:= T8_LEGACYNONE ? "Legacy not present/previously disabled`n" : ""
 
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt
@@ -252,21 +236,70 @@ IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
 
 FileReadLine, VersionNum, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, 1
 
-IniRead Prefix, C:\AutoHotKey\settings.ini, Loyalty, Prefix
-IniRead, Sitecode, C:\AutoHotKey\settings.ini, Loyalty, Sitecode
-IniRead, StoreName, C:\AutoHotKey\settings.ini, Loyalty, StoreName
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %vName% %Surname% - TWCM Loyalty Install `n, G:\Support\Public Staff Folders\Aaron\scriptlog.txt
 
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %vName% %Surname% - Loyalty Install `n, G:\Support\Public Staff Folders\Aaron\scriptlog.txt
+FormatTime, Date,, yyyy MM dd
 
-msgText=%Time% - %CbAPIROLL% %CbLOYV3% %CbINDROLL% - Spoke to: %Spoke% - Total Tills: %Tills% - Test Card: %TestCard% - %CbTillsTested% - %CbTransition% %CbTraining% %TrainedName% - %CbDocument% - %DDUI% - %RBStock% - %CbAddition% %notes%
+FileCreateDir, G:\Support\Public Staff Folders\Renae\TWCM\%Date%\
+FileAppend, 
+(
+SITE CODE:`t`t`t%SCODE%
+Store Name:`t`t`t%codeText%
+Spoke to:`t`t`t`t%spoke%
+Back office PC Name:`t`t%PCName%
+Intellipharm folder shared:`t`t%SHARED%
+Disp Depts in settings.dbf:`t`t%DispSET%`t%DispDept%
+Redemption barcode added to stock:`t%RBStock%
+Install date edited:`t`t`t%InDateEdit%
+
+POS:`t`t`t`t%POS%
+Total Tills:`t`t`t%Tills%
+
+
+
+=== Till 1 ===
+Till Name:`t`t%TillName1%
+%T1_POINTS%%T1_SHORTCUT%%T1_LOCKSET%%T1_LEGACYDIS%%T1_LEGACYNONE%
+
+=== Till 2 ===
+Till Name:`t`t%TillName2%
+%T2_POINTS%%T2_SHORTCUT%%T2_LOCKSET%%T2_LEGACYDIS%%T2_LEGACYNONE%
+
+=== Till 3 ===
+Till Name:`t`t%TillName3%
+%T3_POINTS%%T3_SHORTCUT%%T3_LOCKSET%%T3_LEGACYDIS%%T3_LEGACYNONE%
+
+=== Till 4 ===
+Till Name:`t`t%TillName4%
+%T4_POINTS%%T4_SHORTCUT%%T4_LOCKSET%%T4_LEGACYDIS%%T4_LEGACYNONE%
+
+=== Till 5 ===
+Till Name:`t`t%TillName5%
+%T5_POINTS%%T5_SHORTCUT%%T5_LOCKSET%%T5_LEGACYDIS%%T5_LEGACYNONE%
+
+=== Till 6 ===
+Till Name:`t`t%TillName6%
+%T6_POINTS%%T6_SHORTCUT%%T6_LOCKSET%%T6_LEGACYDIS%%T6_LEGACYNONE%
+
+=== Till 7 ===
+Till Name:`t`t%TillName7%
+%T7_POINTS%%T7_SHORTCUT%%T7_LOCKSET%%T7_LEGACYDIS%%T7_LEGACYNONE%
+
+=== Till 8 ===
+Till Name:`t`t%TillName8%
+%T8_POINTS%%T8_SHORTCUT%%T8_LOCKSET%%T8_LEGACYDIS%%T8_LEGACYNONE%
+
+), G:\Support\Public Staff Folders\Renae\TWCM\%Date%\%SCODE% %codeText%.txt
+
+msgText = % Time " - " TWCMROLl " " LOYV3 " - Spoke to: " Spoke " •• "
 
 Clipboard = %msgText%
 
 ;WRITE THE MACRO
+FormatTime, Date,, yyyyMMdd
 IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 
 ;POINTS CALC - ADDING SITE CODES
-FormatTime, Date,, yyyyMMdd
 FileCreateDir, G:\Support\Public Staff Folders\Aaron\points\%vName%\
 IfEqual, Tills, 1
 	{
