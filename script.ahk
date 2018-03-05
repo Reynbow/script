@@ -25,7 +25,7 @@ SendMode, Event
 SetKeyDelay 25, 10
 
 ; Used below just for updating purposes - If you want to update this script you need to change this number to the new version. Also the GUI below is tittled with the version number
-VersionNum = 3.4.213
+VersionNum = 3.4.214
 
 IfNotExist, C:\AutoHotKey\script.exe
 	{
@@ -34,7 +34,7 @@ IfNotExist, C:\AutoHotKey\script.exe
 	}
 
 Menu, Tray, NoStandard ; remove standard Menu items
-Menu, Tray, Tip, The Gentleman's Script
+Menu, Tray, Tip, 🔥🔑
 Menu, Tray, Add , &Feedback, Feedback ;add a item named Change that goes to the Change label
 Menu, Tray, Add 
 Menu, Tray, Add , Force &Update, ForceUpdate 
@@ -1069,6 +1069,12 @@ Return
 ;============ERROR REPORT END
 
 LogsViewer:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 1071
+	}
+
 Gui, 99:Destroy
 
 IfNotExist, C:\AutoHotKey\logsettings.ini
@@ -2196,6 +2202,12 @@ reload
 return
 
 LoyQA:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 2198
+	}
+
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
@@ -2276,6 +2288,12 @@ reload
 return
 
 LoyInstall:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 2278
+	}
+
 IfNotExist, C:\AutoHotKey\Files\LoyaltyInstall.exe
 {
 	FileCopy, G:\Support\Public Staff Folders\Aaron\tools\LoyaltyInstall.exe, C:\AutoHotKey\Files\
@@ -2308,6 +2326,12 @@ Reload
 return
 
 99ButtonPasswordGenerator:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 2328
+	}
+
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 Gui, 99:Destroy
@@ -2409,6 +2433,12 @@ return
 ;=========================================PROCESS LIST PDF
 
 99ButtonProcessCharts:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 2429
+	}
+
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 Gui, Destroy 
@@ -2728,6 +2758,12 @@ return
 ;=====================================================LOYSERV
 
 Q13:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 2760
+	}
+
 Gui, Destroy 
 Gui, 99:Destroy 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
@@ -2735,7 +2771,7 @@ Gui, 55:font, bold cE8EBF5 s12, Segoe UI
 Gui, 55:Color, 1d1f21, 383D46
 Gui, 55:Add, Text, x0 y32 w210 h50 Center, LOYSERV CREATOR
 Gui, 55:font,
-Gui, 55:Add, Button, x30 y80 w150 h30 , &1 Chemmart
+Gui, 55:Add, Button, x30 y80 w150 h30 gTWChemmart, &1 TerryWhiteChemmart
 Gui, 55:Add, Button, x30 y120 w150 h30 , &2 Chempro
 Gui, 55:Add, Button, x30 y160 w150 h30 , &3 Pharmacy
 Gui, 55:Add, Button, x30 y200 w150 h30 , &4 Restore Rewards
@@ -2890,7 +2926,7 @@ return
 
 ;======= LOYSERVE CHEMMART
 
-55Button1Chemmart:
+TWChemmart:
 Gui, Destroy
 
 IfNotExist, C:\AutoHotKey\Files\LOYSERV\Chemmart\loyserv.dbf
@@ -2902,7 +2938,7 @@ IfNotExist, C:\AutoHotKey\Files\LOYSERV\Chemmart\loyserv.dbf
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 list1 = ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG
 Gui, 56:font, s12 bold, Segoe UI
-Gui, 56:Add, Text, center x0 y14 h30 w286 , Chemmart
+Gui, 56:Add, Text, center x0 y14 h30 w286 , TerryWhite Chemmart
 Gui, 56:font,
 Gui, 56:Add, Text, x28 y66 w80 h20 , Site Code Prefix
 Gui, 56:Add, DropDownList, x152 y64 w110 vChoiceCHEM, %list1%
@@ -2950,7 +2986,7 @@ Sendinput,{TAB}
 sleep 250
 SendInput,{ALT}fx
 sleep 200
-IfExist, G:\Loyalty\All Stores\%ChoiceCHEM%\%Box1% - %Box2%\loyserv\loyserv.dbf
+IfExist, G:\Loyalty\All Stores\TWCM\%ChoiceCHEM%\%Box1% - %Box2%\loyserv\loyserv.dbf
 {
 	Gui, Destroy
 	Gui, 57:font, s10, Segoe UI
@@ -2962,7 +2998,7 @@ IfExist, G:\Loyalty\All Stores\%ChoiceCHEM%\%Box1% - %Box2%\loyserv\loyserv.dbf
 	return
 	
 	57ButtonYes:
-	run, G:\Loyalty\All Stores\%ChoiceCHEM%\%Box1% - %Box2%\loyserv\
+	run, G:\Loyalty\All Stores\TWCM\%ChoiceCHEM%\%Box1% - %Box2%\loyserv\
 	Reload
 	return
 	
@@ -2973,14 +3009,14 @@ IfExist, G:\Loyalty\All Stores\%ChoiceCHEM%\%Box1% - %Box2%\loyserv\loyserv.dbf
 
 IfNotExist, G:\Loyalty\All Stores\%ChoiceCHEM%\%Box1% - %Box2%\loyserv\loyserv.dbf
 {
-FileCreateDir, G:\Loyalty\All Stores\%ChoiceCHEM%\%Box1% - %Box2%\Dataset & Plpset\
-FileCreateDir, G:\Loyalty\All Stores\%ChoiceCHEM%\%Box1% - %Box2%\Legacy Database\
-FileCreateDir, G:\Loyalty\All Stores\%ChoiceCHEM%\%Box1% - %Box2%\Loyserv\
-FileCreateDir, G:\Loyalty\All Stores\%ChoiceCHEM%\%Box1% - %Box2%\Promotions\
-FileCreateDir, G:\Loyalty\All Stores\%ChoiceCHEM%\%Box1% - %Box2%\Sqlconn & Settings\
-FileCreateDir, G:\Loyalty\All Stores\%ChoiceCHEM%\%Box1% - %Box2%\Store Reports\
+FileCreateDir, G:\Loyalty\All Stores\TWCM\%ChoiceCHEM%\%Box1% - %Box2%\Dataset & Plpset\
+FileCreateDir, G:\Loyalty\All Stores\TWCM\%ChoiceCHEM%\%Box1% - %Box2%\Legacy Database\
+FileCreateDir, G:\Loyalty\All Stores\TWCM\%ChoiceCHEM%\%Box1% - %Box2%\Loyserv\
+FileCreateDir, G:\Loyalty\All Stores\TWCM\%ChoiceCHEM%\%Box1% - %Box2%\Promotions\
+FileCreateDir, G:\Loyalty\All Stores\TWCM\%ChoiceCHEM%\%Box1% - %Box2%\Sqlconn & Settings\
+FileCreateDir, G:\Loyalty\All Stores\TWCM\%ChoiceCHEM%\%Box1% - %Box2%\Store Reports\
 sleep 2000
-FileCopy, C:\AutoHotKey\Files\LOYSERV\Chemmart\loyserv.dbf, G:\Loyalty\All Stores\%ChoiceCHEM%\%Box1% - %Box2%\loyserv\
+FileCopy, C:\AutoHotKey\Files\LOYSERV\Chemmart\loyserv.dbf, G:\Loyalty\All Stores\TWCM\%ChoiceCHEM%\%Box1% - %Box2%\loyserv\
 sleep 2000
 
 	Gui, Destroy
@@ -2993,7 +3029,7 @@ sleep 2000
 	return
 	
 	58ButtonYes:
-	run, G:\Loyalty\All Stores\%ChoiceCHEM%\%Box1% - %Box2%\loyserv\
+	run, G:\Loyalty\All Stores\TWCM\%ChoiceCHEM%\%Box1% - %Box2%\loyserv\
 	Reload
 	return
 	
@@ -3608,6 +3644,12 @@ return
 
 Q8:
 LoyOther:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 3610
+	}
+
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
@@ -3623,6 +3665,9 @@ Gui, 30:Add, Picture, x73 yp+60 w64 h64, G:\Support\Shared Tech Resources\TOOLS\
 Gui, 30:Add, Button, x30 yp+100 w150 h30 gCardOrders, &1 Card Orders
 Gui, 30:Add, Button, xp yp+40 w150 h30 , &2 Loyalty Cancelation
 Gui, 30:Add, Button, xp yp+40 w150 h30 gQ13 , &3 Loyserv Creator
+Gui, 30:font, bold, Segoe UI
+Gui, 30:Add, Button, xp yp+40 w150 h30 gTWCMRoll , &4 TWCM Rollout
+Gui, 30:font,
 Gui, 30:Add, Button, xp yp+80 w150 h30 , CLOSE
 
 Gui, 30:Add, Picture, xp+30 yp+120 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
@@ -3643,9 +3688,26 @@ do_lines_pre = 0
 gosub Q1
 return
 
+TWCMRoll:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 3691
+	}
+
+reload
+return
+
+
 ;=====================================================LOYALTY CANCELATION
 
 30Button2LoyaltyCancelation:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 3692
+	}
+
 Gui, Destroy 
 Gui, 99:Destroy 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
@@ -3732,6 +3794,12 @@ Return
 ;=====================================================CARD ORDERS
 
 CardOrders:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 3778
+	}
+
 Gui, Destroy 
 Gui, 99:Destroy 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
@@ -3999,6 +4067,12 @@ Return
 
 Q2:
 SupGeneral:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 4015
+	}
+
 Gui, 25:Destroy
 Gui, 7:Destroy
 Gui, BC:Destroy
@@ -4046,6 +4120,12 @@ Gui, 2:Destroy
 return
 
 SupportQAs:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 4062
+	}
+
 Gui, 2:Destroy
 Gui, 30:Destroy
 
@@ -4060,6 +4140,12 @@ Reload
 return
 
 SupPaths:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 4142
+	}
+
 Gui, 2:Destroy
 Clipboard =
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -4161,6 +4247,12 @@ BackCancel:
 Gui, BC:destroy
 Gui, A:destroy
 SupCancellation:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 4249
+	}
+
 Gui, Destroy
 Gui, 99:Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
@@ -4352,7 +4444,7 @@ Clipboard = %msgText%
 		;MsgBox % TheName "`n" TheEmail "@sanofi.com.au"
 
 		email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-		email.To := TheEmail "@sanofi.com.au"
+		email.To := TheEmail "@sanofi.com"
 		email.Cc := "support@intellipharm.com.au"
 		email.Subject := "Sanofi Cancellation - " ThePHCode " - " StoreName
 		email.Body := "Hi " TheName ",`n`nThis email is to advise you that " ThePHCode " " StoreName " has requested the Sanofi reporting service be cancelled for their store.`n`nTo reinstate the reporting service for this store, please arrange for the store to complete a new signup via Sanofi Central.`n`n"
@@ -4452,6 +4544,11 @@ return
 ;=====================================================GENERAL ALL TAGS
 
 SupADMIN:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 4474
+	}
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
@@ -5110,6 +5207,12 @@ return
 ;=====================================================LOYALTY ALL TAGS
 
 LoyADMIN:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 5155
+	}
+
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
@@ -5407,6 +5510,12 @@ Return
 ;=====================================================VOICEMAIL
 
 PhoneRangOut:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 5508
+	}
+
 list1 = Voicemail|Rang out|Failed to establish call
 list2 = #INSTALL|#DATAOUT
 Gui, Destroy
@@ -5459,6 +5568,12 @@ return
 ;=====================================================END VOICEMAIL
 
 QAPass:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 5558
+	}
+
 Gui, Destroy
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -5573,6 +5688,12 @@ return
 ;=====================================================KNOCKBACK
 
 DeclinedConnection:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 5684
+	}
+
 list1 = #DATAOUT|#INSTALL
 Gui, Destroy
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -5678,6 +5799,12 @@ return
 ;=====================================================SITE RESET
 
 SupSiteReset:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 5795
+	}
+
 list1 = No|Yes
 list2 = Yes|No|TBA
 list3 = Brodie|Ricky|N/A
@@ -5823,6 +5950,11 @@ return
 ;=====================================================GENERIC FIX
 
 SupDO:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 5839
+	}
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
@@ -6395,6 +6527,11 @@ return
 
 LoyTillConfig:
 
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 6438
+	}
+
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
@@ -6898,6 +7035,11 @@ return
 
 SupINSTALL:
 
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 6913
+	}
+
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
@@ -7096,6 +7238,12 @@ return
 ;=====================================================FRED CONFIRMATION
 
 FredConf:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 7204
+	}
+
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 ;IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
@@ -7177,6 +7325,12 @@ return
 
 Q7:
 SupEMAILS:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 7291
+	}
+
 ;WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 ;IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
@@ -9183,6 +9337,12 @@ gosub MM
 return
 
 MM:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , 9267
+	}
+
 Gui, Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 IniRead, vMacro0, C:\AutoHotKey\settings.ini, MACROLIST, MACRO0
