@@ -1072,7 +1072,7 @@ LogsViewer:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 1071
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 Gui, 99:Destroy
@@ -2205,7 +2205,7 @@ LoyQA:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 2198
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -2291,7 +2291,7 @@ LoyInstall:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 2278
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 IfNotExist, C:\AutoHotKey\Files\LoyaltyInstall.exe
@@ -2329,7 +2329,7 @@ return
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 2328
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -2436,7 +2436,7 @@ return
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 2429
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -2761,7 +2761,7 @@ Q13:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 2760
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 Gui, Destroy 
@@ -3647,7 +3647,7 @@ LoyOther:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 3610
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -3692,7 +3692,7 @@ TWCMRoll:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 3691
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 reload
@@ -3705,7 +3705,7 @@ return
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 3692
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 Gui, Destroy 
@@ -3797,7 +3797,7 @@ CardOrders:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 3778
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 Gui, Destroy 
@@ -4070,7 +4070,7 @@ SupGeneral:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 4015
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 Gui, 25:Destroy
@@ -4123,7 +4123,7 @@ SupportQAs:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 4062
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 Gui, 2:Destroy
@@ -4143,7 +4143,7 @@ SupPaths:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 4142
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 Gui, 2:Destroy
@@ -4250,7 +4250,7 @@ SupCancellation:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 4249
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 Gui, Destroy
@@ -4547,7 +4547,7 @@ SupADMIN:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 4474
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -5210,7 +5210,7 @@ LoyADMIN:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 5155
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -5513,7 +5513,7 @@ PhoneRangOut:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 5508
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 list1 = Voicemail|Rang out|Failed to establish call
@@ -5571,7 +5571,7 @@ QAPass:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 5558
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 Gui, Destroy
@@ -5691,7 +5691,7 @@ DeclinedConnection:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 5684
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 list1 = #DATAOUT|#INSTALL
@@ -5802,7 +5802,7 @@ SupSiteReset:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 5795
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 list1 = No|Yes
@@ -5953,7 +5953,7 @@ SupDO:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 5839
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -6529,7 +6529,7 @@ LoyTillConfig:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 6438
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -7037,7 +7037,7 @@ SupINSTALL:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 6913
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -7241,7 +7241,7 @@ FredConf:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 7204
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -7328,7 +7328,7 @@ SupEMAILS:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 7291
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 ;WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
@@ -9340,7 +9340,7 @@ MM:
 
 If (GetKeyState("Shift", "P"))
 	{
-		MsgBox, ,LINE , 9267
+		MsgBox, ,LINE , %A_LineNumber%
 	}
 
 Gui, Destroy
