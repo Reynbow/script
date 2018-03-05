@@ -1,4 +1,4 @@
-#SingleInstance, Force
+﻿#SingleInstance, Force
 #NoEnv
 #MaxHotkeysPerInterval 99000000
 #HotkeyInterval 99000000
@@ -12,6 +12,8 @@ SetDefaultMouseSpeed, 0
 SetWinDelay, -1
 
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
+IniRead, UserName, C:\AutoHotKey\settings.ini, UserName, name
+
 ;========================= HEADER
 Gui,-SysMenu +ToolWindow +Border
 Gui, font, s16 bold cc5c8c6, Segoe UI
@@ -138,7 +140,9 @@ Gui, Add, CheckBox, yp+25 w160 h20 vT8_LOCKSET, LOCKSET
 Gui, Add, Radio, xp+180 yp-40 h20 vT8_LEGACYDIS, Legacy disabled by INT
 Gui, Add, Radio, yp+25 h20 vT8_LEGACYNONE, Legacy not present`n/previously disabled
 
-Gui, Show, x-800 y100 ,%A_Space%
+
+IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
+Gui, Show, %Gui_Cord% ,%A_Space%
 
 loop
 {
@@ -179,7 +183,7 @@ InDateEdit 	:= InDateEdit ? "DONE" : ""
 TWCMROLL 	:= TWCMROLL ? "#TWCMROLL" : ""
 LOYV3 		:= LOYV3 ? "#LOYV3" : ""
 
-Addition	:= Addition ? "•• Still to be completed: " : ""
+Addition	:= Addition ? "=== === === ===`nExtra Notes / Still to be completed:`n" Notes "`n=== === === ===" : ""
 
 T1_POINTS		:= T1_POINTS ? "Live points working`n" : ""
 T1_SHORTCUT		:= T1_SHORTCUT ? "Shortcuts added to desktop`n" : ""
@@ -229,6 +233,16 @@ T8_LOCKSET		:= T8_LOCKSET ? "LOCKSET`n" : ""
 T8_LEGACYDIS	:= T8_LEGACYDIS ? "Legacy disabled by INT`n" : ""
 T8_LEGACYNONE	:= T8_LEGACYNONE ? "Legacy not present/previously disabled`n" : ""
 
+T1_POINTScom	:= T1_POINTS ? TillName1 " " : ""
+T2_POINTScom	:= T2_POINTS ? TillName2 " " : ""
+T3_POINTScom	:= T3_POINTS ? TillName3 " " : ""
+T4_POINTScom	:= T4_POINTS ? TillName4 " " : ""
+T5_POINTScom	:= T5_POINTS ? TillName5 " " : ""
+T6_POINTScom	:= T6_POINTS ? TillName6 " " : ""
+T7_POINTScom	:= T7_POINTS ? TillName7 " " : ""
+T8_POINTScom	:= T8_POINTS ? TillName8 " " : ""
+
+
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
@@ -243,10 +257,13 @@ FormatTime, Date,, yyyy MM dd
 FileCreateDir, G:\Support\Public Staff Folders\Renae\TWCM\%Date%\
 FileAppend, 
 (
+SUPPORT STAFF:`t`t`t%UserName%
+
 SITE CODE:`t`t`t%SCODE%
 Store Name:`t`t`t%codeText%
 Spoke to:`t`t`t`t%spoke%
 Back office PC Name:`t`t%PCName%
+
 Intellipharm folder shared:`t`t%SHARED%
 Disp Depts in settings.dbf:`t`t%DispSET%`t%DispDept%
 Redemption barcode added to stock:`t%RBStock%
@@ -255,6 +272,7 @@ Install date edited:`t`t`t%InDateEdit%
 POS:`t`t`t`t%POS%
 Total Tills:`t`t`t%Tills%
 
+%Addition%
 
 
 === Till 1 ===
@@ -289,9 +307,14 @@ Till Name:`t`t%TillName7%
 Till Name:`t`t%TillName8%
 %T8_POINTS%%T8_SHORTCUT%%T8_LOCKSET%%T8_LEGACYDIS%%T8_LEGACYNONE%
 
+
+
+
+
+
 ), G:\Support\Public Staff Folders\Renae\TWCM\%Date%\%SCODE% %codeText%.txt
 
-msgText = % Time " - " TWCMROLl " " LOYV3 " - Spoke to: " Spoke " •• "
+msgText = % Time " - " TWCMROLl " " LOYV3 " - Spoke to: " Spoke " •• DISP [" DispSET "] •• FOLDER SHARE [ " SHARED " ] •• BARCODE ADDED [ " RBStock " ] •• INSTALL DATE [ " InDateEdit " ] •• Test and Live Points working: [ " T1_POINTScom T2_POINTScom T3_POINTScom T4_POINTScom T5_POINTScom T6_POINTScom T7_POINTScom T8_POINTScom "] •• LOCKSET for: [ " T1_POINTScom T2_POINTScom T3_POINTScom T4_POINTScom T5_POINTScom T6_POINTScom T7_POINTScom T8_POINTScom "] •• To be completed: " Notes
 
 Clipboard = %msgText%
 
@@ -551,7 +574,3 @@ return
 
 ButtonExit:
 ExitApp
-
-F5::
-Reload
-return

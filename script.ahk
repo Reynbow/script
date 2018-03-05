@@ -25,7 +25,7 @@ SendMode, Event
 SetKeyDelay 25, 10
 
 ; Used below just for updating purposes - If you want to update this script you need to change this number to the new version. Also the GUI below is tittled with the version number
-VersionNum = 3.4.214
+VersionNum = 3.4.215
 
 IfNotExist, C:\AutoHotKey\script.exe
 	{
@@ -3694,6 +3694,8 @@ If (GetKeyState("Shift", "P"))
 	{
 		MsgBox, ,LINE , %A_LineNumber%
 	}
+
+run, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\Loyalty TWCM.exe
 
 reload
 return
