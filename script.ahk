@@ -25,7 +25,7 @@ SendMode, Event
 SetKeyDelay 25, 10
 
 ; Used below just for updating purposes - If you want to update this script you need to change this number to the new version. Also the GUI below is tittled with the version number
-VersionNum = 3.4.215
+VersionNum = 3.4.217
 
 IfNotExist, C:\AutoHotKey\script.exe
 	{
@@ -213,7 +213,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Feedback Form`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Feedback Form`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 	
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 	email.To := "aaron.beecham@intellipharm.com.au"
@@ -2274,7 +2274,7 @@ IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
 	Clipboard = %msgText%
 	TrayTip, Clipboard Ready, %msgText%, 5, 16
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Loyalty QA - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Loyalty QA - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 reload
 return
 
@@ -2856,7 +2856,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Ramsay\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -2973,7 +2973,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Chemmart\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -3090,7 +3090,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Chempro\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -3208,7 +3208,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Pharmacy\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -3328,7 +3328,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Restore Rewards\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -3448,7 +3448,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Soul Pattinson\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -3568,7 +3568,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Pharmacist Advice\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -3788,7 +3788,7 @@ Clipboard = %Time% - #CANCEL for %Radio_1%%Radio_2% - Have completed following: 
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Loyalty Cancelation - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Loyalty Cancelation - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 reload
 Return
@@ -3837,7 +3837,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Card Order - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Card Order - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 Clipboard =%Time% - #CARDORDER - %ChoiceCO% x card order sent - Proof approved by client: %Radio_1%%Radio_2%
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 
@@ -4061,7 +4061,7 @@ Clipboard = %Time% %Cb_8_Text%%Box5% %Cb_9_Text%%Box6% %Cb_1_Text%%Cb_2_Text%%Cb
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Data Out Loyalty - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Data Out Loyalty - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 reload
 Return
 
@@ -4463,7 +4463,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Cancellation`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Cancellation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 	TrayTip, Clipboard Ready, %clipboard%, 5, 16
 reload
 return
@@ -4505,7 +4505,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Ecom Excel Creation`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Ecom Excel Creation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 sleep 1000
 Run, C:\AutoHotKey\Files\Template ECOMM order acknowledgement.xltx
@@ -4870,7 +4870,7 @@ FormatTime, scripttime,, yyyyMM
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - General Full Tags`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt	
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - General Full Tags`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt	
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 
 ;WRITE THE MACRO
@@ -5499,7 +5499,7 @@ FormatTime, scripttime,, yyyyMM
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loy Admin`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt	
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loy Admin`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt	
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 
 ;WRITE THE MACRO
@@ -5562,7 +5562,7 @@ Clipboard = %Time% - %Choice2% #OUT - %Choice1% - %Box1% #PRO
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - Phone rang out`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - Phone rang out`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 	reload
 return
@@ -5666,7 +5666,7 @@ Clipboard = % msgText
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - QA PASS`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - QA PASS`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 
 ;POINTS CALC - ADDING SITE CODES
@@ -5791,7 +5791,7 @@ Clipboard = % msgText
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Knockback`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Knockback`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 Reload
 return
@@ -5848,7 +5848,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Site Reset`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Site Reset`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 	Clipboard = %Time% - SITE RESET %CLIENTCHECK% %EMAILCHECK% %LOYCHECK%
 		TrayTip, Clipboard Ready, %clipboard%, 5, 16
 	;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
@@ -5868,7 +5868,7 @@ Clipboard = %Time% - #ECOM, #OUT - ECOM ORDER PENDING ACKNOWLEDGEMENT %Choice1EO
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Ecom Order - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Ecom Order - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 	reload
 return
@@ -5914,7 +5914,7 @@ Clipboard = %Time% - #SEQISSUE #OUT - Spoke to %Box1SI% - Reason for issue: %Box
 	TrayTip, Clipboard Ready, %clipboard%, 5, 16
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Sequence Issue`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Sequence Issue`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 reload
 return
@@ -6361,7 +6361,7 @@ FormatTime, scripttime,, yyyyMM
 	TrayTip, Clipboard Ready, %msgText%, 5, 16
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Data Out Fix`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Data Out Fix`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 
 ;WRITE THE MACRO
@@ -6698,7 +6698,7 @@ FormatTime, scripttime,, yyyyMM
 	TrayTip, Clipboard Ready, %msgText%, 5, 16
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Till Config`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Till Config`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 
 ;POINTS CALC - ADDING SITE CODES
@@ -6930,7 +6930,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Basic Incoming Call`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Basic Incoming Call`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 	Clipboard = %Time% - #IN - Spoke to: %Box1BC% - Issue: %Box2BC% - Resolution %Box3BC%
 		TrayTip, Clipboard Ready, %clipboard%, 5, 16
 	;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
@@ -6972,7 +6972,7 @@ Clipboard = %Time% - #OUT %Choice1OC% - Spoke to: %Box1OC% - Issue: %Box2OC% - R
 	TrayTip, Clipboard Ready, %clipboard%, 5, 16
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Basic Outgoing Call`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Basic Outgoing Call`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 reload
 return
@@ -7201,7 +7201,7 @@ FormatTime, scripttime,, yyyyMM
 	TrayTip, Clipboard Ready, %msgText%, 5, 16
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Installation`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Installation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 
 ;POINTS CALC - ADDING SITE CODES
@@ -7313,7 +7313,7 @@ Clipboard = %Time% - POSX Install #OUT #EMAIL - Spoke to %Box1FC% (confirmed usi
 	TrayTip, Clipboard Ready, %clipboard%, 5, 16
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Fred Confirmation`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Fred Confirmation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 return
 
@@ -7515,7 +7515,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Incident Report Jira`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Incident Report Jira`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 email.To := "bugs@pharmacylink.com.au"
@@ -7609,7 +7609,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Data Outage Resolved`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Data Outage Resolved`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 	email.To := Box4
@@ -7692,7 +7692,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Installation Complete Pending QA`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Installation Complete Pending QA`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 	email.To := Box4
@@ -7776,7 +7776,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Installation Complete Pending QA`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Installation Complete Pending QA`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 	email.To := Box4
@@ -7861,7 +7861,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Knock Back Data Out`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Knock Back Data Out`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 	email.To := Box4
@@ -7946,7 +7946,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Knock Back Installation`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Knock Back Installation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 	email.To := Box4
@@ -8022,7 +8022,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Batch Reader Access`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Batch Reader Access`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 	email.To := "support@possolutions.com.au"
@@ -8075,7 +8075,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - MINFOS Webservices Email`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - MINFOS Webservices Email`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 	
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 	email.To := "minfos_support@minfos.com.au"
@@ -8155,7 +8155,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - ACNIELSEN Install/Reinstall`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - ACNIELSEN Install/Reinstall`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 	email.To := "aaron.beecham@intellipharm.com.au"
@@ -8225,7 +8225,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - GREENCROSS MIssing ZIPs`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - GREENCROSS MIssing ZIPs`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 	Run G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\miszip.msg
 	Sleep 5000
 	WinActivate OUTLOOK.EXE
@@ -8354,7 +8354,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Email Reinstallation`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Email Reinstallation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 	email.To := "support@loyaltyone.com.au"
@@ -8474,7 +8474,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Email Escalation`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Email Escalation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 	email.To := "support@loyaltyone.com.au"
@@ -8501,7 +8501,7 @@ FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - HSNET Account EXISTING`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - HSNET Account EXISTING`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 	Run G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\kye.msg
 	Sleep 5000
 	WinActivate OUTLOOK.EXE
@@ -8542,7 +8542,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - HSNET Account NEW`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - HSNET Account NEW`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 	Run G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\kye.msg
 	Sleep 5000
 	WinActivate OUTLOOK.EXE
@@ -8806,7 +8806,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Site Reset Email`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Site Reset Email`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 str = 
 ( %
@@ -9275,7 +9275,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - FRED Excel Form`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - FRED Excel Form`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 WorkBookPath		:= "C:\AutoHotKey\Files\FRED.xlsx"											; store the path to the workbook
 objExcel					:= ComObjCreate("Excel.Application")        			; create a handle to a new excel application
