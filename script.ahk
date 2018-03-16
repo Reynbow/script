@@ -25,7 +25,7 @@ SendMode, Event
 SetKeyDelay 25, 10
 
 ; Used below just for updating purposes - If you want to update this script you need to change this number to the new version. Also the GUI below is tittled with the version number
-VersionNum = 3.4.217
+VersionNum = 3.4.219
 
 IfNotExist, C:\AutoHotKey\script.exe
 	{
@@ -2339,7 +2339,6 @@ IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 Gui, 87:-SysMenu +Border
 Gui, 87:Color, 1d1f21, 383D46
 Gui, 87:Font, cc5c8c6, Segoe UI
-;Gui, 87:Add, GroupBox, x5 y3 w260 h390,
 Gui, 87:Add, GroupBox, x16 y30 w130 h140,password contains...
 Gui, 87:Add, Checkbox, x26 y47 w115 h30 vCheck1 checked,lower case letters
 Gui, 87:Add, Checkbox, x26 y77 w115 h30 vCheck2 checked,capital letters
@@ -2936,7 +2935,7 @@ IfNotExist, C:\AutoHotKey\Files\LOYSERV\Chemmart\loyserv.dbf
 	}
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-list1 = ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG
+list1 = ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG|TWAP
 Gui, 56:font, s12 bold, Segoe UI
 Gui, 56:Add, Text, center x0 y14 h30 w286 , TerryWhite Chemmart
 Gui, 56:font,
@@ -3053,7 +3052,7 @@ IfNotExist, C:\AutoHotKey\Files\LOYSERV\Chempro\loyserv.dbf
 	}
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-list1 = ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG
+list1 = ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG|TWAP
 Gui, 59:font, s12 bold, Segoe UI
 Gui, 59:Add, Text, center x0 y14 h30 w286 , Chempro
 Gui, 59:font,
@@ -3170,7 +3169,7 @@ IfNotExist, C:\AutoHotKey\Files\LOYSERV\Pharmacy\loyserv.dbf
 	}
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-list1 = ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG
+list1 = ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG|TWAP
 Gui, 62:font, s12 bold, Segoe UI
 Gui, 62:Add, Text, center x0 y14 h30 w286, Pharmacy
 Gui, 62:font,
@@ -3290,7 +3289,7 @@ IfNotExist, C:\AutoHotKey\Files\LOYSERV\Restore Rewards\loyserv.dbf
 	}
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-list1 = ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG
+list1 = ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG|TWAP
 Gui, 72:font, s12 bold, Segoe UI
 Gui, 72:Add, Text, center x0 y14 h30 w286 , Restore Rewards
 Gui, 72:font,
@@ -3410,7 +3409,7 @@ IfNotExist, C:\AutoHotKey\Files\LOYSERV\Soul Pattinson\loyserv.dbf
 	}
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-list1 = ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG
+list1 = ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG|TWAP
 Gui, 75:font, s12 bold, Segoe UI
 Gui, 75:Add, Text, center x0 y14 h30 w286 , Soul Pattinson
 Gui, 75:font,
@@ -3530,7 +3529,7 @@ IfNotExist, C:\AutoHotKey\Files\LOYSERV\Pharmacist Advice\loyserv.dbf
 	}
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-list1 = ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG
+list1 = ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG|TWAP
 Gui, 80:font, s12 bold, Segoe UI
 Gui, 80:Add, Text, center x0 y14 h30 w286 , Pharmacist Advice
 Gui, 80:font,
@@ -3695,7 +3694,7 @@ If (GetKeyState("Shift", "P"))
 		MsgBox, ,LINE , %A_LineNumber%
 	}
 
-run, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\Loyalty TWCM.exe
+run, C:\AutoHotKey\Files\Loyalty TWCM.exe
 
 reload
 return
