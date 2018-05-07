@@ -14,8 +14,11 @@ FileRead, STORE, C:\INTPHARM\POSX\PRG\sitecode.txt
 Else FileRead, STORE, C:\INTPHARM\DISPX\sitecode.txt
 
 ;IniRead, STORE, C:\INTPHARM\DISPX\dispx.ini, Settings, SiteCode
-Gui, Add, Edit, -E0x200 readonly x10 y10 w400 h180 vConsole
-Gui, Show, x100 y100 w420 h200, HSNET Config - %STORE%
+Gui, -SysMenu -caption +Border
+Gui, Color, 1d1f21, 383D46, 282a2e
+Gui, Font, cc5c8c6, Segoe UI
+Gui, Add, Edit, -E0x200 readonly x10 y10 w427 h180 vConsole
+Gui, Show, x100 y100 w420 h200, HSNET Config
 
 /****************************************
 Main
@@ -27,14 +30,38 @@ log("--------------------------------------`nRunning HSNET Config`n-------------
 log("If you would like to stop this process, you can at any time by pressing ESC`n")
 
 	log("✔️ - Desktop Help icon updated")
-	sleep 1000
+	sleep 250
     IniWrite, C:\INTPHARM\Inthelp\intlogo.ico, 				C:\Users\All Users\Desktop\Intellipharm Help.url, InternetShortcut, IconFile
 	IniWrite, % "",                            				C:\Users\All Users\Desktop\Intellipharm Help.url, InternetShortcut, IDList
 	IniWrite, https://intellipharm.com.au/download/index,   C:\Users\All Users\Desktop\Intellipharm Help.url, InternetShortcut, URL
 	IniWrite, 0,                               				C:\Users\All Users\Desktop\Intellipharm Help.url, InternetShortcut, IconIndex
 	IniWrite, 0,                               				C:\Users\All Users\Desktop\Intellipharm Help.url, InternetShortcut, HotKey
 
-InputBox, count, SCHEDULE TASK,Please set the time you would like HSNET SCHEDULE TASK to start.`nFormat is '12:00' in 24 hour time., ,240,160,200,200,,,22:30
+;InputBox, count, SCHEDULE TASK,Please set the time you would like HSNET SCHEDULE TASK to start.`nFormat is '12:00' in 24 hour time., ,240,160,200,200,,,22:30
+
+Gui, -SysMenu -caption +Border
+Gui, Color, 1d1f21, 383D46, 282a2e
+Gui, Font, c00ff00, Segoe UI
+Gui, Add, Text, x15 y215 vText1, Please set the time you would like HSNET SCHEDULE TASK to start.`nFormat is '12:00' in 24 hour time.
+Gui, Font, s11 c00ff00, Segoe UI
+Gui, Add, Edit, x15 y255 w120 h20 cc5c8c6 -E0x200 vcount, 22:30
+Gui, Font,
+Gui, Font, c00ff00, Segoe UI
+Gui, Show, x100 y100 w420 h290, HSNET Config
+GuiControl, Focus, count
+SendInput, ^A
+Gui, Add, Button, x230 y255 w80 vContinueButton1 gCONT1, CONTINUE 
+Gui, Add, Button, x325 y255 w80 vCancelButton1 gCANCEL, CANCEL
+;log("`nAwaiting input...")
+return
+
+CONT1:
+GuiControl, Hide, Text1
+GuiControl, Hide, count
+GuiControl, Hide, ContinueButton1
+GuiControl, Hide, CancelButton1
+
+Gui, Submit, NoHide
 
 log("`n✔️ - SCHEDULE TASK SET FOR " count "`n")
 
@@ -115,10 +142,36 @@ rootFolder.RegisterTaskDefinition("Intellipharm - HSNET", taskDefinition, TaskCr
 
 ;========== END OF SCHEDULE TASK SECTION ===========
 
-InputBox, count, STARTUP TIME,Please set the time you would like HSNET to start.`nFormat is '12:00' in 24 hour time., ,240,160,200,200,,,00:15
+;InputBox, count, STARTUP TIME,Please set the time you would like HSNET to start.`nFormat is '12:00' in 24 hour time., ,240,160,200,200,,,00:15
 
-log("✔️ - SCHEDULE TIME SET FOR " count "`n")
-IniWrite %count%, C:\INTPHARM\HSNET\hsnet.ini, Settings, ScheduleTime
+Gui, -SysMenu -caption +Border
+Gui, Color, 1d1f21, 383D46, 282a2e
+Gui, Font, c00ff00, Segoe UI
+Gui, Add, Text, x15 y215 vText2, Please set the time you would like HSNET to start.`nFormat is '12:00' in 24 hour time.
+Gui, Font, s11 c00ff00, Segoe UI
+Gui, Add, Edit, x15 y255 w120 h20 cc5c8c6 -E0x200 vcount2, 00:15
+Gui, Font,
+Gui, Font, c00ff00, Segoe UI
+GuiControl, Focus, count2
+SendInput, ^A
+Gui, Add, Button, x230 y255 w80 vContinueButton2 gCONT2, CONTINUE 
+Gui, Add, Button, x325 y255 w80 vCancelButton2 gCANCEL, CANCEL
+;log("`nAwaiting input...")
+return
+
+CONT2:
+
+GuiControl, Hide, Text2
+GuiControl, Hide, count2
+GuiControl, Hide, ContinueButton2
+GuiControl, Hide, CancelButton2
+
+Gui, Show, x100 y100 w420 h200, HSNET Config
+
+Gui, Submit, NoHide
+
+log("✔️ - SCHEDULE TIME SET FOR " count2 "`n")
+IniWrite %count2%, C:\INTPHARM\HSNET\hsnet.ini, Settings, ScheduleTime
 FileAppend, Task Schedule Set`n, C:\INTPHARM\hsnet.txt
 
 Secs := 60
@@ -150,7 +203,7 @@ IfNotExist, C:\Users\All Users\Start Menu\Programs\StartUp\hsnet.lnk
 	;sleep 100
 	;FileCopy, C:\INTPHARM\hsnet.lnk, C:\Users\All Users\Start Menu\Programs\StartUp\hsnet.lnk
 	log("❌ - WARNING - hsnet not added to startup`n")
-	sleep 100
+	sleep 25
 	log("STARTUP FOLDER WILL OPEN")
 	log("✔️ - SHORTCUT CREATED IN INTPHARM DIRECTORY`n")
 
@@ -161,7 +214,7 @@ IfNotExist, C:\Users\All Users\Start Menu\Programs\StartUp\hsnet.lnk
 			Send !{ESC} 
 			}
 }
-sleep 1000
+sleep 250
 
 IfNotExist, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\hsnet.lnk
 {
@@ -169,7 +222,7 @@ IfNotExist, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\hsnet.l
 	;sleep 100
 	;FileCopy, C:\INTPHARM\hsnet.lnk, C:\Users\All Users\Start Menu\Programs\StartUp\hsnet.lnk
 	log("❌ - WARNING - hsnet not added to startup`n")
-	sleep 100
+	sleep 25
 	log("STARTUP FOLDER WILL OPEN")
 	log("✔️ - SHORTCUT CREATED IN INTPHARM DIRECTORY`n")
 
@@ -177,7 +230,7 @@ IfNotExist, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\hsnet.l
 	Run, C:\ProgramData\Microsoft\Windows\Start Menu\Programs\StartUp\
 	Send !{ESC} 
 }
-sleep 1000
+sleep 250
 
 /*
 IfNotExist, C:\INTPHARM\DISPX\dispx.exe
@@ -233,7 +286,7 @@ IfExist, C:\INTPHARM\HSNET\schedule.txt
 {
 log("✔️ - Schedule.txt removed to allow the test to begin`n")
 FileDelete, C:\INTPHARM\HSNET\schedule.txt
-sleep 1000
+sleep 250
 }
 
 IfNotExist, C:\INTPHARM\HSNET\chilkat.txt
@@ -244,17 +297,17 @@ IfNotExist, C:\INTPHARM\HSNET\chilkat.txt
 
 log("`n`n---		Beginning HSNET test 		---")
 run, C:\INTPHARM\HSNET\hsnet.exe
-sleep 1000
+sleep 250
 
 IfNotExist, C:\INTPHARM\HSNET\schedule.txt
 {
 log("--- 	HSNET will be given 5 minutes to launch	---`n")
-sleep 1000
+sleep 250
 }
 
 {
 log("Please wait...")
-sleep 1000
+sleep 250
 }
 
 loop, 30
@@ -271,106 +324,7 @@ IfNotExist, C:\INTPHARM\HSNET\schedule.txt
 log("`n-----------------------------------------------------------------------------------------------------------------------------`n** HSNET HAS NOT STARTED, PLEASE DIAGNOSE AND RUN AGAIN... **`n-----------------------------------------------------------------------------------------------------------------------------`n")
 }
 
-;log("Ending current HSNET process")
-;Process, Close, hsnet.exe
-;sleep 2000
-
-;log("Resetting HSNET back to default settings")
-;log("Setting AutoSyncInterval to 35 minutes")
-;IniWrite 35, C:\INTPHARM\HSNET\hsnet.ini, Settings, AutoSyncInterval
-/*
-InputBox, count, SCHEDULE TASK,Please set the time you would like HSNET SCHEDULE TASK to start.`nFormat is '12:00' in 24 hour time., ,240,160,200,200,,,22:30
-
-log("`nSCHEDULE TASK SET`n")
-
-;=========== THIS BLOCK WILL SET THE SCHEDULE TASK ==========
-
-TriggerType = 2    ; specifies a time-based trigger.
-ActionTypeExec = 0    ; specifies an executable action.
-LogonType = 3   ; Set the logon type to interactive logon
-TaskCreateOrUpdate = 6
-
-;********************************************************
-; Create the TaskService object.
-service := ComObjCreate("Schedule.Service")
-service.Connect()
-
-;********************************************************
-; Get a folder to create a task definition in. 
-rootFolder := service.GetFolder("\")
-
-; The taskDefinition variable is the TaskDefinition object.
-; The flags parameter is 0 because it is not supported.
-taskDefinition := service.NewTask(0) 
-
-;********************************************************
-; Define information about the task.
-
-; Set the registration info for the task by 
-; creating the RegistrationInfo object.
-regInfo := taskDefinition.RegistrationInfo
-regInfo.Description := "Intellipharm - 1300 255 160 - This task will launch HSNET daily."
-regInfo.Author := "Intellipharm"
-
-;********************************************************
-; Set the principal for the task
-principal := taskDefinition.Principal
-principal.LogonType := LogonType  ; Set the logon type to interactive logon
-
-
-; Set the task setting info for the Task Scheduler by
-; creating a TaskSettings object.
-settings := taskDefinition.Settings
-settings.Enabled := True
-settings.StartWhenAvailable := True
-settings.Hidden := False
-
-;********************************************************
-; Create a time-based trigger.
-triggers := taskDefinition.Triggers
-trigger := triggers.Create(TriggerType)
-
-; Trigger variables that define when the trigger is active.
-;startTime += 30, Seconds  ;start time = 30 seconds from now
-
-startTime = 2017-01-01T%count%:00+10:00
-;FormatTime,startTime,%startTime%,yyyy-MM-ddTHH`:mm`:ss
-
-;endTime += 5, Minutes  ;end time = 5 minutes from now
-;FormatTime,endTime,%endTime%,yyyy-MM-ddTHH`:mm`:ss
-
-trigger.StartBoundary := startTime
-;trigger.EndBoundary := endTime
-trigger.ExecutionTimeLimit := "PT5M"    ;Five minutes
-trigger.Id := "TimeTriggerId"
-trigger.Enabled := True
-
-;***********************************************************
-; Create the action for the task to execute.
-
-; Add an action to the task to run notepad.exe.
-Action := taskDefinition.Actions.Create( ActionTypeExec )
-Action.Path := "C:\INTPHARM\HSNET\HSNET.exe"
-
-;***********************************************************
-; Register (create) the task.
-rootFolder.RegisterTaskDefinition("Intellipharm - HSNET", taskDefinition, TaskCreateOrUpdate ,"","", 3)
-
-;========== END OF SCHEDULE TASK SECTION ===========
-
-InputBox, count, STARTUP TIME,Please set the time you would like HSNET to start.`nFormat is '12:00' in 24 hour time., ,240,160,200,200,,,00:15
-
-log("SCHEDULE TIME SET`n")
-IniWrite %count%, C:\INTPHARM\HSNET\hsnet.ini, Settings, ScheduleTime
-FileAppend, Task Schedule Set, C:\INTPHARM\hsnet.txt
-
-
-;log("Restarting HSNET")
-;run, C:\INTPHARM\HSNET\hsnet.exe
-;sleep 1000
-*/
-
-IniWrite %count%, C:\INTPHARM\HSNET\hsnet.ini, Settings, ScheduleTime
+IniWrite %count2%, C:\INTPHARM\HSNET\hsnet.ini, Settings, ScheduleTime
 
 log("✔️ - You can now close HSNET Config")
 
@@ -420,7 +374,7 @@ FileAppend, ;Text file write
 ), HSNET_Config_LOG.txt
 GuiControlGet, Console
 GuiControl, , Console, %Console%%msg%`r`n ; GUI write
-ControlSend,Edit1,^{End},HSNET Config - %STORE%
+ControlSend,Edit1,^{End}, HSNET Config
 sleep 500 ; Pause for smooth log scrolling
 }
 
@@ -432,7 +386,7 @@ FileAppend, ;Text file write
 ), HSNET_Config_LOG.txt
 GuiControlGet, Console
 GuiControl, , Console, %Console%%msg% ; GUI write
-ControlSend,Edit1,^{End},HSNET Config - %STORE%
+ControlSend,Edit1,^{End}, HSNET Config
 sleep 500 ; Pause for smooth log scrolling
 }
 
@@ -443,4 +397,7 @@ Gui, Destroy
 ExitApp
 
 ESC::
+ExitApp
+
+CANCEL:
 ExitApp

@@ -887,25 +887,25 @@ Gui, Submit
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
-IniRead, vName, C:\AutoHotKey\settings.ini, UserName, name
+IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, Surname
-FileAppend, %Date% - %VerNum% - %SCODE% - %Time% - %vName% %Surname% - QA`n, G:\Support\Public Staff Folders\Aaron\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VerNum% - %SCODE% - %Time% - %Name% %Surname% - QA`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 Clipboard= %msgText%
 
 ;POINTS CALC - ADDING SITE CODES
 FormatTime, Date,, yyyyMMdd
-FileAppend, %SCODE% `n, G:\Support\Public Staff Folders\Aaron\points\%vName%\%date% QA.txt
+FileAppend, %SCODE% `n, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% QA.txt
 
 ;ADDING POINTS
 
-IfNotExist, G:\Support\Public Staff Folders\Aaron\points\%vName%\%date%.ini
+IfNotExist, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date%.ini
 {
-	IniWrite, 0, G:\Support\Public Staff Folders\Aaron\points\%vName%\%date%.ini, Count Points, Points
+	IniWrite, 0, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date%.ini, Count Points, Points
 }
 
-IniRead, Points, G:\Support\Public Staff Folders\Aaron\points\%vName%\%date%.ini, Count Points, Points
+IniRead, Points, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date%.ini, Count Points, Points
 Points++  ; This adds 1 to your variable TimesOpened.
-IniWrite, %Points%, G:\Support\Public Staff Folders\Aaron\points\%vName%\%date%.ini, Count Points, Points
+IniWrite, %Points%, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date%.ini, Count Points, Points
 
 ExitApp
 

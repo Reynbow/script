@@ -253,12 +253,6 @@ return
 ButtonConfirm:
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 
-	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-	email.To := "ricky.white@intellipharm.com.au"
-	email.Subject := "LOYALTY INSTALL COMPLETE - " SCODE
-	email.Body := "LOYALTY INSTALL INFORMATION`n`nStore ID:`t`t" SCODE "`nCompleted by:`t   " Name "`n`n`n "
-	email.Send
-
 if (!SCODE){
 msgbox, 16, Warning, Please enter a SITE CODE ID, 
 return
@@ -938,6 +932,12 @@ If(Cb_APIROLL=1)
 	Gui, 73:Add, Button, x290 y199 w150 h30 , Close
 	Gui, 73:Show, w466 h263,  
 	}
+
+	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
+	email.To := "ricky.white@intellipharm.com.au"
+	email.Subject := "LOYALTY INSTALL COMPLETE - " SCODE
+	email.Body := "LOYALTY INSTALL INFORMATION`n`nStore ID:`t`t" SCODE "`nCompleted by:`t   " Name "`n`n`n "
+	email.Send
 
 gosub ConfirmationWindow
 

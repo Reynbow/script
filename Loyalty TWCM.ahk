@@ -204,7 +204,7 @@ IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
 
 FileReadLine, VersionNum, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, 1
 
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %vName% %Surname% - TWCM Loyalty Install `n, G:\Support\Public Staff Folders\Aaron\scriptlog.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - TWCM Loyalty Install `n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 FormatTime, Date,, yyyy MM dd
 

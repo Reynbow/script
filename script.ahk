@@ -25,7 +25,7 @@ SendMode, Event
 SetKeyDelay 25, 10
 
 ; Used below just for updating purposes - If you want to update this script you need to change this number to the new version. Also the GUI below is tittled with the version number
-VersionNum = 3.4.219
+VersionNum = 3.4.227
 
 IfNotExist, C:\AutoHotKey\script.exe
 	{
@@ -213,7 +213,12 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Feedback Form`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+FileRead, logstring, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\logstring.txt
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Feedback Form`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 	
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 	email.To := "aaron.beecham@intellipharm.com.au"
@@ -420,7 +425,7 @@ return
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, Surname
 
-If Name contains Aaron,Brodie,James,Joel,Josh,Renae,Rick,Alpha,Craig
+If Name contains Aaron,Brodie,James,Joel,Josh,Renae,Rick,Test,Craig,Guest,Steve
 	{
 	gosub, NamePart2
 	return
@@ -433,7 +438,7 @@ If Name contains Aaron,Brodie,James,Joel,Josh,Renae,Rick,Alpha,Craig
 	}
 
 NamePart2:
-If Surname contains Beecham,Creaser,Schubert,Hansen,Hill,Hutchinson,White,Bravo,Duchesne
+If Surname contains Beecham,Creaser,Schubert,Hansen,Hill,Hutchinson,White,Account,Duchesne,User,Colley
 	{
 	gosub, Q1
 	return
@@ -484,13 +489,6 @@ Gui, 99:font, bold cE8EBF5 s24, Segoe UI
 Gui, 99:Color, %BGColour%
 Gui, 99:Add, Picture, x-20 y-55 h200 w500, C:\AutoHotKey\Files\mainmenu.png
 
-IfNotExist, C:\AutoHotKey\Files\wally_full.png
-	{
-	FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\wally_full.png, C:\AutoHotKey\Files\wally_full.png
-	}
-
-Gui, 99:Add, Picture, x400 y50 w1278 h2500, C:\AutoHotKey\Files\wally_full.png
-
 Gui, 99:font, s12 bold, Segoe UI
 
 ;Gui, 99:Add, Text, x30 y76 w200 , S U P P O R T
@@ -499,55 +497,77 @@ Gui, 99:font, s12 bold, Segoe UI
 Gui, 99:font,
 Gui, 99:font, s9 bold cE8EBF5, Segoe UI
 Gui, 99:Add, Text, x0 y5 w450 center , Hello %Name% %Surname%
-Gui, 99:font,
-Gui, 99:font, s12 bold cE8EBF5, Segoe UI
 
 Gui, 99:Add, Button, x30000 y105 w165 h30 Left , Placeholder
 
-Gui, 99:Add, GroupBox, x15 y76 w195 h238 , S U P P O R T
-Gui, 99:Add, GroupBox, x240 y76 w195 h238 , L O Y A L T Y
+
+
+
+Gui, 99:font,
+Gui, 99:font, s12 bold cE8EBF5, Segoe UI
+Gui, 99:Add, GroupBox, x15 y76 w195 h253 , S U P P O R T
+;Gui, 99:Add, Button, x30 y76 w90 h30 gSUPMAIN, SUPPORT
 
 Gui, 99:font,
 Gui, 99:font, s9 , Segoe UI
 
-Gui, 99:Add, Button, x30 y105 w165 h30 Left gSupINSTALL , %A_Space%%A_Space%%A_Space%%A_Space%&1 - INSTALL
+Gui, 99:Add, Button, x30 y115 w165 h30 Left gSupINSTALL , %A_Space%%A_Space%%A_Space%%A_Space%&1 - INSTALL
 Gui, 99:Add, Button, yp+40 w165 h30 Left gSupDO , %A_Space%%A_Space%%A_Space%%A_Space%&2 - DATA OUTAGE
 Gui, 99:Add, Button, yp+40 w165 h30 Left gSupportQAs , %A_Space%%A_Space%%A_Space%%A_Space%&3 - QA
 Gui, 99:Add, Button, yp+40 w165 h30 Left gSupADMIN , %A_Space%%A_Space%%A_Space%%A_Space%&4 - ADMIN
 Gui, 99:Add, Button, yp+40 w165 h30 Left gSupGeneral, %A_Space%%A_Space%%A_Space%%A_Space%&5 - SUB-MENU
 ;Gui, 99:Add, Button, x30 y305 w165 h30 Left gSupEMAILS, %A_Space%%A_Space%%A_Space%%A_Space%&6 - Email Templates
 
-Gui, 99:Add, Button, x255 y105 w165 h30 Left gLoyInstall , %A_Space%%A_Space%%A_Space%%A_Space%&A - INSTALL
+
+
+
+
+Gui, 99:font,
+Gui, 99:font, s12 bold cE8EBF5, Segoe UI
+Gui, 99:Add, GroupBox, x240 y76 w195 h253 , L O Y A L T Y
+;Gui, 99:Add, Button, x255 y76 w90 h30 gLOYMAIN, LOYALTY
+
+Gui, 99:font,
+Gui, 99:font, s9 , Segoe UI
+
+Gui, 99:Add, Button, x255 y115 w165 h30 Left gLoyInstall , %A_Space%%A_Space%%A_Space%%A_Space%&A - INSTALL
 Gui, 99:Add, Button, yp+40 w165 h30 Left gLoyTillConfig , %A_Space%%A_Space%%A_Space%%A_Space%&B - TILL CONFIG
 Gui, 99:Add, Button, yp+40 w165 h30 Left gLoyQA , %A_Space%%A_Space%%A_Space%%A_Space%&C - QA
 Gui, 99:Add, Button, yp+40 w165 h30 Left gLoyAdmin , %A_Space%%A_Space%%A_Space%%A_Space%&D - ADMIN
 Gui, 99:Add, Button, yp+40 w165 h30 Left gLoyOther, %A_Space%%A_Space%%A_Space%%A_Space%&E - SUB-MENU
 ;Gui, 99:Add, Button, x255 y305 w165 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%&F - Loyserv Creator
 
-Gui, 99:Add, Button, x15 y340 w195 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%&Process Charts
-Gui, 99:Add, Button, xp yp+40 w195 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%Password Generator
-Gui, 99:Add, Button, x240 y340 w95 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%&Macros
-Gui, 99:Add, Button, x340 y340 w95 h30 Left gLogsViewer, %A_Space%%A_Space%%A_Space%%A_Space%&Log Viewer
+
+
+
+
+
+Gui, 99:Add, Button, x15 y355 w195 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%&Process Charts
+Gui, 99:Add, Button, xp yp+36 w195 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%Password Generator
+Gui, 99:Add, Button, x240 y355 w95 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%&Macros
+Gui, 99:Add, Button, x340 y355 w95 h30 Left gLogsViewer, %A_Space%%A_Space%%A_Space%%A_Space%&Log Viewer
+
+Gui, 99:Add, Button, x240 y391 w95 h30 Left gWeekPoints , %A_Space%%A_Space%%A_Space%%A_Space%Staff Points
+Gui, 99:Add, Button, x340 y391 w95 h30 Left glogviewer , %A_Space%%A_Space%%A_Space%%A_Space%Staff Logs
 
 Gui, 99:font, s9 bold , Segoe UI
-Gui, 99:Add, Button, x240 yp+40 w195 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%E&xit
-;Gui, 99:Add, Button, x30 y650 w150 h30  , - Error Report -
+Gui, 99:Add, Button, x240 yp+280 w195 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%E&xit
 
 Gui, 99:font, bold s10 CWhite, Segoe UI
-Gui, 99:Add, Text, x15 y435 BackGroundTrans , POINT COUNTER
+Gui, 99:Add, Text, x15 y440 BackGroundTrans , POINT COUNTER
 Gui, 99:font,
 Gui, 99:font, bold s6 CWhite, Segoe UI
 
 If Dog = Brodie
 	{
-	Gui, 99:Add, Button, x185 y445 w80 h20 gTicketCounter, TICKET COUNT
+	Gui, 99:Add, Button, x185 y460 w80 h20 gTicketCounter, TICKET COUNT
 	}
 If Dog = Aaron
 	{
-	Gui, 99:Add, Button, x185 y445 w80 h20 gTicketCounter, TICKET COUNT
+	Gui, 99:Add, Button, x185 y460 w80 h20 gTicketCounter, TICKET COUNT
 	}
 
-Gui, 99:Add, Button, x270 y445 w165 h20, FULL WEEK SUMMARY
+Gui, 99:Add, Button, x270 y460 w165 h20, FULL WEEK SUMMARY
 Gui, 99:font, bold s10 CWhite, Segoe UI
 
 FormatTime, Date,, yyyyMMdd
@@ -774,34 +794,34 @@ if do_lines_pre >= 15
 	}
 
 Gui, 99:font, bold s9 %fc%, Segoe UI
-Gui, 99:Add, Text, x270 y477 w200 BackGroundTrans , DATA OUTAGE COUNT = %do_lines_pre%/15
+Gui, 99:Add, Text, x270 y492 w200 BackGroundTrans , DATA OUTAGE COUNT = %do_lines_pre%/15
 
 ;DATA OUT COUNTER
 Gui, 99:font, bold s10 CWhite, Segoe UI
-Gui, 99:Add, Text, x15 y475 w200 BackGroundTrans , Running Total = %Points%
+Gui, 99:Add, Text, x15 y490 w200 BackGroundTrans , Running Total = %Points%
 
 FileRead, DOPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Data Out.txt
-Gui, 99:Add, Button, x15 y505 w80 h20 Left, %A_Space%Data Out
+Gui, 99:Add, Button, x15 y530 w80 h20 Left, %A_Space%Data Out
 Gui, 99:Add, Text, xp yp+25 BackGroundTrans , %DOPoints%
 
 ;INSTALL COUNTER
 FileRead, INPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Install.txt
-Gui, 99:Add, Button, xp+85 y505 w80 h20 Left, %A_Space%Install
+Gui, 99:Add, Button, xp+85 y530 w80 h20 Left, %A_Space%Install
 Gui, 99:Add, Text, xp yp+25 BackGroundTrans , %INPoints%
 
 ;QA COUNTER
 FileRead, QAPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% QA.txt
-Gui, 99:Add, Button, xp+85 y505 w80 h20 Left, %A_Space%QA
+Gui, 99:Add, Button, xp+85 y530 w80 h20 Left, %A_Space%QA
 Gui, 99:Add, Text, xp yp+25 BackGroundTrans , %QAPoints%
 
 ;LOY IN
 FileRead, LoyInPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Loy Install.txt
-Gui, 99:Add, Button, xp+85 y505 w80 h20 Left, %A_Space%Till Install
+Gui, 99:Add, Button, xp+85 y530 w80 h20 Left, %A_Space%Till Install
 Gui, 99:Add, Text, xp yp+25 BackGroundTrans , %LoyInPoints%
 
 ;LOY CONFIG
 FileRead, CONPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Till Config.txt
-Gui, 99:Add, Button, xp+85 y505 w80 h20 Left, %A_Space%Till Config
+Gui, 99:Add, Button, xp+85 y530 w80 h20 Left, %A_Space%Till Config
 Gui, 99:Add, Text, xp yp+25 BackGroundTrans , %CONPoints%
 
 Gui, 99:font, bold CWhite s6, Segoe UI
@@ -811,14 +831,14 @@ Gui, 99:Add, Text, x3 y3 , %Count%
 
 If % VersionNum < ForceUpdate
 {
-Gui, 99:Add, Picture, x0 y645 w450 h30, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\update.png
+Gui, 99:Add, Picture, x0 y656 w450 h30, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\update.png
 Gui, 99:font, bold CWhite s10, Segoe UI
-Gui, 99:Add, Button, x260 y645 w140 h30 , UPDATE NOW
-Gui, 99:Show, %Gui_Cord% w450 h675, %A_Space%
+Gui, 99:Add, Button, x260 y656 w140 h30 , UPDATE NOW
+Gui, 99:Show, %Gui_Cord% w450 h686 , %A_Space%
 }
 Else
 {
-Gui, 99:Show, %Gui_Cord% w450 h655, %A_Space%
+Gui, 99:Show, %Gui_Cord% w450 , %A_Space%
 }
 /*
 If % VersionNum < ForceUpdate
@@ -950,13 +970,17 @@ Total := TotalFirst - Blank
 
 msgbox,4, Ticket Count, DATA OUTAGE TICKETS - %Total% tickets, including %ZEROFINAL% zero day tickets.`n__________________________________________________________________`n`nAaron Beecham:`t%AB%`nCraig Duchesne:`t%JS%`nJames Schubert:`t%JS%`nJoel Hanson:`t%JL%`nJosh Hill:`t`t%JH%`n__________________________________________________________________`n`nWould you like to copy the information to the clipboard?
 IfMsgBox, No
-	return
-IfMsgBox, Yes
-	clipboard = DATA OUTAGE TICKETS - %Total% tickets, including %ZEROFINAL% zero day tickets.
-
+	{
+		reload
+		return
 	}
-IfMsgBox, no
-return
+IfMsgBox, Yes
+	{
+	clipboard = DATA OUTAGE TICKETS - %Total% tickets, including %ZEROFINAL% zero day tickets.
+		reload
+		return
+	}
+	}
 
 
 99ButtonMacros:
@@ -1209,6 +1233,11 @@ return
 
 
 99ButtonFULLWEEKSUMMARY:
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , %A_LineNumber%
+	}
+
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, Name
@@ -2274,7 +2303,11 @@ IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
 	Clipboard = %msgText%
 	TrayTip, Clipboard Ready, %msgText%, 5, 16
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Loyalty QA - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty QA - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 reload
 return
 
@@ -2855,7 +2888,11 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Ramsay\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -2972,7 +3009,11 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Chemmart\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -3089,7 +3130,11 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Chempro\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -3207,7 +3252,11 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Pharmacy\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -3327,7 +3376,11 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Restore Rewards\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -3447,7 +3500,11 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Soul Pattinson\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -3567,7 +3624,11 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - LOYSERV File Create - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 run, C:\AutoHotKey\Files\LOYSERV\Pharmacist Advice\loyserv.dbf
 WinWaitActive, ahk_exe vfp9.exe
@@ -3787,7 +3848,11 @@ Clipboard = %Time% - #CANCEL for %Radio_1%%Radio_2% - Have completed following: 
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Loyalty Cancelation - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Cancelation - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 reload
 Return
@@ -3836,7 +3901,11 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Card Order - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Card Order - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 Clipboard =%Time% - #CARDORDER - %ChoiceCO% x card order sent - Proof approved by client: %Radio_1%%Radio_2%
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 
@@ -4060,7 +4129,11 @@ Clipboard = %Time% %Cb_8_Text%%Box5% %Cb_9_Text%%Box6% %Cb_1_Text%%Cb_2_Text%%Cb
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Data Out Loyalty - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Data Out Loyalty - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 reload
 Return
 
@@ -4086,7 +4159,7 @@ Gui, 78:Destroy
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
-gui_x +=450
+gui_x +=451
 
 Gui, 2:+ToolWindow -SysMenu +Border
 Gui, 2:font, s12 cE8EBF5 bold, Segoe UI
@@ -4094,30 +4167,41 @@ Gui, 2:Color, 1d1f21, 383D46
 Gui, 2:Add, Text, center x0 y20 w210 h50, SUPPORT`nSUB-MENU
 Gui, 2:font,
 Gui, 2:font, cE8EBF5,
-Gui, 2:Add, GroupBox, x15 y80 w180 h185 , 
+Gui, 2:Add, GroupBox, x15 y80 w180 h225 , 
 Gui, 2:Add, Button, x30 yp+20 w150 h30 gFredConf, &1 Fred Confirmation
 Gui, 2:Add, Button, yp+40 w150 h30 gSupEMAILS,&2 Email Templates
 Gui, 2:Add, Button, yp+40 w150 h30 gSupCancellation , &3 Cancellation
 Gui, 2:Add, Button, yp+40 w150 h30 gQAPass , &4 QA Pass
+Gui, 2:Add, Button, yp+40 w150 h30 gQAPass , &5 Remote Reset
 Gui, 2:Add, GroupBox, x15 yp+50 w180 h185 , 
-Gui, 2:Add, Button, x30 yp+20 w150 h30 gPhoneRangOut , &5 Phone Rang Out
-Gui, 2:Add, Button, yp+40 w150 h30 gDeclinedConnection , &6 Declined Connection
+Gui, 2:Add, Button, x30 yp+20 w150 h30 gPhoneRangOut , &6 Phone Rang Out
+Gui, 2:Add, Button, yp+40 w150 h30 gDeclinedConnection , &7 Declined Connection
 ;Gui, 2:Add, GroupBox, x15 yp+55 w180 h85, 
-Gui, 2:Add, Button, x30 yp+40 w150 h30 gSupSiteReset , &7 Site Reset
-Gui, 2:Add, Button, x30 yp+40 w150 h30 gSupPaths , &8 Paths
+Gui, 2:Add, Button, x30 yp+40 w150 h30 gSupSiteReset , &8 Site Reset
+Gui, 2:Add, Button, x30 yp+40 w150 h30 gSupPaths , &9 Paths
 ;Gui, 2:Add, Button, yp+40 w150 h30 , &7 Ecom Order
 ;Gui, 2:Add, Button, yp+40 w150 h30 , &8 Ecom Excel Creation
 Gui, 2:Add, Button, yp+75 w150 h30 , CLOSE
 
-Gui, 2:Add, Picture, xp+30 y545 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
+Gui, 2:Add, Picture, xp+30 y585 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
 
-Gui, 2:Show, x%gui_x% y%gui_y% w210 h655, %A_Space%
+Gui, 2:Show, x%gui_x% y%gui_y% w210 h719, %A_Space%
 
 Gui, 30:Destroy
 Return
 
 2ButtonCLOSE:
 Gui, 2:Destroy
+return
+
+logviewer:
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , %A_LineNumber%
+	}
+
+run C:\AutoHotKey\Files\Staff Logs.exe
+reload
 return
 
 SupportQAs:
@@ -5561,7 +5645,11 @@ Clipboard = %Time% - %Choice2% #OUT - %Choice1% - %Box1% #PRO
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - NULL0000 - %Time% - %Name% %Surname% - Phone rang out`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Phone rang out`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 	reload
 return
@@ -5712,7 +5800,7 @@ Gui, 21:Add, Text, x38 y144 h30, Spoke to:
 Gui, 21:Add, Text, x38 y174 h30, SITE CODE:
 Gui, 21:Add, Edit, -E0x200 x88 y140 w162 vSpoke,
 Gui, 21:Add, Edit, -E0x200 x128 y170 w122 vSCODE,
-Gui, 21:Add, Text, x38 y200 w220 , What was the reason you for being declined?
+Gui, 21:Add, Text, x38 y200 w220 , What was the reason for you being declined?
 Gui, 21:Add, Edit, -E0x200 x38 y225 w212 h50 -VScroll vBox2KB,
 
 Gui, 21:Add, GroupBox, yp+70 w212 h110, Preview
@@ -5867,7 +5955,7 @@ Clipboard = %Time% - #ECOM, #OUT - ECOM ORDER PENDING ACKNOWLEDGEMENT %Choice1EO
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Ecom Order - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Ecom Order - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 	reload
 return
@@ -6241,7 +6329,7 @@ If clipboard Contains #NEWPC
 	ApiNewPC:
 		email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 		email.To := "ricky.white@intellipharm.com.au"
-		email.Cc := "brodie.creaser@intellipharm.com.au"
+		email.Cc := "brodie.creaser@intellipharm.com.au, renae.hutchinson@intellipharm.com.au"
 		email.Subject := "API - " SCODE
 		email.Body := "API STORE UPDATE`n`nStore ID:`t`t" SCODE "`nAction taken:`t     #NEWPC`nCompleted by:`t   " Name "`n`n`n "
 		email.Send
@@ -6290,7 +6378,7 @@ If clipboard Contains #NEWPC
 				ApiPOS:
 				email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 				email.To := "ricky.white@intellipharm.com.au"
-				email.Cc := "brodie.creaser@intellipharm.com.au"
+				email.Cc := "brodie.creaser@intellipharm.com.au, renae.hutchinson@intellipharm.com.au"
 				email.Subject := "API - " SCODE
 				email.Body := "API STORE UPDATE`n`nStore ID:`t`t" SCODE "`nAction taken:`t     #POSCHANGE`nCompleted by:`t   " Name "`n`n`n "
 				email.Send
@@ -6329,7 +6417,7 @@ If clipboard Contains #NEWPC
 					ApiDIS:
 					email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 					email.To := "ricky.white@intellipharm.com.au"
-					email.Cc := "brodie.creaser@intellipharm.com.au"
+					email.Cc := "brodie.creaser@intellipharm.com.au, renae.hutchinson@intellipharm.com.au"
 					email.Subject := "API - " SCODE
 					email.Body := "API STORE UPDATE`n`nStore ID:`t`t" SCODE "`nAction taken:`t     #DISPCHANGE`nCompleted by:`t   " Name "`n`n`n "
 					email.Send
@@ -7312,8 +7400,13 @@ Clipboard = %Time% - POSX Install #OUT #EMAIL - Spoke to %Box1FC% (confirmed usi
 	TrayTip, Clipboard Ready, %clipboard%, 5, 16
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Fred Confirmation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
+reload
 return
 
 25ButtonClose:
@@ -7514,7 +7607,7 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %Time% - %Name% %Surname% - Incident Report Jira`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Incident Report Jira`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 email.To := "bugs@pharmacylink.com.au"
@@ -7601,13 +7694,15 @@ return
 79ButtonConfirm:
 	Gui, Submit
 
-SCODE = NULL0000
-
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Data Outage Resolved`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
@@ -7684,13 +7779,15 @@ return
 90ButtonConfirm:
 	Gui, Submit
 
-SCODE = NULL0000
-
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Installation Complete Pending QA`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
@@ -7768,13 +7865,15 @@ return
 90AButtonConfirm:
 	Gui, Submit
 
-SCODE = NULL0000
-
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Installation Complete Pending QA`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
@@ -7853,13 +7952,15 @@ return
 90BButtonConfirm:
 	Gui, Submit
 
-SCODE = NULL0000
-
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Knock Back Data Out`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
@@ -7938,13 +8039,15 @@ return
 90CButtonConfirm:
 	Gui, Submit
 
-SCODE = NULL0000
-
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Knock Back Installation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
@@ -8014,13 +8117,15 @@ return
 90DButtonConfirm:
 	Gui, Submit
 
-SCODE = NULL0000
-
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Batch Reader Access`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
@@ -8346,13 +8451,15 @@ If(Cb_7=1)
  If(Cb_9=1)
  GuiControlGet, AddT,, Cb_9, Text
 
-SCODE = NULL0000
-
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Email Reinstallation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
@@ -8466,13 +8573,15 @@ If(Cb_3=1)
  If(Cb_4=1)
  GuiControlGet, Cb_4_Text,, Cb_4, Text
 
-SCODE = NULL0000
-
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Email Escalation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
@@ -9274,6 +9383,10 @@ FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - FRED Excel Form`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 WorkBookPath		:= "C:\AutoHotKey\Files\FRED.xlsx"											; store the path to the workbook
@@ -9318,16 +9431,55 @@ gosub, FredEmailObject
 
 FredEmailObject:
 
+	Gui, FredConf:+AlwaysOnTop -SysMenu -Border
+	Gui, FredConf:Margin, 16, 16
+	Gui, FredConf:Color, 1d1f21
+	Gui, FredConf:Font, s11, Segoe UI
+
+	Gui, FredConf:Add, Text, xm cFFFFFF -E0x200 , Would you like to copy this for your site note?
+	Gui, FredConf:Add, Text, xm w320 c00ff00 -E0x200 , %Time% - POSX Install #OUT #EMAIL - Spoke to %Box8% (confirmed using STOPS - YES) - Two points of contact for Fred to do some maintenance to prepare for POSX install are 1. %Box8% 2. %Box9%
+
+	Gui, FredConf:Add, Button, xm w150 h30 gFredConYES, YES
+	Gui, FredConf:Add, Button, x+20 w150 h30 gFredConNo, NO
+	Gui, FredConf:Show, , Fred Confirmation
+
+return
+
+reload
+return
+
+FredConYES:
+Clipboard = %Time% - POSX Install #OUT #EMAIL - Spoke to %Box8% (confirmed using STOPS - YES) - Two points of contact for Fred to do some maintenance to prepare for POSX install are 1. %Box8% 2. %Box9%
+TrayTip, Clipboard Ready, %clipboard%, 5, 16
+IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
+IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
+If (!SCODE)
+	{
+	SCODE = NULLCODE
+	}
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Fred Confirmation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 attach	:= "C:\AutoHotKey\FRED Access " Box1 ".xlsx"
 
 email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-email.To := "dataaccessrequest@fred.com.au"
+;email.To := "dataaccessrequest@fred.com.au"
 email.Cc := "support@intellipharm.com.au"
-email.Subject := "Data Access Request for - " Box1 " from Intelllipharm" ;objects like this (the email code) use strange inverted variables. The stuff in commas is plain text, the text without commas are the above variables. To enter a new line it needs to be in commas as it's code. Without commas means it's looking for a variable.
+email.Subject := "Data Access Request for - " Box1 " from Intelllipharm"
 email.Body := "Hi, `nDocument attached with store details for FRED Credential Request.`n" "Store name: " Box1 "`n" "Site Code: "Box7 "`n`n" "Kind Regards" "`n" Name " " Surname "`nIntellipharm`n1300 255 160"
 email.Attachments.add(attach)
 email.Display
+reload
+return
 
+FredConNO:
+attach	:= "C:\AutoHotKey\FRED Access " Box1 ".xlsx"
+
+email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
+;email.To := "dataaccessrequest@fred.com.au"
+email.Cc := "support@intellipharm.com.au"
+email.Subject := "Data Access Request for - " Box1 " from Intelllipharm"
+email.Body := "Hi, `nDocument attached with store details for FRED Credential Request.`n" "Store name: " Box1 "`n" "Site Code: "Box7 "`n`n" "Kind Regards" "`n" Name " " Surname "`nIntellipharm`n1300 255 160"
+email.Attachments.add(attach)
+email.Display
 reload
 return
 
@@ -10105,6 +10257,89 @@ NiceThu += -1, days
 FormatTime, NiceThu, %NiceThu%, dd/MM/yyyy
 FormatTime, NiceFri, %NiceFri%, dd/MM/yyyy
 
+Data_Source=
+(
+-	Aaron	Craig	Brodie	James	Joel	Josh	Renae	Rick	
+Monday	%AaronMon%	%CraigMon%	%BrodieMon%	%JimMon%	%JoelMon%	%JoshMon%	%RenaeMon%	%RickMon%
+Tuesday	%AaronTue%	%CraigTue%	%BrodieTue%	%JimTue%	%JoelTue%	%JoshTue%	%RenaeTue%	%RickTue%
+Wednesday	%AaronWed%	%CraigWed%	%BrodieWed%	%JimWed%	%JoelWed%	%JoshWed%	%RenaeWed%	%RickWed%
+Thursday	%AaronThu%	%CraigThu%	%BrodieThu%	%JimThu%	%JoelThu%	%JoshThu%	%RenaeThu%	%RickThu%
+Friday	%AaronFri%	%CraigFri%	%BrodieFri%	%JimFri%	%JoelFri%	%JoshFri%	%RenaeFri%	%RickFri%
+%A_Space%	%A_Space%	%A_Space%	%A_Space%	%A_Space%	%A_Space%	%A_Space%	%A_Space%	%A_Space%
+TOTAL	%AaronTotal%	%CraigTotal%	%BrodieTotal%	%JimTotal%	%JoelTotal%	%JoshTotal%	%RenaeTotal%	%RickTotal%
+)	
+; Call the function 
+LV_Table(Data_Source)
+return
+
+LV_Table(Data_Source){
+IfNotInString,Data_Source,%A_tab%
+	FileRead, Data_Source, %Data_Source% ;Assume path and read into variabl
+
+;***********parse the data******************* 
+obj := Object() ;holder for header and rows
+loop,parse,Data_Source,`n,`r
+{
+if (A_Index=1) ;~ IfEqual, A_Index,1,SetEnv,HEADERS,%A_LoopField%   ;~ IfEqual, A_Index,1,continue
+	RowHeader:=StrSplit(A_LoopField, A_tab) ;~ splice row into object
+
+rowData:= StrSplit(A_LoopField, A_tab) ;~ splice row into object
+obj.Insert(rowData)
+maxrows:=A_Index ;
+}
+
+dRows:=35 , dCols:=800 ;Set minimum display size for columns and rows
+Gui, MyListView: New,,%Data_Source%
+GuiControl, -Redraw, MyListView  ; Improve performance by disabling redrawing during load. 
+	for k,v in obj ;iterate over object
+		if (k=1){
+			for k1,v1 in obj.1
+				strHeader .=  "|" obj.1[k1] ;extract header to concatenated piped list
+			dRows:=obj.MaxIndex()
+		IfGreaterOrEqual, dRows,25,SetEnv,dRows,26 ;reset display rows if below 26
+		IfLessOrEqual, k1,90,SetEnv,dCols,650 ;reset display columns if 
+		IfLessOrEqual, k1,10,SetEnv,dCols,400 ;reset display columns if 
+	rows:=obj.MaxIndex() ;this might help draw faster
+	Gui, Add, ListView, x10 y10 w559 h163 grid hwndHLV , % count%rows% SubStr(strHeader,2) ;define LIstview and headers- Remove firs Pipe
+   }  ;end of header section
+
+   Else LV_Add("", Obj[k]*) ;add data rows- LV_Add is a variadic function
+   
+    LV_ModifyCol(1, 75, "")
+    LV_ModifyCol(2, 60)
+    LV_ModifyCol(3, 60)
+    LV_ModifyCol(4, 60)
+    LV_ModifyCol(5, 60)
+    LV_ModifyCol(6, 60)
+	LV_ModifyCol(7, 60)
+	LV_ModifyCol(8, 60)
+	LV_ModifyCol(9, 60)
+
+	;LV_Colors.Row(HLV, A_Index, 0xFFECB0, 0x000000)
+
+   	LV_Modify( LV_GetCount(), "Vis" )
+
+   GuiControl, +Redraw, MyListView  ; Re-enable redrawing (it was disabled above).
+Gui, +Border -MaximizeBox
+Gui, Add, Button, x10 y185 w100 h25 gExport2Excel, Export to Excel
+Gui, Add, Button, x468 y185 w100 h25 gClose, Close
+Gui, Color, 1d1f21
+Gui, MyListView:Show, h220, POINT COUNTER
+}
+
+Close:
+reload
+return
+
+Export2Excel:
+
+IfNotExist, C:\AutoHotKey\pointreport.xlsx
+	{
+	FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\pointreport.xlsx, C:\AutoHotKey\pointreport.xlsx
+	Sleep 2000
+	}
+
+
 WorkBookPath		:= "C:\AutoHotKey\pointreport.xlsx"
 objExcel			:= ComObjCreate("Excel.Application")
 objWorkBook			:= objExcel.Workbooks.Open(WorkBookPath)
@@ -10174,7 +10409,8 @@ objExcel 	:= ""
 
 
 run, C:\AutoHotKey\pointreport.xlsx
-
+return
+/*
 IniRead, Owner, C:\AutoHotKey\settings.ini, UserName, Name
 If Owner = Aaron
 {
@@ -10186,6 +10422,9 @@ email.Display
 }
 return
 
+
+;#Include Class_LVColors.ahk
+*/
 AppsKey::Send, {AppsKey}
 
 ^+v::                            ; Text–only paste from ClipBoard
