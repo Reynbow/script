@@ -25,7 +25,9 @@ SendMode, Event
 SetKeyDelay 25, 10
 
 ; Used below just for updating purposes - If you want to update this script you need to change this number to the new version. Also the GUI below is tittled with the version number
-VersionNum = 3.4.227
+VersionNum = 3.4.229
+
+IniRead, StartPOS, C:\AutoHotKey\settings.ini, Starting Position, Start
 
 IfNotExist, C:\AutoHotKey\script.exe
 	{
@@ -400,6 +402,7 @@ return
 +PGDN::reload
 
 ^PGDN::
+
 IfNotExist, C:\AutoHotKey\settings.ini
 	{
 Gui, 45:Margin, 16, 16
@@ -487,7 +490,7 @@ do_lines_pre =
 Gui, 99:-SysMenu +Border -MaximizeBox
 Gui, 99:font, bold cE8EBF5 s24, Segoe UI
 Gui, 99:Color, %BGColour%
-Gui, 99:Add, Picture, x-20 y-55 h200 w500, C:\AutoHotKey\Files\mainmenu.png
+Gui, 99:Add, Picture, x75 y30 h37 w294, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\mainmenu_alt_small.png
 
 Gui, 99:font, s12 bold, Segoe UI
 
@@ -501,57 +504,23 @@ Gui, 99:Add, Text, x0 y5 w450 center , Hello %Name% %Surname%
 Gui, 99:Add, Button, x30000 y105 w165 h30 Left , Placeholder
 
 
+;Gui, 99:Add, GroupBox, x15 y76 w420 h253 , ;Full
 
+	;Gui, 99:font,
+	;Gui, 99:font, s12 bold cE8EBF5, Segoe UI
+	;Gui, 99:Add, Button, x30 y76 w90 h30 gSUPMAIN, SUPPORT
+	;Gui, 99:Add, Button, x330 y76 w90 h30 gLOYMAIN, LOYALTY
 
-Gui, 99:font,
-Gui, 99:font, s12 bold cE8EBF5, Segoe UI
-Gui, 99:Add, GroupBox, x15 y76 w195 h253 , S U P P O R T
-;Gui, 99:Add, Button, x30 y76 w90 h30 gSUPMAIN, SUPPORT
+Gui, 99:Add, Button, x15 y355 w195 h30 Left , % "   Process Charts"
+Gui, 99:Add, Button, xp yp+36 w195 h30 Left , % "   Password Generator"
+Gui, 99:Add, Button, x227 y355 w95 h30 Left , % "   Macros"
+Gui, 99:Add, Button, x340 y355 w95 h30 Left gLogsViewer, % "   Log Viewer"
 
-Gui, 99:font,
-Gui, 99:font, s9 , Segoe UI
-
-Gui, 99:Add, Button, x30 y115 w165 h30 Left gSupINSTALL , %A_Space%%A_Space%%A_Space%%A_Space%&1 - INSTALL
-Gui, 99:Add, Button, yp+40 w165 h30 Left gSupDO , %A_Space%%A_Space%%A_Space%%A_Space%&2 - DATA OUTAGE
-Gui, 99:Add, Button, yp+40 w165 h30 Left gSupportQAs , %A_Space%%A_Space%%A_Space%%A_Space%&3 - QA
-Gui, 99:Add, Button, yp+40 w165 h30 Left gSupADMIN , %A_Space%%A_Space%%A_Space%%A_Space%&4 - ADMIN
-Gui, 99:Add, Button, yp+40 w165 h30 Left gSupGeneral, %A_Space%%A_Space%%A_Space%%A_Space%&5 - SUB-MENU
-;Gui, 99:Add, Button, x30 y305 w165 h30 Left gSupEMAILS, %A_Space%%A_Space%%A_Space%%A_Space%&6 - Email Templates
-
-
-
-
-
-Gui, 99:font,
-Gui, 99:font, s12 bold cE8EBF5, Segoe UI
-Gui, 99:Add, GroupBox, x240 y76 w195 h253 , L O Y A L T Y
-;Gui, 99:Add, Button, x255 y76 w90 h30 gLOYMAIN, LOYALTY
-
-Gui, 99:font,
-Gui, 99:font, s9 , Segoe UI
-
-Gui, 99:Add, Button, x255 y115 w165 h30 Left gLoyInstall , %A_Space%%A_Space%%A_Space%%A_Space%&A - INSTALL
-Gui, 99:Add, Button, yp+40 w165 h30 Left gLoyTillConfig , %A_Space%%A_Space%%A_Space%%A_Space%&B - TILL CONFIG
-Gui, 99:Add, Button, yp+40 w165 h30 Left gLoyQA , %A_Space%%A_Space%%A_Space%%A_Space%&C - QA
-Gui, 99:Add, Button, yp+40 w165 h30 Left gLoyAdmin , %A_Space%%A_Space%%A_Space%%A_Space%&D - ADMIN
-Gui, 99:Add, Button, yp+40 w165 h30 Left gLoyOther, %A_Space%%A_Space%%A_Space%%A_Space%&E - SUB-MENU
-;Gui, 99:Add, Button, x255 y305 w165 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%&F - Loyserv Creator
-
-
-
-
-
-
-Gui, 99:Add, Button, x15 y355 w195 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%&Process Charts
-Gui, 99:Add, Button, xp yp+36 w195 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%Password Generator
-Gui, 99:Add, Button, x240 y355 w95 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%&Macros
-Gui, 99:Add, Button, x340 y355 w95 h30 Left gLogsViewer, %A_Space%%A_Space%%A_Space%%A_Space%&Log Viewer
-
-Gui, 99:Add, Button, x240 y391 w95 h30 Left gWeekPoints , %A_Space%%A_Space%%A_Space%%A_Space%Staff Points
-Gui, 99:Add, Button, x340 y391 w95 h30 Left glogviewer , %A_Space%%A_Space%%A_Space%%A_Space%Staff Logs
+Gui, 99:Add, Button, x227 y391 w95 h30 Left gWeekPoints , % "   Staff Points"
+Gui, 99:Add, Button, x340 y391 w95 h30 Left glogviewer , % "   Staff Logs"
 
 Gui, 99:font, s9 bold , Segoe UI
-Gui, 99:Add, Button, x240 yp+280 w195 h30 Left , %A_Space%%A_Space%%A_Space%%A_Space%E&xit
+Gui, 99:Add, Button, x240 yp+280 w195 h30 Left , % "   E&xit"
 
 Gui, 99:font, bold s10 CWhite, Segoe UI
 Gui, 99:Add, Text, x15 y440 BackGroundTrans , POINT COUNTER
@@ -854,7 +823,70 @@ Gui, 9A:Show, x10 y10 w180 h60, 
 }
 */
 
+
+If (!StartPOS)
+	{
+	StartPOS = Support
+	IniWrite, %StartPOS%, C:\AutoHotKey\settings.ini, Starting Position, Start
+	}
+
+IniRead, StartPOS, C:\AutoHotKey\settings.ini, Starting Position, Start
+
+Gui, 99:font,
+Gui, 99:font, s12 CWhite Bold , Segoe UI
+
+Gui, 99:Add, Tab2, x15 y85 w420 h253 gMenuTab vWhichTab choose%StartPOS%, %A_Space%%A_Space%%A_Space%S U P P O R T%A_Space%%A_Space%%A_Space%|%A_Space%%A_Space%%A_Space%L O Y A L T Y%A_Space%%A_Space%%A_Space%
+Gui, 99:font,
+Gui, 99:font, s9 , Segoe UI
+Gui, 99:Add, Picture, x15 y113 BackgroundTrans, C:\AutoHotKey\Files\blue.png
+Gui, 99:Add, Button, x30 yp+20 w120 h30 Left gSupINSTALL , % "   &1 - INSTALL"
+Gui, 99:Add, Button, yp+40 w120 h30 Left gSupDO , % "   &2 - DATA OUTAGE"
+Gui, 99:Add, Button, yp+40 w120 h30 Left gSupportQAs , % "   &3 - QA"
+Gui, 99:Add, Button, yp+40 w120 h30 Left gSupADMIN , % "   &4 - ADMIN"
+;Gui, 99:Add, Button, yp+40 w120 h30 Left gSupGeneral, % "   &5 - SUB-MENU"
+Gui, 99:Add, Button, yp+40 w120 h30 Left gDeclinedConnection , % "   &5 - KNOCKBACK"
+
+Gui, 99:Add, Button, xp+134 yp-120 w120 h30 Right gFredConf, % "Fred Confirmation   "
+Gui, 99:Add, Button, yp+40 w120 h30 Right gQAPass , % "QA Pass   "
+Gui, 99:Add, Button, yp+40 w120 h30 Right gSupCancellation , % "Cancellation   "
+Gui, 99:Add, Button, yp+40 w120 h30 Right gPhoneRangOut , % "Phone Rang Out   "
+
+Gui, 99:Add, Button, xp+134 yp-80 w120 h30 Right gRemoteReset , % "Remote Update   "
+;Gui, 99:Add, Button, yp+40 w120 h30 Right gSupSiteReset , % "Site Reset   "
+Gui, 99:Add, Button, yp+40 w120 h30 Right gSupPaths , % "Paths for AV   "
+Gui, 99:Add, Button, yp+40 w120 h30 Right gSupEMAILS, % "Email Templates   "
+
+Gui, 99:Tab, 2
+Gui, 99:Add, Picture, x15 y113 BackgroundTrans, C:\AutoHotKey\Files\green.png
+Gui, 99:Add, Button, x30 yp+20 w120 h30 Left gLoyInstall , % "   &1 - INSTALL"
+Gui, 99:Add, Button, yp+40 w120 h30 Left gLoyTillConfig , % "   &2 - TILL CONFIG"
+Gui, 99:Add, Button, yp+40 w120 h30 Left gLoyQA , % "   &3 - QA"
+Gui, 99:Add, Button, yp+40 w120 h30 Left gLoyAdmin , % "   &4 - ADMIN"
+;Gui, 99:Add, Button, yp+40 w120 h30 Left gLoyOther, % "   &5 - SUB-MENU"
+Gui, 99:Add, Button, yp+40 w120 h30 Left gQ13 , % "   &3 - LOYSERV"
+
+Gui, 99:Add, Button, xp+134 yp-80 w120 h30 Right gCardOrders, % "Card Orders   "
+Gui, 99:Add, Button, yp+40 w120 h30 Right gLoyaltyCancelation, % "Loyalty Cancel   "
+Gui, 99:Add, Button, yp+40 w120 h30 Right gTWCMRoll , % "TWCM Rollout   "
+
 return
+
+MenuTab:
+if (WhichTab != "S U P P O R T")
+	{
+	IniWrite, 1, C:\AutoHotKey\settings.ini, Starting Position, Start
+	}
+	Else
+	IniWrite, 2, C:\AutoHotKey\settings.ini, Starting Position, Start
+return
+
+#IfWinActive MAIN MENU
+	beforeTab:=CurrentTab
+	Gui,Submit,NoHide
+	afterTab:=CurrentTab
+	If (beforeTab="S U P P O R T" && beforeTab != afterTab)
+	IniWrite, Support, C:\AutoHotKey\settings.ini, Starting Position, Start
+Return
 
 TicketCounter:
 
@@ -2796,9 +2828,11 @@ If (GetKeyState("Shift", "P"))
 		MsgBox, ,LINE , %A_LineNumber%
 	}
 
-Gui, Destroy 
-Gui, 99:Destroy 
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
+WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
+IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
+
+gui_x +=451
+
 Gui, 55:font, bold cE8EBF5 s12, Segoe UI
 Gui, 55:Color, 1d1f21, 383D46
 Gui, 55:Add, Text, x0 y32 w210 h50 Center, LOYSERV CREATOR
@@ -2815,9 +2849,14 @@ Gui, 55:Add, Button, x30 y360 w150 h30 , &8 Independant
 Gui, 55:font, bold 
 Gui, 55:Add, Button, x30 y420 w150 h30 , RESET TEMPLATES
 Gui, 55:font,
-Gui, 55:Add, Button, x30 y460 w70 h30 , &Back
-Gui, 55:Add, Button, x110 y460 w70 h30 , E&xit
-Gui, 55:Show, %Gui_Cord% h524 w210, 
+;Gui, 55:Add, Button, x30 y460 w70 h30 , &Back
+
+Gui, 55:Add, Picture, x56 y500 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
+
+Gui, 55:Add, Button, x12 y670 w184 h30 , &Close
+
+Gui, 55:Show, x%gui_x% y%gui_y% w210 h719, %A_Space%
+
 Return
 
 55ButtonBack:
@@ -2827,8 +2866,8 @@ do_lines_pre = 0
 gosub Q1
 return
 
-55ButtonExit:
-Reload
+55ButtonClose:
+Gui, 55:Destroy
 return
 
 55ButtonRESETTEMPLATES:
@@ -3722,11 +3761,11 @@ Gui, 30:Add, Text, center x0 y26 w210 h50 , LOYALTY`nSUB-MENU
 Gui, 30:font, s9 bold, Segoe UI
 Gui, 30:font,
 Gui, 30:Add, Picture, x73 yp+60 w64 h64, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\loylogo.png
-Gui, 30:Add, Button, x30 yp+100 w150 h30 gCardOrders, &1 Card Orders
-Gui, 30:Add, Button, xp yp+40 w150 h30 , &2 Loyalty Cancelation
-Gui, 30:Add, Button, xp yp+40 w150 h30 gQ13 , &3 Loyserv Creator
+;Gui, 30:Add, Button, x30 yp+100 w150 h30 gCardOrders, &1 Card Orders
+;Gui, 30:Add, Button, xp yp+40 w150 h30 , &2 Loyalty Cancelation
+;Gui, 30:Add, Button, xp yp+40 w150 h30 gQ13 , &3 Loyserv Creator
 Gui, 30:font, bold, Segoe UI
-Gui, 30:Add, Button, xp yp+40 w150 h30 gTWCMRoll , &4 TWCM Rollout
+;Gui, 30:Add, Button, xp yp+40 w150 h30 gTWCMRoll , &4 TWCM Rollout
 Gui, 30:font,
 Gui, 30:Add, Button, xp yp+80 w150 h30 , CLOSE
 
@@ -3763,46 +3802,52 @@ return
 
 ;=====================================================LOYALTY CANCELATION
 
-30Button2LoyaltyCancelation:
+LoyaltyCancelation:
 
 If (GetKeyState("Shift", "P"))
 	{
 		MsgBox, ,LINE , %A_LineNumber%
 	}
 
-Gui, Destroy 
-Gui, 99:Destroy 
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 77:font, s12 bold, Segoe UI
-Gui, 77:Add, Text, x28 y19 w210 h20 , LOYALTY CANCELATION
+WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
+IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
+
+gui_x +=451
+
+Gui, 77:Color, 1d1f21, 383D46
+Gui, 77:font, s12 bold cE8EBF5, Segoe UI
+Gui, 77:Add, Text, Center x0 y19 w210 , LOYALTY`nCANCELATION
 Gui, 77:font,
-Gui, 77:Add, Radio, x42 y59 w60 h20 vRadio1, #LOYV3
-Gui, 77:Add, Radio, x132 y59 w70 h20 vRadio2, #LOYV2
-Gui, 77:font, s8 bold, Segoe UI
-Gui, 77:Add, Text, x12 y99 w220 h30 , Please confirm you have completed the below steps.
+Gui, 77:Add, Radio, cE8EBF5 x32 y68 w67 h20 vRadio1, #LOYV3
+Gui, 77:Add, Radio, cE8EBF5 x122 y68 w70 h20 vRadio2, #LOYV2
+Gui, 77:font, s8 bold cE8EBF5, Segoe UI
+Gui, 77:Add, Text, x12 y99 w184 h30 , Please confirm you have completed the below steps.
 Gui, 77:font,
-Gui, 77:Add, CheckBox, x12 y139 w220 h20 vCb_1, Cancelled Clients in Site IQ.%A_Space%
-Gui, 77:Add, CheckBox, x12 y159 w230 h20 vCb_2, Cancellation email attached to Loy client.%A_Space%
-Gui, 77:Add, CheckBox, x12 y179 w230 h20 vCb_8, Changed client to Intellipharm Test.%A_Space%
-Gui, 77:Add, CheckBox, x12 y199 w220 h20 vCb_3, Deactivated store.%A_Space%
-Gui, 77:Add, CheckBox, x12 y219 w220 h20 vCb_4, Changed password.%A_Space%
-Gui, 77:Add, CheckBox, x12 y239 w220 h20 vCb_5, Member transfer script run.%A_Space%
-Gui, 77:Add, CheckBox, x12 y269 h20 vCb_6, API EDM sent%A_Space%
-Gui, 77:font, s7 bold, Segoe UI
-Gui, 77:Add, Text, x108 y274 w120 h20, date:
+Gui, 77:Add, CheckBox, cE8EBF5 x12 y139 w220 h20 vCb_1, Cancelled Clients in Site IQ.%A_Space%
+Gui, 77:Add, CheckBox, cE8EBF5 x12 y159 w230 h20 vCb_2, Email attached to Loy client.%A_Space%
+Gui, 77:Add, CheckBox, cE8EBF5 x12 y179 w230 h20 vCb_8, Changed client to Intellipharm Test.%A_Space%
+Gui, 77:Add, CheckBox, cE8EBF5 x12 y199 w220 h20 vCb_3, Deactivated store.%A_Space%
+Gui, 77:Add, CheckBox, cE8EBF5 x12 y219 w220 h20 vCb_4, Changed password.%A_Space%
+Gui, 77:Add, CheckBox, cE8EBF5 x12 y239 w220 h20 vCb_5, Member transfer script run.%A_Space%
+Gui, 77:Add, CheckBox, cE8EBF5 x12 y269 h20 vCb_6, API EDM sent%A_Space%
+Gui, 77:font, s7 bold cE8EBF5, Segoe UI
+Gui, 77:Add, Text, x100 y274 w70 h20 , date:
 Gui, 77:font,
-Gui, 77:Add, Edit, x132 y269 w100 h20 vBox1 , 
-Gui, 77:Add, CheckBox, x12 y299 h20 vCb_7, API DB sent%A_Space%
-Gui, 77:font, s7 bold, Segoe UI
-Gui, 77:Add, Text, x108 y304 w120 h20, date:
+Gui, 77:Add, Edit, cE8EBF5 -E0x200 x126 y269 w70 h20 vBox1 , 
+Gui, 77:Add, CheckBox, cE8EBF5 x12 y299 h20 vCb_7, API DB sent%A_Space%
+Gui, 77:font, s7 bold cE8EBF5, Segoe UI
+Gui, 77:Add, Text, x100 y304 w70 h20, date:
 Gui, 77:font,
-Gui, 77:Add, Edit, x132 y299 w100 h20 vBox2 , 
-Gui, 77:Add, Text, x12 y339 w210 h20 , Additional Notes
-Gui, 77:Add, Edit, x12 y359 w220 h75 vBox3 , 
-Gui, 77:Add, Button, x12 y484 w105 h30 , &Back
-Gui, 77:Add, Button, x127 y484 w105 h30 , &Exit
-Gui, 77:Add, Button, x12 y444 w220 h30 , &Confirm
-Gui, 77:Show, %Gui_Cord% w249 h525, Loyalty Cancelation
+Gui, 77:Add, Edit, cE8EBF5 -E0x200 x126 y299 w70 h20 vBox2 , 
+Gui, 77:Add, Text, cE8EBF5 x12 y339 w184 h20 , Additional Notes
+Gui, 77:Add, Edit, cE8EBF5 -E0x200 x12 y359 w184 h75 -VScroll vBox3 , 
+
+Gui, 77:Add, Picture, x56 y500 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
+
+Gui, 77:Add, Button, x12 y620 w184 h30 , &Confirm
+Gui, 77:Add, Button, x12 y670 w184 h30 , &Close
+
+Gui, 77:Show, x%gui_x% y%gui_y% w210 h719, %A_Space%
 return
 
 
@@ -3865,29 +3910,35 @@ If (GetKeyState("Shift", "P"))
 	{
 		MsgBox, ,LINE , %A_LineNumber%
 	}
+WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
+IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
-Gui, Destroy 
-Gui, 99:Destroy 
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
+gui_x +=451
+
 list1 = 500|1000|2000|5000
-Gui, 30:font, s10 bold, Segoe UI
-Gui, 30:Add, Text, x68 y22 w180 h50, Card Orders
+Gui, 30:Color, 1d1f21, 383D46
+Gui, 30:font, s12 bold cE8EBF5, Segoe UI
+Gui, 30:Add, Text, Center x0 y22 w210 h50, CARD ORDERS
 Gui, 30:font,
-Gui, 30:font, s8, Segoe UI
-Gui, 30:Add, Text, x30 y52 w180 h50, Was the proof approved by the client?
-Gui, 30:Add, Radio, x54 y94 vRadio1, YES
-Gui, 30:Add, Radio, x114 y94 vRadio2, NO
+Gui, 30:font, s8 cE8EBF5, Segoe UI
+Gui, 30:Add, Text, x30 yp+50 w180 h50, Was the proof approved by the client?
+Gui, 30:Add, Radio, x54 yp+45 vRadio1, YES
+Gui, 30:Add, Radio, x114 yp+0 vRadio2, NO
 Gui, 30:Add, Text,
-Gui, 30:Add, Text, x30 h15, How many cards for the order?
-Gui, 30:Add, DropDownList, x30 w150 vChoiceCO, %list1%
-Gui, 30:Add, Button, x30 y202 w150 h30, &Confirm
-Gui, 30:Add, Button, x55 y252 w100 h30, E&xit
-Gui, 30:Show, %Gui_Cord% h304 w210,  
-Return
+Gui, 30:Add, Text, x30 yp+50 h15, How many cards for the order?
+Gui, 30:Add, Radio, x55 yp+30 v500, 500
+Gui, 30:Add, Radio, x55 yp+20 v1000, 1000
+Gui, 30:Add, Radio, x55 yp+20 v2000, 2000
+Gui, 30:Add, Radio, x55 yp+20 v5000, 5000
+;Gui, 30:Add, DropDownList, x30 w150 vChoiceCO, %list1%
 
-30ButtonExit:
-reload
-return
+Gui, 30:Add, Picture, x56 y500 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
+
+Gui, 30:Add, Button, x12 y620 w184 h30 , &Confirm
+Gui, 30:Add, Button, x12 y670 w184 h30 , &Close
+
+Gui, 30:Show, x%gui_x% y%gui_y% w210 h719, %A_Space%
+Return
 
 30ButtonConfirm:
 Gui, Submit, NoHide
@@ -3906,7 +3957,7 @@ If (!SCODE)
 	SCODE = NULLCODE
 	}
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Card Order - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
-Clipboard =%Time% - #CARDORDER - %ChoiceCO% x card order sent - Proof approved by client: %Radio_1%%Radio_2%
+Clipboard =%Time% - #CARDORDER - %500%%1000%%2000%%5000% x card order sent - Proof approved by client: %Radio_1%%Radio_2%
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 
 reload
@@ -4168,17 +4219,10 @@ Gui, 2:Add, Text, center x0 y20 w210 h50, SUPPORT`nSUB-MENU
 Gui, 2:font,
 Gui, 2:font, cE8EBF5,
 Gui, 2:Add, GroupBox, x15 y80 w180 h225 , 
-Gui, 2:Add, Button, x30 yp+20 w150 h30 gFredConf, &1 Fred Confirmation
-Gui, 2:Add, Button, yp+40 w150 h30 gSupEMAILS,&2 Email Templates
-Gui, 2:Add, Button, yp+40 w150 h30 gSupCancellation , &3 Cancellation
-Gui, 2:Add, Button, yp+40 w150 h30 gQAPass , &4 QA Pass
-Gui, 2:Add, Button, yp+40 w150 h30 gQAPass , &5 Remote Reset
+
 Gui, 2:Add, GroupBox, x15 yp+50 w180 h185 , 
-Gui, 2:Add, Button, x30 yp+20 w150 h30 gPhoneRangOut , &6 Phone Rang Out
-Gui, 2:Add, Button, yp+40 w150 h30 gDeclinedConnection , &7 Declined Connection
+;Gui, 2:Add, Button, yp+40 w150 h30 gDeclinedConnection , &7 Declined Connection
 ;Gui, 2:Add, GroupBox, x15 yp+55 w180 h85, 
-Gui, 2:Add, Button, x30 yp+40 w150 h30 gSupSiteReset , &8 Site Reset
-Gui, 2:Add, Button, x30 yp+40 w150 h30 gSupPaths , &9 Paths
 ;Gui, 2:Add, Button, yp+40 w150 h30 , &7 Ecom Order
 ;Gui, 2:Add, Button, yp+40 w150 h30 , &8 Ecom Excel Creation
 Gui, 2:Add, Button, yp+75 w150 h30 , CLOSE
@@ -4236,7 +4280,7 @@ Clipboard =
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
-gui_x +=450
+gui_x +=451
 
 Gui, Paths:+ToolWindow -SysMenu +Border
 Gui, Paths:font, s12 cE8EBF5 bold, Segoe UI
@@ -4256,13 +4300,15 @@ Gui, Paths:Add, Button, yp+40 w150 h30 gPathsRECron, RESTART CRON
 Gui, Paths:Add, Button, yp+40 w150 h30 gPathsREHsnet, RESTART HSNET
 
 ;Gui, Paths:Add, Button, yp+40 w150 h30 , &8 Ecom Excel Creation
-Gui, Paths:Add, Button, yp+75 w150 h30 gExit , CLOSE
-Gui, Paths:Add, Picture, xp+30 y545 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
 
 Gui, Paths:font, s9 cE8EBF5 bold, Segoe UI
-Gui, Paths:Add, Text, center x0 y500 w210 h50 vPreview,
+Gui, Paths:Add, Text, center x0 yp+50 w210 h50 vPreview,
 
-Gui, Paths:Show, x%gui_x% y%gui_y% w210 h655, %A_Space%
+Gui, Paths:Add, Picture, x56 y500 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
+
+Gui, Paths:Add, Button, x12 y670 w184 h30 gBackCancel, Close
+
+Gui, Paths:Show, x%gui_x% y%gui_y% w210 h719, %A_Space%
 
 loop
 {
@@ -4329,8 +4375,9 @@ Clipboard = C:\INTPHARM\HSNET\restarteverything.bat
 Return
 
 BackCancel:
-Gui, BC:destroy
-Gui, A:destroy
+Gui, Paths:destroy
+Return
+
 SupCancellation:
 
 If (GetKeyState("Shift", "P"))
@@ -4549,6 +4596,107 @@ IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Cancellation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 	TrayTip, Clipboard Ready, %clipboard%, 5, 16
 reload
+return
+
+;=====================================================REMOTE RESET
+
+RemoteReset:
+
+If (GetKeyState("Shift", "P"))
+	{
+		MsgBox, ,LINE , %A_LineNumber%
+	}
+
+;Gui, Destroy
+FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
+
+WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
+IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
+
+gui_x +=451
+
+Gui, RR:Color, 1d1f21, 383D46
+Gui, RR:font, s14 bold cE8EBF5, Segoe UI
+Gui, RR:Add, Text, Center x0 y24 w210, REMOTE`nUPDATE
+Gui, RR:font,
+Gui, RR:font, cE8EBF5, Segeo UI
+Gui, RR:Add, Text, x12 yp+80 h40 w150 vPreviewCODE, 
+Gui, RR:Add, Text, yp+60 h30, SITE CODE:
+Gui, RR:Add, Edit, -E0x200 xp+70 yp-3 w114 h20 vSCODE,
+Gui, RR:Add, DropDownList, xp-70 yp+33 w185 vrepkam, POSX RESET|DISPX RESET|CRON UPDATE|POSX FILE|DISPX FILE|SEND ANY FILE|GET ANY FILE
+Gui, RR:Add, Text, yp+50 w220 , Additional Notes:
+Gui, RR:Add, Edit, -E0x200 yp+20 w184 h50 -VScroll vNote,
+
+Gui, RR:Add, GroupBox, yp+70 w184 h110, Preview
+Gui, RR:Add, Text, xp+10 yp+20 w164 h70 vPreview, 
+
+Gui, RR:Add, Picture, x56 y500 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
+
+Gui, RR:Add, Button, x12 y620 w184 h30 , &Confirm
+Gui, RR:Add, Button, x12 y670 w184 h30 , &Close
+
+Gui, RR:Show, x%gui_x% y%gui_y% w210 h719, %A_Space%
+
+loop
+{
+    Gui, RR:Submit, NoHide
+
+	var := SCODE
+    RegExMatch(codelist, "m)^" var "(.+)$", a)
+	codetext = % trim(a1)
+
+    if NOT (codeText == oldcodeText)
+    {
+       GuiControl, RR:Text, PreviewCODE, %codeText%
+       oldcodeText := codeText
+    }
+
+	FormatTime, Date,, yyyy/MM/dd
+	FormatTime, Time,, h:mmtt
+
+	Note := Note ? " •• " Note "" : ""
+
+	msgText = % Time " •• REMOTE Send Update Complete: " repkam Note
+
+    if NOT (msgText == oldMsgText)
+    {
+       GuiControl, RR:Text, Preview, %msgText%
+       oldMsgText := msgText
+    }
+
+    sleep 100
+}
+
+return
+
+
+RRButtonClose:
+	Gui, RR:Destroy
+return
+
+RRButtonConfirm:
+Gui, Submit, NoHide
+
+if (!SCODE){
+msgbox, 16, Warning, Please enter a SITE CODE ID, 
+return
+}
+
+FormatTime, Date,, yyyy/MM/dd
+FormatTime, Time,, h:mmtt
+FormatTime, scripttime,, yyyyMM
+
+	Radio_1 := Radio1 ? "#DATAOUT" : ""
+	Radio_2 := Radio2 ? "#INSTALL" : ""
+
+Clipboard = % msgText
+	TrayTip, Clipboard Ready, %clipboard%, 5, 16
+
+IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
+IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - REMOTE UPDATE`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+
+Reload
 return
 
 ;=====================================================VOICEMAIL
@@ -5603,27 +5751,32 @@ If (GetKeyState("Shift", "P"))
 
 list1 = Voicemail|Rang out|Failed to establish call
 list2 = #INSTALL|#DATAOUT
-Gui, Destroy
+
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
-gui_x +=450
+IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
+
+gui_x +=451
+
 Gui, 67:-SysMenu +Border
 Gui, 67:Color, 1d1f21, 383D46
 Gui, 67:font, s12 bold cE8EBF5, Segoe UI
 Gui, 67:Add, Edit, -E0x200 x1920 y2490 w80 vPlacehold,
-Gui, 67:Add, Text, center x0 y24 w286, PHONE RANG OUT
+Gui, 67:Add, Text, center x0 y24 w210, PHONE`nRANG OUT
 Gui, 67:font,
 Gui, 67:font, cE8EBF5, Segoe UI
-Gui, 67:Add, Text, x18 y63 h30, Call result
-Gui, 67:Add, DropDownList, x142 y60 w130 vChoice1, %list1%
-Gui, 67:Add, Text, x18 y93 h30, Why did you call
-Gui, 67:Add, DropDownList, x142 y90 w130 vChoice2, %list2%
-Gui, 67:Add, Text, x128 y125 , Notes
-Gui, 67:Add, Edit, -E0x200 x65 y150 w160 h50 -VScroll vBox1,
-Gui, 67:Add, Button, x38 yp+300 w212 h30 , &Confirm
-Gui, 67:Add, Button, x38 yp+50 w100 h30 , &Back
-Gui, 67:Add, Button, x150 yp+00 w100 h30 , &Close
-Gui, 67:Add, Picture, xp-54 yp-220 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
-Gui, 67:Show, x%gui_x% y%gui_y% w286 h655, 
+Gui, 67:Add, Text, x12 yp+120 h30, Call result
+Gui, 67:Add, DropDownList, yp+20 w184 vChoice1, %list1%
+Gui, 67:Add, Text, yp+50 , Why did you call
+Gui, 67:Add, DropDownList, yp+20 w184 vChoice2, %list2%
+Gui, 67:Add, Text, yp+50 w210 , Notes
+Gui, 67:Add, Edit, -E0x200 yp+20 w184 h50 -VScroll vBox1,
+
+Gui, 67:Add, Picture, x56 y500 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
+
+Gui, 67:Add, Button, x12 y620 w184 h30 , &Confirm
+Gui, 67:Add, Button, x12 y670 w184 h30 , &Close
+
+Gui, 67:Show, x%gui_x% y%gui_y% w210 h719, %A_Space%
 return
 
 67ButtonClose:
@@ -5663,30 +5816,32 @@ If (GetKeyState("Shift", "P"))
 		MsgBox, ,LINE , %A_LineNumber%
 	}
 
-Gui, Destroy
-FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
-gui_x +=450
+IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
+
+gui_x +=451
+
 Gui, QAP:Color, 1d1f21, 383D46
 Gui, QAP:font, s12 bold cE8EBF5, Segoe UI
-Gui, QAP:Add, Text, Center x0 y24 w286, QA PASS
+Gui, QAP:Add, Text, Center x0 y24 w210, QA PASS
 Gui, QAP:font,
 Gui, QAP:font, cE8EBF5, Segeo UI
-Gui, QAP:Add, Text, x38 yp+100 h20 w254 vPreviewCODE, 
+Gui, QAP:Add, Text, x12 yp+100 h20 w254 vPreviewCODE, 
 Gui, QAP:Add, Text, yp+30 h30, SITE CODE:
-Gui, QAP:Add, Edit, -E0x200 xp+90 yp-3 w122 vSCODE,
-Gui, QAP:Add, CheckBox, xp-90 yp+33 h20 vrepkam, Checked Rep/Kam
+Gui, QAP:Add, Edit, -E0x200 xp+80 yp-3 w104 vSCODE,
+Gui, QAP:Add, CheckBox, xp-80 yp+33 h20 vrepkam, Checked Rep/Kam
 Gui, QAP:Add, Text, yp+30 w220 , Additional Notes:
-Gui, QAP:Add, Edit, -E0x200 yp+30 w212 h50 -VScroll vNote,
+Gui, QAP:Add, Edit, -E0x200 yp+30 w184 h50 -VScroll vNote,
 
-Gui, QAP:Add, GroupBox, yp+100 w212 h110, Preview
-Gui, QAP:Add, Text, xp+10 yp+20 w192 h70 vPreview, 
+Gui, QAP:Add, GroupBox, yp+100 w184 h110, Preview
+Gui, QAP:Add, Text, xp+10 yp+20 w162 h70 vPreview, 
 
-Gui, QAP:Add, Button, x38 yp+150 w212 h30 , &Confirm
-Gui, QAP:Add, Button, x38 yp+50 w100 h30 , &Back
-Gui, QAP:Add, Button, x150 yp+00 w100 h30 , &Close
-;Gui, 21:Add, Picture, xp-54 yp-220 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
-Gui, QAP:Show, x%gui_x% y%gui_y% w286 h655, %A_Space%
+Gui, QAP:Add, Picture, x56 y500 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
+
+Gui, QAP:Add, Button, x12 y620 w184 h30 , &Confirm
+Gui, QAP:Add, Button, x12 y670 w184 h30 , &Close
+
+Gui, QAP:Show, x%gui_x% y%gui_y% w210 h719, %A_Space%
 
 loop
 {
@@ -5768,7 +5923,7 @@ IfNotExist, G:\Support\Public Staff Folders\Aaron\points\%vName%\%date%.ini
 }
 
 IniRead, Points, G:\Support\Public Staff Folders\Aaron\points\%vName%\%date%.ini, Count Points, Points
-Points++  ; This adds 1 to your variable TimesOpened.
+Points++
 IniWrite, %Points%, G:\Support\Public Staff Folders\Aaron\points\%vName%\%date%.ini, Count Points, Points
 
 Reload
@@ -5784,34 +5939,36 @@ If (GetKeyState("Shift", "P"))
 	}
 
 list1 = #DATAOUT|#INSTALL
-Gui, Destroy
+
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
-gui_x +=450
+IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
+
+gui_x +=451
+
 Gui, 21:Color, 1d1f21, 383D46
 Gui, 21:font, s12 bold cE8EBF5, Segoe UI
 Gui, 21:Add, Edit, x1920 y2490 w80 vPlacehold,
-Gui, 21:Add, Text, Center x0 y24 w286, DECLINED CONNECTION
+Gui, 21:Add, Text, Center x0 y24 w210, KNOCKBACK
 Gui, 21:font,
 Gui, 21:font, cE8EBF5, Segeo UI
-Gui, 21:Add, Text, x48 y85 h30, Reason for the call:
-Gui, 21:Add, Radio, x150 y73 h20 vRadio1, Data Outage
-Gui, 21:Add, Radio, x150 y98 h20 vRadio2, Installation
-Gui, 21:Add, Text, x38 y144 h30, Spoke to:
-Gui, 21:Add, Text, x38 y174 h30, SITE CODE:
-Gui, 21:Add, Edit, -E0x200 x88 y140 w162 vSpoke,
-Gui, 21:Add, Edit, -E0x200 x128 y170 w122 vSCODE,
-Gui, 21:Add, Text, x38 y200 w220 , What was the reason for you being declined?
-Gui, 21:Add, Edit, -E0x200 x38 y225 w212 h50 -VScroll vBox2KB,
+Gui, 21:Add, Text, x28 y82 h30, Reason `nfor the call:
+Gui, 21:Add, Radio, x100 y73 h20 vRadio1, Data Outage
+Gui, 21:Add, Radio, x100 y98 h20 vRadio2, Installation
+Gui, 21:Add, Text, x12 y144 h30, Spoke to:
+Gui, 21:Add, Text, x12 y174 h30, SITE CODE:
+Gui, 21:Add, Edit, -E0x200 x78 y140 w122 vSpoke,
+Gui, 21:Add, Edit, -E0x200 x118 y170 w82 vSCODE,
+Gui, 21:Add, Text, x12 y200 w220 , What was the reason for being declined?
+Gui, 21:Add, Edit, -E0x200 x12 y225 w186 h50 -VScroll vBox2KB,
 
-Gui, 21:Add, GroupBox, yp+70 w212 h110, Preview
-Gui, 21:Add, Text, xp+15 yp+15 w180 h80 vPreview, 
+Gui, 21:Add, GroupBox, yp+70 w186 h110, Preview
+Gui, 21:Add, Text, xp+15 yp+15 w154 h80 vPreview, 
 
-Gui, 21:Add, Button, x38 yp+250 w212 h30 , &Confirm
-Gui, 21:Add, Button, x38 yp+50 w100 h30 , &Back
-Gui, 21:Add, Button, x150 yp+00 w100 h30 , &Close
-Gui, 21:Add, Picture, xp-54 yp-170 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
+Gui, 21:Add, Picture, x56 y500 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
 
-Gui, 21:Show, x%gui_x% y%gui_y% w286 h655, %A_Space%
+Gui, 21:Add, Button, x12 y620 w184 h30 , &Confirm
+Gui, 21:Add, Button, x12 y670 w184 h30 , &Close
+Gui, 21:Show, x%gui_x% y%gui_y% w210 h719, %A_Space%
 
 loop
 {
@@ -7334,39 +7491,49 @@ If (GetKeyState("Shift", "P"))
 	}
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
-;IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
+IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
+
+gui_x +=451
 
 list1FC = Yes|No
-Gui, Destroy
+;Gui, Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 Gui, 25:-SysMenu +Border
 Gui, 25:font, cE8EBF5
 Gui, 25:Color, 1d1f21, 383D46
 Gui, 25:Add, Edit, -E0x200 x1920 y2490 w80 vPlacehold,
+
 Gui, 25:font, s12 bold cE8EBF5, Segoe UI
-Gui, 25:Add, Text, center x0 y24 w286 , FRED CONFIRMATION
-Gui, 25:Add, Text, center x0 y150 w286 , Required Names
+Gui, 25:Add, Text, center x0 y24 w210 , FRED CONFIRMATION
+
 Gui, 25:font, 
 Gui, 25:font, cE8EBF5, Segoe UI
-Gui, 25:Add, Text, x15 y70 h30, Who did you speak to?
-Gui, 25:Add, Text, x15 yp+30 w170 , Confirmed they are using STOPS?
-Gui, 25:Add, Text, x15 yp+100 , First point of contact:
-Gui, 25:Add, Text, x15 yp+30 , Second point of contact:
+Gui, 25:Add, Text, x12 yp+50 h30, Who did you speak to?
+Gui, 25:Add, Edit, -E0x200 yp+20 w184 vBox1FC
+Gui, 25:Add, Text, yp+40 w170 , Confirmed they are using STOPS?
+Gui, 25:Add, DropDownList, yp+20 w184 vChoice1FC, %list1FC%
 
-Gui, 25:Add, Edit, -E0x200 x192 y68 w80 vBox1FC
-Gui, 25:Add, DropDownList, x192 yp+30 w80 vChoice1FC, %list1FC%
-Gui, 25:Add, Edit, -E0x200 x192 yp+100 w80 vBox2FC
-Gui, 25:Add, Edit, -E0x200 x192 yp+30 w80 vBox3FC
+Gui, 25:font, 
+Gui, 25:font, s12 bold cE8EBF5, Segoe UI
+Gui, 25:Add, Text, center x0 yp+40 w210 , Required Names
+Gui, 25:font, 
+Gui, 25:font, cE8EBF5, Segoe UI
 
-Gui, 25:Add, GroupBox, x15 y305 h100 w255 , Preview
-Gui, 25:Add, Text, x25 y325 h70 w220 vFredConPre, 
+Gui, 25:Add, Text, x12 yp+40 , First point of contact:
+Gui, 25:Add, Edit, -E0x200 yp+20 w184 vBox2FC
 
-Gui, 25:Add, Picture, x95 y430 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
+Gui, 25:Add, Text, yp+40 , Second point of contact:
+Gui, 25:Add, Edit, -E0x200 yp+20 w184 vBox3FC
 
-Gui, 25:Add, Button, x15 y550 w255 h35 , Confirm
-Gui, 25:Add, Button, x15 y600 w120 h30 , Back
-Gui, 25:Add, Button, x150 y600 w120 h30 , Close
-Gui, 25:Show, x%gui_x% y%gui_y% w286 h655, %A_Space%
+Gui, 25:Add, GroupBox, yp+40 h140 w184 , Preview
+Gui, 25:Add, Text, xp+13 yp+13 h110 w149 vFredConPre, 
+
+Gui, 25:Add, Picture, x56 y510 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
+
+Gui, 25:Add, Button, x12 y620 w184 h30 , &Confirm
+Gui, 25:Add, Button, x12 y670 w184 h30 , &Close
+
+Gui, 25:Show, x%gui_x% y%gui_y% w210 h719, %A_Space%
 
 loop
 {
@@ -7439,7 +7606,7 @@ Gui, 7:Add, Text, center x1 y32 w420 h50 , ✉ Email Templates ✉
 Gui, 7:font,
 Gui, 7:font, s8 cE8EBF5,
 Gui, 7:Add, Text, center x80 y62 w250 , Outlook MUST be running before you click any of these buttons. It will not work if you do not.
-Gui, 7:Add, Button, x30 y125 w150 h30 , &1 Site Reset
+;Gui, 7:Add, Button, x30 y125 w150 h30 , &1 Site Reset
 Gui, 7:Add, Button, x30 y165 w150 h30 , &2 FRED Excel Form
 Gui, 7:Add, Button, x30 y205 w150 h30 , &3 Bugs Reporting Tool
 Gui, 7:Add, Button, x30 y265 w150 h30 , &4 ACNIELSEN Email
@@ -10235,7 +10402,7 @@ IniRead, RenaeMon, G:\Support\Public Staff Folders\Aaron\points\Renae\%mon%.ini,
 IniRead, RickMon, G:\Support\Public Staff Folders\Aaron\points\Rick\%mon%.ini, Count Points, Points, 0
 
 AaronTotal 		:= AaronFri + AaronThu + AaronWed + AaronTue + AaronMon
-CraigTotal 	:= CraigFri + CraigThu + CraigWed + CraigTue + CraigMon
+CraigTotal 		:= CraigFri + CraigThu + CraigWed + CraigTue + CraigMon
 BrodieTotal 	:= BrodieFri + BrodieThu + BrodieWed + BrodieTue + BrodieMon
 JimTotal 		:= JimFri + JimThu + JimWed + JimTue + JimMon
 JoelTotal 		:= JoelFri + JoelThu + JoelWed + JoelTue + JoelMon
@@ -10256,6 +10423,50 @@ NiceThu = %a_now%
 NiceThu += -1, days
 FormatTime, NiceThu, %NiceThu%, dd/MM/yyyy
 FormatTime, NiceFri, %NiceFri%, dd/MM/yyyy
+
+
+XL := ComObjCreate("Excel.Application")
+XL.WorkBooks.Add
+
+XL.Range("A2").Value := "Aaron"
+XL.Range("A3").Value := "Craig"
+XL.Range("A4").Value := "Brodie"
+XL.Range("A5").Value := "Jim"
+XL.Range("A6").Value := "Joel"
+XL.Range("A7").Value := "Josh"
+XL.Range("A8").Value := "Renae"
+XL.Range("A9").Value := "Rick"
+
+XL.Range("B1").Value := Points
+XL.Range("B2").Value := AaronTotal
+XL.Range("B3").Value := CraigTotal
+XL.Range("B4").Value := BrodieTotal
+XL.Range("B5").Value := JimTotal
+XL.Range("B6").Value := JoelTotal
+XL.Range("B7").Value := JoshTotal
+XL.Range("B8").Value := RenaeTotal
+XL.Range("B9").Value := RickTotal
+
+XL.Range("A1:B9").Select
+XL.ActiveSheet.Shapes.AddChart.Select
+XL.ActiveChart.ChartType := 51
+XL.ActiveChart.ClearToMatchStyle
+XL.ActiveChart.ChartStyle := 44
+XL.ActiveChart.ClearToMatchStyle
+
+XL.ActiveSheet.ChartObjects("Chart 1").Activate
+XL.ActiveChart.SetElement(102)
+XL.ActiveChart.SetElement(2)
+XL.ActiveChart.ChartTitle.Text := "CURRENT WEEK TOTALS"
+
+XL.ActiveSheet.ChartObjects("Chart 1").Activate
+XL.ActiveSheet.Shapes("Chart 1").ScaleWidth(1.21,0,0)  ;Magnified at 130%... use ".8" for 80% above
+XL.ActiveSheet.Shapes("Chart 1").ScaleHeight(1,0,0) ;;Magnified at 130%..
+
+XL.Worksheets("Sheet1").ChartObjects(1).Chart.Export("C:\Users\Aaron.Beecham\Pictures\pic1.bmp")
+
+XL.ActiveWorkbook.Close(0)
+XL.Quit
 
 Data_Source=
 (
@@ -10290,6 +10501,7 @@ maxrows:=A_Index ;
 
 dRows:=35 , dCols:=800 ;Set minimum display size for columns and rows
 Gui, MyListView: New,,%Data_Source%
+Gui, MyListView:Add, Picture, x0 y100, C:\Users\Aaron.Beecham\Pictures\pic1.bmp
 GuiControl, -Redraw, MyListView  ; Improve performance by disabling redrawing during load. 
 	for k,v in obj ;iterate over object
 		if (k=1){
@@ -10321,16 +10533,16 @@ GuiControl, -Redraw, MyListView  ; Improve performance by disabling redrawing du
 
    GuiControl, +Redraw, MyListView  ; Re-enable redrawing (it was disabled above).
 Gui, +Border -MaximizeBox
-Gui, Add, Button, x10 y185 w100 h25 gExport2Excel, Export to Excel
-Gui, Add, Button, x468 y185 w100 h25 gClose, Close
-Gui, Color, 1d1f21
-Gui, MyListView:Show, h220, POINT COUNTER
+;Gui, Add, Button, x10 y185 w100 h25 gExport2Excel, Export to Excel
+Gui, Color, 000000
+Gui, Add, Button, x468 y395 w100 h25 gClose, Close
+Gui, MyListView:Show, w580 h430, POINT COUNTER
 }
 
 Close:
-reload
+Gui, Destroy
 return
-
+/*
 Export2Excel:
 
 IfNotExist, C:\AutoHotKey\pointreport.xlsx

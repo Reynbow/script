@@ -1,8 +1,4 @@
-#SingleInstance off
-#NoTrayIcon
-SendMode Input
-
-;===Auto-execute========================================================================
+﻿;===Auto-execute========================================================================
 YearChart =
 (
 January	354
@@ -56,7 +52,7 @@ MayChart =
 
 Skin := "DiagonBlackGreen"
 
-Gui, 1:Color, c1d1f21
+Gui, 1:Color, 111111
 Gui, 1:Add, Picture, x5 y5 w250 h350 BackgroundTrans 0xE vYearPic
 Gui, 1:Add, Picture, x260 y5 w250 h350 BackgroundTrans 0xE vMayPic
 

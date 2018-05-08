@@ -56,6 +56,9 @@ Gui, Show, w200 h80,Updating...
 		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\Staff Logs.exe, C:\AutoHotKey\Files\Staff Logs.exe,1
 		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\all_tag_6.png, C:\AutoHotKey\Files\all_tag_6.png,1
 
+		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\green.png, C:\AutoHotKey\Files\green.png,1
+		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\blue.png, C:\AutoHotKey\Files\blue.png,1
+
 		sleep 1500
 		Gui, Destroy
 		MsgBox,  0, Update Complete, The script has updated succesfully.`nYou may now run the script again using the hotkey.
