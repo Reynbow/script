@@ -25,9 +25,69 @@ SendMode, Event
 SetKeyDelay 25, 10
 
 ; Used below just for updating purposes - If you want to update this script you need to change this number to the new version. Also the GUI below is tittled with the version number
-VersionNum = 3.4.229
+VersionNum = 3.41.1
 
 IniRead, StartPOS, C:\AutoHotKey\settings.ini, Starting Position, Start
+
+:R*?:]d::
+FormatTime, Date,, dd/MM/yyyy
+SendInput %Date%
+return
+
+:R*?:]t::
+FormatTime, Time,, h:mmtt
+SendInput %Time%
+return
+
+:R*?:]1::
+IniRead, vSMacro1, C:\AutoHotKey\settings.ini, MACROLIST, MACRO1
+SendInput % vSMacro1
+return
+
+:R*?:]2::
+IniRead, vSMacro2, C:\AutoHotKey\settings.ini, MACROLIST, MACRO2
+SendInput % vSMacro2
+return
+
+:R*?:]3::
+IniRead, vSMacro3, C:\AutoHotKey\settings.ini, MACROLIST, MACRO3
+SendInput % vSMacro3
+return
+
+:R*?:]4::
+IniRead, vSMacro4, C:\AutoHotKey\settings.ini, MACROLIST, MACRO4
+SendInput % vSMacro4
+return
+
+:R*?:]5::
+IniRead, vSMacro5, C:\AutoHotKey\settings.ini, MACROLIST, MACRO5
+SendInput % vSMacro5
+return
+
+:R*?:]6::
+IniRead, vSMacro6, C:\AutoHotKey\settings.ini, MACROLIST, MACRO6
+SendInput % vSMacro6
+return
+
+:R*?:]7::
+IniRead, vSMacro7, C:\AutoHotKey\settings.ini, MACROLIST, MACRO7
+SendInput % vSMacro7
+return
+
+:R*?:]8::
+IniRead, vSMacro8, C:\AutoHotKey\settings.ini, MACROLIST, MACRO8
+SendInput % vSMacro8
+return
+
+:R*?:]9::
+IniRead, vSMacro9, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
+SendInput,{RAW}%vSMacro9%
+return
+
+:R*?:]0::
+IniRead, vSMacro0, C:\AutoHotKey\settings.ini, MACROLIST, MACRO0
+SendInput % vSMacro0
+return
 
 IfNotExist, C:\AutoHotKey\script.exe
 	{
@@ -244,46 +304,6 @@ ExitApp
 
 ;============================= END TRAY
 
-;=====================================================ABOUT SCREEN and UPDATER
-; This will build the about window
-; Everything in here should pull from local C just in case the network goes down.
-; It's a good idea to add the command "Gui, Destroy" to the start of any new GUI window so it closes the previous
-; I also use this for the changelog. I've found using an EDIT box the simplest way of adding a long
-/*
-98ButtonTagList:
-Gui, Destroy
-;Gui, Add,Button,x320 y313 w80 h30 ,Back
-;Gui, Add,Button,x410 y313 w80 h30 ,Hashtags
-Gui, -sysmenu
-Gui, Add,Button,x400 y615 w100 h30 ,Close
-Gui, Add , ListView, x5 y5 h600 w500 +grid  vMyListView , TAG|DESCRIPTION
-LV_ModifyCol(1,150)
-LV_ModifyCol(2,325)
-;LV_ModifyCol(3,200)
-;LV_ModifyCol(1,"integer")
-gosub,fill
-Gui, Show, h655 w510 , Tags Directory
-return
-
-fill:
-tmr=G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\tags\					  ;-- path to read
-GuiControl,1: -Redraw, MyListView
-Loop, %tmr%\*.txt,
-    {
-    a=
-    ALF= %A_LoopFileFullPath%
-    SplitPath, ALF, name, dir, ext, name_no_ext, drive
-    ;fileread,a,%alf%				  ;-- read all
-    filereadline,a,%alf%,1			 ;-- read only first line
-    stringreplace,a,a,`r`n,,all	    ;-- remove ascii 13 10 cr+lf
-    LV_Add("",name_no_ext,a)
-    }
-a=
-GuiControl,1: +Redraw, MyListView
-return
-*/
-
-;========== END HELP BUTTON
 #F12::
 Secret:
 IfNotExist, C:\AutoHotKey\Files\mess.exe
@@ -337,17 +357,6 @@ Gui, Destroy
 	Gui, 97:Add, Button, xp+150 w130 cc5c8c6 -E0x200, Exit
     Gui, 97:Show,, Name
 
-/*
-Gui, 97:Add, Text, x22 y19 w80 h20 , First Name
-Gui, 97:Add, Edit, x22 y39 w75 vBox1 ,
-Gui, 97:Add, Text, x112 y19 w80 h20 , Surname
-Gui, 97:Add, Edit, x112 y39 w75 vBox2 ,
-Gui, 97:Add, Text, x22 y89 w190 h50 , To test that your name is set, after clicking Confirm, press the Hotkey CTRL+F9
-Gui, 97:Add, Button, x212 y9 w90 h30 , Confirm
-Gui, 97:Add, Button, x212 y109 w90 h30 , Exit
-Gui, 97:Add, Button, x212 y59 w90 h30 , Back
-Gui, 97:Show, w314 h151, Settings
-*/
 return
 
 97ButtonExit:
@@ -809,19 +818,6 @@ Else
 {
 Gui, 99:Show, %Gui_Cord% w450 , %A_Space%
 }
-/*
-If % VersionNum < ForceUpdate
-{
-	loop 12
-	{
-	sleep 250
-	Gui, 9A:Color, FFFF00
-	sleep 250
-	Gui, 9A:Color, C60000
-	}
-Gui, 9A:Show, x10 y10 w180 h60, 
-}
-*/
 
 
 If (!StartPOS)
@@ -872,21 +868,13 @@ Gui, 99:Add, Button, yp+40 w120 h30 Right gTWCMRoll , % "TWCM Rollout   "
 return
 
 MenuTab:
-if (WhichTab != "S U P P O R T")
+if (WhichTab != "   S U P P O R T   ")
 	{
 	IniWrite, 1, C:\AutoHotKey\settings.ini, Starting Position, Start
 	}
 	Else
 	IniWrite, 2, C:\AutoHotKey\settings.ini, Starting Position, Start
-return
-
-#IfWinActive MAIN MENU
-	beforeTab:=CurrentTab
-	Gui,Submit,NoHide
-	afterTab:=CurrentTab
-	If (beforeTab="S U P P O R T" && beforeTab != afterTab)
-	IniWrite, Support, C:\AutoHotKey\settings.ini, Starting Position, Start
-Return
+	return
 
 TicketCounter:
 
@@ -2172,25 +2160,7 @@ clipboard = %CONPoints%
 return
 
 ;====== END OF BUTTONS FOR FULL WEEK SUMMARY
-/*
-99PButtonSAVEPOSITION:
-Gui, 99P:Destroy
-Gui, 99:Destroy
-Gui, 99Pos:Color, 1d1f21, 383D46
-Gui, 99Pos:font, Bold cE8EBF5 s18, Segoe UI
-Gui, 99Pos:Add, Text, Center x1 y20 w300, Which window to save?
-Gui, 99Pos:font,
-Gui, 99Pos:font, Bold cE8EBF5 s12, Segoe UI
-Gui, 99Pos:Add, Button, x20 y75 w120 h40 gSMALLSAVEPOS, DAILY
-Gui, 99Pos:Add, Button, x160 y75 w120 h40 gFULLWEEKSAVEPOS, WEEKLY
-Gui, 99Pos:Add, Button, x20 y135 w260 h30 gEXIT, EXIT
-Gui, 99Pos:Show, w300 h190, Set Position
-return
 
-EXIT:
-reload
-return
-*/
 FULLWEEKSAVEPOS:
 Gui, Destroy
 Gui, 99Pos:Color, 1d1f21, 383D46
@@ -7645,163 +7615,6 @@ return
 run, https://support.intellipharm.com.au
 reload
 return
-/*
-Gui, Destroy
-IniRead, IDNo, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\jiracount.ini, TicketID, ID
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-
-Gui, 83:Color, 1d1f21, 383D46
-Gui, 83:font, s12 cE8EBF5 bold, Segoe UI
-Gui, 83:Add, Text, x19 y12 w403 , SUPPORT INCIDENT REPORT
-Gui, 83:Add, Text, x450 y32 w403 , TICKET ID NUMBER: SUP%IDNo%
-Gui, 83:font, 
-Gui, 83:font, s8 cE8EBF5 bold,
-Gui, 83:Add, Text, x20 y45 h20 , Client Impact Level:
-Gui, 83:font, 
-Gui, 83:font, cE8EBF5,
-Gui, 83:Add, Radio, x20 y65 h20 vRadio1, Urgent Show Stopper
-Gui, 83:Add, Radio, x20 y85 h20 vRadio2, Serious
-Gui, 83:Add, Radio, x20 y105 h20 vRadio3, Minor
-Gui, 83:font, s8 cE8EBF5 bold,
-Gui, 83:Add, Text, x20 y140 w110 h20 , Type of Issue:
-Gui, 83:font, 
-Gui, 83:font, cE8EBF5,
-Gui, 83:Add, Radio, x20 y160 h20 vRadio4, Services Related
-Gui, 83:Add, Radio, x20 y180 h20 vRadio5, Data Related
-Gui, 83:font, s8 cE8EBF5 bold,
-Gui, 83:Add, Text, x20 y225 w150 , Based on the Users Perspective this is:
-Gui, 83:font, 
-Gui, 83:font, cE8EBF5,
-Gui, 83:Add, Radio, x20 y260 w150 vRadio6, A recent user experience
-Gui, 83:Add, Radio, x20 y280 w200 vRadio7, The usual behaviour of this feature
-Gui, 83:Add, Radio, x20 w50 y300 vRadio8, Other:%A_Space%
-Gui, 83:font, 
-Gui, 83:Add, Edit, x70 y299 w120 h18 vOther , 
-Gui, 83:font, cE8EBF5,
-Gui, 83:Add, Text, x20 y349 w140 h20 , Client(s) Impacted:
-Gui, 83:font, 
-Gui, 83:Add, Edit, x20 y364 w170 h40 vClient , 
-Gui, 83:font, cE8EBF5,
-Gui, 83:Add, Text, x20 y419 w140 h20 , Service(s) Impacted:
-Gui, 83:font, 
-Gui, 83:Add, Edit, x20 y434 w170 h40 vService, 
-Gui, 83:font, cE8EBF5,
-Gui, 83:Add, Text, x20 y489 w170 h20 , Number of Stores Impacted:
-Gui, 83:font, s6 cE8EBF5,
-Gui, 83:Add, Text, x20 y504 w170 h20 , (approximately or exact based on call volume)
-Gui, 83:font, 
-Gui, 83:Add, Edit, x20 y519 w170 h30 vNoStores, 
-Gui, 83:font, cE8EBF5,
-Gui, 83:Add, Text, x222 y119 w190 h20 , Systems intended function:
-Gui, 83:font, 
-Gui, 83:Add, Edit, x222 y139 w170 h40 vIntFunct,
-Gui, 83:font, cE8EBF5,
-Gui, 83:Add, Text, x222 y189 w190 h20 , Systems current function:
-Gui, 83:font,
-Gui, 83:Add, Edit, x222 y209 w170 h40 vCurrentFunc,
-Gui, 83:font, cE8EBF5,
-Gui, 83:Add, Text, x222 y259 w180 h20 , Relevant Details Given to Client:
-Gui, 83:font, 
-Gui, 83:Add, Edit, x222 y279 w170 h40 vForClient,
-Gui, 83:font, cE8EBF5,
-Gui, 83:Add, Text, x222 y329 h20 , Relevant Details Taken from Client:
-Gui, 83:font, 
-Gui, 83:Add, Edit, x222 y349 w170 h40 vFromClient, 
-Gui, 83:font, cE8EBF5,
-Gui, 83:Add, Text, x222 y399 h20 , Relevant Extra Information:
-Gui, 83:font, 
-Gui, 83:Add, Edit, x222 y419 w170 h40 vExtra, 
-;Gui, 83:Add, Picture, x525 y450 w95 h95 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\all_tag_6.png
-Gui, 83:font, cE8EBF5,
-Gui, 83:Add, GroupBox, x420 y73 w310 h476 , Preview
-Gui, 83:Add, Text, x436 y98 w290 h360 vPreviewReport, 
-Gui, 83:Add, Button, x222 y479 w170 h30 , Submit
-Gui, 83:Add, Button, x222 y519 w80 h30 , Back
-Gui, 83:Add, Button, x312 y519 w80 h30 , Exit
-Gui, 83:Add, Picture, x275 y50 w68 h51 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\bug2.png
-Gui, 83:Show, %Gui_Cord% h570 w750, Support Incident Report
-
-loop
-{
-    Gui, 83:Submit, NoHide
-	FormatTime, Date,, yyyy/MM/dd
-	FormatTime, Time,, h:mmtt
-	
-	Radio_1 := Radio1 ? "Urgent Show Stopper " : ""
-	Radio_2 := Radio2 ? "Serious " : ""
-	Radio_3 := Radio3 ? "Minor " : ""
-	Radio_4 := Radio4 ? "Services Related " : ""
-	Radio_5 := Radio5 ? "Data Related " : ""
-	Radio_6 := Radio6 ? "The recent user experience " : ""
-	Radio_7 := Radio7 ? "The usual behaviour of this feature " : ""
-	Radio_8 := Radio8 ? "Other: " : ""
-	
-    msgText = To:`t`tbugs@pharmacylink.com.au`nCC:`t`tsupport@intellipharm.com.au`nSubject:`t`tSUP%IDNo% %Name% - %Client% - %Service% - %Radio_1%%Radio_2%%Radio_3%`n`n`nTICKET ID NUMBER: SUP%IDNo%`n`nType of Issue - %Radio_4%%Radio_5%`n`nClient(s) Impacted:`t`t%Client%`nService(s) Impacted: `t`t%Service%`nNumber of Stores Impacted: `t%NoStores%`n`nBased on the Users Perspective this is: %Radio_6%%Radio_7%%Radio_8%%Other%`n`nHow the system is intended to function:`t%IntFunct%`nHow the system is currently functioning:`t%CurrentFunc%`n`nDetails Taken:`t`t%FromClient%`nDetails Given:`t`t%ForClient%`nExtra Information:`t%Extra%
-
-    if NOT (msgText == oldMsgText)
-    {
-       GuiControl, 83:Text, PreviewReport, %msgText%
-       oldMsgText := msgText
-    }
-
-    sleep 100
-}
-
-Return
-
-83ButtonSubmit:
-Gui, 83:Submit, NoHide
-
-If(Radio1=1)
- GuiControlGet, Radio_1,, Radio1, Text
-If(Radio2=1)
- GuiControlGet, Radio_2,, Radio2, Text
-If(Radio3=1)
- GuiControlGet, Radio_3,, Radio3, Text
-If(Radio4=1)
- GuiControlGet, Radio_4,, Radio4, Text
-If(Radio5=1)
- GuiControlGet, Radio_5,, Radio5, Text
-If(Radio6=1)
- GuiControlGet, Radio_6,, Radio6, Text
-If(Radio7=1)
- GuiControlGet, Radio_7,, Radio7, Text
- If(Radio8=1)
- GuiControlGet, Radio_8,, Radio8, Text
- 
-FormatTime, Date,, yyyy/MM/dd
-FormatTime, Time,, h:mmtt
-FormatTime, scripttime,, yyyyMM
-IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Incident Report Jira`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
-
-email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-email.To := "bugs@pharmacylink.com.au"
-email.Cc := "support@intellipharm.com.au"
-email.Subject := "SUP" IDNo " " Name " - " Client " - " Service " - " Radio_1 Radio_2 Radio_3
-email.Body := "TICKET ID NUMBER: SUP" IDNo "`n`nType of Issue - " Radio_4 Radio_5 "`n`n" "Client(s) Impacted:`t`t" Client "`n" "Service(s) Impacted:`t`t" Service "`n" "Number of Stores Impacted:`t" NoStores "`n`n" "Based on the Users Perspective this is:`t" Radio_6 Radio_7 Radio_8 ther "`n`nHow the system is intended to function:`t`t" IntFunct "`nHow the system is currently functioning:`t" CurrentFunc "`n`nDetails Taken:`t`t" FromClient "`n" "Details Given:`t`t" ForClient "`n" "Extra Information:`t" Extra
-email.Display
-
-
-SetFormat, Float, 04
-IDNo += 1.0
-SetFormat, Float, 0.6
-IniWrite, %IDNo%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\jiracount.ini, TicketID, ID
-
-Gui, 83:Destroy
-return
-
-83ButtonBack:
-Gui, 83:Destroy 
-gosub Q7
-return
-
-83ButtonExit:
-Reload
-return
-*/
-;================================ DATA OUTAGE RESOLVED
 
 7ButtonDataOutageResolved:
 Gui, Destroy
@@ -8385,27 +8198,6 @@ Gui, 53:Add, Button, x+10 w120 h30 , &Back
 Gui, 53:Add, Button, x290 y+10 w250 h30 , E&xit
 
 Gui, 53:Show, %Gui_Cord% , ACNIELSEN Email Template
-
-
-
-/*
-
-
-Gui, 53:Add, Text, x12 y29 w50 h20 , Site Code
-Gui, 53:Add, Text, x12 y59 w60 h20 , Site Name
-Gui, 53:Add, Text, x12 y89 w70 h20 , Store Contact
-Gui, 53:Add, Edit, x92 y29 w80 h20 vBox1,
-Gui, 53:Add, Edit, x92 y59 w80 h20 vBox2,
-Gui, 53:Add, Edit, x92 y89 w80 h20 vBox3,
-Gui, 53:Add, CheckBox, x192 y9 w70 h20 vCb_1 , Reinstalled%A_Space%
-Gui, 53:Add, CheckBox, x282 y9 w70 h20 vCb_2 , Installed%A_Space%
-Gui, 53:Add, Text, x192 y39 w190 h20 , General Description:
-Gui, 53:Add, Edit, x192 y59 w190 h60 vBox5,
-Gui, 53:Add, Button, x12 y132 w120 h30 , &Confirm
-Gui, 53:Add, Button, x138 y132 w120 h30 , &Back
-Gui, 53:Add, Button, x263 y132 w120 h30 , E&xit
-Gui, 53:Show, %Gui_Cord% w395 h170, ACNIELSEN Email Template
-*/
 return
  
 53ButtonBack:
@@ -9767,196 +9559,6 @@ sleep 200
 run, http://lwoms.chemmart.com.au/lwoms/detail/orderDetail.jsp?orderNumber=%Clipboard%
 return
 
-:R*?:]d::
-FormatTime, Date,, dd/MM/yyyy
-SendInput %Date%
-return
-
-:R*?:]t::
-FormatTime, Time,, h:mmtt
-SendInput %Time%
-return
-
-:R*?:]1::
-IniRead, vSMacro1, C:\AutoHotKey\settings.ini, MACROLIST, MACRO1
-SendInput % vSMacro1
-return
-
-:R*?:]2::
-IniRead, vSMacro2, C:\AutoHotKey\settings.ini, MACROLIST, MACRO2
-SendInput % vSMacro2
-return
-
-:R*?:]3::
-IniRead, vSMacro3, C:\AutoHotKey\settings.ini, MACROLIST, MACRO3
-SendInput % vSMacro3
-return
-
-:R*?:]4::
-IniRead, vSMacro4, C:\AutoHotKey\settings.ini, MACROLIST, MACRO4
-SendInput % vSMacro4
-return
-
-:R*?:]5::
-IniRead, vSMacro5, C:\AutoHotKey\settings.ini, MACROLIST, MACRO5
-SendInput % vSMacro5
-return
-
-:R*?:]6::
-IniRead, vSMacro6, C:\AutoHotKey\settings.ini, MACROLIST, MACRO6
-SendInput % vSMacro6
-return
-
-:R*?:]7::
-IniRead, vSMacro7, C:\AutoHotKey\settings.ini, MACROLIST, MACRO7
-SendInput % vSMacro7
-return
-
-:R*?:]8::
-IniRead, vSMacro8, C:\AutoHotKey\settings.ini, MACROLIST, MACRO8
-SendInput % vSMacro8
-return
-
-:R*?:]9::
-IniRead, vSMacro9, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
-SendInput,{RAW}%vSMacro9%
-return
-
-:R*?:]0::
-IniRead, vSMacro0, C:\AutoHotKey\settings.ini, MACROLIST, MACRO0
-SendInput % vSMacro0
-return
-
-
-;--------Game removed due to Joel abusing it - fuckhead
-/*
-global planeX,bulletX,bulletY,bulletW,bulletH,enemyX,enemyY,enemyW,enemyH,enemyAlive,enemyDir,enemyDiff,currentScore,bulletDrop
-setwindelay,-1
-planeX := 60
-bulletX := -50
-bulletY := 50
-bulletW := 6
-bulletH := 10
-enemyX := 62
-enemyY := 150
-enemyW := 23
-enemyH := 12
-enemyAlive := false
-enemyDir := 0
-enemySpeed := 2
-enemyDiff := 1
-currentScore := 0
-bulletDrop := false
- 
-Gui, Add, Text, x%planeX% y20 w40 h30 vPlane, \"---"/`n  \_/
-Gui, Add, Text, x%bulletX% y%bulletY% w%bulletW% h%bulletH% vBullet, II
-Gui, Add, Text, x%enemyX% y%enemyY% w%enemyW% h%enemyH% vEnemy, ^@^
-Gui, Add, Text, x12 y180 w70 h20 vScore, Score: 0
-Gui, Add, GroupBox, x2 y0 w160 h180 ,
-Gui, Show, w169 h206, BOOB
-
-EnemySpawn()
-loop {
-        if (bulletDrop) {
-                MoveGraphic("bullet","y",2,"additive")
-                if ((collState := collisionCheck()) == "hit") {
-                        Hit()
-                        bulletDrop := false
-                }
-                else if (collState == "reset"){
-                        ResetBullet()
-                        bulletDrop := false
-                }
-        }
-        if (enemyAlive) {
-                if (enemyDir == 0) {
-                        random,enemyDir,1,2
-                }
-                else if (enemyDir == 1) {
-                        MoveGraphic("Enemy","x",enemySpeed,"additive")
-                        if (enemyX > 135) {
-                                enemyDir := 2
-                                random,enemySpeed,1,%enemyDiff%
-                        }
-                }
-                else if (enemyDir == 2) {
-                        MoveGraphic("Enemy","x",-enemySpeed,"additive")
-                        if (enemyX < 5) {
-                                enemyDir := 1
-                                random,enemySpeed,1,%enemyDiff%
-                        }
-                }
-        }
-        sleep, 20
-}
- 
-~left::MoveGraphic("Plane","x",-4,"additive")
-~right::MoveGraphic("Plane","x",4,"additive")
-~down::Shoot()
- 
-EnemySpawn(){
-        random,randomX,20,100
-        MoveGraphic("Enemy","x",randomX,"absolute")
-        MoveGraphic("Enemy","y",150,"absolute")
-        enemyAlive := true
-}
- 
-Shoot() {
-        bulletDrop := true
-        MoveGraphic("Bullet","x",PlaneX+10,"absolute")
-}
- 
-CollisionCheck(){
-        if (bulletY >= 170) {
-                return "reset"
-        }
-        else if (bulletX+bulletW <= enemyX+enemyW && bulletX >= enemyX)
-                if (bulletY+bulletH >= enemyY && bulletY <= enemyY+enemyH)
-                        return "hit"
-       
-        return false
-}
- 
-ResetBullet(){
-        bulletY := 50
-        MoveGraphic("Bullet","y",bulletY,"absolute")
-        MoveGraphic("Bullet","x",-50,"absolute")
-}
- 
-Hit(){
-        currentScore++
-		enemyDiff++
-        GuiControl,,Score,Score: %currentScore%
-        ResetBullet()
-		MoveGraphic("Enemy","x",-50,"absolute")
-        return, false
-}
- 
-MoveGraphic(cName,axis,val,mode) {
-        temp := cName axis
-        if (mode == "absolute"){
-                moveVal := axis  val
-                %temp% := val
-        }
-        else if (mode == "additive"){
-                moveVal := axis %temp% + val
-                %temp% := %temp% + val
-        }
-        GuiControl,Move,%cName%,%moveVal%              
-}
- 
-GuiClose:
-WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
-IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
-reload
-return
-
-/*
-DELETE::
-SendInput, {DELETE 8}
-Return
-*/
-
 ;HOTKEYS
 ; "ALT + LEFT" for previous 
 !Left::Media_Prev
@@ -10463,7 +10065,7 @@ XL.ActiveSheet.ChartObjects("Chart 1").Activate
 XL.ActiveSheet.Shapes("Chart 1").ScaleWidth(1.21,0,0)  ;Magnified at 130%... use ".8" for 80% above
 XL.ActiveSheet.Shapes("Chart 1").ScaleHeight(1,0,0) ;;Magnified at 130%..
 
-XL.Worksheets("Sheet1").ChartObjects(1).Chart.Export("C:\Users\Aaron.Beecham\Pictures\pic1.bmp")
+XL.Worksheets("Sheet1").ChartObjects(1).Chart.Export("C:\AutoHotKey\Files\pic1.bmp")
 
 XL.ActiveWorkbook.Close(0)
 XL.Quit
@@ -10501,7 +10103,7 @@ maxrows:=A_Index ;
 
 dRows:=35 , dCols:=800 ;Set minimum display size for columns and rows
 Gui, MyListView: New,,%Data_Source%
-Gui, MyListView:Add, Picture, x0 y100, C:\Users\Aaron.Beecham\Pictures\pic1.bmp
+Gui, MyListView:Add, Picture, x0 y100, C:\AutoHotKey\Files\pic1.bmp
 GuiControl, -Redraw, MyListView  ; Improve performance by disabling redrawing during load. 
 	for k,v in obj ;iterate over object
 		if (k=1){
@@ -10542,101 +10144,7 @@ Gui, MyListView:Show, w580 h430, POINT COUNTER
 Close:
 Gui, Destroy
 return
-/*
-Export2Excel:
 
-IfNotExist, C:\AutoHotKey\pointreport.xlsx
-	{
-	FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\pointreport.xlsx, C:\AutoHotKey\pointreport.xlsx
-	Sleep 2000
-	}
-
-
-WorkBookPath		:= "C:\AutoHotKey\pointreport.xlsx"
-objExcel			:= ComObjCreate("Excel.Application")
-objWorkBook			:= objExcel.Workbooks.Open(WorkBookPath)
-objExcel.Visible	:= FALSE
-
-objExcel.Sheets("Sheet1").Select
-
-objExcel.Range("B2").Value := AaronMon
-objExcel.Range("B3").Value := AaronTue
-objExcel.Range("B4").Value := AaronWed
-objExcel.Range("B5").Value := AaronThu
-objExcel.Range("B6").Value := AaronFri
-objExcel.Range("B8").Value := AaronTotal
-
-objExcel.Range("C2").Value := CraigMon
-objExcel.Range("C3").Value := CraigTue
-objExcel.Range("C4").Value := CraigWed
-objExcel.Range("C5").Value := CraigThu
-objExcel.Range("C6").Value := CraigFri
-objExcel.Range("C8").Value := CraigTotal
-
-objExcel.Range("D2").Value := BrodieMon
-objExcel.Range("D3").Value := BrodieTue
-objExcel.Range("D4").Value := BrodieWed
-objExcel.Range("D5").Value := BrodieThu
-objExcel.Range("D6").Value := BrodieFri
-objExcel.Range("D8").Value := BrodieTotal
-
-objExcel.Range("E2").Value := JimMon
-objExcel.Range("E3").Value := JimTue
-objExcel.Range("E4").Value := JimWed
-objExcel.Range("E5").Value := JimThu
-objExcel.Range("E6").Value := JimFri
-objExcel.Range("E8").Value := JimTotal
-
-objExcel.Range("F2").Value := JoelMon
-objExcel.Range("F3").Value := JoelTue
-objExcel.Range("F4").Value := JoelWed
-objExcel.Range("F5").Value := JoelThu
-objExcel.Range("F6").Value := JoelFri
-objExcel.Range("F8").Value := JoelTotal
-
-objExcel.Range("G2").Value := JoshMon
-objExcel.Range("G3").Value := JoshTue
-objExcel.Range("G4").Value := JoshWed
-objExcel.Range("G5").Value := JoshThu
-objExcel.Range("G6").Value := JoshFri
-objExcel.Range("G8").Value := JoshTotal
-
-objExcel.Range("H2").Value := RenaeMon
-objExcel.Range("H3").Value := RenaeTue
-objExcel.Range("H4").Value := RenaeWed
-objExcel.Range("H5").Value := RenaeThu
-objExcel.Range("H6").Value := RenaeFri
-objExcel.Range("H8").Value := RenaeTotal
-
-objExcel.Range("I2").Value := RickMon
-objExcel.Range("I3").Value := RickTue
-objExcel.Range("I4").Value := RickWed
-objExcel.Range("I5").Value := RickThu
-objExcel.Range("I6").Value := RickFri
-objExcel.Range("I8").Value := RickTotal
-
-objWorkBook.Save
-objExcel.Quit()
-objExcel 	:= ""
-
-
-run, C:\AutoHotKey\pointreport.xlsx
-return
-/*
-IniRead, Owner, C:\AutoHotKey\settings.ini, UserName, Name
-If Owner = Aaron
-{
-email := ComObjActive("Outlook.Application").CreateItem(0)
-email.To := "Charlyn.Stewart@Intellipharm.com.au"
-email.CC := "Brodie.Creaser@Intellipharm.com.au"
-email.Subject := "Support Weekly Point Summary " NiceMon
-email.Display
-}
-return
-
-
-;#Include Class_LVColors.ahk
-*/
 AppsKey::Send, {AppsKey}
 
 ^+v::                            ; Text–only paste from ClipBoard
