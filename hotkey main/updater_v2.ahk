@@ -10,20 +10,22 @@ FileReadLine, oldver, C:\AutoHotKey\version.txt, 1
 FileReadLine, newver, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, 1
 FileRead, update, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\change.txt
 	
-Gui, A1:Color, 262626
-Gui, A1:Add, Picture, x420 y0 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
+Gui, A1:Color, 000000
+Gui, A1:Add, Picture, x-180 y-120 , C:\AutoHotKey\Files\back-sup.png
+Gui, A1:Add, Picture, x90 y-120 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\back-right.png
+;Gui, A1:Add, Picture, x420 y0 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
 Gui, A1:font, cE8EBF5 bold s12, Helvetica
-Gui, A1:Add, Picture, x17 y10 w185 h32, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\updater.png
+Gui, A1:Add, Picture, x17 y10 w185 h32 BackGroundTrans, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\updater.png
 Gui, A1:font,
 Gui, A1:font, cE8EBF5 , Helvetica
-Gui, A1:Add, Text, x17 y45, You are on version %oldver%.
-Gui, A1:Add, Text, x17 y60, The current versions is %newver%.
-Gui, A1:Add, Text, x19 y90 w480, Changes: ;`n%update%
-Gui, A1:Add, Edit, readonly -tabstop VScroll -E0x200 x17 y108 w476 h105, %update%
+Gui, A1:Add, Text, x17 y45 BackGroundTrans, You are on version %oldver%.
+Gui, A1:Add, Text, x17 y60 BackGroundTrans, The current versions is %newver%.
+Gui, A1:Add, Text, x19 y90 BackGroundTrans, Changes: ;`n%update%
+Gui, A1:Add, Edit, readonly -tabstop -VScroll -E0x200 x17 y108 w476 h105, %update%
 Gui, A1:font, cE8EBF5 s7 , Helvetica
-Gui, A1:Add, Text, x14 y239, Written by 
+Gui, A1:Add, Text, x14 y239 BackGroundTrans, Written by 
 Gui, A1:font, cE8EBF5 bold s7, Helvetica
-Gui, A1:Add, Text, x60 y239 , Aaron Beecham
+Gui, A1:Add, Text, x60 y239 BackGroundTrans , Aaron Beecham
 Gui, A1:Add, Button, x302 y219 w90 h30 , &Update
 Gui, A1:Add, Button, x402 y219 w90 h30 , &Close
 Gui, A1:Show, w509 h259, 🔥🔑 Updater
@@ -56,8 +58,12 @@ Gui, Show, w200 h80,Updating...
 		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\Staff Logs.exe, C:\AutoHotKey\Files\Staff Logs.exe,1
 		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\all_tag_6.png, C:\AutoHotKey\Files\all_tag_6.png,1
 
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\green.png, C:\AutoHotKey\Files\green.png,1
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\blue.png, C:\AutoHotKey\Files\blue.png,1
+		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\mainmenu_sup.png, C:\AutoHotKey\Files\mainmenu_sup.png
+		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\mainmenu_loy.png, C:\AutoHotKey\Files\mainmenu_loy.png
+		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\sup.png, C:\AutoHotKey\Files\sup.png,1
+		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\loy.png, C:\AutoHotKey\Files\loy.png,1
+		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\back-sup.png, C:\AutoHotKey\Files\back-sup.png,1
+		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\back-right.png, C:\AutoHotKey\Files\back-right.png,1
 
 		sleep 1500
 		Gui, Destroy

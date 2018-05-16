@@ -1,16 +1,5 @@
-#SingleInstance, Force
-#NoEnv
-#MaxHotkeysPerInterval 99000000
-#HotkeyInterval 99000000
-#KeyHistory 0
-ListLines Off
-Process, Priority, , A
-SetBatchLines, -1
-SetKeyDelay, -1, -1
-SetMouseDelay, -1
-SetDefaultMouseSpeed, 0
-SetWinDelay, -1
-
+LoyInstall:
+Gui, Destroy
 IfNotExist, C:\AutoHotKey\Files\Loyalty Template.xlsx
 {
 sleep 50
@@ -20,221 +9,221 @@ FileCopy, G:\Loyalty\Install Template\Loyalty Template.xlsx, C:\AutoHotKey\Files
 sleep 50
 }
 
-;Gui, +AlwaysOnTop
+;Gui, LoyIN:+AlwaysOnTop
 
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
 
 Gui,-SysMenu +ToolWindow +Border
-Gui, font, s16 bold cc5c8c6, Segoe UI
-Gui, Color, 1d1f21, 383D46
-Gui, Add, Text, x10 y6 h20 , LOYALTY INSTALL
-Gui, font, s8 bold cc5c8c6, Segoe UI
-Gui, Add, Text, x10 y50 h20 w225 vPreviewCODE,
-Gui, font, 
-Gui, font, s8 cc5c8c6, Segoe UI
-Gui, Add, Text, yp+25 h20 , Store Prefix:
-Gui, Add, Text, yp+25 h20 , SITE CODE:
-Gui, Add, Text, yp+25 h20 , Store Name:
-Gui, Add, Text, yp+25 w60 h20 , Spoke to:
-Gui, Add, Text, xp+185 yp+0 h20 , *
+Gui, LoyIN:font, s16 bold cc5c8c6, Segoe UI
+Gui, LoyIN:Color, 1d1f21, 383D46
+Gui, LoyIN:Add, Text, x10 y6 h20 , LOYALTY INSTALL
+Gui, LoyIN:font, s8 bold cc5c8c6, Segoe UI
+Gui, LoyIN:Add, Text, x10 y50 h20 w225 vPreviewCODE,
+Gui, LoyIN:font, 
+Gui, LoyIN:font, s8 cc5c8c6, Segoe UI
+Gui, LoyIN:Add, Text, yp+25 h20 , Store Prefix:
+Gui, LoyIN:Add, Text, yp+25 h20 , SITE CODE:
+Gui, LoyIN:Add, Text, yp+25 h20 , Store Name:
+Gui, LoyIN:Add, Text, yp+25 w60 h20 , Spoke to:
+Gui, LoyIN:Add, Text, xp+185 yp+0 h20 , *
 
-Gui, Add, DropDownList, xp-80 yp-78 w100 vPrefix, ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG
-Gui, Add, Edit, yp+25 w100 h20 -E0x200 vSCODE,
-Gui, Add, Edit, yp+25 w100 h20 -E0x200 vStoreName,
-Gui, Add, Edit, yp+25 w100 h20 -E0x200 vSpoke,
+Gui, LoyIN:Add, DropDownList, xp-80 yp-78 w100 vPrefix, ACN|ALPH|AM|APIB|APIP|APOT|GENP|IMSC|INT|IPSS|LOYL|PCYU|PH|SIG
+Gui, LoyIN:Add, Edit, yp+25 w100 h20 -E0x200 vSCODE,
+Gui, LoyIN:Add, Edit, yp+25 w100 h20 -E0x200 vStoreName,
+Gui, LoyIN:Add, Edit, yp+25 w100 h20 -E0x200 vSpoke,
 
-Gui, Add, Text, xp-105 yp+40 h20 , Back Office PC details:
-Gui, Add, Text, yp+25 h20 , PC Name:
-Gui, Add, Edit, xp+60 yp-3 w100 h20 -E0x200 vPCName,
-Gui, Add, Checkbox, xp-60 yp+28 h20 vCb_DispDept, Disp Depts in Settings.dbf
-Gui, Add, Edit, xp+160 yp+0 w50 h20 -E0x200 vDispDept,
-Gui, Add, Checkbox, xp-160 yp+25 w180 h20 vDDUI, Disp Depts set in UI
-Gui, Add, Checkbox, yp+25 w180 h20 vCb_Folder, Intpharm folder shared
+Gui, LoyIN:Add, Text, xp-105 yp+40 h20 , Back Office PC details:
+Gui, LoyIN:Add, Text, yp+25 h20 , PC Name:
+Gui, LoyIN:Add, Edit, xp+60 yp-3 w100 h20 -E0x200 vPCName,
+Gui, LoyIN:Add, Checkbox, xp-60 yp+28 h20 vCb_DispDept, Disp Depts in Settings.dbf
+Gui, LoyIN:Add, Edit, xp+160 yp+0 w50 h20 -E0x200 vDispDept,
+Gui, LoyIN:Add, Checkbox, xp-160 yp+25 w180 h20 vDDUI, Disp Depts set in UI
+Gui, LoyIN:Add, Checkbox, yp+25 w180 h20 vCb_Folder, Intpharm folder shared
 
-Gui, Add, Text, x235 y15 w40 h20 , POS:
-Gui, Add, Text, x235 yp+25 w90 h20 , Total Tills:
-Gui, Add, Text, x395 y40 w90 h20 , *
-Gui, Add, Text, x410 y15 w80 h20 , Loyalty Mode:
+Gui, LoyIN:Add, Text, x235 y15 w40 h20 , POS:
+Gui, LoyIN:Add, Text, x235 yp+25 w90 h20 , Total Tills:
+Gui, LoyIN:Add, Text, x395 y40 w90 h20 , *
+Gui, LoyIN:Add, Text, x410 y15 w80 h20 , Loyalty Mode:
 
-Gui, Add, Edit, x290 y12 w100 h20 -E0x200 vPOS,
-Gui, Add, Edit, x290 yp+25 w100 h20 -E0x200 vTills,
-Gui, Add, DropDownList, x490 y12 w100 vLoyMode, Auto|Partial|Manual
-
-
-Gui, Add, Groupbox, x-10 y325 w655 h290 ,
-Gui, font, s12 bold cc5c8c6, Segoe UI
-Gui, Add, Text, x10 y350 h20 , COMMENT TEMPLATE
-Gui, font,
-Gui, font, cc5c8c6, Segoe UI
-
-Gui, Add, Checkbox, x10 yp+40 w190 h20 vCb_APIROLL , #LOYINSTALL
-Gui, Add, Checkbox, x10 yp+25 w180 h20 vCb_INDROLL, #LOYRESTALL
-Gui, Add, Checkbox, x10 yp+25 h20 vRBStock , Redemption Barcode/s added in stock
-Gui, Add, Text, x12 yp+40 w180 h20, Test Card Number:
-Gui, Add, Edit, xp+100 yp-2 h20 w160 -E0x200 vTestCard,
-Gui, Add, Checkbox, x10 yp+29 w180 vCb_TillsTested, All tills tested and working
-Gui, Add, Checkbox, x10 yp+25 h20 vCb_Training , Training complete - Trained:
-Gui, Add, Edit, xp+170 yp-2 w90 h20 -E0x200 vTrainedName,
-Gui, Add, Checkbox, x10 yp+29 h20 vCb_Document, Installation document attached to LOYV3 Client
+Gui, LoyIN:Add, Edit, x290 y12 w100 h20 -E0x200 vPOS,
+Gui, LoyIN:Add, Edit, x290 yp+25 w100 h20 -E0x200 vTills,
+Gui, LoyIN:Add, DropDownList, x490 y12 w100 vLoyMode, Auto|Partial|Manual
 
 
+Gui, LoyIN:Add, Groupbox, x-10 y325 w655 h290 ,
+Gui, LoyIN:font, s12 bold cc5c8c6, Segoe UI
+Gui, LoyIN:Add, Text, x10 y350 h20 , COMMENT TEMPLATE
+Gui, LoyIN:font,
+Gui, LoyIN:font, cc5c8c6, Segoe UI
 
-Gui, Add, Checkbox, x290 y360 h20 vCb_Addition, Still to be completed:
-Gui, Add, Edit, x290 yp+25 w300 h112 -E0x200 vNotes ,
-
-
-Gui, Add, Picture, x310 y498 w95 h95 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\all_tag_6.png
-Gui, Add, Text, x435 y507 h20 ,*
-Gui, font, s8 bold cc5c8c6, Segoe UI
-Gui, Add, Button, x443 y507 w72 h40 , &Comment Only
-Gui, font,
-Gui, font, cc5c8c6, Segoe UI
-Gui, Add, Button, x517 y507 w72 h40 , &Confirm
-Gui, Add, Button, x443 y550 w146 h30 , &Exit
-
-
-Gui, Add, Tab2, x230 y69 w365 h250 , Till 1|Till 2|Till 3|Till 4|Till 5|Till 6|Till 7|Till 8
-Gui, Add, Text, xp+25 yp+50 h20 , First Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT1A,
-Gui, Add, CheckBox, xp-100 yp+25 h20 vT1_Startup, Balance Checker in startup
-Gui, Add, Text, yp+25 w30 h20 , AV:
-Gui, Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT1B,
-Gui, Add, CheckBox, xp+110 h20 vT1_Excep, Exceptions added
-Gui, Add, CheckBox, xp-135 yp+44 w160 h20 vT1_Stops, LOCKSET ;Stops: Hook updated (V3 Transition)
-Gui, Add, CheckBox, yp+25 h20 vT1_Receipt, Loyalty Receipt printed
-Gui, Add, CheckBox, yp+25 h20 vT1_Points, Live points working
-Gui, Add, CheckBox, yp+25 h20 vT1_prompt, Promptpos = bcpos
-Gui, Add, CheckBox, xp+165 yp-75 h20 vT1_LOTSMAN, LOTSMAN_
-Gui, Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN1, 
-Gui, Add, CheckBox, xp-90 yp+25 w160 h20 vT1_Zed, Zed: $0 Receipts ON
-Gui, Add, Text, yp+35 h20, MTNTOP PPREWARD:
-Gui, Add, Edit, yp+15 w140 h18 -E0x200 vT1mtn, 
+Gui, LoyIN:Add, Checkbox, x10 yp+40 w190 h20 vCb_APIROLL , #LOYINSTALL
+Gui, LoyIN:Add, Checkbox, x10 yp+25 w180 h20 vCb_INDROLL, #LOYRESTALL
+Gui, LoyIN:Add, Checkbox, x10 yp+25 h20 vRBStock , Redemption Barcode/s added in stock
+Gui, LoyIN:Add, Text, x12 yp+40 w180 h20, Test Card Number:
+Gui, LoyIN:Add, Edit, xp+100 yp-2 h20 w160 -E0x200 vTestCard,
+Gui, LoyIN:Add, Checkbox, x10 yp+29 w180 vCb_TillsTested, All tills tested and working
+Gui, LoyIN:Add, Checkbox, x10 yp+25 h20 vCb_Training , Training complete - Trained:
+Gui, LoyIN:Add, Edit, xp+170 yp-2 w90 h20 -E0x200 vTrainedName,
+Gui, LoyIN:Add, Checkbox, x10 yp+29 h20 vCb_Document, Installation document attached to LOYV3 Client
 
 
-Gui, Tab, Till 2
-Gui, Add, Text, xp-165 yp-167 h20 , Second Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT2A,
-Gui, Add, CheckBox, xp-100 yp+25 h20 vT2_Startup, Balance Checker in startup
-Gui, Add, Text, yp+25 w30 h20 , AV:
-Gui, Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT2B,
-Gui, Add, CheckBox, xp+110 h20 vT2_Excep, Exceptions added
-Gui, Add, CheckBox, xp-135 yp+44 h20 vT2_Stops, LOCKSET
-Gui, Add, CheckBox, yp+25 h20 vT2_Receipt, Loyalty Receipt printed
-Gui, Add, CheckBox, yp+25 h20 vT2_Points, Live points working
-Gui, Add, CheckBox, yp+25 h20 vT2_prompt, Promptpos = bcpos
-Gui, Add, CheckBox, xp+165 yp-75 h20 vT2_LOTSMAN, LOTSMAN_
-Gui, Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN2, 
-Gui, Add, CheckBox, xp-90 yp+25 w160 h20 vT2_Zed, Zed: $0 Receipts ON
-Gui, Add, Text,  yp+35 h20, MTNTOP PPREWARD:
-Gui, Add, Edit,  yp+15 w140 h18 -E0x200 vT2mtn, 
 
-Gui, Tab, Till 3
-Gui, Add, Text, xp-165 yp-167 h20 , Third Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT3A,
-Gui, Add, CheckBox, xp-100 yp+25 h20 vT3_Startup, Balance Checker in startup
-Gui, Add, Text, yp+25 w30 h20 , AV:
-Gui, Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT3B,
-Gui, Add, CheckBox, xp+110 h20 vT3_Excep, Exceptions added
-Gui, Add, CheckBox, xp-135 yp+44 h20 vT3_Stops, LOCKSET
-Gui, Add, CheckBox, yp+25 h20 vT3_Receipt, Loyalty Receipt printed
-Gui, Add, CheckBox, yp+25 h20 vT3_Points, Live points working
-Gui, Add, CheckBox, yp+25 h20 vT3_prompt, Promptpos = bcpos
-Gui, Add, CheckBox, xp+165 yp-75 h20 vT3_LOTSMAN, LOTSMAN_
-Gui, Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN3, 
-Gui, Add, CheckBox, xp-90 yp+25 w160 h20 vT3_Zed, Zed: $0 Receipts ON
-Gui, Add, Text,  yp+35 h20, MTNTOP PPREWARD:
-Gui, Add, Edit,  yp+15 w140 h18 -E0x200 vT3mtn, 
+Gui, LoyIN:Add, Checkbox, x290 y360 h20 vCb_Addition, Still to be completed:
+Gui, LoyIN:Add, Edit, x290 yp+25 w300 h112 -E0x200 vNotes ,
 
-Gui, Tab, Till 4
-Gui, Add, Text, xp-165 yp-167 h20 , Fourth Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT4A,
-Gui, Add, CheckBox, xp-100 yp+25 h20 vT4_Startup, Balance Checker in startup
-Gui, Add, Text, yp+25 w30 h20 , AV:
-Gui, Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT4B,
-Gui, Add, CheckBox, xp+110 h20 vT4_Excep, Exceptions added
-Gui, Add, CheckBox, xp-135 yp+44 h20 vT4_Stops, LOCKSET
-Gui, Add, CheckBox, yp+25 h20 vT4_Receipt, Loyalty Receipt printed
-Gui, Add, CheckBox, yp+25 h20 vT4_Points, Live points working
-Gui, Add, CheckBox, yp+25 h20 vT4_prompt, Promptpos = bcpos
-Gui, Add, CheckBox, xp+165 yp-75 h20 vT4_LOTSMAN, LOTSMAN_
-Gui, Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN4, 
-Gui, Add, CheckBox, xp-90 yp+25 w160 h20 vT4_Zed, Zed: $0 Receipts ON
-Gui, Add, Text,  yp+35 h20, MTNTOP PPREWARD:
-Gui, Add, Edit,  yp+15 w140 h18 -E0x200 vT4mtn, 
 
-Gui, Tab, Till 5
-Gui, Add, Text, xp-165 yp-167 h20 , Fifth Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT5A,
-Gui, Add, CheckBox, xp-100 yp+25 h20 vT5_Startup, Balance Checker in startup
-Gui, Add, Text, yp+25 w30 h20 , AV:
-Gui, Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT5B,
-Gui, Add, CheckBox, xp+110 h20 vT5_Excep, Exceptions added
-Gui, Add, CheckBox, xp-135 yp+44 h20 vT5_Stops, LOCKSET
-Gui, Add, CheckBox, yp+25 h20 vT5_Receipt, Loyalty Receipt printed
-Gui, Add, CheckBox, yp+25 h20 vT5_Points, Live points working
-Gui, Add, CheckBox, yp+25 h20 vT5_prompt, Promptpos = bcpos
-Gui, Add, CheckBox, xp+165 yp-75 h20 vT5_LOTSMAN, LOTSMAN_
-Gui, Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN5, 
-Gui, Add, CheckBox, xp-90 yp+25 w160 h20 vT5_Zed, Zed: $0 Receipts ON
-Gui, Add, Text,  yp+35 h20, MTNTOP PPREWARD:
-Gui, Add, Edit,  yp+15 w140 h18 -E0x200 vT5mtn, 
+Gui, LoyIN:Add, Picture, x310 y498 w95 h95 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\all_tag_6.png
+Gui, LoyIN:Add, Text, x435 y507 h20 ,*
+Gui, LoyIN:font, s8 bold cc5c8c6, Segoe UI
+Gui, LoyIN:Add, Button, x443 y507 w72 h40 , &Comment Only
+Gui, LoyIN:font,
+Gui, LoyIN:font, cc5c8c6, Segoe UI
+Gui, LoyIN:Add, Button, x517 y507 w72 h40 , &Confirm
+Gui, LoyIN:Add, Button, x443 y550 w146 h30 , &Exit
 
-Gui, Tab, Till 6
-Gui, Add, Text, xp-165 yp-167 h20 , Sixth Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT6A,
-Gui, Add, CheckBox, xp-100 yp+25 h20 vT6_Startup, Balance Checker in startup
-Gui, Add, Text, yp+25 w30 h20 , AV:
-Gui, Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT6B,
-Gui, Add, CheckBox, xp+110 h20 vT6_Excep, Exceptions added
-Gui, Add, CheckBox, xp-135 yp+44 h20 vT6_Stops, LOCKSET
-Gui, Add, CheckBox, yp+25 h20 vT6_Receipt, Loyalty Receipt printed
-Gui, Add, CheckBox, yp+25 h20 vT6_Points, Live points working
-Gui, Add, CheckBox, yp+25 h20 vT6_prompt, Promptpos = bcpos
-Gui, Add, CheckBox, xp+165 yp-75 h20 vT6_LOTSMAN, LOTSMAN_
-Gui, Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN6, 
-Gui, Add, CheckBox, xp-90 yp+25 w160 h20 vT6_Zed, Zed: $0 Receipts ON
-Gui, Add, Text,  yp+35 h20, MTNTOP PPREWARD:
-Gui, Add, Edit,  yp+15 w140 h18 -E0x200 vT6mtn, 
 
-Gui, Tab, Till 7
-Gui, Add, Text, xp-165 yp-167 h20 , Seventh Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT7A,
-Gui, Add, CheckBox, xp-100 yp+25 h20 vT7_Startup, Balance Checker in startup
-Gui, Add, Text, yp+25 w30 h20 , AV:
-Gui, Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT7B,
-Gui, Add, CheckBox, xp+110 h20 vT7_Excep, Exceptions added
-Gui, Add, CheckBox, xp-135 yp+44 h20 vT7_Stops, LOCKSET
-Gui, Add, CheckBox, yp+25 h20 vT7_Receipt, Loyalty Receipt printed
-Gui, Add, CheckBox, yp+25 h20 vT7_Points, Live points working
-Gui, Add, CheckBox, yp+25 h20 vT7_prompt, Promptpos = bcpos
-Gui, Add, CheckBox, xp+165 yp-75 h20 vT7_LOTSMAN, LOTSMAN_
-Gui, Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN7, 
-Gui, Add, CheckBox, xp-90 yp+25 w160 h20 vT7_Zed, Zed: $0 Receipts ON
-Gui, Add, Text,  yp+35 h20, MTNTOP PPREWARD:
-Gui, Add, Edit,  yp+15 w140 h18 -E0x200 vT7mtn, 
+Gui, LoyIN:Add, Tab2, x230 y69 w365 h250 , Till 1|Till 2|Till 3|Till 4|Till 5|Till 6|Till 7|Till 8
+Gui, LoyIN:Add, Text, xp+25 yp+50 h20 , First Till Name:
+Gui, LoyIN:Add, Edit, xp+100 w100 h20 -E0x200 vBoxT1A,
+Gui, LoyIN:Add, CheckBox, xp-100 yp+25 h20 vT1_Startup, Balance Checker in startup
+Gui, LoyIN:Add, Text, yp+25 w30 h20 , AV:
+Gui, LoyIN:Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT1B,
+Gui, LoyIN:Add, CheckBox, xp+110 h20 vT1_Excep, Exceptions added
+Gui, LoyIN:Add, CheckBox, xp-135 yp+44 w160 h20 vT1_Stops, LOCKSET ;Stops: Hook updated (V3 Transition)
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT1_Receipt, Loyalty Receipt printed
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT1_Points, Live points working
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT1_prompt, Promptpos = bcpos
+Gui, LoyIN:Add, CheckBox, xp+165 yp-75 h20 vT1_LOTSMAN, LOTSMAN_
+Gui, LoyIN:Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN1, 
+Gui, LoyIN:Add, CheckBox, xp-90 yp+25 w160 h20 vT1_Zed, Zed: $0 Receipts ON
+Gui, LoyIN:Add, Text, yp+35 h20, MTNTOP PPREWARD:
+Gui, LoyIN:Add, Edit, yp+15 w140 h18 -E0x200 vT1mtn, 
 
-Gui, Tab, Till 8
-Gui, Add, Text, xp-165 yp-167 h20 , Eighth Till Name:
-Gui, Add, Edit, xp+100 w100 h20 -E0x200 vBoxT8A,
-Gui, Add, CheckBox, xp-100 yp+25 h20 vT8_Startup, Balance Checker in startup
-Gui, Add, Text, yp+25 w30 h20 , AV:
-Gui, Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT8B,
-Gui, Add, CheckBox, xp+110 h20 vT8_Excep, Exceptions added
-Gui, Add, CheckBox, xp-135 yp+44 h20 vT8_Stops, LOCKSET
-Gui, Add, CheckBox, yp+25 h20 vT8_Receipt, Loyalty Receipt printed
-Gui, Add, CheckBox, yp+25 h20 vT8_Points, Live points working
-Gui, Add, CheckBox, yp+25 h20 vT8_prompt, Promptpos = bcpos
-Gui, Add, CheckBox, xp+165 yp-75 h20 vT8_LOTSMAN, LOTSMAN_
-Gui, Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN8, 
-Gui, Add, CheckBox, xp-90 yp+25 w160 h20 vT8_Zed, Zed: $0 Receipts ON
-Gui, Add, Text,  yp+35 h20, MTNTOP PPREWARD:
-Gui, Add, Edit,  yp+15 w140 h18 -E0x200 vT8mtn, 
 
-Gui, Show, x200 y200 w605 h595,%A_Space%
+Gui, LoyIN:Tab, Till 2
+Gui, LoyIN:Add, Text, xp-165 yp-167 h20 , Second Till Name:
+Gui, LoyIN:Add, Edit, xp+100 w100 h20 -E0x200 vBoxT2A,
+Gui, LoyIN:Add, CheckBox, xp-100 yp+25 h20 vT2_Startup, Balance Checker in startup
+Gui, LoyIN:Add, Text, yp+25 w30 h20 , AV:
+Gui, LoyIN:Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT2B,
+Gui, LoyIN:Add, CheckBox, xp+110 h20 vT2_Excep, Exceptions added
+Gui, LoyIN:Add, CheckBox, xp-135 yp+44 h20 vT2_Stops, LOCKSET
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT2_Receipt, Loyalty Receipt printed
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT2_Points, Live points working
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT2_prompt, Promptpos = bcpos
+Gui, LoyIN:Add, CheckBox, xp+165 yp-75 h20 vT2_LOTSMAN, LOTSMAN_
+Gui, LoyIN:Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN2, 
+Gui, LoyIN:Add, CheckBox, xp-90 yp+25 w160 h20 vT2_Zed, Zed: $0 Receipts ON
+Gui, LoyIN:Add, Text,  yp+35 h20, MTNTOP PPREWARD:
+Gui, LoyIN:Add, Edit,  yp+15 w140 h18 -E0x200 vT2mtn, 
+
+Gui, LoyIN:Tab, Till 3
+Gui, LoyIN:Add, Text, xp-165 yp-167 h20 , Third Till Name:
+Gui, LoyIN:Add, Edit, xp+100 w100 h20 -E0x200 vBoxT3A,
+Gui, LoyIN:Add, CheckBox, xp-100 yp+25 h20 vT3_Startup, Balance Checker in startup
+Gui, LoyIN:Add, Text, yp+25 w30 h20 , AV:
+Gui, LoyIN:Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT3B,
+Gui, LoyIN:Add, CheckBox, xp+110 h20 vT3_Excep, Exceptions added
+Gui, LoyIN:Add, CheckBox, xp-135 yp+44 h20 vT3_Stops, LOCKSET
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT3_Receipt, Loyalty Receipt printed
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT3_Points, Live points working
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT3_prompt, Promptpos = bcpos
+Gui, LoyIN:Add, CheckBox, xp+165 yp-75 h20 vT3_LOTSMAN, LOTSMAN_
+Gui, LoyIN:Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN3, 
+Gui, LoyIN:Add, CheckBox, xp-90 yp+25 w160 h20 vT3_Zed, Zed: $0 Receipts ON
+Gui, LoyIN:Add, Text,  yp+35 h20, MTNTOP PPREWARD:
+Gui, LoyIN:Add, Edit,  yp+15 w140 h18 -E0x200 vT3mtn, 
+
+Gui, LoyIN:Tab, Till 4
+Gui, LoyIN:Add, Text, xp-165 yp-167 h20 , Fourth Till Name:
+Gui, LoyIN:Add, Edit, xp+100 w100 h20 -E0x200 vBoxT4A,
+Gui, LoyIN:Add, CheckBox, xp-100 yp+25 h20 vT4_Startup, Balance Checker in startup
+Gui, LoyIN:Add, Text, yp+25 w30 h20 , AV:
+Gui, LoyIN:Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT4B,
+Gui, LoyIN:Add, CheckBox, xp+110 h20 vT4_Excep, Exceptions added
+Gui, LoyIN:Add, CheckBox, xp-135 yp+44 h20 vT4_Stops, LOCKSET
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT4_Receipt, Loyalty Receipt printed
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT4_Points, Live points working
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT4_prompt, Promptpos = bcpos
+Gui, LoyIN:Add, CheckBox, xp+165 yp-75 h20 vT4_LOTSMAN, LOTSMAN_
+Gui, LoyIN:Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN4, 
+Gui, LoyIN:Add, CheckBox, xp-90 yp+25 w160 h20 vT4_Zed, Zed: $0 Receipts ON
+Gui, LoyIN:Add, Text,  yp+35 h20, MTNTOP PPREWARD:
+Gui, LoyIN:Add, Edit,  yp+15 w140 h18 -E0x200 vT4mtn, 
+
+Gui, LoyIN:Tab, Till 5
+Gui, LoyIN:Add, Text, xp-165 yp-167 h20 , Fifth Till Name:
+Gui, LoyIN:Add, Edit, xp+100 w100 h20 -E0x200 vBoxT5A,
+Gui, LoyIN:Add, CheckBox, xp-100 yp+25 h20 vT5_Startup, Balance Checker in startup
+Gui, LoyIN:Add, Text, yp+25 w30 h20 , AV:
+Gui, LoyIN:Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT5B,
+Gui, LoyIN:Add, CheckBox, xp+110 h20 vT5_Excep, Exceptions added
+Gui, LoyIN:Add, CheckBox, xp-135 yp+44 h20 vT5_Stops, LOCKSET
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT5_Receipt, Loyalty Receipt printed
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT5_Points, Live points working
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT5_prompt, Promptpos = bcpos
+Gui, LoyIN:Add, CheckBox, xp+165 yp-75 h20 vT5_LOTSMAN, LOTSMAN_
+Gui, LoyIN:Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN5, 
+Gui, LoyIN:Add, CheckBox, xp-90 yp+25 w160 h20 vT5_Zed, Zed: $0 Receipts ON
+Gui, LoyIN:Add, Text,  yp+35 h20, MTNTOP PPREWARD:
+Gui, LoyIN:Add, Edit,  yp+15 w140 h18 -E0x200 vT5mtn, 
+
+Gui, LoyIN:Tab, Till 6
+Gui, LoyIN:Add, Text, xp-165 yp-167 h20 , Sixth Till Name:
+Gui, LoyIN:Add, Edit, xp+100 w100 h20 -E0x200 vBoxT6A,
+Gui, LoyIN:Add, CheckBox, xp-100 yp+25 h20 vT6_Startup, Balance Checker in startup
+Gui, LoyIN:Add, Text, yp+25 w30 h20 , AV:
+Gui, LoyIN:Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT6B,
+Gui, LoyIN:Add, CheckBox, xp+110 h20 vT6_Excep, Exceptions added
+Gui, LoyIN:Add, CheckBox, xp-135 yp+44 h20 vT6_Stops, LOCKSET
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT6_Receipt, Loyalty Receipt printed
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT6_Points, Live points working
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT6_prompt, Promptpos = bcpos
+Gui, LoyIN:Add, CheckBox, xp+165 yp-75 h20 vT6_LOTSMAN, LOTSMAN_
+Gui, LoyIN:Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN6, 
+Gui, LoyIN:Add, CheckBox, xp-90 yp+25 w160 h20 vT6_Zed, Zed: $0 Receipts ON
+Gui, LoyIN:Add, Text,  yp+35 h20, MTNTOP PPREWARD:
+Gui, LoyIN:Add, Edit,  yp+15 w140 h18 -E0x200 vT6mtn, 
+
+Gui, LoyIN:Tab, Till 7
+Gui, LoyIN:Add, Text, xp-165 yp-167 h20 , Seventh Till Name:
+Gui, LoyIN:Add, Edit, xp+100 w100 h20 -E0x200 vBoxT7A,
+Gui, LoyIN:Add, CheckBox, xp-100 yp+25 h20 vT7_Startup, Balance Checker in startup
+Gui, LoyIN:Add, Text, yp+25 w30 h20 , AV:
+Gui, LoyIN:Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT7B,
+Gui, LoyIN:Add, CheckBox, xp+110 h20 vT7_Excep, Exceptions added
+Gui, LoyIN:Add, CheckBox, xp-135 yp+44 h20 vT7_Stops, LOCKSET
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT7_Receipt, Loyalty Receipt printed
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT7_Points, Live points working
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT7_prompt, Promptpos = bcpos
+Gui, LoyIN:Add, CheckBox, xp+165 yp-75 h20 vT7_LOTSMAN, LOTSMAN_
+Gui, LoyIN:Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN7, 
+Gui, LoyIN:Add, CheckBox, xp-90 yp+25 w160 h20 vT7_Zed, Zed: $0 Receipts ON
+Gui, LoyIN:Add, Text,  yp+35 h20, MTNTOP PPREWARD:
+Gui, LoyIN:Add, Edit,  yp+15 w140 h18 -E0x200 vT7mtn, 
+
+Gui, LoyIN:Tab, Till 8
+Gui, LoyIN:Add, Text, xp-165 yp-167 h20 , Eighth Till Name:
+Gui, LoyIN:Add, Edit, xp+100 w100 h20 -E0x200 vBoxT8A,
+Gui, LoyIN:Add, CheckBox, xp-100 yp+25 h20 vT8_Startup, Balance Checker in startup
+Gui, LoyIN:Add, Text, yp+25 w30 h20 , AV:
+Gui, LoyIN:Add, Edit, xp+25 yp-2 w100 h20 -E0x200 vBoxT8B,
+Gui, LoyIN:Add, CheckBox, xp+110 h20 vT8_Excep, Exceptions added
+Gui, LoyIN:Add, CheckBox, xp-135 yp+44 h20 vT8_Stops, LOCKSET
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT8_Receipt, Loyalty Receipt printed
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT8_Points, Live points working
+Gui, LoyIN:Add, CheckBox, yp+25 h20 vT8_prompt, Promptpos = bcpos
+Gui, LoyIN:Add, CheckBox, xp+165 yp-75 h20 vT8_LOTSMAN, LOTSMAN_
+Gui, LoyIN:Add, Edit, xp+90 w20 h16 -E0x200 vLOTSMAN8, 
+Gui, LoyIN:Add, CheckBox, xp-90 yp+25 w160 h20 vT8_Zed, Zed: $0 Receipts ON
+Gui, LoyIN:Add, Text,  yp+35 h20, MTNTOP PPREWARD:
+Gui, LoyIN:Add, Edit,  yp+15 w140 h18 -E0x200 vT8mtn, 
+
+Gui, LoyIN:Show, x200 y200 w605 h595,%A_Space%
 
 loop
 {
-    Gui, Submit, NoHide
+    Gui, LoyIN:Submit, NoHide
 
 	var := SCODE
     RegExMatch(codelist, "m)^" var "(.+)$", a)
@@ -263,7 +252,7 @@ msgbox, 16, Warning, Please enter Total Tills,
 return
 }
 
-Gui, Submit,
+Gui, LoyIN:Submit,
 
 If(Cb_DispDept=1)
 GuiControlGet, CBDispDept,, Cb_DispDept, Text
@@ -490,7 +479,7 @@ IniRead Prefix, C:\AutoHotKey\settings.ini, Loyalty, Prefix
 IniRead, Sitecode, C:\AutoHotKey\settings.ini, Loyalty, Sitecode
 IniRead, StoreName, C:\AutoHotKey\settings.ini, Loyalty, StoreName
 
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %vName% %Surname% - Loyalty Install `n, G:\Support\Public Staff Folders\Aaron\scriptlog.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Install `n, G:\Support\Public Staff Folders\Aaron\scriptlog.txt
 
 WorkBookPath        := "C:\AutoHotKey\Files\Loyalty Template.xlsx"	; store the path to the workbook
 objExcel			:= ComObjCreate("Excel.Application")        	; create a handle to a new excel application
@@ -925,12 +914,12 @@ IniWrite, %Points%, G:\Support\Public Staff Folders\Aaron\points\%vName%\%date%.
 
 If(Cb_APIROLL=1)
 	{
-	Gui, 73:+AlwaysOnTop
-	Gui, 73:Add, Picture, x-88 y-51 w400 h800 , C:\AutoHotKey\Files\flash.png
-	Gui, 73:Font, S10 Bold, Segoe UI
-	Gui, 73:Add, Text, x202 y29 w230 h30 , Remember install dates for Site IQ!
-	Gui, 73:Add, Button, x290 y199 w150 h30 , Close
-	Gui, 73:Show, w466 h263,  
+	Gui, LoyIN73:+AlwaysOnTop
+	Gui, LoyIN73:Add, Picture, x-88 y-51 w400 h800 , C:\AutoHotKey\Files\flash.png
+	Gui, LoyIN73:Font, S10 Bold, Segoe UI
+	Gui, LoyIN73:Add, Text, x202 y29 w230 h30 , Remember install dates for Site IQ!
+	Gui, LoyIN73:Add, Button, x290 y199 w150 h30 , Close
+	Gui, LoyIN73:Show, w466 h263,  
 	}
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
@@ -945,7 +934,7 @@ return
 
 ButtonCommentOnly:
 
-Gui, Submit, Nohide
+Gui, LoyIN:Submit, Nohide
 
 if (!SCODE){
 msgbox, 16, Warning, Please enter a SITE CODE ID, 
@@ -1426,37 +1415,40 @@ MsgBox, 0, Comment Created, Comment has been copied to clipboard, points added t
 
 If(Cb_APIROLL=1)
 	{
-	Gui, 73:+AlwaysOnTop
-	Gui, 73:Add, Picture, x-88 y-51 w400 h800 , C:\AutoHotKey\Files\flash.png
-	Gui, 73:Font, S10 Bold, Segoe UI
-	Gui, 73:Add, Text, x202 y29 w230 h30 , Remember install dates for Site IQ!
-	Gui, 73:Add, Button, x290 y199 w150 h30 , Close
-	Gui, 73:Show, w466 h263,  
+	Gui, LoyIN73:+AlwaysOnTop
+	Gui, LoyIN73:Add, Picture, x-88 y-51 w400 h800 , C:\AutoHotKey\Files\flash.png
+	Gui, LoyIN73:Font, S10 Bold, Segoe UI
+	Gui, LoyIN73:Add, Text, x202 y29 w230 h30 , Remember install dates for Site IQ!
+	Gui, LoyIN73:Add, Button, x290 y199 w150 h30 , Close
+	Gui, LoyIN73:Show, w466 h263,  
 	}
 return
 
-73ButtonClose:
-gui, 73:Destroy
+LoyIN73ButtonClose:
+Gui, LoyIN73:Destroy
 return
 
-ButtonExit:
-ExitApp
+LoyINButtonExit:
+Reload
+Return
 
 ConfirmationWindow:
-Gui, Destroy
-;Gui, +AlwaysOnTop
-Gui, font, s10, Segoe UI
-Gui, Add, Text, x24 y22 w240 h40 , File created successfully!`nWould you like to open target folder?
-Gui, font,
-Gui, Add, Button, x78 y70 w80 h28 , Yes
-Gui, Add, Button, x168 y70 w80 h28 , No
-Gui, Show, w267 h113, Complete!
+Gui, LoyIN:Destroy
+;Gui, LoyIN:+AlwaysOnTop
+Gui, LoyIN:font, s10, Segoe UI
+Gui, LoyIN:Add, Text, x24 y22 w240 h40 , File created successfully!`nWould you like to open target folder?
+Gui, LoyIN:font,
+Gui, LoyIN:Add, Button, x78 y70 w80 h28 , Yes
+Gui, LoyIN:Add, Button, x168 y70 w80 h28 , No
+Gui, LoyIN:Show, w267 h113, Complete!
 return
 
-ButtonYes:
-Gui, Destroy
+LoyINButtonYes:
+Gui, LoyIN:Destroy
 run, G:\Loyalty\All Stores\%Prefix%\%SCODE% - %StoreName%\Install Sheet\
-ExitApp
+Reload
+Return
 
-ButtonNo:
-ExitApp
+LoyINButtonNo:
+Reload
+Return

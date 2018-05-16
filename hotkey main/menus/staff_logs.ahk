@@ -1,5 +1,6 @@
 #SingleInstance, Force
 
+logviewer:
 FormatTime, scripttime,, yyyyMM
 FileRead, Data_Source, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
@@ -52,3 +53,4 @@ Reload
 Return
 
 }
+return
