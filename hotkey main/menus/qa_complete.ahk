@@ -899,7 +899,8 @@ IniRead, Points, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date%.ini,
 Points++  ; This adds 1 to your variable TimesOpened.
 IniWrite, %Points%, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date%.ini, Count Points, Points
 
-ExitApp
+Reload
+Return
 
 QAExit:
 WinGetPos, gui_x, gui_y,,, ahk_id %gui_id%

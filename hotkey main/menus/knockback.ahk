@@ -23,8 +23,9 @@ Gui, 21:Add, Edit, -E0x200 x118 y170 w82 vSCODE,
 Gui, 21:Add, Text, x12 y200 w220 , What was the reason for being declined?
 Gui, 21:Add, Edit, -E0x200 x12 y225 w186 h50 -VScroll vBox2KB,
 
-Gui, 21:Add, GroupBox, yp+70 w186 h110, Preview
-Gui, 21:Add, Text, xp+15 yp+15 w154 h80 vPreview, 
+Gui, 21:Add, GroupBox, yp+100 w184 h110, Preview
+Gui, 21:Add, Text, xp+2 yp+20 w20 h88, 
+Gui, 21:Add, Text, xp+8 yp+0 w172 h88 vPreview, 
 
 ;Gui, 21:Add, Picture, x56 y500 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
 
