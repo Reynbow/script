@@ -2,13 +2,14 @@
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
-gui_x +=451
+gui_x +=450
 
 list1 = 500|1000|2000|5000
-Gui, 30:Add, Picture, x-181 y342 , C:\AutoHotKey\Files\back-right.png
-Gui, 30:Color, 1d1f21, 383D46
+Gui, 30:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-loy-ext.png
+Gui, 30:Color, %BGColour%, 2b2e43
+Gui, 30:-SysMenu -caption -Border
 Gui, 30:font, s12 bold cE8EBF5, Segoe UI
-Gui, 30:Add, Text, Center x0 y22 w210 h50, CARD ORDERS
+Gui, 30:Add, Text, Center x0 y160 w210 h50, CARD ORDERS
 Gui, 30:font,
 Gui, 30:font, s8 cE8EBF5, Segoe UI
 Gui, 30:Add, Text, x30 yp+50 w180 h50, Was the proof approved by the client?
@@ -22,10 +23,16 @@ Gui, 30:Add, Radio, x55 yp+20 v2000, 2000
 Gui, 30:Add, Radio, x55 yp+20 v5000, 5000
 ;Gui, 30:Add, DropDownList, x30 w150 vChoiceCO, %list1%
 
-Gui, 30:Add, Button, x12 y635 w184 h30 , &Confirm
-Gui, 30:Add, Button, x12 y680 w184 h30 , &Close
+Gui, 30:Add, Button, x12 y625 w184 h30 hwndCard1, Confirm
+Gui, 30:Add, Button, x12 y670 w184 h30 hwndCard2, Close
 
-Gui, 30:Show, x%gui_x% y%gui_y% w210 h725, %A_Space%
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+ImageButton.Create(Card1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(Card2, Opt1, Opt2, , , Opt5)
+
+Gui, 30:Show, x%gui_x% y%gui_y% w210 h715, %A_Space%
 Return
 
 30ButtonConfirm:

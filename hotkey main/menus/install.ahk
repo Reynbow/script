@@ -18,13 +18,15 @@ IfNotExist, C:\AutoHotKey\Files\flash.png
 
 Gui, Destroy 
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
-Gui, 18:-SysMenu +Border
+Gui, 18:-SysMenu -caption -Border
 
 ;Gui, 18:Add, Picture, x0 y75 , C:\AutoHotKey\Files\back-sup.png
 ;Gui, 18:Add, Picture, x270 y75 , C:\AutoHotKey\Files\back-right.png
 
 Gui, 18:font, cE8EBF5, Segoe UI
-Gui, 18:Color, 1d1f21, 383D46
+Gui, 18:Color, %BGColour%, 2b2e43
+Gui, 18:Add, Picture, x0 y120 , C:\AutoHotKey\Files\ui\back-sup-wide.png
+Gui, 18:Add, Text, x0 y0 w652 h25 Center GuiMove,
 Gui, 18:Add, Checkbox, x18 y59 vHSNET, HSNET%A_Space%
 Gui, 18:Add, Checkbox, x18 y79 vDIN, #DISPXIN%A_Space%
 Gui, 18:Add, Checkbox, x18 y99 vPIN, #POSXIN%A_Space%
@@ -62,11 +64,21 @@ Gui, 18:font, s8 cE8EBF5, Segoe UI
 Gui, 18:Add, Text, x406 y59, An incoming call initiated the install
 Gui, 18:Add, Text, x406 y79, An outgoing call initiated the install
 Gui, 18:Add, Text, x406 y99, An email initiated the install
-Gui, 18:Add, Button, x326 y388 w90 h30 , Confirm
-Gui, 18:Add, Button, x432 y388 w90 h30 , Back
-Gui, 18:Add, Button, x536 y388 w90 h30 , Exit
+Gui, 18:Add, Button, x326 y388 w90 h30 hwndSupIn1, Confirm
+Gui, 18:Add, Button, x432 y388 w90 h30 hwndSupIn2, Back
+Gui, 18:Add, Button, x536 y388 w90 h30 hwndSupIn3, Exit
 Gui, 18:Add, GroupBox, x326 y159 w300 h210, Preview
-Gui, 18:Add, Text, x336 y179 w280 h180 vPreview
+Gui, 18:Add, Text, x329 y179 w20 h188
+Gui, 18:Add, Text, x336 y179 w288 h188 vPreview
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(SupIn1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(SupIn2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(SupIn3, Opt1, Opt2, , , Opt5)
+
 Gui, 18:Show, %Gui_Cord% w652 h432,  
 Gui, 2:Destroy
 Gui, 30:Destroy

@@ -5,13 +5,13 @@ list2 = #INSTALL|#DATAOUT
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
-gui_x +=451
+gui_x +=450
 
-Gui, 67:-SysMenu +Border
+Gui, 67:-SysMenu -caption -Border
 
-Gui, 67:Add, Picture, x-181 y342 , C:\AutoHotKey\Files\back-right.png
+Gui, 67:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-sup-ext.png
 
-Gui, 67:Color, 1d1f21, 383D46
+Gui, 67:Color, %BGColour%, 2b2e43
 Gui, 67:font, s12 bold cE8EBF5, Segoe UI
 Gui, 67:Add, Edit, -E0x200 x1920 y2490 w80 vPlacehold,
 Gui, 67:Add, Text, center x0 y24 w210, PHONE`nRANG OUT
@@ -34,10 +34,16 @@ Gui, 67:Add, GroupBox, yp+60 w184 h110, Preview
 Gui, 67:Add, Text, xp+2 yp+20 w20 h88, 
 Gui, 67:Add, Text, xp+8 yp+0 w172 h88 vPreview, 
 
-Gui, 67:Add, Button, x12 y635 w184 h30 , &Confirm
-Gui, 67:Add, Button, x12 y680 w184 h30 , &Close
+Gui, 67:Add, Button, x12 y625 w184 h30 hwndPRO1, Confirm
+Gui, 67:Add, Button, x12 y670 w184 h30 hwndPRO2, Close
 
-Gui, 67:Show, x%gui_x% y%gui_y% w210 h725, %A_Space%
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+ImageButton.Create(PRO1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(PRO2, Opt1, Opt2, , , Opt5)
+
+Gui, 67:Show, x%gui_x% y%gui_y% w210 h715, %A_Space%
 
 loop
 {

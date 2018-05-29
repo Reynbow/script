@@ -32,9 +32,11 @@ FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 list2GF = |Top Right|Bottom Right|Top Left|Bottom Left|Random
 list3GF = |Yes|No|NA
-Gui, 15:-SysMenu +Border
+Gui, 15:-SysMenu -caption -Border
+Gui, 15:Add, Text, x0 y0 w652 h25 Center GuiMove,
 Gui, 15:font, s16 bold cE8EBF5, Segoe UI
-Gui, 15:Color, 1d1f21, 383D46
+Gui, 15:Color, %BGColour%, 2b2e43
+Gui, 15:Add, Picture, x0 y310 , C:\AutoHotKey\Files\ui\back-sup-wide.png
 Gui, 15:Add, Text, x20 y12 , GENERAL FIX
 Gui, 15:Add, Text, x306 y12 , ISSUES
 Gui, 15:font,
@@ -115,16 +117,16 @@ Gui, 15:Add, Text, yp+20 w250, %TagDesc11%
 Gui, 15:Add, Text, yp+20 w250, %TagDesc12%
 Gui, 15:Add, Text, yp+20 w250, %TagDesc13%
 Gui, 15:Add, Text, yp+20 w250, %TagDesc14%
-Gui, 15:Add, Text, yp+20 w250, %TagDesc15%
-Gui, 15:Add, Text, yp+20 w250, %TagDesc16%
-Gui, 15:Add, Text, yp+20 w250, %TagDesc17%
-Gui, 15:Add, Text, yp+20 w250, %TagDesc18%
-Gui, 15:Add, Text, yp+20 w250, %TagDesc19%
-Gui, 15:Add, Text, yp+20 w250, %TagDesc20%
-Gui, 15:Add, Text, yp+20 w250, %TagDesc21%
-Gui, 15:Add, Text, yp+20 w250, %TagDesc22%
-Gui, 15:Add, Text, yp+20 w250, %TagDesc23%
-Gui, 15:Add, Text, yp+20 w250, %TagDesc24%
+Gui, 15:Add, Text, yp+20 w250 BackGroundTrans, %TagDesc15%
+Gui, 15:Add, Text, yp+20 w250 BackGroundTrans, %TagDesc16%
+Gui, 15:Add, Text, yp+20 w250 BackGroundTrans, %TagDesc17%
+Gui, 15:Add, Text, yp+20 w250 BackGroundTrans, %TagDesc18%
+Gui, 15:Add, Text, yp+20 w250 BackGroundTrans, %TagDesc19%
+Gui, 15:Add, Text, yp+20 w250 BackGroundTrans, %TagDesc20%
+Gui, 15:Add, Text, yp+20 w250 BackGroundTrans, %TagDesc21%
+Gui, 15:Add, Text, yp+20 w250 BackGroundTrans, %TagDesc22%
+Gui, 15:Add, Text, yp+20 w250 BackGroundTrans, %TagDesc23%
+Gui, 15:Add, Text, yp+20 w250 BackGroundTrans, %TagDesc24%
 ;Gui, 15:Add, Text, yp+20 w250, %TagDesc25%
 ;Gui, 15:Add, Text, yp+20 w250, %TagDesc26%
 ;Gui, 15:Add, Text, yp+20 w250, %TagDesc27%
@@ -143,12 +145,23 @@ If Dog = Aaron
 	Gui, 15:Add, Button, x400 y18 w80 h20 gEDITdo, EDIT
 	}
 
-Gui, 15:Add, Button, x60 y448 w170 h30 , Confirm
-Gui, 15:Add, Button, x60 y488 w80 h30 , Back
-Gui, 15:Add, Button, x150 y488 w80 h30 , Exit
+Gui, 15:Add, Button, x60 y448 w170 h30 hwndSupDO1, Confirm
+Gui, 15:Add, Button, x60 y488 w80 h30 hwndSupDO2, Back
+Gui, 15:Add, Button, x150 y488 w80 h30 hwndSupDO3, Exit
 Gui, 15:Add, GroupBox, x16 y550 w620 h110, Preview
-Gui, 15:Add, Text, x30 y570 w590 h70 vPreview, 
-Gui, 15:Show, %Gui_Cord% w650,  
+Gui, 15:Add, Text, x18 y570 w50 h88
+Gui, 15:Add, Text, x144 y558 w490 h30
+Gui, 15:Add, Text, x30 y570 w604 h88 vPreview, 
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(SupDO1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(SupDO2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(SupDO3, Opt1, Opt2, , , Opt5)
+
+Gui, 15:Show, %Gui_Cord% h675 w650,  
 Gui, 2:Destroy
 Gui, 30:Destroy
 

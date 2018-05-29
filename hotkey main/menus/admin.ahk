@@ -54,10 +54,11 @@ Gui, Destroy
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 74:-SysMenu +Border
-Gui, 74:Color, 1d1f21, 383D46
-Gui, 74:Add, Picture, x375 y174 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
+Gui, 74:-SysMenu -caption -Border
+Gui, 74:Color, %BGColour%, 2b2e43
+Gui, 74:Add, Picture, x460 y245 , C:\AutoHotKey\Files\ui\back-sup.png
 Gui, 74:font, s12 bold cE8EBF5, Segoe UI
+Gui, 74:Add, Text, x0 y0 w910 h25 Center GuiMove,
 Gui, 74:Add, Edit, x1920 y2490 w80 vPlacehold,
 Gui, 74:Add, Text, x18 y18 , CONTACT INITIATION
 Gui, 74:font,
@@ -145,28 +146,28 @@ Gui, 74:font, s8 bold cE8EBF5 , Segoe UI
 Gui, 74:Add, Text, x686 y45, %AID1%
 Gui, 74:font,
 Gui, 74:font, s8 cE8EBF5, Segoe UI
-Gui, 74:Add, Text, x686 y65, %AID2%
-Gui, 74:Add, Text, x686 y85, %AID3%
-Gui, 74:Add, Text, x686 y105, %AID4%
-Gui, 74:Add, Text, x686 y125, %AID5%
-Gui, 74:Add, Text, x686 y145, %AID6%
-Gui, 74:Add, Text, x686 y165, %AID7%
-Gui, 74:Add, Text, x686 y185, %AID8%
-Gui, 74:Add, Text, x686 y205, %AID9%
-Gui, 74:Add, Text, x686 y225, %AID10%
-Gui, 74:Add, Text, x686 y245, %AID11%
-Gui, 74:Add, Text, x686 y265, %AID12%
-Gui, 74:Add, Text, x686 y285, %AID13%
-Gui, 74:Add, Text, x686 y305, %AID14%
-Gui, 74:Add, Text, x686 y325, %AID15%
-Gui, 74:Add, Text, x686 y345, %AID16%
-Gui, 74:Add, Text, x686 y365, %AID17%
-Gui, 74:Add, Text, x686 y385, %AID18%
-Gui, 74:Add, Text, x686 y405, %AID19%
-Gui, 74:Add, Text, x686 y425, %AID20%
-Gui, 74:Add, Text, x686 y445, %AID21%
-Gui, 74:Add, Text, x686 y465, %AID22%
-Gui, 74:Add, Text, x686 y485, %AID23%
+Gui, 74:Add, Text, BackGroundTrans x686 y65, %AID2%
+Gui, 74:Add, Text, BackGroundTrans x686 y85, %AID3%
+Gui, 74:Add, Text, BackGroundTrans x686 y105, %AID4%
+Gui, 74:Add, Text, BackGroundTrans x686 y125, %AID5%
+Gui, 74:Add, Text, BackGroundTrans x686 y145, %AID6%
+Gui, 74:Add, Text, BackGroundTrans x686 y165, %AID7%
+Gui, 74:Add, Text, BackGroundTrans x686 y185, %AID8%
+Gui, 74:Add, Text, BackGroundTrans x686 y205, %AID9%
+Gui, 74:Add, Text, BackGroundTrans x686 y225, %AID10%
+Gui, 74:Add, Text, BackGroundTrans x686 y245, %AID11%
+Gui, 74:Add, Text, BackGroundTrans x686 y265, %AID12%
+Gui, 74:Add, Text, BackGroundTrans x686 y285, %AID13%
+Gui, 74:Add, Text, BackGroundTrans x686 y305, %AID14%
+Gui, 74:Add, Text, BackGroundTrans x686 y325, %AID15%
+Gui, 74:Add, Text, BackGroundTrans x686 y345, %AID16%
+Gui, 74:Add, Text, BackGroundTrans x686 y365, %AID17%
+Gui, 74:Add, Text, BackGroundTrans x686 y385, %AID18%
+Gui, 74:Add, Text, BackGroundTrans x686 y405, %AID19%
+Gui, 74:Add, Text, BackGroundTrans x686 y425, %AID20%
+Gui, 74:Add, Text, BackGroundTrans x686 y445, %AID21%
+Gui, 74:Add, Text, BackGroundTrans x686 y465, %AID22%
+Gui, 74:Add, Text, BackGroundTrans x686 y485, %AID23%
 Gui, 74:font, s12 bold cE8EBF5, Segoe UI
 Gui, 74:Add, Text, x306 y278 , PRODUCTS
 Gui, 74:font,
@@ -182,23 +183,27 @@ Gui, 74:Add, Checkbox, x306 y425 vCb_35, %APT7%
 Gui, 74:Add, Checkbox, x306 y445 vCb_36, %APT8%
 Gui, 74:Add, Checkbox, x306 y465 vCb_37, %APT9%
 Gui, 74:Add, Checkbox, x306 y485 vCb_39, %APT10%
-Gui, 74:Add, Text, x406 y305 -E0x200, %APD1%
-Gui, 74:Add, Text, x406 y325 -E0x200, %APD2%
-Gui, 74:Add, Text, x406 y345 -E0x200, %APD3%
-Gui, 74:Add, Text, x406 y365 -E0x200, %APD4%
-Gui, 74:Add, Text, x406 y385 -E0x200, %APD5%
-Gui, 74:Add, Text, x406 y405 -E0x200, %APD6%
-Gui, 74:Add, Text, x406 y425 -E0x200, %APD7%
-Gui, 74:Add, Text, x406 y445 -E0x200, %APD8%
-Gui, 74:Add, Text, x406 y465 -E0x200, %APD9%
-Gui, 74:Add, Text, x406 y485 -E0x200, %APD10%
-Gui, 74:Add, Button, x18 y468 w80 h30 -E0x200, Confirm
-Gui, 74:Add, Button, x105 y468 w80 h30 -E0x200, Back
-Gui, 74:Add, Button, x192 y468 w80 h30 -E0x200, Exit
+Gui, 74:Add, Text, BackGroundTrans x406 y305 -E0x200, %APD1%
+Gui, 74:Add, Text, BackGroundTrans x406 y325 -E0x200, %APD2%
+Gui, 74:Add, Text, BackGroundTrans x406 y345 -E0x200, %APD3%
+Gui, 74:Add, Text, BackGroundTrans x406 y365 -E0x200, %APD4%
+Gui, 74:Add, Text, BackGroundTrans x406 y385 -E0x200, %APD5%
+Gui, 74:Add, Text, BackGroundTrans x406 y405 -E0x200, %APD6%
+Gui, 74:Add, Text, BackGroundTrans x406 y425 -E0x200, %APD7%
+Gui, 74:Add, Text, BackGroundTrans x406 y445 -E0x200, %APD8%
+Gui, 74:Add, Text, BackGroundTrans x406 y465 -E0x200, %APD9%
+Gui, 74:Add, Text, BackGroundTrans x406 y485 -E0x200, %APD10%
+Gui, 74:Add, Button, x18 y468 w80 h30 -E0x200 hwndSupAD1, Confirm
+Gui, 74:Add, Button, x105 y468 w80 h30 -E0x200 hwndSupAD2, Back
+Gui, 74:Add, Button, x192 y468 w80 h30 -E0x200 hwndSupAD3, Exit
 
-Gui, 74:font,
-Gui, 74:font, s6 cE8EBF5, Segoe UI
-;Gui, 74:Add, Button, x18 y447 w80 h15 , Repeat
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(SupAD1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(SupAD2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(SupAD3, Opt1, Opt2, , , Opt5)
 
 Gui, 74:Show, %Gui_Cord% w910 h512,%A_space%
 Gui, 2:Destroy

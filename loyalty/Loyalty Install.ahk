@@ -11,16 +11,19 @@ sleep 50
 
 ;Gui, LoyIN:+AlwaysOnTop
 
+IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
 
-Gui,-SysMenu +ToolWindow +Border
-Gui, LoyIN:font, s16 bold cc5c8c6, Segoe UI
-Gui, LoyIN:Color, 1d1f21, 383D46
+Gui, LoyIN:-SysMenu -caption -Border
+Gui, LoyIN:Color, %BGColour%, 2b2e43
+Gui, LoyIN:Add, Text, x0 y0 w910 h25 Center GuiMove,
+Gui, LoyIN:Add, Picture, x0 y280 , C:\AutoHotKey\Files\ui\back-loy-wide.png
+Gui, LoyIN:font, s16 bold CWhite, Segoe UI
 Gui, LoyIN:Add, Text, x10 y6 h20 , LOYALTY INSTALL
-Gui, LoyIN:font, s8 bold cc5c8c6, Segoe UI
+Gui, LoyIN:font, s8 bold CWhite, Segoe UI
 Gui, LoyIN:Add, Text, x10 y50 h20 w225 vPreviewCODE,
 Gui, LoyIN:font, 
-Gui, LoyIN:font, s8 cc5c8c6, Segoe UI
+Gui, LoyIN:font, s8 CWhite, Segoe UI
 Gui, LoyIN:Add, Text, yp+25 h20 , Store Prefix:
 Gui, LoyIN:Add, Text, yp+25 h20 , SITE CODE:
 Gui, LoyIN:Add, Text, yp+25 h20 , Store Name:
@@ -51,10 +54,10 @@ Gui, LoyIN:Add, DropDownList, x490 y12 w100 vLoyMode, Auto|Partial|Manual
 
 
 Gui, LoyIN:Add, Groupbox, x-10 y325 w655 h290 ,
-Gui, LoyIN:font, s12 bold cc5c8c6, Segoe UI
+Gui, LoyIN:font, s12 bold CWhite, Segoe UI
 Gui, LoyIN:Add, Text, x10 y350 h20 , COMMENT TEMPLATE
 Gui, LoyIN:font,
-Gui, LoyIN:font, cc5c8c6, Segoe UI
+Gui, LoyIN:font, CWhite, Segoe UI
 
 Gui, LoyIN:Add, Checkbox, x10 yp+40 w190 h20 vCb_APIROLL , #LOYINSTALL
 Gui, LoyIN:Add, Checkbox, x10 yp+25 w180 h20 vCb_INDROLL, #LOYRESTALL
@@ -64,7 +67,7 @@ Gui, LoyIN:Add, Edit, xp+100 yp-2 h20 w160 -E0x200 vTestCard,
 Gui, LoyIN:Add, Checkbox, x10 yp+29 w180 vCb_TillsTested, All tills tested and working
 Gui, LoyIN:Add, Checkbox, x10 yp+25 h20 vCb_Training , Training complete - Trained:
 Gui, LoyIN:Add, Edit, xp+170 yp-2 w90 h20 -E0x200 vTrainedName,
-Gui, LoyIN:Add, Checkbox, x10 yp+29 h20 vCb_Document, Installation document attached to LOYV3 Client
+Gui, LoyIN:Add, Checkbox, BackgroundTrans x10 yp+29 h20 vCb_Document, Installation document attached to LOYV3 Client
 
 
 
@@ -72,14 +75,13 @@ Gui, LoyIN:Add, Checkbox, x290 y360 h20 vCb_Addition, Still to be completed:
 Gui, LoyIN:Add, Edit, x290 yp+25 w300 h112 -E0x200 vNotes ,
 
 
-Gui, LoyIN:Add, Picture, x310 y498 w95 h95 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\all_tag_6.png
-Gui, LoyIN:Add, Text, x435 y507 h20 ,*
-Gui, LoyIN:font, s8 bold cc5c8c6, Segoe UI
-Gui, LoyIN:Add, Button, x443 y507 w72 h40 , &Comment Only
+Gui, LoyIN:Add, Text, BackgroundTrans x435 y507 h20 ,*
+Gui, LoyIN:font, s8 bold CWhite, Segoe UI
+Gui, LoyIN:Add, Button, x443 y507 w72 h40 gLoyInCommentOnly hwndLoyIn3, Comment Only
 Gui, LoyIN:font,
-Gui, LoyIN:font, cc5c8c6, Segoe UI
-Gui, LoyIN:Add, Button, x517 y507 w72 h40 , &Confirm
-Gui, LoyIN:Add, Button, x443 y550 w146 h30 , &Exit
+Gui, LoyIN:font, CWhite, Segoe UI
+Gui, LoyIN:Add, Button, x517 y507 w72 h40 gLoyInConfirm hwndLoyIn1, Confirm
+Gui, LoyIN:Add, Button, x443 y550 w146 h30 gLoyExit hwndLoyIn2, Exit
 
 
 Gui, LoyIN:Add, Tab2, x230 y69 w365 h250 , Till 1|Till 2|Till 3|Till 4|Till 5|Till 6|Till 7|Till 8
@@ -219,7 +221,15 @@ Gui, LoyIN:Add, CheckBox, xp-90 yp+25 w160 h20 vT8_Zed, Zed: $0 Receipts ON
 Gui, LoyIN:Add, Text,  yp+35 h20, MTNTOP PPREWARD:
 Gui, LoyIN:Add, Edit,  yp+15 w140 h18 -E0x200 vT8mtn, 
 
-Gui, LoyIN:Show, x200 y200 w605 h595,%A_Space%
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(LoyIn1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LoyIn2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LoyIn3, Opt1, Opt2, , , Opt5)
+
+Gui, LoyIN:Show, %Gui_Cord% w605 h595,%A_Space%
 
 loop
 {
@@ -239,7 +249,7 @@ loop
 
 return
 
-ButtonConfirm:
+LoyInConfirm:
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 
 if (!SCODE){
@@ -932,7 +942,7 @@ gosub ConfirmationWindow
 
 return
 
-ButtonCommentOnly:
+LoyInCommentOnly:
 
 Gui, LoyIN:Submit, Nohide
 
@@ -1428,7 +1438,7 @@ LoyIN73ButtonClose:
 Gui, LoyIN73:Destroy
 return
 
-LoyINButtonExit:
+LoyExit:
 Reload
 Return
 

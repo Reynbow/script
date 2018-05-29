@@ -4,34 +4,49 @@ Clipboard =
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
-gui_x +=451
+gui_x +=450
 
-Gui, Paths:Add, Picture, x-181 y342 , C:\AutoHotKey\Files\back-right.png
-Gui, Paths:+ToolWindow -SysMenu +Border
+Gui, Paths:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-sup-ext.png
+Gui, Paths:-SysMenu -caption -Border
 Gui, Paths:font, s12 cE8EBF5 bold, Segoe UI
-Gui, Paths:Color, 1d1f21, 383D46
+Gui, Paths:Color, %BGColour%, 2b2e43
 Gui, Paths:Add, Text, center x0 y20 w210 h50, COMMON`nPATHS
 Gui, Paths:font,
 Gui, Paths:font, cE8EBF5,
 ;Gui, Paths:Add, GroupBox, x15 y80 w180 h185 , 
-Gui, Paths:Add, Button, x30 yp+75 w150 h30 gPathsINT, INTPHARM Directory
-Gui, Paths:Add, Button, yp+40 w70 h30 gPathsCRON, CRON
-Gui, Paths:Add, Button, xp+80 w70 h30 gPathsDISP, DISPX
-Gui, Paths:Add, Button, xp-80 yp+40 w70 h30 gPathsHSNET, HSNET
-Gui, Paths:Add, Button, xp+80 w70 h30 gPathsPOSX, POSX
-Gui, Paths:Add, Button, xp-80 yp+40 w150 h30 gPathsMSOAP, MSOAP
-Gui, Paths:Add, Button, yp+40 w150 h30 gPathsMSOAPClient, MINSOAP CLIENT
-Gui, Paths:Add, Button, yp+40 w150 h30 gPathsRECron, RESTART CRON
-Gui, Paths:Add, Button, yp+40 w150 h30 gPathsREHsnet, RESTART HSNET
+Gui, Paths:Add, Button, x30 yp+125 w150 h30 gPathsINT hwndPATH1, INTPHARM Directory
+Gui, Paths:Add, Button, yp+40 w70 h30 gPathsCRON hwndPATH2, CRON
+Gui, Paths:Add, Button, xp+80 w70 h30 gPathsDISP hwndPATH3, DISPX
+Gui, Paths:Add, Button, xp-80 yp+40 w70 h30 gPathsHSNET hwndPATH4, HSNET
+Gui, Paths:Add, Button, xp+80 w70 h30 gPathsPOSX hwndPATH5, POSX
+Gui, Paths:Add, Button, xp-80 yp+40 w150 h30 gPathsMSOAP hwndPATH6, MSOAP
+Gui, Paths:Add, Button, yp+40 w150 h30 gPathsMSOAPClient hwndPATH7, MINSOAP CLIENT
+Gui, Paths:Add, Button, yp+40 w150 h30 gPathsRECron hwndPATH8, RESTART CRON
+Gui, Paths:Add, Button, yp+40 w150 h30 gPathsREHsnet hwndPATH9, RESTART HSNET
 
 ;Gui, Paths:Add, Button, yp+40 w150 h30 , &8 Ecom Excel Creation
 
 Gui, Paths:font, s9 cE8EBF5 bold, Segoe UI
 Gui, Paths:Add, Text, BackGroundTrans center x0 yp+50 w210 h50 vPreview,
 
-Gui, Paths:Add, Button, x12 y680 w184 h30 gBackCancel, Close
+Gui, Paths:Add, Button, x12 y670 w184 h30 gBackCancel hwndPATH10, Close
 
-Gui, Paths:Show, x%gui_x% y%gui_y% w210 h725, %A_Space%
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(PATH1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(PATH2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(PATH3, Opt1, Opt2, , , Opt5)
+ImageButton.Create(PATH4, Opt1, Opt2, , , Opt5)
+ImageButton.Create(PATH5, Opt1, Opt2, , , Opt5)
+ImageButton.Create(PATH6, Opt1, Opt2, , , Opt5)
+ImageButton.Create(PATH7, Opt1, Opt2, , , Opt5)
+ImageButton.Create(PATH8, Opt1, Opt2, , , Opt5)
+ImageButton.Create(PATH9, Opt1, Opt2, , , Opt5)
+ImageButton.Create(PATH10, Opt1, Opt2, , , Opt5)
+
+Gui, Paths:Show, x%gui_x% y%gui_y% w210 h715, %A_Space%
 
 loop
 {
@@ -46,10 +61,6 @@ loop
 
     sleep 100
 }
-Return
-
-EXIT:
-Gui, Destroy
 Return
 
 PathsINT:

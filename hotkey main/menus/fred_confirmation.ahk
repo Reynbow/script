@@ -2,17 +2,17 @@
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
-gui_x +=451
+gui_x +=450
 
 list1FC = Yes|No
 ;Gui, Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 25:-SysMenu +Border
+Gui, 25:-SysMenu -caption -Border
 Gui, 25:font, cE8EBF5
 
-Gui, 25:Add, Picture, x-181 y342 , C:\AutoHotKey\Files\back-right.png
+Gui, 25:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-sup-ext.png
 
-Gui, 25:Color, 1d1f21, 383D46
+Gui, 25:Color, %BGColour%, 2b2e43
 Gui, 25:Add, Edit, -E0x200 x1920 y2490 w80 vPlacehold,
 
 Gui, 25:font, s12 bold cE8EBF5, Segoe UI
@@ -43,10 +43,16 @@ Gui, 25:Add, Text, xp+8 h118 w172 vFredConPre,
 
 ;Gui, 25:Add, Picture, x56 y510 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
 
-Gui, 25:Add, Button, x12 y635 w184 h30 , &Confirm
-Gui, 25:Add, Button, x12 y680 w184 h30 , &Close
+Gui, 25:Add, Button, x12 y625 w184 h30 hwndFredC1, Confirm
+Gui, 25:Add, Button, x12 y670 w184 h30 hwndFredC2, Close
 
-Gui, 25:Show, x%gui_x% y%gui_y% w210 h725, %A_Space%
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+ImageButton.Create(FredC1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(FredC2, Opt1, Opt2, , , Opt5)
+
+Gui, 25:Show, x%gui_x% y%gui_y% w210 h715, %A_Space%
 
 loop
 {

@@ -1,51 +1,31 @@
-﻿#SingleInstance, force
-SetFormat, float, 0
-
-    Gui, Margin, 16, 16
-    Gui, Color, 1d1f21, 383D46, 282a2e
-    ;Gui, -SysMenu -caption +Border +AlwaysOnTop
-    Gui, Font, s11 cWhite, Segoe UI
-	Gui, Add, Text, xm cc5c8c6 -E0x200 , ARMOUR
-    Gui, Add, Edit, xp+110 w50 h20 cc5c8c6 -E0x200 vAR
-	Gui, Add, Text, xm cc5c8c6 -E0x200 , MAGIC RESIST
-    Gui, Add, Edit, xp+110 w50 h20 cc5c8c6 -E0x200 vMR
-	Gui, Add, Text, xm cc5c8c6 -E0x200 , HEALTH
-	Gui, Add, Text, xp+110 w50 vPreview, 
-	Gui, Add, Button, xm w160 h25 cc5c8c6 -E0x200, Exit
-    Gui, Show, x150 y150, HP CALC
-
-loop
-{
-    Gui, Submit, NoHide
-
-	if (!AR)
-		{
-			AR = AR
-		}
-
-	if (!MR)
-		{
-			MR = MR
-		}
-
-	HP := 1400 + 14 * (0.25 * AR + 0.75 * MR)
-
-    msgText = %HP%
-
-    if NOT (msgText == oldMsgText)
-    {
-       GuiControl, Text, Preview, %msgText%
-       oldMsgText := msgText
-    }
-
-    sleep 100
-}
-
+﻿#NoEnv
+Gui, Margin, 10, 10
+GuiAddBorder("Black", 1, "x0 y0 w400 h200")
+Gui, Add, Text, xp yp wp hp Center +0x0200 BackgroundTrans, Border Example ; 0x0200 centers single-line text vertically
+Gui, Show, w400 h200 , Border Example
 Return
-
-ButtonExit:
+GuiClose:
 ExitApp
-
-F10::
-Reload
-Return
+; ==================================================================================================================================
+; Adds a border-like text control to the current default GUI
+; ==================================================================================================================================
+GuiAddBorder(Color, Width, PosAndSize) {
+   ; -------------------------------------------------------------------------------------------------------------------------------
+   ; Color        -  border color as used with the 'Gui, Color, ...' command, must be a "string"
+   ; Width        -  the width of the border in pixels
+   ; PosAndSize   -  a string defining the position and size like Gui commands, e.g. "xm ym w400 h200".
+   ;                 You should not pass other control options!
+   ; -------------------------------------------------------------------------------------------------------------------------------
+   LFW := WinExist() ; save the last-found window, if any
+   DefGui := A_DefaultGui ; save the current default GUI
+   Gui, Add, Text, %PosAndSize% +hwndHTXT
+   GuiControlGet, T, Pos, %HTXT%
+   Gui, New, +Parent%HTXT% +LastFound -Caption ; create a unique child Gui for the text control
+   Gui, Color, %Color%
+   X1 := Width, X2 := TW - Width, Y1 := Width, Y2 := TH - Width
+   WinSet, Region, 0-0 %TW%-0 %TW%-%TH% 0-%TH% 0-0   %X1%-%Y1% %X2%-%Y1% %X2%-%Y2% %X1%-%Y2% %X1%-%Y1%
+   Gui, Show, x0 y0 w%TW% h%TH%
+   Gui, %DefGui%:Default ; restore the default Gui
+   If (LFW) ; restore the last-found window, if any
+      WinExist(LFW)
+}

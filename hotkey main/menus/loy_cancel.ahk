@@ -2,10 +2,11 @@
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
-gui_x +=451
+gui_x +=450
 
-Gui, 77:Add, Picture, x-181 y342 , C:\AutoHotKey\Files\back-right.png
-Gui, 77:Color, 1d1f21, 383D46
+Gui, 77:-SysMenu -caption -Border
+Gui, 77:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-loy-ext.png
+Gui, 77:Color, %BGColour%, 2b2e43
 Gui, 77:font, s12 bold cE8EBF5, Segoe UI
 Gui, 77:Add, Text, Center x0 y19 w210 , LOYALTY`nCANCELATION
 Gui, 77:font,
@@ -33,10 +34,16 @@ Gui, 77:Add, Edit, cE8EBF5 -E0x200 x126 y299 w70 h20 vBox2 ,
 Gui, 77:Add, Text, cE8EBF5 x12 y339 w184 h20 , Additional Notes
 Gui, 77:Add, Edit, cE8EBF5 -E0x200 x12 y359 w184 h75 -VScroll vBox3 , 
 
-Gui, 77:Add, Button, x12 y635 w184 h30 , &Confirm
-Gui, 77:Add, Button, x12 y680 w184 h30 , &Close
+Gui, 77:Add, Button, x12 y625 w184 h30 hwndLoyC1 , Confirm
+Gui, 77:Add, Button, x12 y670 w184 h30 hwndLoyC2, Close
 
-Gui, 77:Show, x%gui_x% y%gui_y% w210 h725, %A_Space%
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+ImageButton.Create(LoyC1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(Loyc2, Opt1, Opt2, , , Opt5)
+
+Gui, 77:Show, x%gui_x% y%gui_y% w210 h715, %A_Space%
 return
 
 

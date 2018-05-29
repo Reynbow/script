@@ -3,9 +3,11 @@ WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 Gui, 99:Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 87:-SysMenu +Border
-Gui, 87:Color, 1d1f21, 383D46
-Gui, 87:Font, cc5c8c6, Segoe UI
+Gui, 87:-SysMenu -caption -Border
+Gui, 87:Color, %BGColour%, 2b2e43
+Gui, 87:Add, Text, x0 y0 w910 h25 Center GuiMove,
+Gui, 87:Add, Picture, x0 y75 , C:\AutoHotKey\Files\ui\back-sup.png
+Gui, 87:Font, s8 cE8EBF5, Segoe UI
 Gui, 87:Add, GroupBox, x16 y30 w130 h140,password contains...
 Gui, 87:Add, Checkbox, x26 y47 w115 h30 vCheck1 checked,lower case letters
 Gui, 87:Add, Checkbox, x26 y77 w115 h30 vCheck2 checked,capital letters
@@ -15,10 +17,20 @@ Gui, 87:Add, GroupBox, x154 y30 w100 h50,password length
 Gui, 87:Add, Edit, -E0x200 x164 y50 w80 h20 vPasslen, 16
 Gui, 87:Add, GroupBox, x154 y82 w100 h88, Info
 Gui, 87:Add, Text, x161 y97 w90 h69 , generated password will automatically copied to clipboard!
-Gui, 87:Add, Button, x16 y304 w237 h30 Default, &Confirm
-Gui, 87:Add, Button, x16 y344 w115 h30, &Back
-Gui, 87:Add, Button, x137 y344 w115 h30, &Close
+Gui, 87:Add, Button, x16 y304 w237 h30 Default hwndPass1 gGenPass, Generate & Copy
+Gui, 87:Add, Button, x16 y344 w115 h30 hwndPass2, Back
+Gui, 87:Add, Button, x137 y344 w115 h30 hwndPass3, Close
+Gui, 87:Font, s16 cE8EBF5, Segoe UI
 Gui, 87:Add, Edit, -E0x200 x16 y184 w237 -VScroll h100 vNewPass readonly,  
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(Pass1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(Pass2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(Pass3, Opt1, Opt2, , , Opt5)
+
 Gui, 87:Show, %Gui_Cord% h398 w271, %A_Space%
 Return
 ;---------------
@@ -33,7 +45,7 @@ do_lines_pre = 0
 gosub Q1
 return
 ;---------------
-87ButtonConfirm:
+GenPass:
 Gui, 87:Submit, NoHide ; Save the values of the check buttons.
 if (passlen <= 0) 
 {

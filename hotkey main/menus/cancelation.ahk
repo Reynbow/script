@@ -3,9 +3,11 @@ Gui, Destroy
 Gui, 99:Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
-Gui, BC:-SysMenu +Border
+Gui, BC:-SysMenu -caption -Border
+Gui, BC:Color, %BGColour%, 2b2e43
+Gui, BC:Add, Text, x0 y0 w910 h25 Center GuiMove,
+Gui, BC:Add, Picture, x0 y160 , C:\AutoHotKey\Files\ui\back-sup.png
 Gui, BC:font, s16 bold cE8EBF5, Segoe UI
-Gui, BC:Color, 1d1f21, 383D46
 Gui, BC:Add, Text, x20 y12 , STORE CANCELATION
 Gui, BC:font, 
 Gui, BC:font, cE8EBF5, Segoe UI
@@ -36,13 +38,22 @@ Gui, BC:Add, Text, x18 yp+40 w180 h20, Additional Notes:
 Gui, BC:Add, Edit, -E0x200 yp+20 w388 h40 -VScroll vAdditional ,
 
 Gui, BC:Add, GroupBox, yp+50 w265 h120, Preview
-Gui, BC:Add, Text, xp+20 yp+20 w215 h90 vPreview, 
+Gui, BC:Add, Text, xp+2 yp+20 w20 h98 ,
+Gui, BC:Add, Text, xp+8 w253 h98 vPreview, 
 
-Gui, BC:Add, Button, xp+265 yp-13 w100 h30 , Confirm
-Gui, BC:Add, Button, yp+41 w100 h30 , Back
-Gui, BC:Add, Button, yp+41 w100 h30 , Exit
+Gui, BC:Add, Button, xp+265 yp-13 w100 h30 hwndSupCan1, Confirm
+Gui, BC:Add, Button, yp+41 w100 h30 hwndSupCan2, Back
+Gui, BC:Add, Button, yp+41 w100 h30 hwndSupCan3, Exit
 
-Gui, BC:Show, %Gui_Cord% , %A_Space%
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(SupCan1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(SupCan2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(SupCan3, Opt1, Opt2, , , Opt5)
+
+Gui, BC:Show, %Gui_Cord% w420 h480, %A_Space%
 
 loop
 {

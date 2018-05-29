@@ -5,13 +5,13 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 Gui, Destroy
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, LT:-SysMenu +Border
+Gui, LT:-SysMenu -caption -Border
+Gui, LT:Color, %BGColour%, 2b2e43
+Gui, LT:Add, Text, x0 y0 w910 h25 Center GuiMove,
+Gui, LT:Add, Picture, x0 y120 , C:\AutoHotKey\Files\ui\back-loy-wide.png
 Gui, LT:font, s16 bold cE8EBF5, Segoe UI
-Gui, LT:Color, 1d1f21, 383D46
-;Gui, LT:Add, Edit, -E0x200 x1920 y2490 w80 vPlacehold,
-Gui, LT:Add, Text, x20 y12 , LOYALTY TILL CONFIG
-;Gui, LT:Add, Text, x306 y12 , ISSUES
 
+Gui, LT:Add, Text, x20 y12 , LOYALTY TILL CONFIG
 
 Gui, LT:font,
 Gui, LT:font, s8 cE8EBF5, Segoe UI
@@ -68,18 +68,29 @@ Gui, LT:Add, Text, yp+20, Issues with Prompter, Balance Checker or Till
 Gui, LT:Add, Text, yp+20, Printer issue
 Gui, LT:Add, Text, yp+20, Running remap shortcut resolved the error
 Gui, LT:Add, Text, yp+20, UAC permissions issue
-Gui, LT:Add, Text, yp+20, Computer upgraded to Windows 10
+Gui, LT:Add, Text, yp+20, BackgroundTrans Computer upgraded to Windows 10
 
 Gui, LT:Add, GroupBox, x18 yp+40 w498 h120, Preview
-Gui, LT:Add, Text, xp+15 yp+20 w470 h90 vPreview, 
+Gui, LT:Add, Text, xp+2 yp+20 w50 h98  
+Gui, LT:Add, Text, xp+93 yp-12 w401 h50 
+Gui, LT:Add, Text, xp-80 yp+14 w481 h96 vPreview, 
 
-Gui, LT:Add, Button, xp+505 yp-12 w100 h30 , Confirm
-Gui, LT:Add, Button, yp+40 w100 h30 , Back
-Gui, LT:Add, Button, yp+40 w100 h30 , Exit
+
+Gui, LT:Add, Button, xp+505 yp-12 w100 h30 hwndLoyConfig1, Confirm
+Gui, LT:Add, Button, yp+40 w100 h30 hwndLoyConfig2, Back
+Gui, LT:Add, Button, yp+40 w100 h30 hwndLoyConfig3, Exit
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(LoyConfig1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LoyConfig2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LoyConfig3, Opt1, Opt2, , , Opt5)
 
 Gui, LT:Add, Picture, x450 y48 w64 h64, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\loylogo.png
 
-Gui, LT:Show, %Gui_Cord%, %A_Space%
+Gui, LT:Show, %Gui_Cord% h480 w660, %A_Space%
 Gui, 2:Destroy
 Gui, 30:Destroy
 

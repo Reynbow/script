@@ -1,19 +1,20 @@
 ﻿SupportQAs:
 Gui, Destroy
+Gui, QA:Destroy
 FileReadLine, VerNum, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, 1
 IniRead, gui_position, C:\AutoHotKey\settings.ini, window position, QA_position, Center
 
 ;Gui, QA:+AlwaysOnTop
-Gui, QA:-SysMenu +ToolWindow +Border
-Gui, QA:Margin, 16, 16
-Gui, QA:Color, 1d1f21, 383D46
+Gui, QA:Color, %BGColour%, 2b2e43
+;Gui, QA:Add, Text, x0 y0 w910 h25 Center GuiMove,
+Gui, QA:Add, Picture, x0 y310 , C:\AutoHotKey\Files\ui\back-sup-wide.png
 
 Gui, QA:font, cc5c8c6, Segoe UI
 
 ;Gui, QA:Add, Text , x14 y460 w280 h70 0x800000 ,
 Gui, QA:Add, Edit, -E0x200 x15 y473 w295 h57 -VScroll vQANotes,
 Gui, QA:Add, Text , yp-20, Additional Notes
-
+ 
 Gui, QA:font, bold cc5c8c6, Segoe UI
 
 ;Gui, QA:Add, Text , x300 y460 w160 h70 0x800000 ,
@@ -24,7 +25,9 @@ Gui, QA:font,
 Gui, QA:font, cc5c8c6, Segoe UI
 
 Gui, QA:Add, Groupbox, x14 y540 w607 h120 , QAPreview
-Gui, QA:Add, Text, x29 y560 w587 h90 vQAPreview, 
+Gui, QA:Add, Text, x16 y560 w50 h98 
+Gui, QA:Add, Text, x80 y548 w539 h98
+Gui, QA:Add, Text, x25 y560 w594 h98 vQAPreview, 
 
 Gui, QA:Add, Button, x472 y460 w150 h30 gComplete , &Confirm
 Gui, QA:Add, Button, x472 y500 w150 h30 gQAExit , &Exit
@@ -578,7 +581,7 @@ Gui, QA:Add, CheckBox, x440 yp+22  h20 vT10_OVER, - Overview Available
 ;---- TAB END
 
 Gui, QA:+Hwndgui_id
-Gui, QA:Show, %gui_position%, %A_Space%
+Gui, QA:Show, %gui_position% w634 h675, QA
 
 loop
 {

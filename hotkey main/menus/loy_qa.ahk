@@ -4,18 +4,22 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 
 Gui, Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, LQA:-SysMenu +Border
-Gui, LQA:font, s16 bold cE8EBF5, Segoe UI
-Gui, LQA:Color, 1d1f21, 383D46
+Gui, LQA:-SysMenu -caption -Border
+Gui, LQA:Color, %BGColour%, 2b2e43
+Gui, LQA:Add, Text, x0 y0 w910 h25 Center GuiMove,
+Gui, LQA:Add, Picture, x0 y0 , C:\AutoHotKey\Files\ui\back-loy.png
 Gui, LQA:Add, Edit, -E0x200 x1920 y2490 w80 vPlacehold,
-Gui, LQA:Add, Text, x20 y20 , LOYALTY QA
 ;Gui, LQA:Add, Text, x306 y12 , ISSUES
 Gui, LQA:font,
-Gui, LQA:font, s8cE8EBF5, Segoe UI
+Gui, LQA:font, s16 cE8EBF5 Bold, Segoe UI
+
+Gui, LQA:Add, Text, x20 y20 , LOYALTY QA
+
+Gui, LQA:font,
+Gui, LQA:font, s8 cE8EBF5, Segoe UI
 
 Gui, LQA:Add, Text, x18 y62 h15 , Redemption type:
 Gui, LQA:Add, Text, x18 y80 , Redemption tested and `nworking with Test Card Number: 
-Gui, LQA:font, 
 Gui, LQA:Add, Edit, -E0x200 x190 y60 w100 h20 vRType ,
 Gui, LQA:Add, Edit, -E0x200 x190 y85 w100 h20 vRTest ,
 
@@ -24,11 +28,21 @@ Gui, LQA:font, s8 cE8EBF5, Segoe UI
 Gui, LQA:Add, Checkbox, x18 y125 vDisE , Dispense exceptions added to UI
 Gui, LQA:Add, Checkbox, x18 y145 vLoyDate , LOYV3 install date added
 
-Gui, LQA:Add, Button, x310 y60 w100 h30 , Confirm
-Gui, LQA:Add, Button, x310 y100 w100 h30 , Back
-Gui, LQA:Add, Button, x310 y140 w100 h30 , Exit
+Gui, LQA:Add, Button, x310 y60 w100 h30 hwndLQA1, Confirm
+Gui, LQA:Add, Button, x310 y100 w100 h30 hwndLQA2, Back
+Gui, LQA:Add, Button, x310 y140 w100 h30 hwndLQA3, Exit
 Gui, LQA:Add, GroupBox, x16 y180 w394 h100, Preview
-Gui, LQA:Add, Text, x30 y200 w374 h70 vPreview, 
+Gui, LQA:Add, Text, x18 y210 w20 h68, 
+Gui, LQA:Add, Text, x208 y188 w200 h50, 
+Gui, LQA:Add, Text, x30 y200 w378 h78 vPreview, 
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(LQA1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LQA2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LQA3, Opt1, Opt2, , , Opt5)
 
 Gui, LQA:Show, %Gui_Cord% w425 h300, %A_Space%
 Gui, 2:Hide

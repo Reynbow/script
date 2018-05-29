@@ -6,12 +6,12 @@ Gui, Destroy
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 
-Gui, LoyAdmin:-SysMenu +Border
-Gui, LoyAdmin:Color, 1d1f21, 383D46
-;Gui, LoyAdmin:Add, Picture, x375 y174 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
-Gui, LoyAdmin:font, s12 bold cE8EBF5, Segoe UI
+Gui, LoyAdmin:-SysMenu -caption -Border
+Gui, LoyAdmin:Color, %BGColour%, 2b2e43
+Gui, LoyAdmin:Add, Text, x0 y0 w910 h25 Center GuiMove,
+Gui, LoyAdmin:Add, Picture, x390 y325 , C:\AutoHotKey\Files\ui\back-loy.png
 Gui, LoyAdmin:Add, Edit, -E0x200 x1920 y2490 w80 vPlacehold,
-
+Gui, LoyAdmin:font, s12 bold cE8EBF5, Segoe UI
 Gui, LoyAdmin:Add, Text, x18 y18 , CONTACT INITIATION
 Gui, LoyAdmin:font,
 Gui, LoyAdmin:font, s8 cE8EBF5, Segoe UI
@@ -102,7 +102,7 @@ Gui, LoyAdmin:Add, Text, x416 y500, Running Remap resolved issue
 Gui, LoyAdmin:Add, Text, x416 y520, Loyalty Reports 
 Gui, LoyAdmin:Add, Edit, -E0x200 x416 y540 w120 h16 vRetrain,
 Gui, LoyAdmin:font, s8 cE8EBF5, Segoe UI
-Gui, LoyAdmin:Add, Text, x416 y560, Upgraded to Windows 10
+Gui, LoyAdmin:Add, Text, BackgroundTrans x416 y560, Upgraded to Windows 10
 
 
 Gui, LoyAdmin:font, s12 cE8EBF5 bold, Segoe UI
@@ -139,15 +139,20 @@ Gui, LoyAdmin:Add, Checkbox, x620 y440 vPC8, Import record updated
 Gui, LoyAdmin:Add, Checkbox, x620 y460 vPC9, Waiting for Site Reset
 Gui, LoyAdmin:Add, Checkbox, x620 y480 vPC10, Site Reset Complete
 Gui, LoyAdmin:Add, Checkbox, x620 y500 vPC11, Stock Imported
-Gui, LoyAdmin:Add, Checkbox, x620 y520 vPC12, Members moved to new store
+Gui, LoyAdmin:Add, Checkbox, x620 y520 w16 h16 vPC12, ;Members moved to new store
+Gui, LoyAdmin:Add, Text , BackgroundTrans x638 y520, Members moved to new store
 
-Gui, LoyAdmin:Add, Button, x18 y545 w80 h30 , Confirm
-Gui, LoyAdmin:Add, Button, x105 y545 w80 h30 , Back
-Gui, LoyAdmin:Add, Button, x192 y545 w80 h30 , Exit
+Gui, LoyAdmin:Add, Button, x18 y545 w80 h30 hwndLoyAd1, Confirm
+Gui, LoyAdmin:Add, Button, x105 y545 w80 h30 hwndLoyAd2, Back
+Gui, LoyAdmin:Add, Button, x192 y545 w80 h30 hwndLoyAd3, Exit
 
-Gui, LoyAdmin:font,
-Gui, LoyAdmin:font, s6 cE8EBF5, Segoe UI
-;Gui, LoyAdmin:Add, Button, x18 y447 w80 h15 , Repeat
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(LoyAd1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LoyAd2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LoyAd3, Opt1, Opt2, , , Opt5)
 
 Gui, LoyAdmin:Show, %Gui_Cord% w840 h590, %A_Space%
 Gui, 2:Destroy
@@ -181,7 +186,7 @@ loop
 
 	LoyV2 			:= LoyV2 ? " #LOYV2" : ""
 	LoyV3 			:= LoyV3 ? " #LOYV3" : ""
-	MinfD 			:= MinD ? " #MINFDIRECT" : ""
+	MinfD 			:= MinfD ? " #MINFDIRECT" : ""
 	MinfB 			:= MinfB ? " #MINFBOUNCE" : ""
 
 	Issue1 			:= Issue1 ? " #ICL" : ""
@@ -208,7 +213,7 @@ loop
 	NS6 			:= NS6 ? "Waiting on Fred credentials • " : ""
 	NS7 			:= NS7 ? "Stock imported" : ""
 
-	POSChangeOpen 	:= POSChange ? "[ POS CHANGE: " : ""
+	POSChangeOpen 	:= POSChange ? " [ POS CHANGE: " : ""
 	POSChangeClose 	:= POSChange ? " ] " : ""
 
 	OldID			:= OldID ? " (Old ID: " OldID ") " : ""

@@ -6,7 +6,7 @@ SetBatchLines, -1
 SendMode, Event
 SetKeyDelay 25, 10
 
-VersionNum = 3.41.8
+VersionNum = 3.5.01
 
 IniRead, StartPOS, C:\AutoHotKey\settings.ini, Starting Position, Start
 
@@ -167,45 +167,101 @@ IfNotExist, G:\Support\
 	{
 		BGColour := "8A2D2D" ;:= BGColour
 	}
-	else BGColour := "1d1f21"
+	else BGColour := "1f2130"
 
+If (!StartPOS)
+	{
+	StartPOS = Support
+	IniWrite, %StartPOS%, C:\AutoHotKey\settings.ini, Starting Position, Start
+	}
+
+IniRead, StartPOS, C:\AutoHotKey\settings.ini, Starting Position, Start
+
+Gui, 99:-SysMenu -caption -Border
+Gui, 99:font,
+Gui, 99:font, s12 CWhite Bold , Segoe UI
+
+Gui, 99:Add, Button, x-500 Y-500 w118 h30 Left ,
+
+Gui, 99:Add, Text, x0 y0 w408 h25 Center GuiMove,
+
+AddImageTab("", "  S U P P O R T  |  L O Y A L T Y  ")
+
+;Gui, 99:Add, Tab2, x15 y85 w420 h253 gMenuTab vWhichTab choose%StartPOS%,   Ｓ Ｕ Ｐ Ｐ Ｏ Ｒ Ｔ  |  Ｌ Ｏ Ｙ Ａ Ｌ Ｔ Ｙ  
+Gui, 99:Tab, 1, 1
+Gui, 99:font,
+Gui, 99:font, s9 Bold, Segoe UI
+
+Gui, 99:Add, Button, x158 y61 w10 h33 Left hwndHBT37 gSTARTSONG , 
+
+Gui, 99:Add, Picture, x75 y60, C:\AutoHotKey\Files\mainmenu_sup.png
+Gui, 99:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-sup.png
+;Gui, 99:Add, Picture, x15 y113 , C:\AutoHotKey\Files\sup.png
+Gui, 99:Add, Picture, x15 y143 , C:\AutoHotKey\Files\ui\main_buttons_sup.png
+Gui, 99:Add, Button, x32 yp+20 w118 h30 Left gSupINSTALL hwndHBT1, % "   INSTALL"
+Gui, 99:Add, Button, yp+40 w118 h30 Left gSupDO hwndHBT2, % "   DATA OUTAGE"
+Gui, 99:Add, Button, yp+40 w118 h30 Left gSupportQAs hwndHBT3, % "   QA"
+Gui, 99:Add, Button, yp+40 w118 h30 Left gSupADMIN hwndHBT4, % "   ADMIN"
+;Gui, 99:Add, Button, yp+40 w118 h30 Left gSupGeneral, % "   &5 - SUB-MENU"
+Gui, 99:Add, Button, yp+40 w118 h30 Left gDeclinedConnection hwndHBT5, % "   KNOCKBACK"
+
+Gui, 99:font,
+Gui, 99:font, s9 , Segoe UI
+
+Gui, 99:Add, Button, xp+135 yp-120 w118 h30 Right gFredConf hwndHBT6, % "Fred Confirmation   "
+Gui, 99:Add, Button, yp+40 w118 h30 Right gQAPass hwndHBT7, % "QA Pass   "
+Gui, 99:Add, Button, yp+40 w118 h30 Right gSupCancellation hwndHBT8, % "Cancellation   "
+Gui, 99:Add, Button, yp+40 w118 h30 Right gPhoneRangOut hwndHBT9, % "Phone Rang Out   "
+
+Gui, 99:Add, Button, xp+134 yp-80 w118 h30 Right gRemoteReset hwndHBT10, % "Remote Update   "
+;Gui, 99:Add, Button, yp+40 w118 h30 Right gSupSiteReset , % "Site Reset   "
+Gui, 99:Add, Button, yp+40 w118 h30 Right gSupPaths hwndHBT11, % "Paths for AV   "
+Gui, 99:Add, Button, yp+40 w118 h30 Right gSupEMAILS hwndHBT12, % "Email Templates   "
+
+Gui, 99:Tab, 2
+Gui, 99:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-loy.png
+Gui, 99:Add, Picture, x75 y60, C:\AutoHotKey\Files\mainmenu_loy.png
+Gui, 99:Add, Picture, x15 y143 BackgroundTrans, C:\AutoHotKey\Files\ui\main_buttons_loy.png
+Gui, 99:font,
+Gui, 99:font, s9 Bold , Segoe UI
+Gui, 99:Add, Button, x32 yp+20 w118 h30 Left gLoyInstall hwndHBT30, % "   INSTALL"
+Gui, 99:Add, Button, yp+40 w118 h30 Left gLoyTillConfig hwndHBT31, % "   TILL CONFIG"
+Gui, 99:Add, Button, yp+40 w118 h30 Left gLoyQA hwndHBT32, % "   QA"
+Gui, 99:Add, Button, yp+40 w118 h30 Left gLoyAdmin hwndHBT33, % "   ADMIN"
+Gui, 99:Add, Button, yp+40 w118 h30 Left gQ13 hwndHBT34, % "   LOYSERV"
+
+Gui, 99:font,
+Gui, 99:font, s9 , Segoe UI
+Gui, 99:Add, Button, xp+135 yp-40 w118 h30 Right gCardOrders hwndHBT35, % "Card Orders   "
+Gui, 99:Add, Button, yp+40 w118 h30 Right gLoyaltyCancelation hwndHBT36, % "Loyalty Cancel   "
+;Gui, 99:Add, Button, yp+40 w120 h30 Right gTWCMRoll , % "TWCM Rollout   "
 
 FileRead, ForceUpdate, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt
 do_lines_pre = 
+Gui, 99:Tab 
 
-Gui, 99:Add, Picture, x0 y342 , C:\AutoHotKey\Files\back-sup.png
 
 ;Gui, 99:-SysMenu +Border -MaximizeBox
 Gui, 99:font, bold cE8EBF5 s24, Segoe UI
-Gui, 99:Color, %BGColour%
+Gui, 99:Color, %BGColour%, 2b2e43
 Gui, 99:font,
 Gui, 99:font, s9 bold cE8EBF5, Segoe UI
-Gui, 99:Add, Text, x0 y5 w450 center , Hello %Name% %Surname%
-Gui, 99:Add, Button, x30000 y105 w165 h30 Left , Placeholder
+Gui, 99:Add, Text, x0 y35 w450 center , Hello %Name% %Surname%
 
-Gui, 99:Add, Button, x15 y355 w175 h30 Left gProcessCharts hwndHBT13, % "　Process Charts"
+Gui, 99:Add, Button, x15 y385 w175 h30 Left gProcessCharts hwndHBT13, % "　Process Charts"
 Gui, 99:Add, Button, xp yp+36 w175 h30 Left gPassGen hwndHBT14, % "　Password Generator"
-Gui, 99:Add, Button, x198 y355 w115 h30 Left gMacros hwndHBT15, % "   Macros"
-Gui, 99:Add, Button, x320 y355 w115 h30 Left gLogsViewer hwndHBT16, % "   View Store Logs"
+Gui, 99:Add, Button, x198 y385 w115 h30 Left gMacros hwndHBT15, % "   Macros"
+Gui, 99:Add, Button, x320 y385 w115 h30 Left gLogsViewer hwndHBT16, % "   View Store Logs"
 
-Gui, 99:Add, Button, x198 y391 w115 h30 Left gWeekPoints hwndHBT17, % "   Staff Points"
-Gui, 99:Add, Button, x320 y391 w115 h30 Left glogviewer hwndHBT18, % "   Staff Logs"
+Gui, 99:Add, Button, x198 y421 w115 h30 Left gWeekPoints hwndHBT17, % "   Staff Points"
+Gui, 99:Add, Button, x320 y421 w115 h30 Left glogviewer hwndHBT18, % "   Staff Logs"
 
-Gui, 99:font, bold s10 CWhite, Segoe UI
-Gui, 99:Add, Text, x15 y440 BackGroundTrans , ＰＯＩＮＴ　ＣＯＵＮＴＥＲ
-Gui, 99:font,
-Gui, 99:font, bold s6 CWhite, Segoe UI
+;Gui, 99:font, bold s10 CWhite, Segoe UI
+;Gui, 99:Add, Text, x15 y470 BackGroundTrans , ＰＯＩＮＴ　ＣＯＵＮＴＥＲ
+;Gui, 99:font,
+Gui, 99:font, bold s7 CWhite, Segoe UI
 
-If Dog = Brodie
-	{
-	Gui, 99:Add, Button, x185 y460 w80 h20 gTicketCounter hwndHBT19, TICKET COUNT
-	}
-If Dog = Aaron
-	{
-	Gui, 99:Add, Button, x185 y460 w80 h20 gTicketCounter hwndHBT20, TICKET COUNT
-	}
-
-Gui, 99:Add, Button, x270 y460 w165 h20 gfullweeksummary hwndHBT21, FULL WEEK SUMMARY
+;Gui, 99:Add, Button, x270 y490 w165 h20 gfullweeksummary hwndHBT21, FULL WEEK SUMMARY
 Gui, 99:font, bold s10 CWhite, Segoe UI
 
 FormatTime, Date,, yyyyMMdd
@@ -431,35 +487,35 @@ if do_lines_pre >= 15
 	fc = c33cc00
 	}
 
-Gui, 99:font, bold s9 %fc%, Segoe UI
-Gui, 99:Add, Text, x250 y492 BackGroundTrans , DATA OUTAGE COUNT　＝ %do_lines_pre%/15
+Gui, 99:font, bold s10 %fc%, Segoe UI
+Gui, 99:Add, Text, x235 y480 BackGroundTrans , DATA OUTAGE COUNT　＝ %do_lines_pre%/15
 
 ;DATA OUT COUNTER
 Gui, 99:font, bold s10 CWhite, Segoe UI
-Gui, 99:Add, Text, x15 y490 w200 BackGroundTrans , RUNNING TOTAL ＝ %Points%
+Gui, 99:Add, Text, x15 y480 w200 BackGroundTrans , RUNNING TOTAL ＝ %Points%
 
 FileRead, DOPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Data Out.txt
-Gui, 99:Add, Button, x15 y530 w80 h20 Left hwndHBT22, %A_Space%Data Out
+Gui, 99:Add, Button, x15 y520 w80 h20 Left hwndHBT22, %A_Space%Data Out
 Gui, 99:Add, Text, xp yp+25 BackGroundTrans , %DOPoints%
 
 ;INSTALL COUNTER
 FileRead, INPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Install.txt
-Gui, 99:Add, Button, xp+85 y530 w80 h20 Left hwndHBT23, %A_Space%Install
+Gui, 99:Add, Button, xp+85 y520 w80 h20 Left hwndHBT23, %A_Space%Install
 Gui, 99:Add, Text, xp yp+25 BackGroundTrans , %INPoints%
 
 ;QA COUNTER
 FileRead, QAPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% QA.txt
-Gui, 99:Add, Button, xp+85 y530 w80 h20 Left hwndHBT24, %A_Space%QA
+Gui, 99:Add, Button, xp+85 y520 w80 h20 Left hwndHBT24, %A_Space%QA
 Gui, 99:Add, Text, xp yp+25 BackGroundTrans , %QAPoints%
 
 ;LOY IN
 FileRead, LoyInPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Loy Install.txt
-Gui, 99:Add, Button, xp+85 y530 w80 h20 Left hwndHBT25, %A_Space%Till Install
+Gui, 99:Add, Button, xp+85 y520 w80 h20 Left hwndHBT25, %A_Space%Till Install
 Gui, 99:Add, Text, xp yp+25 BackGroundTrans , %LoyInPoints%
 
 ;LOY CONFIGl
 FileRead, CONPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Till Config.txt
-Gui, 99:Add, Button, xp+85 y530 w80 h20 Left hwndHBT26, %A_Space%Till Config
+Gui, 99:Add, Button, xp+85 y520 w80 h20 Left hwndHBT26, %A_Space%Till Config
 Gui, 99:Add, Text, xp yp+25 BackGroundTrans , %CONPoints%
 
 Gui, 99:font, bold CWhite s6, Segoe UI
@@ -469,69 +525,32 @@ Gui, 99:Add, Text, x3 y3 , %Count%
 
 If % VersionNum < ForceUpdate
 {
-Gui, 99:Add, Picture, x7 y682 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\update2.png
+;Gui, 99:Add, Picture, x7 y712 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\update2.png
+Gui, 99:font, bold cBLACK s24, Segoe UI
+Gui, 99:Add, Text, BackgroundTrans x10 y662 , UPDATE AVAILABLE
+Gui, 99:font, bold CWhite s24, Segoe UI
+Gui, 99:Add, Text, BackgroundTrans x10 y660 , UPDATE AVAILABLE
 Gui, 99:font, bold CWhite s10, Segoe UI
-Gui, 99:Add, Button, x322 y680 w115 h30 gUPDATENOW hwndHBT27, UPDATE NOW
+Gui, 99:Add, Button, x322 y670 w115 h30 gUPDATENOW hwndHBT27, UPDATE NOW
 }
 Else
 {
+
+	If Dog = Brodie
+	{
+	Gui, 99:Add, Button, x180 y670 w80 h30 gTicketCounter hwndHBT19, TICKET COUNT
+	}
+	If Dog = Aaron
+	{
+	Gui, 99:Add, Button, x180 y670 w80 h30 gTicketCounter hwndHBT20, TICKET COUNT
+	}
 	Gui, 99:font
 	Gui, 99:font, bold s9, Segoe UI
-Gui, 99:Add, Button, x270 y680 w165 h30 Left hwndHBT28, % "   Exit"
+Gui, 99:Add, Button, x270 y670 w165 h30 Left hwndHBT28, % "   Exit"
 }
 
-
-If (!StartPOS)
-	{
-	StartPOS = Support
-	IniWrite, %StartPOS%, C:\AutoHotKey\settings.ini, Starting Position, Start
-	}
-
-IniRead, StartPOS, C:\AutoHotKey\settings.ini, Starting Position, Start
-
-Gui, 99:font,
-Gui, 99:font, s12 CWhite Bold , Segoe UI
-
-Gui, 99:Add, Tab2, x15 y85 w420 h253 gMenuTab vWhichTab choose%StartPOS%,   Ｓ Ｕ Ｐ Ｐ Ｏ Ｒ Ｔ  |  Ｌ Ｏ Ｙ Ａ Ｌ Ｔ Ｙ  
-Gui, 99:font,
-Gui, 99:font, s9 , Segoe UI
-
-Gui, 99:Add, Button, x158 y31 w10 h33 Left hwndHBT37 gSTARTSONG , 
-
-Gui, 99:Add, Picture, x75 y30, C:\AutoHotKey\Files\mainmenu_sup.png
-Gui, 99:Add, Picture, x15 y113 , C:\AutoHotKey\Files\sup.png
-Gui, 99:Add, Button, x30 yp+20 w120 h30 Left gSupINSTALL hwndHBT1, % "   &1 - INSTALL"
-Gui, 99:Add, Button, yp+40 w120 h30 Left gSupDO hwndHBT2, % "   &2 - DATA OUTAGE"
-Gui, 99:Add, Button, yp+40 w120 h30 Left gSupportQAs hwndHBT3, % "   &3 - QA"
-Gui, 99:Add, Button, yp+40 w120 h30 Left gSupADMIN hwndHBT4, % "   &4 - ADMIN"
-;Gui, 99:Add, Button, yp+40 w120 h30 Left gSupGeneral, % "   &5 - SUB-MENU"
-Gui, 99:Add, Button, yp+40 w120 h30 Left gDeclinedConnection hwndHBT5, % "   &5 - KNOCKBACK"
-
-Gui, 99:Add, Button, xp+134 yp-120 w120 h30 Right gFredConf hwndHBT6, % "Fred Confirmation   "
-Gui, 99:Add, Button, yp+40 w120 h30 Right gQAPass hwndHBT7, % "QA Pass   "
-Gui, 99:Add, Button, yp+40 w120 h30 Right gSupCancellation hwndHBT8, % "Cancellation   "
-Gui, 99:Add, Button, yp+40 w120 h30 Right gPhoneRangOut hwndHBT9, % "Phone Rang Out   "
-
-Gui, 99:Add, Button, xp+134 yp-80 w120 h30 Right gRemoteReset hwndHBT10, % "Remote Update   "
-;Gui, 99:Add, Button, yp+40 w120 h30 Right gSupSiteReset , % "Site Reset   "
-Gui, 99:Add, Button, yp+40 w120 h30 Right gSupPaths hwndHBT11, % "Paths for AV   "
-Gui, 99:Add, Button, yp+40 w120 h30 Right gSupEMAILS hwndHBT12, % "Email Templates   "
-
-Gui, 99:Tab, 2
-Gui, 99:Add, Picture, x75 y30, C:\AutoHotKey\Files\mainmenu_loy.png
-Gui, 99:Add, Picture, x15 y113 BackgroundTrans, C:\AutoHotKey\Files\loy.png
-Gui, 99:Add, Button, x30 yp+20 w120 h30 Left gLoyInstall hwndHBT30, % "   &1 - INSTALL"
-Gui, 99:Add, Button, yp+40 w120 h30 Left gLoyTillConfig hwndHBT31, % "   &2 - TILL CONFIG"
-Gui, 99:Add, Button, yp+40 w120 h30 Left gLoyQA hwndHBT32, % "   &3 - QA"
-Gui, 99:Add, Button, yp+40 w120 h30 Left gLoyAdmin hwndHBT33, % "   &4 - ADMIN"
-Gui, 99:Add, Button, yp+40 w120 h30 Left gQ13 hwndHBT34, % "   &3 - LOYSERV"
-
-Gui, 99:Add, Button, xp+134 yp-40 w120 h30 Right gCardOrders hwndHBT35, % "Card Orders   "
-Gui, 99:Add, Button, yp+40 w120 h30 Right gLoyaltyCancelation hwndHBT36, % "Loyalty Cancel   "
-;Gui, 99:Add, Button, yp+40 w120 h30 Right gTWCMRoll , % "TWCM Rollout   "
-
 Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
-Opt2 := [ , 0x0C131E   ,       ,  "WHITE" , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
 Opt5 := [ ,            ,       , 0x0C131E]        
 
 Loop, 37
@@ -540,17 +559,80 @@ NUM++
 ImageButton.Create(HBT%NUM%, Opt1, Opt2, , , Opt5)
 }
 
-Gui, 99:Show, %Gui_Cord% w450 h725 , Ｍ Ａ Ｉ Ｎ 　 Ｍ Ｅ Ｎ Ｕ
+Gui, 99:font,
+Gui, 99:font, s14 CWhite Bold , Segoe UI
+Gui, 99:Add, Button, x408 y0 w42 h28 Left gExit hwndHBT99, %A_Space%%A_Space%✖
+;============= STATUS BAR BUTTONS
+Opt1 := [0, 0x1F2130    ,       , "WHITE" , , , 0x1F2130, 1]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 1]
+Opt5 := [ ,            ,       , 0x0C131E]        
+ImageButton.Create(HBT99, Opt1, Opt2, , , Opt5)
+;================================
+
+DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 0)
+Gui, 99:Show, %Gui_Cord% w450 h715 , MAIN MENU
+DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 1)
 return
 
-MenuTab:
-if (WhichTab != "  Ｓ Ｕ Ｐ Ｐ Ｏ Ｒ Ｔ  ")
+uiMove:
+PostMessage, 0xA1, 2,,, A 
+Return
+
+AddImageTab(Options, Pages, Vertical = False) {
+	static HwndList := {}
+
+	Opt1 := [3, 0x1f2130   , 0x2b2e43      ,  "WHITE" , , , 0x1f2130, 0]
+	Opt2 := [ , 0x1f2130   ,       ,  "WHITE" , , , 0x1f2130, 0]
+	Opt5 := [ ,            ,       , 0x0C131E]        
+
+	Gui, 99:Add, Tab2, x15 y108 w0 h0 AltSubmit HwndHTab , % Pages ; Add an invisible Tab control
+	Gui, 99:Tab
+
+	Loop, Parse, Pages, |
 	{
-	IniWrite, 1, C:\AutoHotKey\settings.ini, Starting Position, Start
+		_Options := (A_Index = 1) ? Options " Disabled xp" : (Vertical ? "y+0" : "x+0")
+		Gui, 99:Add, Button, %_Options% HwndHBT g___AddImageTab_ChangeTab, % A_LoopField
+			ImageButton.Create(HBT, Opt1, Opt2, Opt3, Opt4)
+
+		HwndList[HBT]                   := {TabIndex: A_Index, TabHwnd: HTab}
+		HwndList["HTab", HTab, A_Index] := HBT
 	}
-	Else
-	IniWrite, 2, C:\AutoHotKey\settings.ini, Starting Position, Start
+
+	Return
+
+	___AddImageTab_ChangeTab:
+		GuiControlGet, focused_control, Focus
+		GuiControlGet, focused_controlHwnd, Hwnd, %focused_control%
+		TabIndex := HwndList[focused_controlHwnd+0]["TabIndex"]
+		TabHwnd  := HwndList[focused_controlHwnd+0]["TabHwnd"]
+
+		GuiControl, Choose, %TabHwnd%, |%TabIndex%
+		
+		For i, hwnd in HwndList["HTab"][TabHwnd]
+			GuiControl, % (i = TabIndex) ? "Disable" : "Enable", %hwnd%
+	Return
+}
+
+Exit:
+Reload
+Return
+
+/*
+MenuTab:
+if (WhichTab != "Pages1")
+	{
+	IniRead, page, C:\AutoHotKey\settings.ini, Starting Position, Start
+	if (page != "1")
+		{
+		IniWrite, 1, C:\AutoHotKey\settings.ini, Starting Position, Start
+		}
+	if (page != "2")
+		{
+		IniWrite, 2, C:\AutoHotKey\settings.ini, Starting Position, Start
+		}
+	}
 	return
+	*/
 
 99ButtonDataOut:
 FileRead, DOPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Data Out.txt
@@ -902,7 +984,7 @@ if (Mon = 2)
 	}
 
 Gui, SCRT%Num%:-SysMenu -caption +Border
-Gui, SCRT%Num%:Add, Picture, x0 y0, C:\Users\Aaron.Beecham\Pictures\icons\hotkey_sharp.png
+Gui, SCRT%Num%:Add, Picture, x0 y0, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\hotkey_sharp.png
 Gui, SCRT%Num%:Show, x%CORDx% y%CORDy% h128 w128
 sleep 20
 }

@@ -10,24 +10,41 @@ FileReadLine, oldver, C:\AutoHotKey\version.txt, 1
 FileReadLine, newver, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, 1
 FileRead, update, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\change.txt
 	
-Gui, A1:Color, 000000
-Gui, A1:Add, Picture, x-180 y-120 , C:\AutoHotKey\Files\back-sup.png
-Gui, A1:Add, Picture, x90 y-120 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\back-right.png
+Gui, A1:-SysMenu -caption -Border
+Gui, A1:Add, Picture, x-150 y-100 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\ui\back-sup-wide.png
+Gui, A1:Color, 1f2130, 2b2e43
+Gui, A1:Add, Text, x0 y0 w408 h25 Center GuiMove,
+
+;Gui, A1:Add, Picture, x-180 y-120 , C:\AutoHotKey\Files\back-sup.png
+;Gui, A1:Add, Picture, x90 y-120 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\back-right.png
 ;Gui, A1:Add, Picture, x420 y0 w95 h95 , C:\AutoHotKey\Files\all_tag_6.png
-Gui, A1:font, cE8EBF5 bold s12, Helvetica
-Gui, A1:Add, Picture, x17 y10 w185 h32 BackGroundTrans, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\updater.png
+Gui, A1:font, cE8EBF5 Bold s18, SegoeUI
+Gui, A1:Add, Text, x15 y10 w185 h32 BackGroundTrans, UPDATER
+;Gui, A1:Add, Picture, x17 y10 w185 h32 BackGroundTrans, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\updater.png
 Gui, A1:font,
-Gui, A1:font, cE8EBF5 , Helvetica
+Gui, A1:font, cE8EBF5 , SegoeUI
 Gui, A1:Add, Text, x17 y45 BackGroundTrans, You are on version %oldver%.
 Gui, A1:Add, Text, x17 y60 BackGroundTrans, The current versions is %newver%.
 Gui, A1:Add, Text, x19 y90 BackGroundTrans, Changes: ;`n%update%
 Gui, A1:Add, Edit, readonly -tabstop -VScroll -E0x200 x17 y108 w476 h105, %update%
+Gui, A1:font, 
 Gui, A1:font, cE8EBF5 s7 , Helvetica
 Gui, A1:Add, Text, x14 y239 BackGroundTrans, Written by 
-Gui, A1:font, cE8EBF5 bold s7, Helvetica
+Gui, A1:font, 
+Gui, A1:font, cE8EBF5 s7 Bold, Helvetica
 Gui, A1:Add, Text, x60 y239 BackGroundTrans , Aaron Beecham
-Gui, A1:Add, Button, x302 y219 w90 h30 , &Update
-Gui, A1:Add, Button, x402 y219 w90 h30 , &Close
+Gui, A1:font, 
+Gui, A1:font, cE8EBF5 s10, SegoeUI
+Gui, A1:Add, Button, x302 y219 w90 h30 hwndUP1, Update
+Gui, A1:Add, Button, x402 y219 w90 h30 hwndUP2, Close
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(UP1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(UP2, Opt1, Opt2, , , Opt5)
+
 Gui, A1:Show, w509 h259, 🔥🔑 Updater
 return
 
@@ -58,15 +75,53 @@ Gui, Show, w200 h80,Updating...
 		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\Staff Logs.exe, C:\AutoHotKey\Files\Staff Logs.exe,1
 		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\all_tag_6.png, C:\AutoHotKey\Files\all_tag_6.png,1
 
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\mainmenu_sup.png, C:\AutoHotKey\Files\mainmenu_sup.png
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\mainmenu_loy.png, C:\AutoHotKey\Files\mainmenu_loy.png
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\sup.png, C:\AutoHotKey\Files\sup.png,1
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\loy.png, C:\AutoHotKey\Files\loy.png,1
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\back-sup.png, C:\AutoHotKey\Files\back-sup.png,1
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\back-right.png, C:\AutoHotKey\Files\back-right.png,1
+
+		;======= UI FILES
+		FileCopyDir, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\ui, C:\AutoHotKey\Files\ui ,1
 
 		sleep 1500
 		Gui, Destroy
 		MsgBox,  0, Update Complete, The script has updated succesfully.`nYou may now run the script again using the hotkey.
 		Run, C:\AutoHotKey\script.exe
 ExitApp
+
+uiMove:
+PostMessage, 0xA1, 2,,, A 
+Return
+
+AddImageTab(Options, Pages, Vertical = False) {
+	static HwndList := {}
+
+	Opt1 := [3, 0x1f2130   , 0x2b2e43      ,  "WHITE" , , , 0x1f2130, 0]
+	Opt2 := [ , 0x1f2130   ,       ,  "WHITE" , , , 0x1f2130, 0]
+	Opt5 := [ ,            ,       , 0x0C131E]        
+
+	Gui, 99:Add, Tab2, x15 y108 w0 h0 AltSubmit HwndHTab , % Pages ; Add an invisible Tab control
+	Gui, 99:Tab
+
+	Loop, Parse, Pages, |
+	{
+		_Options := (A_Index = 1) ? Options " Disabled xp" : (Vertical ? "y+0" : "x+0")
+		Gui, 99:Add, Button, %_Options% HwndHBT g___AddImageTab_ChangeTab, % A_LoopField
+			ImageButton.Create(HBT, Opt1, Opt2, Opt3, Opt4)
+
+		HwndList[HBT]                   := {TabIndex: A_Index, TabHwnd: HTab}
+		HwndList["HTab", HTab, A_Index] := HBT
+	}
+
+	Return
+
+	___AddImageTab_ChangeTab:
+		GuiControlGet, focused_control, Focus
+		GuiControlGet, focused_controlHwnd, Hwnd, %focused_control%
+		TabIndex := HwndList[focused_controlHwnd+0]["TabIndex"]
+		TabHwnd  := HwndList[focused_controlHwnd+0]["TabHwnd"]
+
+		GuiControl, Choose, %TabHwnd%, |%TabIndex%
+		
+		For i, hwnd in HwndList["HTab"][TabHwnd]
+			GuiControl, % (i = TabIndex) ? "Disable" : "Enable", %hwnd%
+	Return
+}
+
+#Include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\test files\Sources\Class_ImageButton.ahk

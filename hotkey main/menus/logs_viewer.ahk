@@ -9,8 +9,10 @@ IfNotExist, C:\AutoHotKey\logsettings.ini
 IniRead, dispdrive, C:\AutoHotKey\logsettings.ini, drives, dispx
 IniRead, posdrive, C:\AutoHotKey\logsettings.ini, drives, posx
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, Logs:-SysMenu +Border
-Gui, Logs:Color, 1d1f21, 383D46
+Gui, Logs:-SysMenu -caption -Border
+Gui, Logs:Add, Picture, x0 y160 , C:\AutoHotKey\Files\ui\back-sup-wide.png
+Gui, Logs:Color, %BGColour%, 2b2e43
+Gui, Logs:Add, Text, x0 y0 w408 h25 Center GuiMove,
 
 
 Gui, Logs:font, s14 bold cE8EBF5, Segoe UI
@@ -33,7 +35,7 @@ Gui, Logs:Add, Edit, xp+70 w15 h15 -E0x200 vposdrive, %posdrive%
 
 Gui, Logs:font, 
 Gui, Logs:font, s14 bold cE8EBF5, Segoe UI
-Gui, Logs:Add, Button, x115 y65 w25 h25 gupdatedrive, ↑
+Gui, Logs:Add, Button, x115 y65 w25 h25 gupdatedrive hwndLOGS1, ↑
 
 Gui, Logs:font, 
 Gui, Logs:font, s8 bold cE8EBF5, Segoe UI
@@ -53,22 +55,34 @@ Gui, Logs:font,
 Gui, Logs:font, s10 cE8EBF5, Segoe UI
 Gui, Logs:Add, Edit, yp+20 -E0x200 w120 vDate, %Date%
 
-Gui, Logs:Add, Button, yp+50 w120 gopenlogfile, OPEN FILE
+Gui, Logs:Add, Button, yp+50 w120 gopenlogfile hwndLOGS2, OPEN FILE
 
-Gui, Logs:Add, Button, yp+40 w55 gopendrivedisp, DISP:\
-Gui, Logs:Add, Button, xp+65 w55 gopendrivepos, POS:\
+Gui, Logs:Add, Button, yp+40 w55 gopendrivedisp hwndLOGS3, DISP:\
+Gui, Logs:Add, Button, xp+65 w55 gopendrivepos hwndLOGS4, POS:\
 
-Gui, Logs:Add, Button, xp-65 yp+70 w120 gmapdisp, MAP DISPX
-Gui, Logs:Add, Button, yp+40 w120 gmappos, MAP POSX
+Gui, Logs:Add, Button, xp-65 yp+70 w120 gmapdisp hwndLOGS5, MAP DISPX
+Gui, Logs:Add, Button, yp+40 w120 gmappos hwndLOGS6, MAP POSX
 
-Gui, Logs:Add, Button, yp+60 w120 glogsexit, EXIT
+Gui, Logs:Add, Button, yp+60 w120 glogsexit hwndLOGS7, EXIT
 
 
 
 Gui, Logs:font,
 Gui, Logs:font, cE8EBF5, Segoe UI
+Gui, Logs:Add, Text, x162 y28 w40 h490
 Gui, Logs:Add, Edit, x170 y28 w602 h490 -E0x200 ReadOnly vPreview, 
 Gui, Logs:Add, GroupBox, x160 y20 w614 h500,
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+ImageButton.Create(LOGS1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LOGS2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LOGS3, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LOGS4, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LOGS5, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LOGS6, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LOGS7, Opt1, Opt2, , , Opt5)
 
 Gui, Logs:Show, %Gui_Cord% w795 h540, Logs Viewer
 

@@ -4,68 +4,115 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 Gui, Destroy 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 
-Gui, 86:-SysMenu +Border
+Gui, 86:-SysMenu -caption -Border
+Gui, 86:Color, %BGColour%, 2b2e43
+Gui, 86:Add, Text, x0 y0 w910 h25 Center GuiMove,
+Gui, 86:Add, Picture, x0 y150 , C:\AutoHotKey\Files\ui\back-sup.png
 Gui, 86:font, bold cE8EBF5 s12, Segoe UI
 Gui, 86:Add, Text, center x1 y20 w274 , PROCESS CHARTS
 Gui, 86:font, 
 Gui, 86:font, bold cE8EBF5 s8, Segoe UI
-Gui, 86:Color, 1d1f21, 383D46
 
-Gui, 86:Add, Button, x28 y465 w100 h30 , BACK
-Gui, 86:Add, Button, x143 y465 w100 h30 , EXIT
+Gui, 86:Add, Button, x28 y465 w100 h30 hwndcharts39, BACK
+Gui, 86:Add, Button, x143 y465 w100 h30 hwndcharts40, EXIT
 
-Gui, 86:Add, Tab2, x12 y59 w250 h390 , GENERAL|DISPENSARY|POS|LOYALTY
+AddImageTab2("", "GENERAL|DISPENSARY|POS|LOYALTY")
+;Gui, 86:Add, Tab2, x12 y59 w250 h390 , GENERAL|DISPENSARY|POS|LOYALTY
 
 Gui, 86:Tab, GENERAL
-
-
-Gui, 86:Add, Button, x28 y120 w102 h30 , QA
-Gui, 86:Add, Button, x143 yp+0 w102 h30 , Sanofi QA
-Gui, 86:Add, Button, x28 yp+40 w217 h30 , General Installation Help
-Gui, 86:Add, Button, yp+40 w217 h30 gEcom , E-Commerce
-Gui, 86:Add, Button, yp+40 w217 h30 , Email
-Gui, 86:Add, Button, yp+40 w217 h30 , Clients and Services
-Gui, 86:Add, Button, yp+40 w217 h30 gGroupAccount, Making a Group Account
+Gui, 86:Add, Button, x28 y120 w102 h30 hwndcharts7, QA
+Gui, 86:Add, Button, x143 yp+0 w102 h30 hwndcharts1, Sanofi QA
+Gui, 86:Add, Button, x28 yp+40 w217 h30 hwndcharts2, General Installation Help
+Gui, 86:Add, Button, yp+40 w217 h30 gEcom hwndcharts3, E-Commerce
+Gui, 86:Add, Button, yp+40 w217 h30 hwndcharts4, Email
+Gui, 86:Add, Button, yp+40 w217 h30 hwndcharts5, Clients and Services
+Gui, 86:Add, Button, yp+40 w217 h30 gGroupAccount hwndcharts6, Making a Group Account
 
 Gui, 86:Tab, DISPENSARY
-Gui, 86:Add, Button, x28 y120 w102 h30 , Aquarius
-Gui, 86:Add, Button, x143 yp+0 y120 w102 h30 gAmfacd, Amfac
-Gui, 86:Add, Button, x28 yp+40 w217 h30 gFNd, Fred Next
-Gui, 86:Add, Button, yp+40 w102 h30 gLOTSd, LOTS
-Gui, 86:Add, Button, x143 yp+0 w102 h30 gLOTSNZd, LOTS NZ
-Gui, 86:Add, Button, x28 yp+40 w217 h30 gMINFd, MINFOS
-Gui, 86:Add, Button, yp+40 w217 h30 gMTOPd, Mountain Top
-Gui, 86:Add, Button, yp+40 w217 h30 gProd, Pharmacy Pro
-Gui, 86:Add, Button, yp+40 w217 h30 gToniqd, Toniq
-Gui, 86:Add, Button, yp+40 w217 h30 gZedd, Zed
+Gui, 86:Add, Button, x28 y120 w102 h30 hwndcharts8, Aquarius
+Gui, 86:Add, Button, x143 yp+0 y120 w102 h30 gAmfacd hwndcharts9, Amfac
+Gui, 86:Add, Button, x28 yp+40 w217 h30 gFNd hwndcharts10, Fred Next
+Gui, 86:Add, Button, yp+40 w102 h30 gLOTSd hwndcharts11, LOTS
+Gui, 86:Add, Button, x143 yp+0 w102 h30 gLOTSNZd hwndcharts12, LOTS NZ
+Gui, 86:Add, Button, x28 yp+40 w217 h30 gMINFd hwndcharts13, MINFOS
+Gui, 86:Add, Button, yp+40 w217 h30 gMTOPd hwndcharts14, Mountain Top
+Gui, 86:Add, Button, yp+40 w217 h30 gProd hwndcharts15, Pharmacy Pro
+Gui, 86:Add, Button, yp+40 w217 h30 gToniqd hwndcharts16, Toniq
+Gui, 86:Add, Button, yp+40 w217 h30 gZedd hwndcharts17, Zed
 
 Gui, 86:Tab, POS
-Gui, 86:Add, Button, x28 y120 w102 h30 , FRED
-Gui, 86:Add, Button, yp+40 w102 h30 gFNp, Fred Next
-Gui, 86:Add, Button, yp+40 w102 h30 gLOTSp, LOTS
-Gui, 86:Add, Button, yp+40 w102 h30 gLOTSNZp, LOTS NZ
-Gui, 86:Add, Button, yp+40 w102 h30 gMINFp, MINFOS
-Gui, 86:Add, Button, yp+40 w102 h30 gMTOPp, Mountain Top
-Gui, 86:Add, Button, yp+40 w102 h30 gProp, Pharmacy Pro
-Gui, 86:Add, Button, yp+40 w102 h30 , POS Browser
-Gui, 86:Add, Button, x143 y120 w102 h30 , POS Works
-Gui, 86:Add, Button, yp+40 w102 h30 , POS Master
-Gui, 86:Add, Button, yp+40 w102 h30 , Simple
-Gui, 86:Add, Button, yp+40 w102 h30 gToniqp, Toniq
-Gui, 86:Add, Button, yp+40 w102 h30 gZedp, Zed
+Gui, 86:Add, Button, x28 y120 w102 h30 hwndcharts18, FRED
+Gui, 86:Add, Button, yp+40 w102 h30 gFNp hwndcharts19, Fred Next
+Gui, 86:Add, Button, yp+40 w102 h30 gLOTSp hwndcharts20, LOTS
+Gui, 86:Add, Button, yp+40 w102 h30 gLOTSNZp hwndcharts21, LOTS NZ
+Gui, 86:Add, Button, yp+40 w102 h30 gMINFp hwndcharts22, MINFOS
+Gui, 86:Add, Button, yp+40 w102 h30 gMTOPp hwndcharts23, Mountain Top
+Gui, 86:Add, Button, yp+40 w102 h30 gProp hwndcharts24, Pharmacy Pro
+Gui, 86:Add, Button, yp+40 w102 h30 hwndcharts25, POS Browser
+Gui, 86:Add, Button, x143 y120 w102 h30 hwndcharts26, POS Works
+Gui, 86:Add, Button, yp+40 w102 h30 hwndcharts27, POS Master
+Gui, 86:Add, Button, yp+40 w102 h30 hwndcharts28, Simple
+Gui, 86:Add, Button, yp+40 w102 h30 gToniqp hwndcharts29, Toniq
+Gui, 86:Add, Button, yp+40 w102 h30 gZedp hwndcharts30, Zed
 
 Gui, 86:Tab, LOYALTY
-Gui, 86:Add, Button, x28 y120 w217 h30 , Loyalty Clients
-Gui, 86:Add, Button, yp+40 w217 h30 gLoyMinfTrain, Intergrated MINFOS Training
-Gui, 86:Add, Button, yp+40 w217 h30 , Install Back Office
-Gui, 86:Add, Button, yp+40 w217 h30 , Install Mountain Top
-Gui, 86:Add, Button, yp+40 w217 h30 , Install STOPS
-Gui, 86:Add, Button, yp+40 w217 h30 , Install LOTS
-Gui, 86:Add, Button, yp+40 w217 h30 , Install SIMPLE
-Gui, 86:Add, Button, yp+40 w217 h30 , Install Zed
+Gui, 86:Add, Button, x28 y120 w217 h30 hwndcharts31, Loyalty Clients
+Gui, 86:Add, Button, yp+40 w217 h30 gLoyMinfTrain hwndcharts32, Intergrated MINFOS Training
+Gui, 86:Add, Button, yp+40 w217 h30 hwndcharts33, Install Back Office
+Gui, 86:Add, Button, yp+40 w217 h30 hwndcharts34, Install Mountain Top
+Gui, 86:Add, Button, yp+40 w217 h30 hwndcharts35, Install STOPS
+Gui, 86:Add, Button, yp+40 w217 h30 hwndcharts36, Install LOTS
+Gui, 86:Add, Button, yp+40 w217 h30 hwndcharts37, Install SIMPLE
+Gui, 86:Add, Button, yp+40 w217 h30 hwndcharts38, Install Zed
+Gui, 86:Tab
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+Loop, 40
+{
+CHARTS++
+ImageButton.Create(charts%CHARTS%, Opt1, Opt2, , , Opt5)
+}
 
 Gui, 86:Show, %Gui_Cord% w274 h513, %A_Space%
 return
+
+AddImageTab2(Options, Pages, Vertical = False) {
+	static HwndList := {}
+
+	Opt1 := [3, 0x1f2130   , 0x2b2e43      ,  "WHITE" , , , 0x1f2130, 0]
+	Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , "WHITE", 1]
+	Opt5 := [ ,            ,       , 0x0C131E]        
+
+	Gui, 86:Add, Tab2, x20 y75 w0 h0 AltSubmit HwndHTab , % Pages ; Add an invisible Tab control
+	Gui, 86:Tab
+
+	Loop, Parse, Pages, |
+	{
+		_Options := (A_Index = 1) ? Options " Disabled xp" : (Vertical ? "y+0" : "x+0")
+		Gui, 86:Add, Button, %_Options% HwndHBT g___AddImageTab_ChangeTab2, % A_LoopField
+			ImageButton.Create(HBT, Opt1, Opt2, Opt3, Opt4)
+
+		HwndList[HBT]                   := {TabIndex: A_Index, TabHwnd: HTab}
+		HwndList["HTab", HTab, A_Index] := HBT
+	}
+
+	Return
+
+	___AddImageTab_ChangeTab2:
+		GuiControlGet, focused_control, Focus
+		GuiControlGet, focused_controlHwnd, Hwnd, %focused_control%
+		TabIndex := HwndList[focused_controlHwnd+0]["TabIndex"]
+		TabHwnd  := HwndList[focused_controlHwnd+0]["TabHwnd"]
+
+		GuiControl, Choose, %TabHwnd%, |%TabIndex%
+		
+		For i, hwnd in HwndList["HTab"][TabHwnd]
+			GuiControl, % (i = TabIndex) ? "Disable" : "Enable", %hwnd%
+	Return
+}
 
 Amfacd:
 Gui, 86:Destroy

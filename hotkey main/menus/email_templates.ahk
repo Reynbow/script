@@ -1,24 +1,29 @@
 ﻿Q7:
 SupEMAILS:
-Gui, Destroy 
-Gui, 99:Destroy 
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
+;Gui, Destroy 
+;Gui, 99:Destroy 
+WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
+IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
-Gui, 7:+ToolWindow -SysMenu +Border
-Gui, 7:font, s16 cE8EBF5 bold, Segoe UI
-Gui, 7:Color, 1d1f21, 383D46
-Gui, 7:Add, Text, center x1 y32 w420 h50 , ✉ Email Templates ✉
+gui_x +=450
+
+Gui, 7:-SysMenu -caption -Border
+Gui, 7:Color, %BGColour%, 2b2e43
+Gui, 7:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-sup-ext.png
+Gui, 7:font, s12 bold cE8EBF5, Segoe UI
+Gui, 7:Add, Text, Center x0 y80 w210, Email Templates
 Gui, 7:font,
 Gui, 7:font, s8 cE8EBF5,
-Gui, 7:Add, Text, center x80 y62 w250 , Outlook MUST be running before you click any of these buttons. It will not work if you do not.
+Gui, 7:Add, Text, Center x10 y130 w190, Outlook MUST be running before you click any of these buttons. It will not work if you do not.
 
-Gui, 7:Add, Button, x30 y120 w150 h30 Left gFredExcel , % "   &1 FRED Excel Form"
-Gui, 7:Add, Button, yp+40 w150 h30 Left gLoyEsc, % "   &2 Loyalty Escalation"
-Gui, 7:Add, Button, yp+40 w150 h30 Left gLoyRe, % "   &3 Loyalty Reinstallation"
-Gui, 7:Add, Button, yp+40 w150 h30 Left gBugReport, % "   &4 Bugs Reporting Tool"
-Gui, 7:Add, Button, yp+40 w150 h30 Left gWebservice, % "   &5 MINFOS Webservice"
-Gui, 7:Add, Button, yp+40 w150 h30 Left gBatchReader , % "   POS Browser Batch Reader"
+Gui, 7:Add, Button, x30 y220 w150 h30 Left gFredExcel hwndemail2 , % "   FRED Excel Form"
+Gui, 7:Add, Button, yp+40 w150 h30 Left gLoyEsc hwndemail3, % "   Loyalty Escalation"
+Gui, 7:Add, Button, yp+40 w150 h30 Left gLoyRe hwndemail4, % "   Loyalty Reinstallation"
+Gui, 7:Add, Button, yp+40 w150 h30 Left gBugReport hwndemail5, % "   Bugs Reporting Tool"
+Gui, 7:Add, Button, yp+40 w150 h30 Left gWebservice hwndemail6, % "   MINFOS Webservice"
+Gui, 7:Add, Button, yp+40 w150 h30 Left gBatchReader hwndemail7, % "   POS Browser Batch Reader"
 
+/*
 Gui, 7:font, s8 cE8EBF5 bold,
 Gui, 7:Add, GroupBox, x215 y120 w180 h230 , EMAILS TO REPS
 Gui, 7:font, 
@@ -28,10 +33,23 @@ Gui, 7:Add, Button, x230 y185 w150 h30 , Installation Complete `n(Pending QA)
 Gui, 7:Add, Button, x230 y225 w150 h30 , Installation Complete
 Gui, 7:Add, Button, x230 y265 w150 h30 , Knock Back (Data Outage)
 Gui, 7:Add, Button, x230 y305 w150 h30 , Knock Back (Installation)
+*/
 
-Gui, 7:Add, Button, x230 y365 w70 h30 , &Back
-Gui, 7:Add, Button, x310 y365 w70 h30 , E&xit
-Gui, 7:Show, %Gui_Cord% w420 h415, %A_Space% ;✉ ;w210 h620, 
+
+Gui, 7:Add, Button, x12 y670 w184 h30 hwndemail1 , Close
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+ImageButton.Create(email1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(email2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(email3, Opt1, Opt2, , , Opt5)
+ImageButton.Create(email4, Opt1, Opt2, , , Opt5)
+ImageButton.Create(email5, Opt1, Opt2, , , Opt5)
+ImageButton.Create(email6, Opt1, Opt2, , , Opt5)
+ImageButton.Create(email7, Opt1, Opt2, , , Opt5)
+
+Gui, 7:Show, x%gui_x% y%gui_y% w210 h715, %A_Space% ;✉ ;w210 h620, 
 return
 
 7ButtonBack:
@@ -41,8 +59,8 @@ do_lines_pre = 0
 gosub Q1
 return
 
-7ButtonEXIT:
-Reload
+7ButtonClose:
+Gui, 7:Destroy
 return
 
 ;=====================================================EMAIL WINDOW END
@@ -482,9 +500,12 @@ return
 
 BatchReader:
 Gui, Destroy
+Gui, 99:Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 90D:-SysMenu +Border
-Gui, 90D:Color, 1d1f21, 383D46
+Gui, 90D:-SysMenu -caption -Border
+Gui, 90D:Color, %BGColour%, 2b2e43
+Gui, 90D:Add, Text, x0 y0 w910 h25 Center GuiMove,
+Gui, 90D:Add, Picture, x0 y20 , C:\AutoHotKey\Files\ui\back-sup-wide.png
 Gui, 90D:font, s12 bold cE8EBF5, Segoe UI
 Gui, 90D:Add, Edit, x1920 y2490 w80 vPlacehold,
 Gui, 90D:Add, Text, x38 y26 w200 , POSBROWSER BATCH READER ACCESS REQUEST
@@ -497,11 +518,21 @@ Gui, 90D:Add, Text, x38 y195 , Additional Information
 Gui, 90D:Add, Edit, -E0x200 x38 y220 w212 h50 -VScroll vBox3,
 Gui, 90D:font, cE8EBF5, Segoe UI
 Gui, 90D:Add, Groupbox, x300 y46 w360 h300 , Preview
-Gui, 90D:Add, Text, x320 y76 w320 h250 vPreviewDOR, 
-Gui, 90D:Add, Text, x335 y358 w320 h250 , Please ensure your signature is attached before sending...
-Gui, 90D:Add, Button, x38 y288 w215 h30 , &Confirm
-Gui, 90D:Add, Button, x38 y328 w100 h30 , &Back
-Gui, 90D:Add, Button, x153 y328 w100 h30 , &Exit
+Gui, 90D:Add, Text, x302 y76 w80 h268 
+Gui, 90D:Add, Text, x320 y76 w338 h268 vPreviewDOR, 
+Gui, 90D:Add, Text, BackgroundTrans x335 y358 w320 h250 , Please ensure your signature is attached before sending...
+Gui, 90D:Add, Button, x38 y288 w215 h30 hwndBatch1, &Confirm
+Gui, 90D:Add, Button, x38 y328 w100 h30 hwndBatch2, &Back
+Gui, 90D:Add, Button, x153 y328 w100 h30 hwndBatch3, &Exit
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(Batch1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(Batch2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(Batch3, Opt1, Opt2, , , Opt5)
+
 Gui, 90D:Show, %Gui_Cord% w686 h395, 
 
 loop
@@ -521,8 +552,8 @@ loop
     sleep 100
 }
 
-90DButtonExit:
-	reload
+90DButtonClose:
+Reload
 return
 
 90DButtonBack:
@@ -560,19 +591,33 @@ return
 
 Webservice:
 Gui, Destroy
+Gui, 99:Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 76:font, s12 bold, Segoe UI
-Gui, 76:Add, Edit, x1920 y2490 w80 vPlacehold,
+Gui, 76:-SysMenu -caption -Border
+Gui, 76:Color, %BGColour%, 2b2e43
+Gui, 76:Add, Text, x0 y0 w910 h25 Center GuiMove,
+Gui, 76:Add, Picture, x0 y-75 , C:\AutoHotKey\Files\ui\back-sup.png
+Gui, 76:font, s12 cE8EBF5 bold, Segoe UI
+Gui, 76:Add, Edit, -E0x200 x1920 y2490 w80 vPlacehold,
 Gui, 76:Add, Text, x23 y24 , Minfos Webservice Unavailable
 Gui, 76:font,
-Gui, 76:font, s8, Segoe UI
+Gui, 76:font, s8 cE8EBF5, Segoe UI
 Gui, 76:Add, Text, x18 y78 h30, Store Name
-Gui, 76:Add, Edit, x18 y98 w250 vBox1,
+Gui, 76:Add, Edit, -E0x200 x18 y98 w250 vBox1,
 Gui, 76:Add, Text, x18 y138 h30, Webservice address
-Gui, 76:Add, Edit, x18 y158 w250 vBox2,
-Gui, 76:Add, Button, x16 y210 w80 h30 , Confirm
-Gui, 76:Add, Button, x104 y210 w80 h30 , Back
-Gui, 76:Add, Button, x192 y210 w80 h30 , Exit
+Gui, 76:Add, Edit, -E0x200 x18 y158 w250 vBox2,
+Gui, 76:Add, Button, x16 y210 w80 h30 hwndMinf1 , Confirm
+Gui, 76:Add, Button, x104 y210 w80 h30 hwndMinf2, Back
+Gui, 76:Add, Button, x192 y210 w80 h30 hwndMinf3, Exit
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(Minf1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(Minf2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(Minf3, Opt1, Opt2, , , Opt5)
+
 Gui, 76:Show, %Gui_Cord% w286 h252, 
 return
 
@@ -745,10 +790,13 @@ return
 
 LoyRe:
 Gui, Destroy
+Gui, 99:Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 list1 = %A_Space%|1|2|3|4|5|6|7|8
-Gui, 46:-SysMenu +Border
-Gui, 46:Color, 1d1f21, 383D46
+Gui, 46:-SysMenu -caption -Border
+Gui, 46:Color, %BGColour%, 2b2e43
+Gui, 46:Add, Text, x0 y0 w910 h25 Center GuiMove,
+Gui, 46:Add, Picture, x0 y100 , C:\AutoHotKey\Files\ui\back-sup-wide.png
 Gui, 46:font, s16 bold cE8EBF5, Segoe UI
 Gui, 46:Add, Text, x12 y12 w425 , LOYALTY REINSTALLATION
 Gui, 46:font, 
@@ -787,14 +835,23 @@ Gui, 46:Add, CheckBox, x232 y285 h20 vCb_9, Additional Till
 
 Gui, 46:Add, Text, x12 y330 w180 h20 , More information
 Gui, 46:Add, Edit, -E0x200 x12 y350 w400 h60 -VScroll vBox8,
-Gui, 46:Add, Button, x12 y425 w120 h30 , Send
-Gui, 46:Add, Button, x152 y425 w120 h30 , Back
-Gui, 46:Add, Button, x292 y425 w120 h30 , Exit
+Gui, 46:Add, Button, x12 y425 w120 h30 hwndLoyRein1, Send
+Gui, 46:Add, Button, x152 y425 w120 h30 hwndLoyRein2, Back
+Gui, 46:Add, Button, x292 y425 w120 h30 hwndLoyRein3, Exit
 
 Gui, 46:Add, Groupbox, x440 y30 w385 h410, Preview
-Gui, 46:Add, Text, x455 y55 w360 h370 vPreviewLoyIn, 
+Gui, 46:Add, Text, x442 y55 w368 h383
+Gui, 46:Add, Text, x455 y55 w368 h383 vPreviewLoyIn, 
 
-Gui, 46:Show,  %Gui_Cord% w850 h470, %A_Space%
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(LoyRein1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LoyRein2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LoyRein3, Opt1, Opt2, , , Opt5)
+
+Gui, 46:Show,  %Gui_Cord% w845 h467, %A_Space%
 
 loop
 {
@@ -880,11 +937,14 @@ return
 
 LoyEsc:
 Gui, Destroy
+Gui, 99:Destroy
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 
-Gui, 44:-SysMenu +Border
-Gui, 44:Color, 1d1f21, 383D46
+Gui, 44:-SysMenu -caption -Border
+Gui, 44:Color, %BGColour%, 2b2e43
+Gui, 44:Add, Text, x0 y0 w910 h25 Center GuiMove,
+Gui, 44:Add, Picture, x0 y260 , C:\AutoHotKey\Files\ui\back-sup.png
 Gui, 44:font, s12 bold cE8EBF5, Segoe UI
 Gui, 44:Add, Text, x19 y12 w403 , LOYALTY CALL ESCALATION
 Gui, 44:font, 
@@ -920,11 +980,20 @@ Gui, 44:Add, Edit, -E0x200 x212 y145 w170 h50 -VScroll vDesc,
 Gui, 44:Add, Text, x212 y210 w190 h20 , Steps Taken to Resolve Issue:
 Gui, 44:Add, Edit, -E0x200 x212 y225 w170 h50 -VScroll vSteps, 
 Gui, 44:Add, Groupbox, x18 y375 w365 h250, Preview
-Gui, 44:Add, Text, x28 y400 w350 h220 vPreviewLoyEsc, 
+Gui, 44:Add, Text, x20 y423 w20 h200 ,
+Gui, 44:Add, Text, x28 y400 w353 h223 vPreviewLoyEsc, 
 
-Gui, 44:Add, Button, x212 y290 w170 h30 , Forward Escalation
-Gui, 44:Add, Button, x212 y330 w80 h30 , Back
-Gui, 44:Add, Button, x302 y330 w80 h30 , Exit
+Gui, 44:Add, Button, x212 y290 w170 h30 hwndLoyEsc1, Forward Escalation
+Gui, 44:Add, Button, x212 y330 w80 h30 hwndLoyEsc2, Back
+Gui, 44:Add, Button, x302 y330 w80 h30 hwndLoyEsc3, Exit
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(LoyEsc1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LoyEsc2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(LoyEsc3, Opt1, Opt2, , , Opt5)
 
 Gui, 44:Show, %Gui_Cord% h640 w403, %A_Space%
 
@@ -1079,547 +1148,21 @@ return
 
 ;=====================================================HSNET END
 
-
-;=====================================================SITE RESET EMAIL
-
-7Button1SiteReset:
-
-IfNotExist, C:\AutoHotKey\Files\drfate.png
-{
-	FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\drfate.png, C:\AutoHotKey\Files\drfate.png
-}
-
-Gui, Destroy
-Gui, 10A:Color, 1d1f21, 383D46
-Gui, 10A:Add, Picture, x-48 y10 w271 h350 , C:\AutoHotKey\Files\drfate.png
-Gui, 10A:Font, s10 Bold cE8EBF5, Segoe UI
-Gui, 10A:Add, Text, x202 y29 w230 , Remember, if this store has STOPS, SIMPLE or Lots/Other you will need to updated the settings.dbf.`n`n(Lots + Lots does not require this.)
-Gui, 10A:Add, Button, x2900 y1990 w150 h30 , Place
-Gui, 10A:Add, Button, x290 y199 w150 h30 , Yes... Okay. I get it...
-Gui, 10A:Show, %Gui_Cord% w466 h263, Listen to Fate
-return 
-
-10AButtonYes...Okay.Igetit...:
-list2 = Yes|No|NA
-Gui, 10A:Destroy
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-
-Gui, 10:-SysMenu +Border
-Gui, 10:Color, 1d1f21, 383D46
-Gui, 10:font, s12 bold cE8EBF5, Segoe UI
-Gui, 10:Add, Text, x28 y14 h30 , SITE RESET`nEMAIL
-Gui, 10:font,
-Gui, 10:font, cE8EBF5, Segoe UI
-
-;Gui, 10:Add, Text, x12 y9 w160 h20 , Who's the email being sent to?
-;Gui, 10:Add, Edit, x172 y9 w80 h20 gNameCheck vBox7, 
-Gui, 10:Add, Button, x152 y46 w110 h20 , Autofill
-
-Gui, 10:Add, Text, x28 y76 w140 h20 , Site Code:
-Gui, 10:Add, Edit, -E0x200 x152 y74 w110 h20 vBox1, 
-Gui, 10:Add, Text, x28 y106 w150 h20 , Site Name:
-Gui, 10:Add, Edit, -E0x200 x152 y104 w110 h20 vBox2, 
-Gui, 10:Add, Button, x270 y133 w22 h22 , ?
-Gui, 10:Add, Text, x28 y136 h20 , Months of History:
-Gui, 10:Add, Edit, -E0x200 x152 y134 w110 h20 vBox3, 
-Gui, 10:Add, Text, x28 y166 w140 h20 , Clients:
-Gui, 10:Add, Edit, -E0x200 x152 y164 w110 h20 vBox4, 
-Gui, 10:Add, Text, x28 y196 w140 h20 , Loyalty:
-Gui, 10:Add, DropDownList, x152 y194 w110 vChoice1, V2|V3|NA
-Gui, 10:Add, Text, x28 y226 w140 h20 , Loyalty actions
-Gui, 10:Add, DropDownList, x152 y224 w110 vChoice2, Carried Balance exported|Settings.dbf updated|NA
-Gui, 10:Add, Text, x28 y256 w140 h20 , Change of POS/Catman
-Gui, 10:Add, DropDownList, x152 y254 w110 vChoice3, Yes|No|NA
-Gui, 10:Add, Text, x28 y286 w140 h30 , Date new POS
-Gui, 10:Add, Edit, -E0x200 x152 y284 w110 h20 vBox10, 
-Gui, 10:Add, Text, x28 y316 w140 h20 , Staff member name:
-Gui, 10:Add, Edit, -E0x200 x152 y314 w110 h20 vBox9, 
-Gui, 10:Add, Text, x28 y346 w140 h20 , Reason:
-Gui, 10:Add, Edit, -E0x200 x152 y344 w110 h20 vBox6,
-
-Gui, 10:Add, Groupbox, x300 y26 w360 h382, Preview
-Gui, 10:Add, Text, x320 y56 w320 h332 vPreviewSR, 
-
-Gui, 10:Add, Button, x23 y379 w75 h30 , &Confirm
-Gui, 10:Add, Button, x106 y379 w75 h30 , &Back
-Gui, 10:Add, Button, x189 y379 w75 h30 , &Exit
-Gui, 10:Show, %Gui_Cord% w686 h430, %A_Space%
-
-loop
-{
-    Gui, 10:Submit, NoHide
-	FormatTime, Date,, yyyy/MM/dd
-	FormatTime, Time,, h:mmtt
-	
-    msgText = To: `t`tdhobden@intellipharm.com.au`nCC:`t`tbrodie.creaser/rick@intellipharm.com.au`nSubject: `tSITE RESET EMAIL - %Box1% %Box2%`n`n`n%Box1%`n%Box2%`nReason: %Box6%`n`nMonths of History:`t`t%Box3%`nClients:`t`t`t`t%Box4%`n`nLoyalty:`t`t`t`t%Choice1%`nLoyalty Actions:`t`t`t%Choice2%`nChange of POS/Catman:`t`t%Choice3%`nDate of New POS:`t`t%Box10%`n`n%Name%
-
-    if NOT (msgText == oldMsgText)
-    {
-       GuiControl, 10:Text, PreviewSR, %msgText%
-       oldMsgText := msgText
-    }
-
-    sleep 100
-}
-
-
-return
-
-10Button?:
-;InputBox, count, STARTUP TIME,Please set the time you would like HSNET to start.`nFormat is '12:00' in 24 hour time., ,240,160,200,200,,,00:15
-InputBox, count, DATE, Format: yyyyMMdd
-
-T1=%count%
-;T2=20110228010203
-
-x := ElapsedTime(T1)
-
-Answer := x.Yr * (12) + x.Mon
-
-MsgBox % "Months since " T1 "`n"
-;. "`n" x.Yr		" Years"
-;. "`n" x.Mon	" Months"
-. "`n" Answer	" Months"
-;. "`n" x.Day	" Days"
-;. "`n" x.Hr		" Hours"
-;. "`n" x.Min	" Minutes"
-;. "`n" x.Sec	" Seconds"
-
-;x := ElapsedTime(T1, T2)
-;MsgBox % "Duration between " T1 "`nand " T2 "`n" 
-;. "`n" x.Yr		" Years"
-;. "`n" x.Mon	" Months"
-;. "`n" x.Day	" Days"
-;. "`n" x.Hr		" Hours"
-;. "`n" x.Min	" Minutes"
-;. "`n" x.Sec	" Seconds"
-ElapsedTime(T1, T2:=""){  ; http://www.autohotkey.com/board/topic/119833-elapsed-time-calculator/
-	;if (T1>T2)
-	;	Tx:=T1,T1:=T2,T2:=Tx,Neg:=1
-	FormatTime,T1,%T1%,yyyyMMdd
-	FormatTime,T2,%T2%,yyyyMMdd
-	Yr:=SubStr(T2,1,4)-(Yr1:=SubStr(T1,1,4)),Mon:=SubStr(T2,5,2)-(Mon1:=SubStr(T1,5,2)),Day:=SubStr(T2,7,2)-SubStr(T1,7,2)
-	Hr:=SubStr(T2,9,2)-SubStr(T1,9,2),Min:=SubStr(T2,11,2)-SubStr(T1,11,2),Sec:=SubStr(T2,13,2)-SubStr(T1,13,2),Res:=[]
-	if Sec<0
-		Sec+=60,Min--
-	if Min<0
-		Min+=60,Hr--
-	if Hr<0
-		Hr+=24,Day--
-	if Day<0
-		Day+=(Mon1~="[469]|11")?30:Mon1=2?(Mod(Yr1,4)?28:29):31,Mon--
-	if Mon<0
-		Mon+=12,Yr--
-	for each,v in StrSplit("Yr,Mon,Day,Hr,Min,Sec",",")
-		x:=%v%*(Neg?-1:1),Res[v]:=(T1&&T2)?x:"Error"
-	return Res
-} 
-return
-
-10ButtonAutofill:
-v1 := "Store ID"
-v2 := "Name"
-    if errorlevel
-        return
-    RegExMatch(clipboard, "m)^" v1 "(.+)$", a)
-    RegExMatch(clipboard, "m)^" v2 "(.+)$", b)
-    if !(a1 and b1)
-        MsgBox ,,Error, Not found. Please copy the Site IQ record in full.
-    else
-		Gui, 10:Destroy
-		Gui, Destroy
-		IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-
-		Gui, 10:-SysMenu +Border
-		Gui, 10:Color, 1d1f21, 383D46
-		Gui, 10:font, s12 bold cE8EBF5, Segoe UI
-		Gui, 10:Add, Text, x28 y14 h30 , SITE RESET`nEMAIL
-		Gui, 10:font,
-		Gui, 10:font, cE8EBF5, Segoe UI
-
-		;Gui, 10:Add, Text, x12 y9 w160 h20 , Who's the email being sent to?
-		;Gui, 10:Add, Edit, x172 y9 w80 h20 gNameCheck vBox7, 
-		Gui, 10:Add, Button, x152 y46 w110 h20 , Autofill
-
-		Gui, 10:Add, Text, x28 y76 w140 h20 , Site Code:
-		Gui, 10:Add, Edit, -E0x200 x152 y74 w110 h20 vBox1, % trim(a1)
-		Gui, 10:Add, Text, x28 y106 w150 h20 , Site Name:
-		Gui, 10:Add, Edit, -E0x200 x152 y104 w110 h20 vBox2, % trim(b1)
-		Gui, 10:Add, Button, x270 y133 w22 h22 , ?
-		Gui, 10:Add, Text, x28 y136 h20 , Months of History:
-		Gui, 10:Add, Edit, -E0x200 x152 y134 w110 h20 vBox3, 
-		Gui, 10:Add, Text, x28 y166 w140 h20 , Clients:
-		Gui, 10:Add, Edit, -E0x200 x152 y164 w110 h20 vBox4, 
-		Gui, 10:Add, Text, x28 y196 w140 h20 , Loyalty:
-		Gui, 10:Add, DropDownList, x152 y194 w110 vChoice1, V2|V3|NA
-		Gui, 10:Add, Text, x28 y226 w140 h20 , Loyalty Actions:
-		Gui, 10:Add, DropDownList, x152 y224 w110 vChoice2, Carried Balance exported|Settings.dbf updated|NA
-		Gui, 10:Add, Text, x28 y256 w140 h20 , Change of POS/Catman
-		Gui, 10:Add, DropDownList, x152 y254 w110 vChoice3, Yes|No|NA
-		Gui, 10:Add, Text, x28 y286 w140 h30 , Date new POS
-		Gui, 10:Add, Edit, -E0x200 x152 y284 w110 h20 vBox10, 
-		Gui, 10:Add, Text, x28 y316 w140 h20 , Staff member name:
-		Gui, 10:Add, Edit, -E0x200 x152 y314 w110 h20 vBox9, 
-		Gui, 10:Add, Text, x28 y346 w140 h20 , Reason:
-		Gui, 10:Add, Edit, -E0x200 x152 y344 w110 h20 vBox6,
-
-		Gui, 10:Add, Groupbox, x300 y26 w360 h382, Preview
-		Gui, 10:Add, Text, x320 y56 w320 h332 vPreviewSR, 
-
-		Gui, 10:Add, Button, x23 y379 w75 h30 , &Confirm
-		Gui, 10:Add, Button, x106 y379 w75 h30 , &Back
-		Gui, 10:Add, Button, x189 y379 w75 h30 , &Exit
-		Gui, 10:Show, %Gui_Cord% w686 h430, %A_Space%
-
-		loop
-		{
-			Gui, 10:Submit, NoHide
-			FormatTime, Date,, yyyy/MM/dd
-			FormatTime, Time,, h:mmtt
-			
-			msgText = To: `t`tdhobden@intellipharm.com.au`nCC:`t`tbrodie.creaser/rick@intellipharm.com.au`nSubject: `tSITE RESET EMAIL - %Box1% %Box2%`n`n`n%Box1%`n%Box2%`nReason: %Box6%`n`nMonths of History:`t`t%Box3%`nClients:`t`t`t`t%Box4%`n`nLoyalty:`t`t`t`t%Choice1%`nLoyalty Actions:`t`t`t%Choice2%`nChange of POS/Catman:`t`t%Choice3%`nDate of New POS:`t`t%Box10%`n`n%Name%
-
-			if NOT (msgText == oldMsgText)
-			{
-			GuiControl, 10:Text, PreviewSR, %msgText%
-			oldMsgText := msgText
-			}
-
-			sleep 100
-		}
-
-
-		return
-
-10ButtonBack:
-Gui, 10:Destroy
-gosub Q7
-return
-
-10ButtonExit:
-Reload
-return
-
-10ButtonConfirm:
-	Gui, Submit
-GuiControlGet, MyDateTime
-	
-FormatTime, Date,, yyyy/MM/dd
-FormatTime, Time,, h:mmtt
-FormatTime, scripttime,, yyyyMM
-IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Site Reset Email`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
-
-str = 
-( %
-<html>
-<head>
-<title>SITE RESET</title>
-</head>
-<body style="margin: 0 !important; padding: 0 !important;">
-<table border="0" cellpadding="0" cellspacing="0" width="500px">
-    <tr>
-        <td bgcolor="#ffffff" align="center" style="padding: 15px;">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="responsive-table">
-                <tr>
-                    <td>
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td align="center" style="font-size: 32px; font-family: Segoe UI, Arial, sans-serif; color: #333333; padding-top: 30px;" class="padding-copy">SITE RESET</td>
-                            </tr>
-                            <tr>
-                                <td align="left" style="padding: 0 0 0 0; font-size: 16px; line-height: 25px; font-family: Segoe UI, Arial, sans-serif; color: #666666;" class="padding-copy">
-)
-str2 =
-( %
-<br>
-)
-str3 =
-( %
-</br><br>Reason: &nbsp;
-)
-str4 =
-( %
- </br></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td bgcolor="#ffffff" align="center" style="padding: 15px;" class="padding">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="responsive-table">
-                <tr>
-                    <td style="padding: 10px 0 0 0; border-top: 3px solid #eaeaea;">
-                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
-                            <tr>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 100%;" align="left">
-                                        <tr>
-                                            <td style="padding: 0 0 0 0;">
-                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                                                    <tr>
-                                                        <td align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px; font-weight: bold;">Months of History</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="right">
-                                        <tr>
-                                            <td style="padding: 0 0 0 0;">
-                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                                                    <tr>
-                                                        <td align="right" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;">
-)
-str5 =
-( %
-</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
-                            <tr>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 100%;" align="left">
-                                        <tr>
-                                            <td style="padding: 0 0 0 0;">
-                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                                                    <tr>
-                                                        <td align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px; font-weight: bold;">Clients</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="right">
-                                        <tr>
-                                            <td style="padding: 0 0 0 0;">
-                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                                                    <tr>
-                                                        <td align="right" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;">
-)
-str6 = 
-( %
-</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td style="padding: 10px 0 0 0; border-top: 3px solid #eaeaea; border-bottom: 3px solid #eaeaea;">
-                        <table cellspacing="0" cellpadding="0" border="0" width="100%">
-                            <tr>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 100%;" align="left">
-                                        <tr>
-                                            <td style="padding: 0 0 0 0;">
-                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                                                    <tr>
-                                                        <td align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;">Loyalty</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="right">
-                                        <tr>
-                                            <td>
-                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                                                    <tr>
-                                                        <td align="right" style="font-family: Arial, sans-serif; color: #7ca230; font-size: 16px;">
-)
-str7 =
-( %
-</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                            </tr>
-							<tr>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 100%;" align="left">
-                                        <tr>
-                                            <td style="padding: 0 0 0 0; border-top: 1px solid #eaeaea;">
-                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                                                    <tr>
-                                                        <td align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;">Loyalty Actions</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="right">
-                                        <tr>
-                                            <td>
-                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                                                    <tr>
-                                                        <td align="right" style="font-family: Arial, sans-serif; color: #7ca230; font-size: 16px;">
-)
-str8 =
-( %
-</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                            </tr>
-							<tr>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 100%;" align="left">
-                                        <tr>
-                                            <td style="padding: 0 0 0 0; border-top: 1px solid #eaeaea;">
-                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                                                    <tr>
-                                                        <td align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;">Change of POS/Catman</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="right">
-                                        <tr>
-                                            <td>
-                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                                                    <tr>
-                                                        <td align="right" style="font-family: Arial, sans-serif; color: #7ca230; font-size: 16px;">
-)
-str9 =
-( %
-</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                            </tr>
-							<tr>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 100%;" align="left">
-                                        <tr>
-                                            <td style="padding: 0 0 10px 0; border-top: 1px solid #eaeaea;">
-                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                                                    <tr>
-                                                        <td align="left" style="font-family: Arial, sans-serif; color: #333333; font-size: 16px;">Date of New POS</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <table cellpadding="0" cellspacing="0" border="0" width="47%" style="width: 47%;" align="right">
-                                        <tr>
-                                            <td>
-                                                <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                                                    <tr>
-                                                        <td align="right" style="font-family: Arial, sans-serif; color: #7ca230; font-size: 16px;">
-)
-str10 = 
-( %
-</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td bgcolor="#ffffff" align="center" style="padding: 15px;">
-            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 500px;" class="responsive-table">
-                <tr>
-                    <td>
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td>
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td align="left" style="padding: 0 0 0 0; font-size: 14px; line-height: 18px; font-family: Segoe UI, Arial, sans-serif; color: #aaaaaa; font-style: italic;" class="padding-copy">
-)
-str11 =
-( %
-</td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td bgcolor="#ffffff" align="center" style="padding: 15px;">
-            <table border="0" cellpadding="0" cellspacing="0" width="500" class="responsive-table">
-                <tr>
-                    <td>
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td align="center">
-                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td align="center" style="padding-top: 25px;" class="padding">
-                                                <table border="0" cellspacing="0" cellpadding="0" class="mobile-button-container">
-                                                </table>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-
-</body>
-</html>
-)
-
-email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-email.To := "dhobden@intellipharm.com.au"
-email.Cc := "brodie.creaser@intellipharm.com.au; rick@intellipharm.com.au"
-email.Subject := "SITE RESET EMAIL " Box1 " " Box2 ;objects like this (the email code) use strange inverted variables. The stuff in commas is plain text, the text without commas are the above variables. To enter a new line it needs to be in commas as it's code. Without commas means it's looking for a variable.
-email.HTMLBody := str . Box2 . str2 . Box1 . str3 . Box6 . str4 . Box3 . str5 . Box4 . str6 . Choice1 . str7 . Choice2 . str8 . Choice3 . str9 . Box10 . str10 . Name . str11
-email.Display
-	
-	reload
-return
-
-;=====================================================SITE RESET EMAIL END
-
 ;=====================================================FRED EXCEL
 
 FredExcel:
 Gui, Destroy
+Gui, 99:Destroy
 
-Gui, 47:-SysMenu +Border
-Gui, 47:Color, 1d1f21, 383D46
+Gui, 47:-SysMenu -caption -Border
+Gui, 47:Color, %BGColour%, 2b2e43
+Gui, 47:Add, Text, x0 y0 w686 h25 Center GuiMove,
+Gui, 47:Add, Picture, x0 y55 , C:\AutoHotKey\Files\ui\back-sup-wide.png
 Gui, 47:font, s12 bold cE8EBF5, Segoe UI
 Gui, 47:Add, Text, x28 y14 h30 , FRED EXCEL`nGENERATOR
 Gui, 47:font,
 Gui, 47:font, cE8EBF5, Segoe UI
-Gui, 47:Add, Button, x152 y39 w110 h20 , Autofill
+Gui, 47:Add, Button, x152 y39 w110 h20 hwndFredEx4, Autofill
 Gui, 47:Add, Text, x28 y71 w140 h20 , Store ID:
 Gui, 47:Add, Edit, -E0x200 x152 y69 w110 h20 vBox7,
 Gui, 47:Add, Text, x28 y101 w160 h20 , Pharmacy Name:
@@ -1636,14 +1179,23 @@ Gui, 47:Add, Text, x28 y251 w160 h20 , Clients:
 Gui, 47:Add, Edit, -E0x200 x152 y249 w110 h20 vBox2, 
 Gui, 47:Add, Text, x28 y281 w140 h20 , Primary Contact:
 Gui, 47:Add, Edit, -E0x200 x152 y279 w110 h20 vBox8,
-Gui, 47:Add, Text, x28 y311 w140 h30 , Secondary Contact:
+Gui, 47:Add, Text, BackgroundTrans x28 y311 w140 h30 , Secondary Contact:
 Gui, 47:Add, Edit, -E0x200 x152 y309 w110 h20 vBox9,
-Gui, 47:Add, Button, x23 y345 w75 h30 , &Confirm
-Gui, 47:Add, Button, x106 y345 w75 h30 , &Back
-Gui, 47:Add, Button, x189 y345 w75 h30 , &Exit
+Gui, 47:Add, Button, x23 y345 w75 h30 hwndFredEx1, Confirm
+Gui, 47:Add, Button, x106 y345 w75 h30 hwndFredEx2, Back
+Gui, 47:Add, Button, x189 y345 w75 h30 hwndFredEx3, Exit
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(FredEx1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(FredEx2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(FredEx3, Opt1, Opt2, , , Opt5)
+ImageButton.Create(FredEx4, Opt1, Opt2, , , Opt5)
 
 Gui, 47:Add, Groupbox, x300 y46 w360 h300 , Preview
-Gui, 47:Add, Text, x320 y76 w320 h250 vFredExcelPrev, 
+Gui, 47:Add, Text, x320 y76 w338 h268 vFredExcelPrev, 
 
 Gui, 47:Show, %Gui_Cord% w686 h395,%A_Space%
 
@@ -1694,13 +1246,15 @@ v6 := "Phone	"
 	
 		Gui, 47:Destroy
 
-		Gui, 47:-SysMenu +Border
-		Gui, 47:Color, 1d1f21, 383D46
-		Gui, 47:font, s12 bold cE8EBF5, Segoe UI
-		Gui, 47:Add, Text, x28 y14 h30 , FRED EXCEL`nGENERATOR
+        Gui, 47:-SysMenu -caption -Border
+        Gui, 47:Color, %BGColour%, 2b2e43
+        Gui, 47:Add, Text, x0 y0 w686 h25 Center GuiMove,
+        Gui, 47:Add, Picture, x0 y55 , C:\AutoHotKey\Files\ui\back-sup-wide.png
+        Gui, 47:font, s12 bold cE8EBF5, Segoe UI
+        Gui, 47:Add, Text, x28 y14 h30 , FRED EXCEL`nGENERATOR
 		Gui, 47:font,
 		Gui, 47:font, cE8EBF5, Segoe UI
-		Gui, 47:Add, Button, x152 y39 w110 h20 , Autofill
+		Gui, 47:Add, Button, x152 y39 w110 h20 hwndFredEx5, Autofill
 		Gui, 47:Add, Text, x28 y71 w140 h20 , Store ID:
 		Gui, 47:Add, Edit, -E0x200 x152 y69 w110 h20 vBox7, % trim(a1)
 		Gui, 47:Add, Text, x28 y101 w160 h20 , Pharmacy Name:
@@ -1717,16 +1271,23 @@ v6 := "Phone	"
 		Gui, 47:Add, Edit, -E0x200 x152 y249 w110 h20 vBox2, 
 		Gui, 47:Add, Text, x28 y281 w140 h20 , Primary Contact:
 		Gui, 47:Add, Edit, -E0x200 x152 y279 w110 h20 vBox8,
-		Gui, 47:Add, Text, x28 y311 w140 h30 , Secondary Contact:
+		Gui, 47:Add, Text, BackgroundTrans x28 y311 w140 h30 , Secondary Contact:
 		Gui, 47:Add, Edit, -E0x200 x152 y309 w110 h20 vBox9,
-		Gui, 47:Add, Button, x23 y345 w75 h30 , &Confirm
-		Gui, 47:Add, Button, x106 y345 w75 h30 , &Back
-		Gui, 47:Add, Button, x189 y345 w75 h30 , &Exit
+		Gui, 47:Add, Button, x23 y345 w75 h30 hwndFredEx6, Confirm
+		Gui, 47:Add, Button, x106 y345 w75 h30 hwndFredEx7, Back
+		Gui, 47:Add, Button, x189 y345 w75 h30 hwndFredEx8, Exit
 
-		Gui, 47:font, cE8EBF5
+        Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+        Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+        Opt5 := [ ,            ,       , 0x0C131E]        
 
-		Gui, 47:Add, Groupbox, x300 y46 w360 h300 , Preview
-		Gui, 47:Add, Text, x320 y76 w320 h250 vFredExcelPrev, 
+        ImageButton.Create(FredEx5, Opt1, Opt2, , , Opt5)
+        ImageButton.Create(FredEx6, Opt1, Opt2, , , Opt5)
+        ImageButton.Create(FredEx7, Opt1, Opt2, , , Opt5)
+        ImageButton.Create(FredEx8, Opt1, Opt2, , , Opt5)
+
+        Gui, 47:Add, Groupbox, x300 y46 w360 h300 , Preview
+        Gui, 47:Add, Text, x320 y76 w338 h268 vFredExcelPrev, 
 
 		Gui, 47:Show, %Gui_Cord% w686 h395, %A_Space%
 
@@ -1856,7 +1417,7 @@ FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Fred C
 attach	:= "C:\AutoHotKey\FRED Access " Box1 ".xlsx"
 
 email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-;email.To := "dataaccessrequest@fred.com.au"
+email.To := "dataaccessrequest@fred.com.au"
 email.Cc := "support@intellipharm.com.au"
 email.Subject := "Data Access Request for - " Box1 " from Intelllipharm"
 email.Body := "Hi, `nDocument attached with store details for FRED Credential Request.`n" "Store name: " Box1 "`n" "Site Code: "Box7 "`n`n" "Kind Regards" "`n" Name " " Surname "`nIntellipharm`n1300 255 160"
@@ -1869,7 +1430,7 @@ FredConNO:
 attach	:= "C:\AutoHotKey\FRED Access " Box1 ".xlsx"
 
 email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-;email.To := "dataaccessrequest@fred.com.au"
+email.To := "dataaccessrequest@fred.com.au"
 email.Cc := "support@intellipharm.com.au"
 email.Subject := "Data Access Request for - " Box1 " from Intelllipharm"
 email.Body := "Hi, `nDocument attached with store details for FRED Credential Request.`n" "Store name: " Box1 "`n" "Site Code: "Box7 "`n`n" "Kind Regards" "`n" Name " " Surname "`nIntellipharm`n1300 255 160"
