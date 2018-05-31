@@ -16,12 +16,12 @@ Gui, 7:font,
 Gui, 7:font, s8 cE8EBF5,
 Gui, 7:Add, Text, Center x10 y130 w190, Outlook MUST be running before you click any of these buttons. It will not work if you do not.
 
-Gui, 7:Add, Button, x30 y220 w150 h30 Left gFredExcel hwndemail2 , % "   FRED Excel Form"
-Gui, 7:Add, Button, yp+40 w150 h30 Left gLoyEsc hwndemail3, % "   Loyalty Escalation"
+;Gui, 7:Add, Button, x30 y220 w150 h30 Left gFredExcel hwndemail2 , % "   FRED Excel Form"
+Gui, 7:Add, Button, x30 y220 w150 h30 Left gLoyEsc hwndemail3, % "   Loyalty Escalation"
 Gui, 7:Add, Button, yp+40 w150 h30 Left gLoyRe hwndemail4, % "   Loyalty Reinstallation"
-Gui, 7:Add, Button, yp+40 w150 h30 Left gBugReport hwndemail5, % "   Bugs Reporting Tool"
 Gui, 7:Add, Button, yp+40 w150 h30 Left gWebservice hwndemail6, % "   MINFOS Webservice"
 Gui, 7:Add, Button, yp+40 w150 h30 Left gBatchReader hwndemail7, % "   POS Browser Batch Reader"
+Gui, 7:Add, Button, yp+60 w150 h30 Left gBugReport hwndemail5, % "   Bugs Reporting Tool"
 
 /*
 Gui, 7:font, s8 cE8EBF5 bold,
@@ -1195,7 +1195,8 @@ ImageButton.Create(FredEx3, Opt1, Opt2, , , Opt5)
 ImageButton.Create(FredEx4, Opt1, Opt2, , , Opt5)
 
 Gui, 47:Add, Groupbox, x300 y46 w360 h300 , Preview
-Gui, 47:Add, Text, x320 y76 w338 h268 vFredExcelPrev, 
+Gui, 47:Add, Text, x302 y72 w338 h272, 
+Gui, 47:Add, Text, x316 y72 w342 h272 vFredExcelPrev, 
 
 Gui, 47:Show, %Gui_Cord% w686 h395,%A_Space%
 
@@ -1218,8 +1219,6 @@ loop
 
     sleep 100
 }
-
-
 return
 
 47ButtonAutofill:
@@ -1286,8 +1285,9 @@ v6 := "Phone	"
         ImageButton.Create(FredEx7, Opt1, Opt2, , , Opt5)
         ImageButton.Create(FredEx8, Opt1, Opt2, , , Opt5)
 
-        Gui, 47:Add, Groupbox, x300 y46 w360 h300 , Preview
-        Gui, 47:Add, Text, x320 y76 w338 h268 vFredExcelPrev, 
+		Gui, 47:Add, Groupbox, x300 y46 w360 h300 , Preview
+		Gui, 47:Add, Text, x302 y72 w338 h272, 
+		Gui, 47:Add, Text, x316 y72 w342 h272 vFredExcelPrev, 
 
 		Gui, 47:Show, %Gui_Cord% w686 h395, %A_Space%
 
@@ -1310,8 +1310,6 @@ v6 := "Phone	"
 
 			sleep 100
 		}
-
-
 		return
 
 

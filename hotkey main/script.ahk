@@ -208,7 +208,7 @@ Gui, 99:Add, Button, yp+40 w118 h30 Left gDeclinedConnection hwndHBT5, % "   KNO
 Gui, 99:font,
 Gui, 99:font, s9 , Segoe UI
 
-Gui, 99:Add, Button, xp+135 yp-120 w118 h30 Right gFredConf hwndHBT6, % "Fred Confirmation   "
+Gui, 99:Add, Button, xp+135 yp-120 w118 h30 Right gFredExcel hwndHBT6, % "Fred Excel Form   "
 Gui, 99:Add, Button, yp+40 w118 h30 Right gQAPass hwndHBT7, % "QA Pass   "
 Gui, 99:Add, Button, yp+40 w118 h30 Right gSupCancellation hwndHBT8, % "Cancellation   "
 Gui, 99:Add, Button, yp+40 w118 h30 Right gPhoneRangOut hwndHBT9, % "Phone Rang Out   "
@@ -708,22 +708,6 @@ ExitApp
 #Include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\test files\Sources\Class_ImageButton.ahk
 
 /*
-LoyInstall:
-If (GetKeyState("Shift", "P"))
-	{
-		MsgBox, ,LINE , %A_LineNumber%
-	}
-IfNotExist, C:\AutoHotKey\Files\LoyaltyInstall.exe
-{
-	FileCopy, G:\Support\Public Staff Folders\Aaron\tools\LoyaltyInstall.exe, C:\AutoHotKey\Files\
-sleep 2000
-}
-Gui, 2:Destroy
-Gui, 30:Destroy
-Run, C:\AutoHotKey\Files\LoyaltyInstall.exe
-Reload
-return
-
 TWCMRoll:
 If (GetKeyState("Shift", "P"))
 	{

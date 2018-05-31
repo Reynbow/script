@@ -1,31 +1,56 @@
-﻿#NoEnv
-Gui, Margin, 10, 10
-GuiAddBorder("Black", 1, "x0 y0 w400 h200")
-Gui, Add, Text, xp yp wp hp Center +0x0200 BackgroundTrans, Border Example ; 0x0200 centers single-line text vertically
-Gui, Show, w400 h200 , Border Example
-Return
-GuiClose:
-ExitApp
-; ==================================================================================================================================
-; Adds a border-like text control to the current default GUI
-; ==================================================================================================================================
-GuiAddBorder(Color, Width, PosAndSize) {
-   ; -------------------------------------------------------------------------------------------------------------------------------
-   ; Color        -  border color as used with the 'Gui, Color, ...' command, must be a "string"
-   ; Width        -  the width of the border in pixels
-   ; PosAndSize   -  a string defining the position and size like Gui commands, e.g. "xm ym w400 h200".
-   ;                 You should not pass other control options!
-   ; -------------------------------------------------------------------------------------------------------------------------------
-   LFW := WinExist() ; save the last-found window, if any
-   DefGui := A_DefaultGui ; save the current default GUI
-   Gui, Add, Text, %PosAndSize% +hwndHTXT
-   GuiControlGet, T, Pos, %HTXT%
-   Gui, New, +Parent%HTXT% +LastFound -Caption ; create a unique child Gui for the text control
-   Gui, Color, %Color%
-   X1 := Width, X2 := TW - Width, Y1 := Width, Y2 := TH - Width
-   WinSet, Region, 0-0 %TW%-0 %TW%-%TH% 0-%TH% 0-0   %X1%-%Y1% %X2%-%Y1% %X2%-%Y2% %X1%-%Y2% %X1%-%Y1%
-   Gui, Show, x0 y0 w%TW% h%TH%
-   Gui, %DefGui%:Default ; restore the default Gui
-   If (LFW) ; restore the last-found window, if any
-      WinExist(LFW)
+﻿; GLOBAL SETTINGS ===============================================================================================================
+
+#Warn
+#NoEnv
+#SingleInstance Force
+
+global ClrFailure := "FF0033|FF0033"
+global ClrWarning := "FFFF66|FFFF66"
+global ClrOk      := "00CC33|00CC33"
+global GuiW       := 500
+global GuiH       := 400
+
+; GUI ===========================================================================================================================
+
+Gui, +LastFound +hwndhMain
+Gui, Margin, 0, 0
+
+Gui, Add, Pic, % "xm ym+" GuiH-4 " w" GuiW " h4 0x4E hwndHPIC1"
+CreateDIB(HPIC1, ClrOk, 1, 1, 5, 5)
+
+Gui, Show, w%GuiW% h%GuiH%, % "GUI Concept"
+
+SetTimer, ChangeBorder
+return
+
+ChangeBorder:
+	CreateDIB(HPIC1, ClrOk, 1, 1, 5, 5)
+	sleep 1000
+	CreateDIB(HPIC1, ClrWarning, 1, 1, 5, 5)
+	sleep 1000
+	CreateDIB(HPIC1, ClrFailure, 1, 1, 5, 5)
+	sleep 1000
+	CreateDIB(HPIC1, ClrWarning, 1, 1, 5, 5)
+	sleep 1000
+	CreateDIB(HPIC1, ClrOk, 1, 1, 5, 5)
+return
+
+; FUNCTIONS =====================================================================================================================
+
+CreateDIB(hWnd, PixelData, W, H, ResizeW := 0, ResizeH := 0, Gradient := 1) ; by SKAN | modified by jNizM (SendMessage included & added DeletObject)
+{
+    WB := Ceil((W * 3) / 2) * 2, VarSetCapacity(BMBITS, WB * H + 1, 0), P := &BMBITS
+    loop, parse, PixelData, |
+        P := Numput("0x" A_LoopField, P+0, 0, "UInt") - (W & 1 && Mod(A_Index * 3, W * 3) = 0 ? 0 : 1)
+
+    hBitmap := DllCall("gdi32.dll\CreateBitmap", "Int", W, "Int", H, "UInt", 1, "UInt", 24, "Ptr", 0, "Ptr")
+    hBM := DllCall("user32.dll\CopyImage", "Ptr", hBitmap, "UInt", 0, "Int", 0, "Int", 0, "UInt", 0x2008, "Ptr")
+    DllCall("gdi32.dll\SetBitmapBits", "Ptr", hBM, "UInt", WB * H, "Ptr", &BMBITS)
+
+    if !(Gradient + 0)
+        hBM := DllCall("user32.dll\CopyImage", "Ptr", hBM, "UInt", 0, "Int", 0, "Int", 0, "UInt", 0x0008, "Ptr")
+    hBM := DllCall("user32.dll\CopyImage", "Ptr", hBM, "Int", 0, "Int", ResizeW, "Int", ResizeH, "Int", 0x200C, "Ptr")
+
+    DllCall("user32.dll\SendMessage", "Ptr", hWnd, "UInt", 0x0172, "Ptr", 0, "Ptr", hBM, "Ptr")
+    return True, DllCall("gdi32.dll\DeleteObject", "Ptr", hBitmap)
 }
