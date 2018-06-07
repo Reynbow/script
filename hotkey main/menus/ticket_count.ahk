@@ -34,11 +34,6 @@ StringReplace, str, str, %match%, %match%, UseErrorLevel
 JL = %ErrorLevel%
 
 str  := clipboard
-match = JoshHill
-StringReplace, str, str, %match%, %match%, UseErrorLevel
-JH = %ErrorLevel%
-
-str  := clipboard
 match = SteveC
 StringReplace, str, str, %match%, %match%, UseErrorLevel
 SC = %ErrorLevel%
