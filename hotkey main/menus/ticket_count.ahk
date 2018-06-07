@@ -24,7 +24,7 @@ StringReplace, str, str, %match%, %match%, UseErrorLevel
 JS = %ErrorLevel%
 
 str  := clipboard
-match = Joel
+match = JoshHill
 StringReplace, str, str, %match%, %match%, UseErrorLevel
 JH = %ErrorLevel%
 
@@ -37,6 +37,11 @@ str  := clipboard
 match = JoshHill
 StringReplace, str, str, %match%, %match%, UseErrorLevel
 JH = %ErrorLevel%
+
+str  := clipboard
+match = SteveC
+StringReplace, str, str, %match%, %match%, UseErrorLevel
+SC = %ErrorLevel%
 
 str  := clipboard
 match = -
@@ -107,10 +112,10 @@ ZEROFINAL := Zero - REMOVE
     StringReplace, str, str, %match%, %match%, UseErrorLevel
     Blank = %ErrorLevel%
 
-TotalFirst := AB + CD + JS + JL + JH
+TotalFirst := AB + CD + JS + JL + JH + SC
 Total := TotalFirst - Blank
 
-msgbox,4, Ticket Count, DATA OUTAGE TICKETS - %Total% tickets, including %ZEROFINAL% zero day tickets.`n__________________________________________________________________`n`nAaron Beecham:`t%AB%`nCraig Duchesne:`t%JS%`nJames Schubert:`t%JS%`nJoel Hanson:`t%JL%`nJosh Hill:`t`t%JH%`n__________________________________________________________________`n`nWould you like to copy the information to the clipboard?
+msgbox,4, Ticket Count, DATA OUTAGE TICKETS - %Total% tickets, including %ZEROFINAL% zero day tickets.`n__________________________________________________________________`n`nAaron Beecham:`t%AB%`nCraig Duchesne:`t%JS%`nJames Schubert:`t%JS%`nJoel Hanson:`t%JL%`nJosh Hill:`t`t%JH%`nSteve Colley:`t%SC%`n__________________________________________________________________`n`nWould you like to copy the information to the clipboard?
 IfMsgBox, No
 	{
 		reload

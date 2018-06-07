@@ -6,7 +6,7 @@ SetBatchLines, -1
 SendMode, Event
 SetKeyDelay 25, 10
 
-VersionNum = 3.5.01
+VersionNum = 3.5.03
 
 IniRead, StartPOS, C:\AutoHotKey\settings.ini, Starting Position, Start
 

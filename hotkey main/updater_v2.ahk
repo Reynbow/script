@@ -69,9 +69,9 @@ Gui, Show, w200 h80,Updating...
         Process, Close, script.exe
 		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, C:\AutoHotKey\version.txt,1
 		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\script.exe, C:\AutoHotKey\script.exe,1
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\LoyaltyInstall.exe, C:\AutoHotKey\Files\LoyaltyInstall.exe,1
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\QAComplete.exe, C:\AutoHotKey\Files\QAComplete.exe,1
-		FileCopy, G:\Support\Public Staff Folders\Aaron\Tools\Loyalty TWCM.exe, C:\AutoHotKey\Files\Loyalty TWCM.exe,1
+		;FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\LoyaltyInstall.exe, C:\AutoHotKey\Files\LoyaltyInstall.exe,1
+		;FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\QAComplete.exe, C:\AutoHotKey\Files\QAComplete.exe,1
+		;FileCopy, G:\Support\Public Staff Folders\Aaron\Tools\Loyalty TWCM.exe, C:\AutoHotKey\Files\Loyalty TWCM.exe,1
 		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\Staff Logs.exe, C:\AutoHotKey\Files\Staff Logs.exe,1
 		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\all_tag_6.png, C:\AutoHotKey\Files\all_tag_6.png,1
 

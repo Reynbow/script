@@ -92,7 +92,7 @@ If (!SCODE)
 	{
 	SCODE = NULLCODE
 	}
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Cancelation - %SCODE%`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Cancelation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 reload
 Return

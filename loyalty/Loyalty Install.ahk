@@ -489,7 +489,7 @@ IniRead Prefix, C:\AutoHotKey\settings.ini, Loyalty, Prefix
 IniRead, Sitecode, C:\AutoHotKey\settings.ini, Loyalty, Sitecode
 IniRead, StoreName, C:\AutoHotKey\settings.ini, Loyalty, StoreName
 
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Install `n, G:\Support\Public Staff Folders\Aaron\scriptlog.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Till Install`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 
 WorkBookPath        := "C:\AutoHotKey\Files\Loyalty Template.xlsx"	; store the path to the workbook
 objExcel			:= ComObjCreate("Excel.Application")        	; create a handle to a new excel application

@@ -27,6 +27,7 @@ Gui, 86:Add, Button, yp+40 w217 h30 gEcom hwndcharts3, E-Commerce
 Gui, 86:Add, Button, yp+40 w217 h30 hwndcharts4, Email
 Gui, 86:Add, Button, yp+40 w217 h30 hwndcharts5, Clients and Services
 Gui, 86:Add, Button, yp+40 w217 h30 gGroupAccount hwndcharts6, Making a Group Account
+Gui, 86:Add, Button, yp+40 w217 h30 gMoveInstall hwndcharts41, Moving Installations
 
 Gui, 86:Tab, DISPENSARY
 Gui, 86:Add, Button, x28 y120 w102 h30 hwndcharts8, Aquarius
@@ -70,7 +71,7 @@ Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
 Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
 Opt5 := [ ,            ,       , 0x0C131E]        
 
-Loop, 40
+Loop, 41
 {
 CHARTS++
 ImageButton.Create(charts%CHARTS%, Opt1, Opt2, , , Opt5)
@@ -361,3 +362,9 @@ Gui, 86:Destroy
 run, G:\Support\Procedures and Documentation\Flow Chart Processes\TONIQ POSX installation Process.pdf
 Reload
 return
+
+MoveInstall:
+Gui, 86:Destroy
+run, G:\Support\Procedures and Documentation\Flow Chart Processes\Moving Installations.pdf
+Reload
+Return
