@@ -145,6 +145,11 @@ IfExist, C:\INTPHARM\POSX
             FileAppend, `n> Error found in the latest POSX log file.`nERROR READS >>>`tDataset file is empty - configuration required`nSOLUTION >>>`t`tIf this is POSWORKS - Copy over the POSWORKS dataset from G drive to POSX/REF.`n, C:\INTPHARM\Idle.txt
             sIn =
             }
+        if RegExMatch(pIn, "Invalid object name") 
+            {
+            FileAppend, `n> Error found in the latest POSX log file.`nERROR READS >>>`tInvalid object name`nSOLUTION >>>`t`tIf this is a FRED setup`, it`'s likely that the ODBC has not be configured correctly.`n`t`t`tConfirm the STOPS ODBC is pointing towards the Stops Database.`n, C:\INTPHARM\Idle.txt
+            sIn =
+            }
         if RegExMatch(pIn, "Error message:  Cannot load 32-bit DLL FCE32.DLL") 
             {
             FileAppend, `n> Error found in the latest POSX log file.`nERROR READS >>>`tError message:  Cannot load 32-bit DLL FCE32.DLL`nSOLUTION >>>`t`tAdd the files found here: G:\Support\Shared Tech Resources\TOOLS\DLL FILES\CMECOMM\ to the`n`t`t`tPOSX PRG folder.`n, C:\INTPHARM\Idle.txt
@@ -339,7 +344,9 @@ IfNotExist, %A_Desktop%\Intellipharm Help.url
 */
 FileAppend, `n----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------`n, C:\INTPHARM\Idle.txt    
 
-FileAppend, `nCurrent Versions:, C:\INTPHARM\Idle.txt
+
+        FileAppend, `n ____________________________`n[                                                        ]`n[ CURRENT VERSIONS                  ], C:\INTPHARM\Idle.txt
+        FileAppend, `n --------------------------------------------------------, C:\INTPHARM\Idle.txt
 
         FormatTime, Date,, yyyyMMdd
         FileReadLine, SCODE, C:\INTPHARM\POSX\PRG\sitecode.txt, 1
@@ -348,84 +355,96 @@ FileAppend, `nCurrent Versions:, C:\INTPHARM\Idle.txt
 
     FileReadLine, DISPverRAW, C:\INTPHARM\DISPX\LOGS\DISPX_%Date%.txt, 2
     DISPver := SubStr(DISPverRAW, 43, 17)
-    FileAppend, `n%DISPver%, C:\INTPHARM\Idle.txt
+    if (DISPver = ""){
+    DISPver = CANT READ DISPX VERS
+    }
+    FileAppend, `n[  %DISPver%, C:\INTPHARM\Idle.txt
 
     FileReadLine, POSXverRAW, C:\INTPHARM\POSX\REF\%SCODE%_PXLOG_%Date%.txt, 2
     POSXver := SubStr(POSXverRAW, 43, 16)
-    FileAppend, `n%POSXver%`n, C:\INTPHARM\Idle.txt
+    if (POSXver = ""){
+    POSXver = CANT READ POSX VERS
+    }
+    FileAppend, `n[  %POSXver%, C:\INTPHARM\Idle.txt
+    FileAppend, `n[____________________________]`n, C:\INTPHARM\Idle.txt
 
 ;======================CHECK FOR AV======================
+
+        FileAppend, `n ____________________________`n[                                                        ]`n[ ANTIVIRUS  SYSTEM                   ], C:\INTPHARM\Idle.txt
+        FileAppend, `n --------------------------------------------------------, C:\INTPHARM\Idle.txt
 
         Process, Exist, ekrn.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = ESET <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  ESET, C:\INTPHARM\Idle.txt
             }
         Process, Exist, Navapsvc.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = NORTON <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  NORTON, C:\INTPHARM\Idle.txt
             }
         Process, Exist, NIS.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = SYMANTEC ENDPOINT <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  SYMANTIC ENDPOINT, C:\INTPHARM\Idle.txt
             }
         Process, Exist, sspaadm.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = SYMANTEC CLOUD <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  SYMANTIC CLOUD, C:\INTPHARM\Idle.txt
             }
         Process, Exist, avgui.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = AVG <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  AVG, C:\INTPHARM\Idle.txt
             }
         Process, Exist, avguard.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = AVIRA <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  AVIRA, C:\INTPHARM\Idle.txt
             }
         Process, Exist, sophosui.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = SOPHOS <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  SOPHOS, C:\INTPHARM\Idle.txt
             }
         Process, Exist, superantispyware.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = SUPER ANTI SPYWARE <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  SUPER ANTI SPYWARE, C:\INTPHARM\Idle.txt
             }
         Process, Exist, wrsa.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = WEBROOT <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  WEBROOT, C:\INTPHARM\Idle.txt
             }
         Process, Exist, avastsvc.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = AVAST <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  AVAST, C:\INTPHARM\Idle.txt
             }
         Process, Exist, msascuil.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = WINDOWS DEFENDER <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  WINDOWS  DEFENDER, C:\INTPHARM\Idle.txt
             }
         Process, Exist, avp.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = KASPERSKY <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  KASPERSKY, C:\INTPHARM\Idle.txt
             }
         Process, Exist, OfcService.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = TREND MICRO <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  TREND MICRO, C:\INTPHARM\Idle.txt
             }
         Process, Exist, PccNTMon.exe
             {
             If ErrorLevel
-            FileAppend, `n>>>>>>>>> ANTIVIRUS = TREND MICRO <<<<<<<<<`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  TREND MICRO, C:\INTPHARM\Idle.txt
             }
+
+        FileAppend, `n[____________________________]`n, C:\INTPHARM\Idle.txt
 
 
 ;==================== Finished checking for the AV in use            
@@ -471,17 +490,23 @@ uptime := (elapsed_time // 86400) " Days " (f_hour // 3600) " Hrs " (f_mins // 6
 
 uptime = %uptime% ;%i_day% Days %i_hour% Hrs %i_min% Mins 
 
-FileAppend, `nSystem Uptime - %uptime%`n`n, C:\INTPHARM\Idle.txt    
+        FileAppend, `n ____________________________`n[                                                        ]`n[ SYSTEM UPTIME                          ], C:\INTPHARM\Idle.txt
+        FileAppend, `n --------------------------------------------------------, C:\INTPHARM\Idle.txt
+        FileAppend, `n[  %uptime%, C:\INTPHARM\Idle.txt    
+        FileAppend, `n[____________________________]`n, C:\INTPHARM\Idle.txt
 
+
+        FileAppend, `n ____________________________`n[                                                        ]`n[ SOFTWARE RUNNING                 ], C:\INTPHARM\Idle.txt
+        FileAppend, `n --------------------------------------------------------, C:\INTPHARM\Idle.txt
         Process, Exist, cron.exe
             {
             If ErrorLevel
-            FileAppend, >>> CRON is currently running`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  CRON is currently running, C:\INTPHARM\Idle.txt
             }
         Process, Exist, cron.exe
             {
             If !ErrorLevel
-            FileAppend, >>> CRON is NOT currently running`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  CRON is NOT running, C:\INTPHARM\Idle.txt
             }
 
 ;==================== HSNET stuff
@@ -489,30 +514,39 @@ FileAppend, `nSystem Uptime - %uptime%`n`n, C:\INTPHARM\Idle.txt
         Process, Exist, hsnet.exe
             {
             If ErrorLevel
-            FileAppend, >>> HSNET is currently running`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  HSNET is currently running, C:\INTPHARM\Idle.txt
             }
         Process, Exist, hsnet.exe
             {
             If !ErrorLevel
-            FileAppend, >>> HSNET is NOT currently running`n, C:\INTPHARM\Idle.txt
+            FileAppend, `n[  HSNET is NOT running, C:\INTPHARM\Idle.txt
             }
+        FileAppend, `n[____________________________]`n, C:\INTPHARM\Idle.txt
 
-IfExist, C:\INTPHARM\CRON\cron.tab
+
+        FileAppend, `n ____________________________`n[                                                        ]`n[ SCHEDULED TIMES                     ], C:\INTPHARM\Idle.txt
+        FileAppend, `n --------------------------------------------------------, C:\INTPHARM\Idle.txt
+
+    IfExist, C:\INTPHARM\CRON\cron.tab
     {
     FileReadLine, CronTime, C:\INTPHARM\CRON\cron.tab, 6
-    FileAppend, `nCRON Tab:`n%CronTime%`n, C:\INTPHARM\Idle.txt
+    StringTrimRight, CronTimeTrim, CronTime, 39
+    FileAppend, `n[  CRON Tab:  %CronTimeTrim%, C:\INTPHARM\Idle.txt
     }
 
 IniRead, HsnetTimeSet, C:\INTPHARM\HSNET\hsnet.ini, Settings, ScheduleTime
 
-FileAppend, `nHSNET Schedule Time - %HsnetTimeSet%`n, C:\INTPHARM\Idle.txt  
+FileAppend, `n[  HSNET Schedule Time: %HsnetTimeSet%, C:\INTPHARM\Idle.txt  
+FileAppend, `n[____________________________]`n, C:\INTPHARM\Idle.txt
 
 IfExist, C:\INTPHARM\HSNET\LOGS\
     {
-    FileReadLine, HsnetTime, C:\INTPHARM\HSNET\LOGS\HSNET_%date%.txt, 1
-    FileAppend, `nHSNET Log:`n%HsnetTime%`n, C:\INTPHARM\Idle.txt    
+        FileAppend, `n ____________________________`n[                                                        ]`n[ HSNET LAST RUNTIME               ], C:\INTPHARM\Idle.txt
+        FileAppend, `n --------------------------------------------------------, C:\INTPHARM\Idle.txt    
     FileReadLine, HsnetTime2, C:\INTPHARM\HSNET\LOGS\HSNET_%date%.txt, 2
-    FileAppend, %HsnetTime2%`n, C:\INTPHARM\Idle.txt    
+    StringTrimRight, HsnetTime3, HsnetTime2, 78
+    FileAppend, `n[  %HsnetTime3%, C:\INTPHARM\Idle.txt    
+    FileAppend, `n[____________________________]`n, C:\INTPHARM\Idle.txt
     }
 
 FileAppend, `n`n############################################################################################, C:\INTPHARM\Idle.txt    

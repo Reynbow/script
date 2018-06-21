@@ -943,14 +943,61 @@ SendInput % vSMacro0
 return
 
 !Left::Media_Prev
-
 !Right::Media_Next
-
 !UP::Media_Play_Pause
 
 STARTSONG:
-SoundPlay, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\Adobe Universal Patcher Music.mp3
+SoundPlay, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\music.mp3
 SysGet, Mon, MonitorCount
+
+Img = G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\gif.gif
+Gui New, +HwndhGUI +AlwaysOnTop -SysMenu -caption +Border
+gif1 := AnimatedGif( hGUI, Img, 0, 0, 560, 560,, "MyGif", "myGif_" )
+Gui Show, %Gui_Cord% h560 w560
+return
+
+AnimatedGif( ByRef guiHwnd, Image, X, Y, W, H, BackgroundColor:="system", Id:="AnimatedGif", eventHandler:="" ) {
+	if BackgroundColor in system
+	{
+		A_FI := A_FormatInteger
+		SetFormat Integer, Hex
+		BGR := DllCall( "GetSysColor", Int, 15 ) + 0x1000000
+		SetFormat Integer, %A_FI%
+		StringMid R, BGR, 8, 2
+		StringMid G, BGR, 6, 2
+		StringMid B, BGR, 4, 2
+		BackgroundColor := R G B
+		StringUpper BackgroundColor, BackgroundColor
+		BackgroundColor := "#" BackgroundColor
+	}
+	Gui %guiHwnd%:Add, ActiveX, x%X% y%Y% w%W% h%H% +HwndGifHwnd, MSHTML:
+	GuiControlGet HtmlObj, %guiHwnd%:, %GifHwnd%
+	HtmlObj.parentWindow.execScript( "document.oncontextmenu = function(){return false;}" )
+	HtmlObj.Body.style.BackgroundColor := BackgroundColor
+	HtmlObj.Body.style.margin := 0
+	HtmlObj.Body.style.padding := 0
+	out := HtmlObj.createElement( "img" )
+	out.id := Id
+	out.src := Image
+	out.style.position := "absolute"
+	out.style.left := 0
+	out.style.top := 0
+	out.style.width := "100%"
+	out.style.height := "100%"
+	out.style.minWidth := "100%"
+	out.style.minHeight := "100%"
+	out.style.visibility := "visible"
+	HtmlObj.Body.appendChild( out )
+	if eventHandler
+		ComObjConnect( out, eventHandler )
+	return out
+}
+
+/*
+Gui, Close: +AlwaysOnTop -SysMenu -caption +Border
+Gui, Close:Color, Red, 2b2e43
+Gui, Close:Add, Button, gCloseClose, STOP
+Gui, Close:Show
 
 Loop{
 Num++
@@ -968,8 +1015,15 @@ if (Mon = 2)
 	}
 
 Gui, SCRT%Num%:-SysMenu -caption +Border
-Gui, SCRT%Num%:Add, Picture, x0 y0, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\hotkey_sharp.png
-Gui, SCRT%Num%:Show, x%CORDx% y%CORDy% h128 w128
-sleep 20
+;Gui, SCRT%Num%:Add, Picture, x0 y0, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\hotkey_sharp.png
+Gui, SCRT%Num%:Add, Picture, x0 y0, C:\Users\Aaron.Beecham\Pictures\Hotkey Files\gif.gif
+Gui, SCRT%Num%:Show, x%CORDx% y%CORDy% h560 w560
+sleep 125
+
 }
 return
+
+CloseClose:
+Reload
+Return
+*/

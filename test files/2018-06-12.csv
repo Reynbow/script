@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html id='login_html' xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="language" content="en" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<script type="text/javascript" src="/assets/d871538c/jquery.min.js"></script>
+<title>SiteIQ Application - Login Site</title>
+		<link rel="stylesheet" type="text/css" href="/css/loginreset.css" />
+	<link rel="stylesheet" type="text/css" href="/css/stylesheet.css" />
+	<link rel="stylesheet" type="text/css" href="/css/ie8hacks.css" />
+</head>
+<body id='login_body'>
+<div class="LoginContainer">
+		<div class="LoginCenter" id='login_form'>
+		<div class='InlineBlock' >
+		
+		<img class="SiteIQLogo" id="" src="/images/login_logo.png"/>
+		
+		<form id="login-form" action="/index.php/site/login" method="post">		
+				<input placeholder="Username" name="LoginForm[username]" id="LoginForm_username" type="text" />		
+				<input placeholder="Password" name="LoginForm[password]" id="LoginForm_password" type="password" />				
+		<!--<p class="hint">
+			<span class="label label-info">Password field is case sensitive. </span>
+		</p>-->
+		</div>
+		<div class='LoginHelp InlineBlock'>
+			<a href='/index.php/site/help'>Help</a>
+		</div>
+		<label class="InlineBlock" id='login_checkbox'>
+			<input id="ytLoginForm_rememberMe" type="hidden" value="0" name="LoginForm[rememberMe]" /><input name="LoginForm[rememberMe]" id="LoginForm_rememberMe" value="1" type="checkbox" /> Remember
+		</label>
+		
+				<div class="btnWrap">
+			<input class="btn btn-primary" type="submit" name="yt0" value="GO!" />		</div>
+
+		</form>	</div><!-- form -->
+	<script>
+
+	$(document).ready(function(){
+		$(function() {
+			$('input').placeholder();
+		});
+	});
+	</script>
+	<div class="clear"></div>
+</div>
+	<script src="/js/script.js"></script>
+	<script src="/js/jquery.placeholder.min.js"></script>
+	
+</body>
+</html>

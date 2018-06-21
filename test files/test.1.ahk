@@ -1,6 +1,31 @@
-SplashTextOn, , , Displays only a title bar.
-Sleep, 2000
-SplashTextOn, 400, 300, Clipboard, The clipboard contains:`n%clipboard%
-WinMove, Clipboard, , 0, 0  ; Move the splash window to the top left corner.
-MsgBox, Press OK to dismiss the SplashText
-SplashTextOff
+#Persistent
+#SingleInstance Force
+#NoEnv
+
+F1::
+Loop {
+ImageSearch, FoundX, FoundY, 0, 0, 1920, 1080, C:\Users\Aaron.Beecham\Pictures\icons\icon-new.png
+If ErrorLevel = 0
+Click, %FoundX%, %FoundY% Left, 1
+Sleep, 4000
+ImageSearch, FoundX, FoundY, 0, 0, 1920, 1080, C:\Users\Aaron.Beecham\Pictures\icons\icon-new.png
+If ErrorLevel = 0
+Click, %FoundX%, %FoundY% Left, 1
+Sleep, 4000
+ImageSearch, FoundX, FoundY, 0, 0, 1920, 1080, C:\Users\Aaron.Beecham\Pictures\icons\icon-new.png
+If ErrorLevel = 0
+Click, %FoundX%, %FoundY% right, 1
+Sleep, 4000
+ImageSearch, FoundX, FoundY, 0, 0, 1920, 1080, C:\Users\Aaron.Beecham\Pictures\icons\icon-new.png
+If ErrorLevel = 0
+Click, %FoundX%, %FoundY% Left, 1
+Sleep, 4000
+ImageSearch, FoundX, FoundY, 0, 0, 1920, 1080, C:\Users\Aaron.Beecham\Pictures\icons\icon-new.png
+If ErrorLevel = 0
+Click, %FoundX%, %FoundY% Left, 1
+Sleep, 4000
+}
+
+Return
+
+Esc::ExitApp
