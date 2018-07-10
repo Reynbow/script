@@ -4,7 +4,7 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 Gui, Destroy 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 
-Gui, 86:-SysMenu -caption -Border
+Gui, 86:-SysMenu -caption -Border %OnTopSetting%
 Gui, 86:Color, %BGColour%, 2b2e43
 Gui, 86:Add, Text, x0 y0 w910 h25 Center GuiMove,
 Gui, 86:Add, Picture, x0 y150 , C:\AutoHotKey\Files\ui\back-sup.png

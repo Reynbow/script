@@ -18,7 +18,7 @@ IfNotExist, C:\AutoHotKey\Files\flash.png
 
 Gui, Destroy 
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
-Gui, 18:-SysMenu -caption -Border
+Gui, 18:-SysMenu -caption -Border %OnTopSetting%
 
 ;Gui, 18:Add, Picture, x0 y75 , C:\AutoHotKey\Files\back-sup.png
 ;Gui, 18:Add, Picture, x270 y75 , C:\AutoHotKey\Files\back-right.png

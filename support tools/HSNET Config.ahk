@@ -401,3 +401,6 @@ ExitApp
 
 CANCEL:
 ExitApp
+
+#include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\support tools\Edit\_Functions\Edit.ahk
+#include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\support tools\Edit\_Functions\Fnt.ahk

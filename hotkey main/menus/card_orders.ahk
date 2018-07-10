@@ -6,8 +6,8 @@ gui_x +=450
 
 list1 = 500|1000|2000|5000
 Gui, 30:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-loy-ext.png
-Gui, 30:Color, %BGColour%, 2b2e43
-Gui, 30:-SysMenu -caption -Border
+Gui, 30:Color, %BGColour%, 2b2e43 
+Gui, 30:-SysMenu -caption -Border %OnTopSetting%
 Gui, 30:font, s12 bold cE8EBF5, Segoe UI
 Gui, 30:Add, Text, Center x0 y160 w210 h50, CARD ORDERS
 Gui, 30:font,

@@ -1,0 +1,21 @@
+02/07/2018 - 14:33:26
+--------------------------------------
+Running HSNET Config
+--------------------------------------
+
+If you would like to stop this process, you can at any time by pressing ESC
+
+?? - Desktop Help icon updated
+
+?? - SCHEDULE TASK SET FOR 22:30
+
+?? - SCHEDULE TIME SET FOR 00:15
+
+? - WARNING - hsnet not added to startup
+
+STARTUP FOLDER WILL OPEN
+?? - SHORTCUT CREATED IN INTPHARM DIRECTORY
+
+? - WARNING - hsnet not added to startup
+
+STARTUP FOLDER WILL OPEN

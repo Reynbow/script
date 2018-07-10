@@ -3,7 +3,7 @@ Gui, Destroy
 Gui, 99:Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
-Gui, BC:-SysMenu -caption -Border
+Gui, BC:-SysMenu -caption -Border %OnTopSetting%
 Gui, BC:Color, %BGColour%, 2b2e43
 Gui, BC:Add, Text, x0 y0 w910 h25 Center GuiMove,
 Gui, BC:Add, Picture, x0 y160 , C:\AutoHotKey\Files\ui\back-sup.png

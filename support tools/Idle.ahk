@@ -150,6 +150,11 @@ IfExist, C:\INTPHARM\POSX
             FileAppend, `n> Error found in the latest POSX log file.`nERROR READS >>>`tInvalid object name`nSOLUTION >>>`t`tIf this is a FRED setup`, it`'s likely that the ODBC has not be configured correctly.`n`t`t`tConfirm the STOPS ODBC is pointing towards the Stops Database.`n, C:\INTPHARM\Idle.txt
             sIn =
             }
+        if RegExMatch(pIn, "Error running:  SQL_STZED") 
+            {
+            FileAppend, `n> Error found in the latest POSX log file.`nERROR READS >>>`tError running:  SQL_STZED`nSOLUTION >>>`t`tCheck the DATASET.dbf file. This error means the dbf is missing an accurate ODBC location.`n`t`t`tFormat should be 'SERVER\APSS'.`n, C:\INTPHARM\Idle.txt
+            sIn =
+            }
         if RegExMatch(pIn, "Error message:  Cannot load 32-bit DLL FCE32.DLL") 
             {
             FileAppend, `n> Error found in the latest POSX log file.`nERROR READS >>>`tError message:  Cannot load 32-bit DLL FCE32.DLL`nSOLUTION >>>`t`tAdd the files found here: G:\Support\Shared Tech Resources\TOOLS\DLL FILES\CMECOMM\ to the`n`t`t`tPOSX PRG folder.`n, C:\INTPHARM\Idle.txt
@@ -257,6 +262,11 @@ IfExist, C:\INTPHARM\DISPX\
         if RegExMatch(dIn, "No data in date range") 
             {
             FileAppend,`n> Error found in the latest DISPX log file.`nERROR READS >>>`tNo data in date range`nSOLUTION >>>`t`tLikely a DISPENSE system change.`n`t`t`tDouble check the system in use.`n, C:\INTPHARM\Idle.txt
+            sIn =
+            }
+        if RegExMatch(dIn, "ERROR: Empty MSOAP DBF files") 
+            {
+            FileAppend,`n> Error found in the latest DISPX log file.`nERROR READS >>>`tERROR: Empty MSOAP DBF files`nSOLUTION >>>`t`tDelete MSOAP folder and it should fix itself.`n, C:\INTPHARM\Idle.txt
             sIn =
             }
         if RegExMatch(dIn, "ZED dispense") 
@@ -548,6 +558,105 @@ IfExist, C:\INTPHARM\HSNET\LOGS\
     FileAppend, `n[  %HsnetTime3%, C:\INTPHARM\Idle.txt    
     FileAppend, `n[____________________________]`n, C:\INTPHARM\Idle.txt
     }
+
+IfExist, C:\LOYALTY\
+    {
+        FileAppend, `n`n############################################################################################`n, C:\INTPHARM\Idle.txt    
+        FileAppend, `n ____________________________`n[                                                        ]`n[ LOYALTY               ], C:\INTPHARM\Idle.txt
+        FileAppend, `n --------------------------------------------------------, C:\INTPHARM\Idle.txt    
+        ;LOCKSET
+        FileAppend, `n[ LOCKSET.txt`t,C:\INTPHARM\Idle.txt  
+    IfExist, C:\LOYALTY\lockset.txt
+        {
+        FileAppend, PRESENT ,C:\INTPHARM\Idle.txt  
+        }
+    IfNotExist, C:\LOYALTY\lockset.txt
+        {
+        FileAppend, !MISSING! ,C:\INTPHARM\Idle.txt  
+        }  
+
+        ;msvcr70.dll
+        FileAppend, `n[ MSVCR70.dll`t,C:\INTPHARM\Idle.txt  
+    IfExist, C:\Program Files(x86)\Microsoft Retail Management System\Store Operations\DLL_Hooks\MSVCR70.dll
+        {
+        FileAppend, PRESENT ,C:\INTPHARM\Idle.txt  
+        }
+    IfNotExist, C:\Program Files(x86)\Microsoft Retail Management System\Store Operations\DLL_Hooks\MSVCR70.dll
+        {
+        FileAppend, !MISSING! ,C:\INTPHARM\Idle.txt  
+        }  
+
+        ;msvcr71.dll
+        FileAppend, `n[ MSVCR71.dll`t,C:\INTPHARM\Idle.txt  
+    IfExist, C:\Program Files(x86)\Microsoft Retail Management System\Store Operations\DLL_Hooks\MSVCR71.dll
+        {
+        FileAppend, PRESENT ,C:\INTPHARM\Idle.txt  
+        }
+    IfNotExist, C:\Program Files(x86)\Microsoft Retail Management System\Store Operations\DLL_Hooks\MSVCR71.dll
+        {
+        FileAppend, !MISSING! ,C:\INTPHARM\Idle.txt  
+        }  
+
+        ;PLHOOK.dll
+        FileAppend, `n[ PLHOOK.dll`t,C:\INTPHARM\Idle.txt  
+    IfExist, C:\Program Files(x86)\Microsoft Retail Management System\Store Operations\DLL_Hooks\PLHOOK.dll
+        {
+        FileAppend, PRESENT ,C:\INTPHARM\Idle.txt  
+        }
+    IfNotExist, C:\Program Files(x86)\Microsoft Retail Management System\Store Operations\DLL_Hooks\PLHOOK.dll
+        {
+        FileAppend, !MISSING! ,C:\INTPHARM\Idle.txt  
+        }  
+
+        ;vfp9r.dll
+        FileAppend, `n[ VFP9R.dll`t,C:\INTPHARM\Idle.txt  
+    IfExist, C:\Program Files(x86)\Microsoft Retail Management System\Store Operations\DLL_Hooks\VFP9R.dll
+        {
+        FileAppend, PRESENT ,C:\INTPHARM\Idle.txt  
+        }
+    IfNotExist, C:\Program Files(x86)\Microsoft Retail Management System\Store Operations\DLL_Hooks\VFP9R.dll
+        {
+        FileAppend, !MISSING! ,C:\INTPHARM\Idle.txt  
+        }  
+
+        ;VFP9RENU.dll
+        FileAppend, `n[ VFP9RENU.dll`t,C:\INTPHARM\Idle.txt  
+    IfExist, C:\Program Files(x86)\Microsoft Retail Management System\Store Operations\DLL_Hooks\VFP9RENU.dll
+        {
+        FileAppend, PRESENT ,C:\INTPHARM\Idle.txt  
+        }
+    IfNotExist, C:\Program Files(x86)\Microsoft Retail Management System\Store Operations\DLL_Hooks\VFP9RENU.dll
+        {
+        FileAppend, !MISSING! ,C:\INTPHARM\Idle.txt  
+        }
+
+        ;L DRIVE
+        FileAppend, `n[ L:\`t`t,C:\INTPHARM\Idle.txt  
+    IfExist, L:\
+        {
+        FileAppend, PRESENT ,C:\INTPHARM\Idle.txt  
+        }
+    IfNotExist, L:\
+        {
+        FileAppend, !MISSING! ,C:\INTPHARM\Idle.txt  
+        }
+
+        ;Path file
+        FileAppend, `n`n[ PATH.txt contains:,C:\INTPHARM\Idle.txt  
+    IfExist, L:\
+        {
+        FileRead, pathtxt, C:\LOYALTY\path.txt
+        FileAppend, `n[ %pathtxt% ,C:\INTPHARM\Idle.txt  
+        }
+    IfNotExist, L:\
+        {
+        FileRead, pathtxt, C:\LOYALTY\path.txt
+        FileAppend, `n[ %pathtxt% ,C:\INTPHARM\Idle.txt  
+        }
+
+    FileAppend, `n[____________________________]`n, C:\INTPHARM\Idle.txt
+    }
+
 
 FileAppend, `n`n############################################################################################, C:\INTPHARM\Idle.txt    
 FileAppend, `n##################################### - DOCUMENT END - ########################################, C:\INTPHARM\Idle.txt

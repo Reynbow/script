@@ -15,7 +15,7 @@ IniRead, vMacro7, C:\AutoHotKey\settings.ini, MACROLIST, MACRO7
 IniRead, vMacro8, C:\AutoHotKey\settings.ini, MACROLIST, MACRO8
 IniRead, vMacro9, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 
-Gui, 98:-SysMenu +Border
+Gui, 98:-SysMenu +Border %OnTopSetting%
 Gui, 98:Margin, 16, 16
 Gui, 98:Color, 1d1f21, 383D46
 

@@ -9,7 +9,7 @@ IfNotExist, C:\AutoHotKey\logsettings.ini
 IniRead, dispdrive, C:\AutoHotKey\logsettings.ini, drives, dispx
 IniRead, posdrive, C:\AutoHotKey\logsettings.ini, drives, posx
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, Logs:-SysMenu -caption -Border
+Gui, Logs:-SysMenu -caption -Border %OnTopSetting%
 Gui, Logs:Add, Picture, x0 y160 , C:\AutoHotKey\Files\ui\back-sup-wide.png
 Gui, Logs:Color, %BGColour%, 2b2e43
 Gui, Logs:Add, Text, x0 y0 w408 h25 Center GuiMove,

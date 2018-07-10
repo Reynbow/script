@@ -6,7 +6,7 @@ Gui, Destroy
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 
-Gui, LoyAdmin:-SysMenu -caption -Border
+Gui, LoyAdmin:-SysMenu -caption -Border %OnTopSetting%
 Gui, LoyAdmin:Color, %BGColour%, 2b2e43
 Gui, LoyAdmin:Add, Text, x0 y0 w910 h25 Center GuiMove,
 Gui, LoyAdmin:Add, Picture, x390 y325 , C:\AutoHotKey\Files\ui\back-loy.png

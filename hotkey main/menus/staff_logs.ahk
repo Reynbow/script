@@ -36,7 +36,7 @@ For Each, Row In data_obj ;add the data lines to the ListView
     LV_ModifyCol(5, 110, "STAFF MEMBER")
     LV_ModifyCol(6, 125, "TASK")
     LV_Modify( LV_GetCount(), "Vis" )
-Gui, -SysMenu +Border -MaximizeBox
+Gui, -SysMenu +Border -MaximizeBox %OnTopSetting%
 Gui, Color, 1d1f21
 Gui, font, bold cE8EBF5 s9, Segoe UI
 Gui, Add, Button, x10 y615 h30 w100 gRELOAD, RELOAD

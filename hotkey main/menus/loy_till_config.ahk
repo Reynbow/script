@@ -5,7 +5,7 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 Gui, Destroy
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, LT:-SysMenu -caption -Border
+Gui, LT:-SysMenu -caption -Border %OnTopSetting%
 Gui, LT:Color, %BGColour%, 2b2e43
 Gui, LT:Add, Text, x0 y0 w910 h25 Center GuiMove,
 Gui, LT:Add, Picture, x0 y120 , C:\AutoHotKey\Files\ui\back-loy-wide.png
@@ -68,7 +68,7 @@ Gui, LT:Add, Text, yp+20, Issues with Prompter, Balance Checker or Till
 Gui, LT:Add, Text, yp+20, Printer issue
 Gui, LT:Add, Text, yp+20, Running remap shortcut resolved the error
 Gui, LT:Add, Text, yp+20, UAC permissions issue
-Gui, LT:Add, Text, yp+20, BackgroundTrans Computer upgraded to Windows 10
+Gui, LT:Add, Text, yp+20 BackgroundTrans, Computer upgraded to Windows 10
 
 Gui, LT:Add, GroupBox, x18 yp+40 w498 h120, Preview
 Gui, LT:Add, Text, xp+2 yp+20 w50 h98  
@@ -129,7 +129,7 @@ loop
 	UAC := UAC ? " #UAC" : ""
 	Win10 := Win10 ? " #WIN10" : ""
 	
-	msgText = % Time Out IN Install Rein Fix " #TILLFIX •• " Spoke Reason Change Reso " •• TAGS:" Cryp NewPC PL Print Remap UAC Win10
+	msgText = % Time Out IN Install Rein Fix " #TILLFIX " Spoke Reason Change Reso " •• TAGS:" Cryp NewPC PL Print Remap UAC Win10
 
     if NOT (msgText == oldMsgText)
     {

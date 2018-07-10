@@ -6,9 +6,10 @@ SetBatchLines, -1
 SendMode, Event
 SetKeyDelay 25, 10
 
-VersionNum = 3.5.03
+VersionNum = 3.6
 
 IniRead, StartPOS, C:\AutoHotKey\settings.ini, Starting Position, Start
+IniRead, OnTopSetting, C:\AutoHotKey\settings.ini, Always On Top, Active
 
 	Menu, Tray, NoStandard ; remove standard Menu items
 	Menu, Tray, Tip, 🔥🔑
@@ -33,7 +34,7 @@ IfNotExist, C:\AutoHotKey\script.exe
 Return
 
 ;============================= END TRAY
-
+/*
 ^PGUP::
 About:
 Gui, Destroy
@@ -48,6 +49,7 @@ Gui, 98:Add,Button,x70 y112 w120 h25 , Set Name
 Gui, 98:Add,Button,x210 y112 w120 h25 ,Close
 Gui, 98:Show, Center h410 w390, 🔥🔑 - Version %VersionNum%
 return
+
 
 98ButtonClose:
 Reload
@@ -72,6 +74,7 @@ Gui, Destroy
     Gui, 97:Show,, Name
 return
 
+
 97ButtonExit:
 reload
 return
@@ -95,6 +98,7 @@ return
 Gui, 97:destroy
 gosub About
 return
+*/
 
 +PGDN::reload
 ^PGDN::
@@ -103,7 +107,7 @@ IfNotExist, C:\AutoHotKey\settings.ini
 	{
 Gui, 45:Margin, 16, 16
 Gui, 45:Color, 1d1f21, 383D46, 282a2e
-Gui, 45:-SysMenu +Border
+Gui, 45:-SysMenu +Border %OnTopSetting%
 Gui, 45:Font, s11, Segoe UI
 Gui, 45:Add, Text, cc5c8c6 xm w230 , Looks like you have not assigned your name.`n`nYou will need to set this before you can use the script. Would you like to set it now?
 Gui, 45:Add, Button, xm w120 h30, Yes
@@ -117,14 +121,19 @@ return
 
 45ButtonYes:
 gui, destroy
-gosub, 98ButtonSetName
+gosub, script_settings
 return
 	}
+
+;ACCOUNT NAMES
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, Surname
 
-If Name contains Aaron,Brodie,James,Joel,Josh,Renae,Rick,Test,Craig,Guest,Steve
+FileReadLine, FirstName, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\names.txt, 1
+FileReadLine, SecondName, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\names.txt, 2
+
+If Name contains %FirstName%
 	{
 	gosub, NamePart2
 	return
@@ -132,12 +141,12 @@ If Name contains Aaron,Brodie,James,Joel,Josh,Renae,Rick,Test,Craig,Guest,Steve
 	else
 	{
 		MsgBox, 16,USER NOT PERMITTED, Please confirm your name.
-		gosub 98ButtonSetName
+		gosub script_settings
 		return
 	}
 
 NamePart2:
-If Surname contains Beecham,Creaser,Schubert,Hansen,Hill,Hutchinson,White,Account,Duchesne,User,Colley
+If Surname contains %SecondName%
 	{
 	gosub, Q1
 	return
@@ -145,7 +154,7 @@ If Surname contains Beecham,Creaser,Schubert,Hansen,Hill,Hutchinson,White,Accoun
 	else
 	{
 		MsgBox, 16,USER NOT PERMITTED, Please confirm your name.
-		gosub 98ButtonSetName
+		gosub script_settings
 		return
 	}
 
@@ -169,32 +178,23 @@ IfNotExist, G:\Support\
 	}
 	else BGColour := "1f2130"
 
-If (!StartPOS)
-	{
-	StartPOS = Support
-	IniWrite, %StartPOS%, C:\AutoHotKey\settings.ini, Starting Position, Start
-	}
-
-IniRead, StartPOS, C:\AutoHotKey\settings.ini, Starting Position, Start
-
-Gui, 99:-SysMenu -caption -Border
+Gui, 99:-SysMenu -caption -Border %OnTopSetting%
 Gui, 99:font,
 Gui, 99:font, s12 CWhite Bold , Segoe UI
 
 Gui, 99:Add, Button, x-500 Y-500 w118 h30 Left ,
 
-Gui, 99:Add, Text, x0 y0 w408 h25 Center GuiMove,
+Gui, 99:Add, Text, x0 y0 w323 h25 Center GuiMove,
 
 AddImageTab("", "  S U P P O R T  |  L O Y A L T Y  ")
 
-;Gui, 99:Add, Tab2, x15 y85 w420 h253 gMenuTab vWhichTab choose%StartPOS%,   Ｓ Ｕ Ｐ Ｐ Ｏ Ｒ Ｔ  |  Ｌ Ｏ Ｙ Ａ Ｌ Ｔ Ｙ  
 Gui, 99:Tab, 1, 1
 Gui, 99:font,
 Gui, 99:font, s9 Bold, Segoe UI
 
 Gui, 99:Add, Button, x158 y61 w10 h33 Left hwndHBT37 gSTARTSONG , 
 
-Gui, 99:Add, Picture, x75 y60, C:\AutoHotKey\Files\mainmenu_sup.png
+Gui, 99:Add, Picture, x75 y60, C:\AutoHotKey\Files\ui\mainmenu_sup.png
 Gui, 99:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-sup.png
 ;Gui, 99:Add, Picture, x15 y113 , C:\AutoHotKey\Files\sup.png
 Gui, 99:Add, Picture, x15 y143 , C:\AutoHotKey\Files\ui\main_buttons_sup.png
@@ -220,7 +220,7 @@ Gui, 99:Add, Button, yp+40 w118 h30 Right gSupEMAILS hwndHBT12, % "Email Templat
 
 Gui, 99:Tab, 2
 Gui, 99:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-loy.png
-Gui, 99:Add, Picture, x75 y60, C:\AutoHotKey\Files\mainmenu_loy.png
+Gui, 99:Add, Picture, x75 y60, C:\AutoHotKey\Files\ui\mainmenu_loy.png
 Gui, 99:Add, Picture, x15 y143 BackgroundTrans, C:\AutoHotKey\Files\ui\main_buttons_loy.png
 Gui, 99:font,
 Gui, 99:font, s9 Bold , Segoe UI
@@ -560,13 +560,17 @@ ImageButton.Create(HBT%NUM%, Opt1, Opt2, , , Opt5)
 }
 
 Gui, 99:font,
+Gui, 99:font, s11 CWhite Bold , Segoe UI
+Gui, 99:Add, Button, x323 y0 w85 h28 gscript_settings hwndHBT98, SETTINGS
+Gui, 99:font,
 Gui, 99:font, s14 CWhite Bold , Segoe UI
 Gui, 99:Add, Button, x408 y0 w42 h28 Left gExit hwndHBT99, %A_Space%%A_Space%✖
 ;============= STATUS BAR BUTTONS
 Opt1 := [0, 0x1F2130    ,       , "WHITE" , , , 0x1F2130, 1]
 Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 1]
-Opt5 := [ ,            ,       , 0x0C131E]        
+Opt5 := [ ,            ,       , "WHITE"]        
 ImageButton.Create(HBT99, Opt1, Opt2, , , Opt5)
+ImageButton.Create(HBT98, Opt1, Opt2, , , Opt5)
 ;================================
 
 DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 0)
@@ -585,7 +589,8 @@ AddImageTab(Options, Pages, Vertical = False) {
 	Opt2 := [ , 0x1f2130   ,       ,  "WHITE" , , , 0x1f2130, 0]
 	Opt5 := [ ,            ,       , 0x0C131E]        
 
-	Gui, 99:Add, Tab2, x15 y108 w0 h0 AltSubmit HwndHTab , % Pages ; Add an invisible Tab control
+	IniRead, TabChoice, C:\AutoHotKey\settings.ini, Starting Position, Start
+	Gui, 99:Add, Tab2, x15 y108 w0 h0 %TabChoice% AltSubmit HwndHTab, % Pages ; Add an invisible Tab control
 	Gui, 99:Tab
 
 	Loop, Parse, Pages, |
@@ -616,23 +621,6 @@ AddImageTab(Options, Pages, Vertical = False) {
 Exit:
 Reload
 Return
-
-/*
-MenuTab:
-if (WhichTab != "Pages1")
-	{
-	IniRead, page, C:\AutoHotKey\settings.ini, Starting Position, Start
-	if (page != "1")
-		{
-		IniWrite, 1, C:\AutoHotKey\settings.ini, Starting Position, Start
-		}
-	if (page != "2")
-		{
-		IniWrite, 2, C:\AutoHotKey\settings.ini, Starting Position, Start
-		}
-	}
-	return
-	*/
 
 99ButtonDataOut:
 FileRead, DOPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Data Out.txt
@@ -703,6 +691,7 @@ ExitApp
 #include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\hotkey main\menus\loyserv.ahk
 #include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\hotkey main\menus\card_orders.ahk
 #include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\hotkey main\menus\loy_cancel.ahk
+#include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\hotkey main\menus\script_settings.ahk
 #include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\loyalty\Loyalty Install.ahk
 
 #Include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\test files\Sources\Class_ImageButton.ahk

@@ -7,7 +7,7 @@ gui_x +=450
 list1FC = Yes|No
 ;Gui, Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 25:-SysMenu -caption -Border
+Gui, 25:-SysMenu -caption -Border %OnTopSetting%
 Gui, 25:font, cE8EBF5
 
 Gui, 25:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-sup-ext.png

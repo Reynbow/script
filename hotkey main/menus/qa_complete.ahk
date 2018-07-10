@@ -4,7 +4,7 @@ Gui, QA:Destroy
 FileReadLine, VerNum, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, 1
 IniRead, gui_position, C:\AutoHotKey\settings.ini, window position, QA_position, Center
 
-;Gui, QA:+AlwaysOnTop
+Gui, QA: %OnTopSetting%
 Gui, QA:Color, %BGColour%, 2b2e43
 ;Gui, QA:Add, Text, x0 y0 w910 h25 Center GuiMove,
 Gui, QA:Add, Picture, x0 y310 , C:\AutoHotKey\Files\ui\back-sup-wide.png

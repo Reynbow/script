@@ -7,7 +7,7 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 gui_x +=450
 
 Gui, Paths:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-sup-ext.png
-Gui, Paths:-SysMenu -caption -Border
+Gui, Paths:-SysMenu -caption -Border %OnTopSetting%
 Gui, Paths:font, s12 cE8EBF5 bold, Segoe UI
 Gui, Paths:Color, %BGColour%, 2b2e43
 Gui, Paths:Add, Text, center x0 y20 w210 h50, COMMON`nPATHS

@@ -5,7 +5,7 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 gui_x +=450
 
 Gui, 55:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-loy-ext.png
-Gui, 55:-SysMenu -caption -Border
+Gui, 55:-SysMenu -caption -Border %OnTopSetting%
 Gui, 55:font, bold cE8EBF5 s12, Segoe UI
 Gui, 55:Color, %BGColour%, 2b2e43
 Gui, 55:Add, Text, x0 y55 w210 h50 Center, LOYSERV CREATOR

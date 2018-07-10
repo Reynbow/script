@@ -163,6 +163,7 @@ do_lines += fri_lines
 
 IniRead, Weekly_Cord, C:\AutoHotKey\settings.ini, window position, weekly_position, x1 y1
 
+Gui, 99P2: %OnTopSetting%
 Gui, 99P2:Color, 1d1f21, 383D46
 Gui, 99P2:Add, Button, x2000 y2000 w20 h20 , placehold
 Gui, 99P2:font, bold s12 CWhite, Segoe UI

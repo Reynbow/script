@@ -3,7 +3,7 @@ WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 Gui, 99:Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 87:-SysMenu -caption -Border
+Gui, 87:-SysMenu -caption -Border %OnTopSetting%
 Gui, 87:Color, %BGColour%, 2b2e43
 Gui, 87:Add, Text, x0 y0 w910 h25 Center GuiMove,
 Gui, 87:Add, Picture, x0 y75 , C:\AutoHotKey\Files\ui\back-sup.png

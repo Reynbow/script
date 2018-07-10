@@ -54,7 +54,7 @@ Gui, Destroy
 FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 74:-SysMenu -caption -Border
+Gui, 74:-SysMenu -caption -Border %OnTopSetting%
 Gui, 74:Color, %BGColour%, 2b2e43
 Gui, 74:Add, Picture, x460 y245 , C:\AutoHotKey\Files\ui\back-sup.png
 Gui, 74:font, s12 bold cE8EBF5, Segoe UI

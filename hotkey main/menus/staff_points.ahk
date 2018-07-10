@@ -292,7 +292,7 @@ GuiControl, -Redraw, MyListView  ; Improve performance by disabling redrawing du
    	LV_Modify( LV_GetCount(), "Vis" )
 
    GuiControl, +Redraw, MyListView  ; Re-enable redrawing (it was disabled above).
-Gui, +Border -MaximizeBox
+Gui, +Border -MaximizeBox %OnTopSetting%
 ;Gui, Add, Button, x10 y185 w100 h25 gExport2Excel, Export to Excel
 Gui, Color, 000000
 Gui, Add, Button, x468 y395 w100 h25 gClose, Close

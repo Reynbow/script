@@ -4,7 +4,7 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 
 gui_x +=450
 
-Gui, QAP:-SysMenu -caption -Border
+Gui, QAP:-SysMenu -caption -Border %OnTopSetting%
 
 Gui, QAP:Color, %BGColour%, 2b2e43
 

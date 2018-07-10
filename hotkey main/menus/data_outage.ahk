@@ -32,7 +32,7 @@ FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 list2GF = |Top Right|Bottom Right|Top Left|Bottom Left|Random
 list3GF = |Yes|No|NA
-Gui, 15:-SysMenu -caption -Border
+Gui, 15:-SysMenu -caption -Border %OnTopSetting%
 Gui, 15:Add, Text, x0 y0 w652 h25 Center GuiMove,
 Gui, 15:font, s16 bold cE8EBF5, Segoe UI
 Gui, 15:Color, %BGColour%, 2b2e43
