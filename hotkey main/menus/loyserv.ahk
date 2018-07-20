@@ -4,6 +4,7 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 
 gui_x +=450
 
+Gui, 55:Add, Text, x0 y0 w323 h25 Center GuiMove,
 Gui, 55:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-loy-ext.png
 Gui, 55:-SysMenu -caption -Border %OnTopSetting%
 Gui, 55:font, bold cE8EBF5 s12, Segoe UI

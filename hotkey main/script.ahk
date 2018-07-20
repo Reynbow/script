@@ -6,7 +6,7 @@ SetBatchLines, -1
 SendMode, Event
 SetKeyDelay 25, 10
 
-VersionNum = 3.6
+VersionNum = 3.6.02
 
 IniRead, StartPOS, C:\AutoHotKey\settings.ini, Starting Position, Start
 IniRead, OnTopSetting, C:\AutoHotKey\settings.ini, Always On Top, Active
@@ -32,73 +32,6 @@ IfNotExist, C:\AutoHotKey\script.exe
 	return
 	}
 Return
-
-;============================= END TRAY
-/*
-^PGUP::
-About:
-Gui, Destroy
-FileRead, ChangeLog, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\changelog.txt
-Gui, 98:font, s8, Segoe UI 
-Gui, 98:Color, 1d1f21, 383D46
-Gui, 98:Add, Picture, x0 y0 w390 h100 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\splash.jpg
-Gui, 98:font, cE8EBF5, Segoe UI
-Gui, 98:Add, Edit, VScroll x1000 y1000 h100, focus
-Gui, 98:Add, Edit, readonly -tabstop VScroll x-2 y150 w394 h263 , %ChangeLog%
-Gui, 98:Add,Button,x70 y112 w120 h25 , Set Name
-Gui, 98:Add,Button,x210 y112 w120 h25 ,Close
-Gui, 98:Show, Center h410 w390, 🔥🔑 - Version %VersionNum%
-return
-
-
-98ButtonClose:
-Reload
-return
-
-98ButtonSetName:
-Gui, Destroy
-    Gui, 97:Margin, 16, 16
-    Gui, 97:Color, 1d1f21, 383D46, 282a2e
-    Gui, 97:-SysMenu -caption +Border
-    Gui, 97:Font, s11, Segoe UI
-    Gui, 97:Add, Text, xm w280 cc5c8c6 -E0x200 , Please type your name
-	Gui, 97:Add, Text, xm w280 cc5c8c6 -E0x200 , First Name:
-    Gui, 97:Font, s10, Segoe UI
-    Gui, 97:Add, Edit, xm w280 cc5c8c6 -E0x200 vName ;gFindus
-	Gui, 97:Font, s11, Segoe UI
-	Gui, 97:Add, Text, xm w280 cc5c8c6 -E0x200 , Surname:
-    Gui, 97:Font, s10, Segoe UI
-    Gui, 97:Add, Edit, xm w280 cc5c8c6 -E0x200 vSurname ;gFindus
-	Gui, 97:Add, Button, xm w130 cc5c8c6 -E0x200 +default, Confirm
-	Gui, 97:Add, Button, xp+150 w130 cc5c8c6 -E0x200, Exit
-    Gui, 97:Show,, Name
-return
-
-
-97ButtonExit:
-reload
-return
-
-97ButtonConfirm:
-Gui, Submit
-IfNotExist, C:\AutoHotKey\settings.ini
-	{
-	FileCreateDir, C:\AutoHotKey\
-	IniWrite x20 y20, C:\AutoHotKey\settings.ini, window position, gui_position		
-	IniWrite x20 y760, C:\AutoHotKey\settings.ini, window position, point_position	
-	IniWrite x250 y20, C:\AutoHotKey\settings.ini, window position, weekly_position
-	}
-
-IniWrite %Name%, C:\AutoHotKey\settings.ini, UserName, Name
-IniWrite %Surname%, C:\AutoHotKey\settings.ini, UserName, Surname
-reload
-return
-
-97ButtonBack:
-Gui, 97:destroy
-gosub About
-return
-*/
 
 +PGDN::reload
 ^PGDN::
@@ -126,6 +59,13 @@ return
 	}
 
 ;ACCOUNT NAMES
+
+IfNotExist, G:\
+{
+msgbox, CAN NOT LOCATE G:\`n`nPlease confirm you have access to the G drive and try again.
+Return
+}
+else
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, Surname
@@ -196,25 +136,20 @@ Gui, 99:Add, Button, x158 y61 w10 h33 Left hwndHBT37 gSTARTSONG ,
 
 Gui, 99:Add, Picture, x75 y60, C:\AutoHotKey\Files\ui\mainmenu_sup.png
 Gui, 99:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-sup.png
-;Gui, 99:Add, Picture, x15 y113 , C:\AutoHotKey\Files\sup.png
 Gui, 99:Add, Picture, x15 y143 , C:\AutoHotKey\Files\ui\main_buttons_sup.png
 Gui, 99:Add, Button, x32 yp+20 w118 h30 Left gSupINSTALL hwndHBT1, % "   INSTALL"
 Gui, 99:Add, Button, yp+40 w118 h30 Left gSupDO hwndHBT2, % "   DATA OUTAGE"
 Gui, 99:Add, Button, yp+40 w118 h30 Left gSupportQAs hwndHBT3, % "   QA"
 Gui, 99:Add, Button, yp+40 w118 h30 Left gSupADMIN hwndHBT4, % "   ADMIN"
-;Gui, 99:Add, Button, yp+40 w118 h30 Left gSupGeneral, % "   &5 - SUB-MENU"
 Gui, 99:Add, Button, yp+40 w118 h30 Left gDeclinedConnection hwndHBT5, % "   KNOCKBACK"
 
 Gui, 99:font,
 Gui, 99:font, s9 , Segoe UI
-
 Gui, 99:Add, Button, xp+135 yp-120 w118 h30 Right gFredExcel hwndHBT6, % "Fred Excel Form   "
 Gui, 99:Add, Button, yp+40 w118 h30 Right gQAPass hwndHBT7, % "QA Pass   "
 Gui, 99:Add, Button, yp+40 w118 h30 Right gSupCancellation hwndHBT8, % "Cancellation   "
 Gui, 99:Add, Button, yp+40 w118 h30 Right gPhoneRangOut hwndHBT9, % "Phone Rang Out   "
-
 Gui, 99:Add, Button, xp+134 yp-80 w118 h30 Right gRemoteReset hwndHBT10, % "Remote Update   "
-;Gui, 99:Add, Button, yp+40 w118 h30 Right gSupSiteReset , % "Site Reset   "
 Gui, 99:Add, Button, yp+40 w118 h30 Right gSupPaths hwndHBT11, % "Paths for AV   "
 Gui, 99:Add, Button, yp+40 w118 h30 Right gSupEMAILS hwndHBT12, % "Email Templates   "
 
@@ -234,40 +169,26 @@ Gui, 99:font,
 Gui, 99:font, s9 , Segoe UI
 Gui, 99:Add, Button, xp+135 yp-40 w118 h30 Right gCardOrders hwndHBT35, % "Card Orders   "
 Gui, 99:Add, Button, yp+40 w118 h30 Right gLoyaltyCancelation hwndHBT36, % "Loyalty Cancel   "
-;Gui, 99:Add, Button, yp+40 w120 h30 Right gTWCMRoll , % "TWCM Rollout   "
 
 FileRead, ForceUpdate, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt
 do_lines_pre = 
 Gui, 99:Tab 
-
-
-;Gui, 99:-SysMenu +Border -MaximizeBox
 Gui, 99:font, bold cE8EBF5 s24, Segoe UI
 Gui, 99:Color, %BGColour%, 2b2e43
 Gui, 99:font,
 Gui, 99:font, s9 bold cE8EBF5, Segoe UI
 Gui, 99:Add, Text, x0 y35 w450 center , Hello %Name% %Surname%
-
 Gui, 99:Add, Button, x15 y385 w175 h30 Left gProcessCharts hwndHBT13, % "　Process Charts"
 Gui, 99:Add, Button, xp yp+36 w175 h30 Left gPassGen hwndHBT14, % "　Password Generator"
 Gui, 99:Add, Button, x198 y385 w115 h30 Left gMacros hwndHBT15, % "   Macros"
 Gui, 99:Add, Button, x320 y385 w115 h30 Left gLogsViewer hwndHBT16, % "   View Store Logs"
-
 Gui, 99:Add, Button, x198 y421 w115 h30 Left gWeekPoints hwndHBT17, % "   Staff Points"
 Gui, 99:Add, Button, x320 y421 w115 h30 Left glogviewer hwndHBT18, % "   Staff Logs"
 
-;Gui, 99:font, bold s10 CWhite, Segoe UI
-;Gui, 99:Add, Text, x15 y470 BackGroundTrans , ＰＯＩＮＴ　ＣＯＵＮＴＥＲ
-;Gui, 99:font,
-Gui, 99:font, bold s7 CWhite, Segoe UI
-
-;Gui, 99:Add, Button, x270 y490 w165 h20 gfullweeksummary hwndHBT21, FULL WEEK SUMMARY
 Gui, 99:font, bold s10 CWhite, Segoe UI
 
 FormatTime, Date,, yyyyMMdd
-
 IniRead, Points, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date%.ini, Count Points, Points, None :(
-
 FormatTime, Day,, dddd
 
 If Day = Friday
@@ -521,11 +442,8 @@ Gui, 99:Add, Text, xp yp+25 BackGroundTrans , %CONPoints%
 Gui, 99:font, bold CWhite s6, Segoe UI
 Gui, 99:Add, Text, x3 y3 , %Count%
 
-;Gui, 99:+Hwndgui_id
-
 If % VersionNum < ForceUpdate
 {
-;Gui, 99:Add, Picture, x7 y712 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\update2.png
 Gui, 99:font, bold cBLACK s24, Segoe UI
 Gui, 99:Add, Text, BackgroundTrans x10 y662 , UPDATE AVAILABLE
 Gui, 99:font, bold CWhite s24, Segoe UI
@@ -535,7 +453,6 @@ Gui, 99:Add, Button, x322 y670 w115 h30 gUPDATENOW hwndHBT27, UPDATE NOW
 }
 Else
 {
-
 	If Dog = Brodie
 	{
 	Gui, 99:Add, Button, x180 y670 w80 h30 gTicketCounter hwndHBT19, TICKET COUNT
@@ -565,6 +482,7 @@ Gui, 99:Add, Button, x323 y0 w85 h28 gscript_settings hwndHBT98, SETTINGS
 Gui, 99:font,
 Gui, 99:font, s14 CWhite Bold , Segoe UI
 Gui, 99:Add, Button, x408 y0 w42 h28 Left gExit hwndHBT99, %A_Space%%A_Space%✖
+
 ;============= STATUS BAR BUTTONS
 Opt1 := [0, 0x1F2130    ,       , "WHITE" , , , 0x1F2130, 1]
 Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 1]
@@ -572,6 +490,12 @@ Opt5 := [ ,            ,       , "WHITE"]
 ImageButton.Create(HBT99, Opt1, Opt2, , , Opt5)
 ImageButton.Create(HBT98, Opt1, Opt2, , , Opt5)
 ;================================
+
+IfEqual, Gui_Cord, x y
+	{
+	IniWrite, x50 y50, C:\AutoHotKey\settings.ini, window position, gui_position
+	IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
+	}
 
 DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 0)
 Gui, 99:Show, %Gui_Cord% w450 h715 , MAIN MENU
@@ -693,19 +617,7 @@ ExitApp
 #include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\hotkey main\menus\loy_cancel.ahk
 #include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\hotkey main\menus\script_settings.ahk
 #include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\loyalty\Loyalty Install.ahk
-
 #Include C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\gitstuff\script\test files\Sources\Class_ImageButton.ahk
-
-/*
-TWCMRoll:
-If (GetKeyState("Shift", "P"))
-	{
-		MsgBox, ,LINE , %A_LineNumber%
-	}
-run, C:\AutoHotKey\Files\Loyalty TWCM.exe
-reload
-return
-*/
 
 logviewer:
 If (GetKeyState("Shift", "P"))
@@ -981,38 +893,3 @@ AnimatedGif( ByRef guiHwnd, Image, X, Y, W, H, BackgroundColor:="system", Id:="A
 		ComObjConnect( out, eventHandler )
 	return out
 }
-
-/*
-Gui, Close: +AlwaysOnTop -SysMenu -caption +Border
-Gui, Close:Color, Red, 2b2e43
-Gui, Close:Add, Button, gCloseClose, STOP
-Gui, Close:Show
-
-Loop{
-Num++
-
-if (Mon = 1)
-	{
-	Random, CORDx , 0, 1920
-	Random, CORDy , 0, 1080
-	}
-
-if (Mon = 2)
-	{
-	Random, CORDx , -1920, 1920
-	Random, CORDy , 0, 1080
-	}
-
-Gui, SCRT%Num%:-SysMenu -caption +Border
-;Gui, SCRT%Num%:Add, Picture, x0 y0, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\hotkey_sharp.png
-Gui, SCRT%Num%:Add, Picture, x0 y0, C:\Users\Aaron.Beecham\Pictures\Hotkey Files\gif.gif
-Gui, SCRT%Num%:Show, x%CORDx% y%CORDy% h560 w560
-sleep 125
-
-}
-return
-
-CloseClose:
-Reload
-Return
-*/

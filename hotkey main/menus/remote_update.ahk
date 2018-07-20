@@ -6,6 +6,7 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 
 gui_x +=450
 
+Gui, RR:Add, Text, x0 y0 w323 h25 Center GuiMove,
 Gui, RR:-SysMenu -caption -Border %OnTopSetting%
 Gui, RR:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-sup-ext.png
 Gui, RR:Color, %BGColour%, 2b2e43

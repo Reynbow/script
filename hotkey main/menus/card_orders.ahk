@@ -5,6 +5,7 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 gui_x +=450
 
 list1 = 500|1000|2000|5000
+Gui, 30:Add, Text, x0 y0 w323 h25 Center GuiMove,
 Gui, 30:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-loy-ext.png
 Gui, 30:Color, %BGColour%, 2b2e43 
 Gui, 30:-SysMenu -caption -Border %OnTopSetting%
