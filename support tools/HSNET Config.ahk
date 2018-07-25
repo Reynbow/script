@@ -5,7 +5,7 @@ GUI
 
 FileCreateDir, C:\INTPHARM\Inthelp\
 
-FileInstall, C:\INTPHARM\Inthelp\intlogo.ico, C:\INTPHARM\Inthelp\intlogo.ico, 1
+FileInstall, C:\Users\Aaron.Beecham\Pictures\icons\intlogo.ico, C:\INTPHARM\Inthelp\intlogo.ico, 1
 
 IfNotExist, C:\INTPHARM\DISPX\sitecode.txt
 {
@@ -27,6 +27,7 @@ FileDelete, HSNET_Config_LOG.txt
 FormatTime, TimeString, A_Now, dd/MM/yyyy - HH:mm:ss
 log(TimeString) 
 log("--------------------------------------`nRunning HSNET Config`n--------------------------------------`n")
+                 
 log("If you would like to stop this process, you can at any time by pressing ESC`n")
 
 	log("✔️ - Desktop Help icon updated")
@@ -38,6 +39,35 @@ log("If you would like to stop this process, you can at any time by pressing ESC
 	IniWrite, 0,                               				C:\Users\All Users\Desktop\Intellipharm Help.url, InternetShortcut, HotKey
 
 ;InputBox, count, SCHEDULE TASK,Please set the time you would like HSNET SCHEDULE TASK to start.`nFormat is '12:00' in 24 hour time., ,240,160,200,200,,,22:30
+
+log("`n✔️ - Creating NEW Hsnet Restart Batch`n")
+
+FileDelete, C:\INTPHARM\HSNET\restarthsnet.bat
+
+FileAppend,
+(
+@echo off
+c:
+cd \intpharm
+
+IF EXIST \intpharm\Hsnet\hsnet.exe GOTO HSNETRESTART
+
+:HSNETRESTART
+echo Restarting Intellipharm's HSNET.exe                                         
+taskkill /F /IM HSNET.EXE > NUL 2>NUL
+net stop HSNET 2>NUL
+taskkill /F /IM HSNET9.EXE 2>NUL
+net stop HSNET9 2>NUL
+ping -n 5 localhost >NUL
+cd \intpharm\Hsnet\
+START hsnet.exe
+
+cls
+goto END
+
+:END
+EXIT
+), C:\INTPHARM\HSNET\restarthsnet.bat
 
 Gui, -SysMenu -caption +Border
 Gui, Color, 1d1f21, 383D46, 282a2e
@@ -134,7 +164,7 @@ trigger.Enabled := True
 
 ; Add an action to the task to run notepad.exe.
 Action := taskDefinition.Actions.Create( ActionTypeExec )
-Action.Path := "C:\INTPHARM\HSNET\HSNET.exe"
+Action.Path := "C:\INTPHARM\HSNET\restarthsnet.bat"
 
 ;***********************************************************
 ; Register (create) the task.

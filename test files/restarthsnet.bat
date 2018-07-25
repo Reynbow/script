@@ -1,8 +1,3 @@
-#SingleInstance Force
-
-F1::
-FileAppend,
-(
 @echo off
 c:
 cd \intpharm
@@ -10,7 +5,7 @@ cd \intpharm
 IF EXIST \intpharm\Hsnet\hsnet.exe GOTO HSNETRESTART
 
 :HSNETRESTART
-echo Cron is restarting Intellipharm's HSNET.exe                                         
+echo Restarting Intellipharm's HSNET.exe
 taskkill /F /IM HSNET.EXE > NUL 2>NUL
 net stop HSNET 2>NUL
 taskkill /F /IM HSNET9.EXE 2>NUL
@@ -24,7 +19,3 @@ goto END
 
 :END
 EXIT
-), restarthsnet.bat
-return
-
-FileAppend, [ Text, Filename]

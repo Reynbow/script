@@ -523,7 +523,7 @@ Gui, 90D:Add, Text, x302 y76 w80 h268
 Gui, 90D:Add, Text, x320 y76 w338 h268 vPreviewDOR, 
 Gui, 90D:Add, Text, BackgroundTrans x335 y358 w320 h250 , Please ensure your signature is attached before sending...
 Gui, 90D:Add, Button, x38 y288 w215 h30 hwndBatch1, &Confirm
-Gui, 90D:Add, Button, x38 y328 w100 h30 hwndBatch2, &Back
+;Gui, 90D:Add, Button, x38 y328 w100 h30 hwndBatch2, &Back
 Gui, 90D:Add, Button, x153 y328 w100 h30 hwndBatch3, &Exit
 
 Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
@@ -608,7 +608,7 @@ Gui, 76:Add, Edit, -E0x200 x18 y98 w250 vBox1,
 Gui, 76:Add, Text, x18 y138 h30, Webservice address
 Gui, 76:Add, Edit, -E0x200 x18 y158 w250 vBox2,
 Gui, 76:Add, Button, x16 y210 w80 h30 hwndMinf1 , Confirm
-Gui, 76:Add, Button, x104 y210 w80 h30 hwndMinf2, Back
+;Gui, 76:Add, Button, x104 y210 w80 h30 hwndMinf2, Back
 Gui, 76:Add, Button, x192 y210 w80 h30 hwndMinf3, Exit
 
 Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
@@ -836,9 +836,9 @@ Gui, 46:Add, CheckBox, x232 y285 h20 vCb_9, Additional Till
 
 Gui, 46:Add, Text, x12 y330 w180 h20 , More information
 Gui, 46:Add, Edit, -E0x200 x12 y350 w400 h60 -VScroll vBox8,
-Gui, 46:Add, Button, x12 y425 w120 h30 hwndLoyRein1, Send
-Gui, 46:Add, Button, x152 y425 w120 h30 hwndLoyRein2, Back
-Gui, 46:Add, Button, x292 y425 w120 h30 hwndLoyRein3, Exit
+Gui, 46:Add, Button, x12 y425 w160 h30 hwndLoyRein1, Send
+;Gui, 46:Add, Button, x152 y425 w120 h30 hwndLoyRein2, Back
+Gui, 46:Add, Button, x252 y425 w160 h30 hwndLoyRein3, Exit
 
 Gui, 46:Add, Groupbox, x440 y30 w385 h410, Preview
 Gui, 46:Add, Text, x442 y55 w368 h383
@@ -985,8 +985,8 @@ Gui, 44:Add, Text, x20 y423 w20 h200 ,
 Gui, 44:Add, Text, x28 y400 w353 h223 vPreviewLoyEsc, 
 
 Gui, 44:Add, Button, x212 y290 w170 h30 hwndLoyEsc1, Forward Escalation
-Gui, 44:Add, Button, x212 y330 w80 h30 hwndLoyEsc2, Back
-Gui, 44:Add, Button, x302 y330 w80 h30 hwndLoyEsc3, Exit
+;Gui, 44:Add, Button, x212 y330 w80 h30 hwndLoyEsc2, Back
+Gui, 44:Add, Button, x212 y330 w170 h30 hwndLoyEsc3, Exit
 
 Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
 Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
@@ -1009,7 +1009,7 @@ loop
 	Cb_3_Text := Cb_3 ? "Remap not working " : ""
 	Cb_4_Text := Cb_4 ? "Transactions/Points/Redemptions " : ""
 	
-    msgText = To: `t`tsupport@loyaltyone.com.au`nSubject: `tLoyalty Call Escalation %SiteCode% %SiteName%`n`n`nStore Contact:`t%Contact%`nIssue With:`t%Cb_1_Text%%Cb_2_Text%%Cb_3_Text%%Cb_4_Text%`nError Message:`t%Error%`n`nCard Number:`t%CardNo%`nCustomer Name:`t%CustName%`nDocket Number:`t%DockNo%`nDetails:`t`t%Desc%`n`nSteps Taken to Resolve:`t%Steps%
+    msgText = To: `tsupport@loyaltyone.com.au`nSubject: `tLoyalty Call Escalation %SiteCode% %SiteName%`n`n`nStore Contact:`t%Contact%`nIssue With:`t%Cb_1_Text%%Cb_2_Text%%Cb_3_Text%%Cb_4_Text%`nError Message:`t%Error%`n`nCard Number:`t%CardNo%`nCustomer Name:`t%CustName%`nDocket Number:`t%DockNo%`nDetails:`t`t%Desc%`n`nSteps Taken to Resolve:`t%Steps%
 
     if NOT (msgText == oldMsgText)
     {
@@ -1183,7 +1183,7 @@ Gui, 47:Add, Edit, -E0x200 x152 y279 w110 h20 vBox8,
 Gui, 47:Add, Text, BackgroundTrans x28 y311 w140 h30 , Secondary Contact:
 Gui, 47:Add, Edit, -E0x200 x152 y309 w110 h20 vBox9,
 Gui, 47:Add, Button, x23 y345 w75 h30 hwndFredEx1, Confirm
-Gui, 47:Add, Button, x106 y345 w75 h30 hwndFredEx2, Back
+;Gui, 47:Add, Button, x106 y345 w75 h30 hwndFredEx2, Back
 Gui, 47:Add, Button, x189 y345 w75 h30 hwndFredEx3, Exit
 
 Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
@@ -1274,7 +1274,7 @@ v6 := "Phone	"
 		Gui, 47:Add, Text, BackgroundTrans x28 y311 w140 h30 , Secondary Contact:
 		Gui, 47:Add, Edit, -E0x200 x152 y309 w110 h20 vBox9,
 		Gui, 47:Add, Button, x23 y345 w75 h30 hwndFredEx6, Confirm
-		Gui, 47:Add, Button, x106 y345 w75 h30 hwndFredEx7, Back
+		;Gui, 47:Add, Button, x106 y345 w75 h30 hwndFredEx7, Back
 		Gui, 47:Add, Button, x189 y345 w75 h30 hwndFredEx8, Exit
 
         Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
@@ -1301,7 +1301,7 @@ v6 := "Phone	"
 			IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 			IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
 
-			msgText = To: `t`tdataaccessrequest@fred.com.au`nCC:`t`tsupport@intellipharm.com.au`nSubject:`t`tData Access Request for - %Box1% from Intelllipharm`n`n`nHi, `nDocument attached with store details for FRED Credential Request.`nStore name: %Box1%`nSite Code: %Box7%`n`nKind Regards,`n%Name% %Surname%`nIntellipharm`n1300 255 160
+			msgText = To: `t`tdataaccessrequest@fred.com.au`nCC:`t`tsupport@intellipharm.com.au`nSubject:`t`tData Access Request for - %Box1% from Intellipharm`n`n`nHi, `nDocument attached with store details for FRED Credential Request.`nStore name: %Box1%`nSite Code: %Box7%`n`nKind Regards,`n%Name% %Surname%`nIntellipharm`n1300 255 160
 
 			if NOT (msgText == oldMsgText)
 			{
@@ -1418,7 +1418,7 @@ attach	:= "C:\AutoHotKey\FRED Access " Box1 ".xlsx"
 email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 email.To := "dataaccessrequest@fred.com.au"
 email.Cc := "support@intellipharm.com.au"
-email.Subject := "Data Access Request for - " Box1 " from Intelllipharm"
+email.Subject := "Data Access Request for - " Box1 " from Intellipharm"
 email.Body := "Hi, `nDocument attached with store details for FRED Credential Request.`n" "Store name: " Box1 "`n" "Site Code: "Box7 "`n`n" "Kind Regards" "`n" Name " " Surname "`nIntellipharm`n1300 255 160"
 email.Attachments.add(attach)
 email.Display

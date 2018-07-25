@@ -172,7 +172,7 @@ FormatTime, scripttime,, yyyyMM
 	TrayTip, Clipboard Ready, %msgText%, 5, 16
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Till Config`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
+FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalty Till Config`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt 
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
 
 ;POINTS CALC - ADDING SITE CODES
