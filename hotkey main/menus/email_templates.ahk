@@ -1431,7 +1431,7 @@ attach	:= "C:\AutoHotKey\FRED Access " Box1 ".xlsx"
 email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 email.To := "dataaccessrequest@fred.com.au"
 email.Cc := "support@intellipharm.com.au"
-email.Subject := "Data Access Request for - " Box1 " from Intelllipharm"
+email.Subject := "Data Access Request for - " Box1 " from Intellipharm"
 email.Body := "Hi, `nDocument attached with store details for FRED Credential Request.`n" "Store name: " Box1 "`n" "Site Code: "Box7 "`n`n" "Kind Regards" "`n" Name " " Surname "`nIntellipharm`n1300 255 160"
 email.Attachments.add(attach)
 email.Display

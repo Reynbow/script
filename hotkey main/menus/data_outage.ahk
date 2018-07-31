@@ -297,7 +297,7 @@ If clipboard Contains #NEWPC
 		email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 		email.To := "ricky.white@intellipharm.com.au"
 		email.Bcc := "brodie.creaser@intellipharm.com.au"
-		email.Cc := "renae.hutchinson@intellipharm.com.au"
+		email.Cc := "joel.hansen@intellipharm.com.au"
 		email.Subject := "API - " SCODE
 		email.Body := "API STORE UPDATE`n`nStore ID:`t`t" SCODE "`nAction taken:`t     #NEWPC`nCompleted by:`t   " Name "`n`n`n "
 		email.Send
@@ -347,7 +347,7 @@ If clipboard Contains #NEWPC
 				email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 				email.To := "ricky.white@intellipharm.com.au"
 				email.Bcc := "brodie.creaser@intellipharm.com.au"
-				email.Cc := "renae.hutchinson@intellipharm.com.au"
+				email.Cc := "joel.hansen@intellipharm.com.au"
 				email.Subject := "API - " SCODE
 				email.Body := "API STORE UPDATE`n`nStore ID:`t`t" SCODE "`nAction taken:`t     #POSCHANGE`nCompleted by:`t   " Name "`n`n`n "
 				email.Send
@@ -387,7 +387,7 @@ If clipboard Contains #NEWPC
 					email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 					email.To := "ricky.white@intellipharm.com.au"
 					email.Bcc := "brodie.creaser@intellipharm.com.au" 
-					email.Cc := "renae.hutchinson@intellipharm.com.au"
+					email.Cc := "joel.hansen@intellipharm.com.au"
 					email.Subject := "API - " SCODE
 					email.Body := "API STORE UPDATE`n`nStore ID:`t`t" SCODE "`nAction taken:`t     #DISPCHANGE`nCompleted by:`t   " Name "`n`n`n "
 					email.Send

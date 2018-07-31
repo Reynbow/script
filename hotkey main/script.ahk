@@ -6,7 +6,7 @@ SetBatchLines, -1
 SendMode, Event
 SetKeyDelay 25, 10
 
-VersionNum = 3.6.02
+VersionNum = 3.6.04
 
 IniRead, StartPOS, C:\AutoHotKey\settings.ini, Starting Position, Start
 IniRead, OnTopSetting, C:\AutoHotKey\settings.ini, Always On Top, Active
@@ -417,7 +417,7 @@ Gui, 99:Add, Text, x15 y480 w200 BackGroundTrans , RUNNING TOTAL ＝ %Points%
 
 FileRead, DOPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Data Out.txt
 Gui, 99:Add, Button, x15 y520 w80 h20 Left hwndHBT22, %A_Space%Data Out
-Gui, 99:Add, Text, xp yp+25 BackGroundTrans , %DOPoints%
+Gui, 99:Add, Text, xp yp+25 BackGroundTrans ,%DOPoints%
 
 ;INSTALL COUNTER
 FileRead, INPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Install.txt
@@ -455,22 +455,30 @@ Else
 {
 	If Dog = Brodie
 	{
-	Gui, 99:Add, Button, x180 y670 w80 h30 gTicketCounter hwndHBT19, TICKET COUNT
+	Gui, 99:Add, Button, x184 y670 w80 h30 gTicketCounter hwndHBT19, TICKET COUNT
 	}
 	If Dog = Aaron
 	{
-	Gui, 99:Add, Button, x180 y670 w80 h30 gTicketCounter hwndHBT20, TICKET COUNT
+	Gui, 99:Add, Button, x184 y670 w80 h30 gTicketCounter hwndHBT20, TICKET COUNT
 	}
 	Gui, 99:font
 	Gui, 99:font, bold s9, Segoe UI
 Gui, 99:Add, Button, x270 y670 w165 h30 Left hwndHBT28, % "   Exit"
+
+FileReadLine, BonusRound, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Data Out.txt, 10
+
+if BonusRound
+{
+Gui, 99:Add, Button, x12 y670 w165 h30 Left gBonusRound hwndHBT38, % "   LEVEL CLEAR!"
+}
+
 }
 
 Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
 Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
 Opt5 := [ ,            ,       , 0x0C131E]        
 
-Loop, 37
+Loop, 38
 {
 NUM++
 ImageButton.Create(HBT%NUM%, Opt1, Opt2, , , Opt5)
@@ -501,6 +509,61 @@ DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt
 Gui, 99:Show, %Gui_Cord% w450 h715 , MAIN MENU
 DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 1)
 return
+
+BonusRound:
+SoundPlay, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\bonus.mp3
+
+Img = G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\sonic.gif
+Gui New, +HwndhGUI +AlwaysOnTop -SysMenu -caption +Border
+gif1 := SonicGif( hGUI, Img, 0, 0, 272, 316,, "MyGif", "myGif_" )
+
+IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
+Cords := StrSplit(Gui_Cord, A_Space, "x" "y" A_Space)
+XPOS := Cords[1]
+YPOS := Cords[2]
+XPOS100 := (XPOS - 284)
+YPOS100 := (YPOS + 398)
+
+Gui Show, x%XPOS100% y%YPOS100% h316 w272
+return
+
+SonicGif( ByRef guiHwnd, Image, X, Y, W, H, BackgroundColor:="system", Id:="AnimatedGif", eventHandler:="" ) {
+	if BackgroundColor in system
+	{
+		A_FI := A_FormatInteger
+		SetFormat Integer, Hex
+		BGR := DllCall( "GetSysColor", Int, 15 ) + 0x1000000
+		SetFormat Integer, %A_FI%
+		StringMid R, BGR, 8, 2
+		StringMid G, BGR, 6, 2
+		StringMid B, BGR, 4, 2
+		BackgroundColor := R G B
+		StringUpper BackgroundColor, BackgroundColor
+		BackgroundColor := "#" BackgroundColor
+	}
+	Gui %guiHwnd%:Add, ActiveX, x%X% y%Y% w%W% h%H% +HwndGifHwnd, MSHTML:
+	GuiControlGet HtmlObj, %guiHwnd%:, %GifHwnd%
+	HtmlObj.parentWindow.execScript( "document.oncontextmenu = function(){return false;}" )
+	HtmlObj.Body.style.BackgroundColor := BackgroundColor
+	HtmlObj.Body.style.margin := 0
+	HtmlObj.Body.style.padding := 0
+	out := HtmlObj.createElement( "img" )
+	out.id := Id
+	out.src := Image
+	out.style.position := "absolute"
+	out.style.left := 0
+	out.style.top := 0
+	out.style.width := "100%"
+	out.style.height := "100%"
+	out.style.minWidth := "100%"
+	out.style.minHeight := "100%"
+	out.style.visibility := "visible"
+	HtmlObj.Body.appendChild( out )
+	if eventHandler
+		ComObjConnect( out, eventHandler )
+	return out
+}
+Return
 
 uiMove:
 PostMessage, 0xA1, 2,,, A 
