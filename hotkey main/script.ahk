@@ -465,9 +465,7 @@ Else
 	Gui, 99:font, bold s9, Segoe UI
 Gui, 99:Add, Button, x270 y670 w165 h30 Left hwndHBT28, % "   Exit"
 
-FileReadLine, BonusRound, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Data Out.txt, 10
-
-if BonusRound
+if Points > 19
 {
 Gui, 99:Add, Button, x12 y670 w165 h30 Left gBonusRound hwndHBT38, % "   LEVEL CLEAR!"
 }
