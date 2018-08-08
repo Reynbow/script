@@ -2,7 +2,7 @@
 Gui, Destroy
 Gui, 99:Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
+FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
 Gui, Set:Add, Edit, x-1000 y-1000 w280 cc5c8c6 -E0x200 , Placeholder
 
 Gui, Set:-SysMenu -caption -Border %OnTopSetting%

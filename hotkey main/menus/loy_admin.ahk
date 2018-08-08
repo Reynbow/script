@@ -3,7 +3,7 @@ WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
 Gui, Destroy
-FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
+FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 
 Gui, LoyAdmin:-SysMenu -caption -Border %OnTopSetting%

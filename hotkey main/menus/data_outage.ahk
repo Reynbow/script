@@ -28,7 +28,7 @@ Loop,
 
 
 Gui, Destroy
-FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
+FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 list2GF = |Top Right|Bottom Right|Top Left|Bottom Left|Random
 list3GF = |Yes|No|NA

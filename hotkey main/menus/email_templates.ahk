@@ -71,433 +71,7 @@ run, https://support.intellipharm.com.au
 reload
 return
 
-7ButtonDataOutageResolved:
-Gui, Destroy
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 79:Color, 1d1f21, 383D46
-Gui, 79:font, s14 bold cE8EBF5, Segoe UI
-Gui, 79:Add, Edit, x1920 y2490 w80 vPlacehold,
-Gui, 79:Add, Text, x18 y18 w289 h50, DATA OUTAGE RESOLVED
-Gui, 79:font,
-Gui, 79:font, cE8EBF5, Segoe UI
-Gui, 79:Add, Text, x18 y83 h30, Contact Email
-Gui, 79:font, s6 cE8EBF5, Segoe UI
-Gui, 79:Add, Text, x98 y85 h30, (optional)
-Gui, 79:font, 
-Gui, 79:font, cE8EBF5, Segoe UI
-Gui, 79:Add, Edit, -E0x200 x142 y80 w130 vBox4, 
-Gui, 79:Add, Text, x18 y113 h30, Contact Name
-Gui, 79:Add, Edit, -E0x200 x142 y110 w130 vBox1, 
-Gui, 79:Add, Text, x18 y143 h30, Store Name
-Gui, 79:Add, Edit, -E0x200 x142 y140 w130 vBox2,
-Gui, 79:Add, Text, x38 y195 , Additional Information
-Gui, 79:Add, Edit, -E0x200 x38 y220 w212 h50 -VScroll vBox3,
-Gui, 79:Add, Groupbox, x300 y46 w360 h300 , Preview
-Gui, 79:Add, Text, x320 y76 w320 h250 vPreviewDOR, 
-Gui, 79:Add, Text, x335 y358 w320 h250 , Please ensure your signature is attached before sending...
-Gui, 79:Add, Button, x38 y288 w215 h30 , &Confirm
-Gui, 79:Add, Button, x38 y328 w100 h30 , &Back
-Gui, 79:Add, Button, x153 y328 w100 h30 , &Exit
-Gui, 79:Show, %Gui_Cord% w686 h395, 
-
-loop
-{
-    Gui, 79:Submit, NoHide
-	FormatTime, Date,, yyyy/MM/dd
-	FormatTime, Time,, h:mmtt
-	
-    msgText = To: `t`t%Box4%`nSubject: `tData Outage Resolved - %Box2%`n`n`nHi %Box1%`n`nThe data outage at %Box2% has been resolved.`n`nThe data for this store should be loaded by tomorrow.`n`n%Box3%`n`nKind Regards`n%Name%
-
-    if NOT (msgText == oldMsgText)
-    {
-       GuiControl, 79:Text, PreviewDOR, %msgText%
-       oldMsgText := msgText
-    }
-
-    sleep 100
-}
-
-79ButtonExit:
-	reload
-return
-
-79ButtonBack:
-	Gui, 79:Destroy
-	gosub Q7
-return
-
-79ButtonConfirm:
-	Gui, Submit
-
-FormatTime, Date,, yyyy/MM/dd
-FormatTime, Time,, h:mmtt
-FormatTime, scripttime,, yyyyMM
-IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-If (!SCODE)
-	{
-	SCODE = NULLCODE
-	}
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Data Outage Resolved`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
-
-	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-	email.To := Box4
-	email.Cc := "brodie.creaser@intellipharm.com.au"
-	email.Subject := "Data Outage Resolved - " Box2
-	email.Body := "Hi " Box1 "`n`nThe data outage at " Box2 " has been resolved.`n`nThe data for this store should be loaded by tomorrow.`n`n" Box3 "`n`nKind Regards`n"
-	email.Display
-
-	reload
-return
-
-;================================ DATA OUTAGE RESOLVED END
-
-;================================ INSTALL COMPLETE PENDING QA
-
-7ButtonInstallationComplete(PendingQA):
-Gui, Destroy
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 90:-SysMenu +Border
-Gui, 90:Color, 1d1f21, 383D46
-Gui, 90:font, s14 bold cE8EBF5, Segoe UI
-Gui, 90:Add, Edit, x1920 y2490 w80 vPlacehold,
-Gui, 90:Add, Text, x18 y18 w289 h50, INSTALLATION COMPLETE`n(PENDING QA)
-Gui, 90:font,
-Gui, 90:font, cE8EBF5, Segoe UI
-Gui, 90:Add, Text, x18 y83 h30, Contact Email
-Gui, 90:font, 
-Gui, 90:font, s6 cE8EBF5, Segoe UI
-Gui, 90:Add, Text, x98 y85 h30, (optional)
-Gui, 90:font, 
-Gui, 90:font, cE8EBF5, Segoe UI
-Gui, 90:Add, Edit, -E0x200 x142 y80 w130 vBox4, 
-Gui, 90:Add, Text, x18 y113 h30, Contact Name
-Gui, 90:Add, Edit, -E0x200 x142 y110 w130 vBox1, 
-Gui, 90:Add, Text, x18 y143 h30, Store Name
-Gui, 90:Add, Edit, -E0x200 x142 y140 w130 vBox2,
-Gui, 90:Add, Text, x38 y195 , Additional Information
-Gui, 90:Add, Edit, -E0x200 x38 y220 w212 h50 -VScroll vBox3,
-Gui, 90:Add, Groupbox, x300 y46 w360 h300 , Preview
-Gui, 90:Add, Text, x320 y76 w320 h250 vPreviewDOR, 
-Gui, 90:Add, Text, x335 y358 w320 h250 , Please ensure your signature is attached before sending...
-Gui, 90:Add, Button, x38 y288 w215 h30 , &Confirm
-Gui, 90:Add, Button, x38 y328 w100 h30 , &Back
-Gui, 90:Add, Button, x153 y328 w100 h30 , &Exit
-Gui, 90:Show, %Gui_Cord% w686 h395, %A_Space%
-
-loop
-{
-    Gui, 90:Submit, NoHide
-	FormatTime, Date,, yyyy/MM/dd
-	FormatTime, Time,, h:mmtt
-	
-    msgText = To: `t`t%Box4%`nSubject: `tInstallation Complete - %Box2% - Pending QA`n`n`nHi %Box1%`n`nThe installation for %Box2% has been completed.`n`nThe stores data will be reviewed over the next few days before account details are emailed to the store.`n`n%Box3%`n`nKind Regards`n%Name%
-
-    if NOT (msgText == oldMsgText)
-    {
-       GuiControl, 90:Text, PreviewDOR, %msgText%
-       oldMsgText := msgText
-    }
-
-    sleep 100
-}
-
-90ButtonExit:
-	reload
-return
-
-90ButtonBack:
-	Gui, 79:Destroy
-	gosub Q7
-return
-
-90ButtonConfirm:
-	Gui, Submit
-
-FormatTime, Date,, yyyy/MM/dd
-FormatTime, Time,, h:mmtt
-FormatTime, scripttime,, yyyyMM
-IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-If (!SCODE)
-	{
-	SCODE = NULLCODE
-	}
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Installation Complete Pending QA`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
-
-	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-	email.To := Box4
-	email.Cc := "brodie.creaser@intellipharm.com.au"
-	email.Subject := "Installation Complete - " Box2 " - Pending QA"
-	email.Body := "Hi " Box1 "`n`nThe installation for " Box2 " has been completed.`n`nThe stores data will be reviewed over the next few days before account details are emailed to the store.`n`n" Box3 "`n`nKind Regards`n"
-	email.Display
-
-	reload
-return
-
-;================================ INSTALL COMPLETE PENDING QA END
-
-;================================ INSTALL COMPLETE PENDING QA
-
-7ButtonInstallationComplete:
-Gui, Destroy
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 90A:-SysMenu +Border
-Gui, 90A:Color, 1d1f21, 383D46
-Gui, 90A:font, s14 bold cE8EBF5, Segoe UI
-Gui, 90A:Add, Edit, x1920 y2490 w80 vPlacehold,
-Gui, 90A:Add, Text, x18 y18 w289 h50, INSTALLATION COMPLETE
-Gui, 90A:font,
-Gui, 90A:font, cE8EBF5, Segoe UI
-Gui, 90A:Add, Text, x18 y83 h30, Contact Email
-Gui, 90A:font, 
-Gui, 90A:font, s6 cE8EBF5, Segoe UI
-Gui, 90A:Add, Text, x98 y85 h30, (optional)
-Gui, 90A:font, 
-Gui, 90A:font, cE8EBF5, Segoe UI
-Gui, 90A:Add, Edit, -E0x200 x142 y80 w130 vBox4, 
-Gui, 90A:Add, Text, x18 y113 h30, Contact Name
-Gui, 90A:Add, Edit, -E0x200 x142 y110 w130 vBox1, 
-Gui, 90A:Add, Text, x18 y143 h30, Store Name
-Gui, 90A:Add, Edit, -E0x200 x142 y140 w130 vBox2,
-Gui, 90A:Add, Text, x38 y195 , Additional Information
-Gui, 90A:Add, Edit, -E0x200 x38 y220 w212 -VScroll h50 vBox3,
-Gui, 90A:font, cE8EBF5, Segoe UI
-Gui, 90A:Add, Groupbox, x300 y46 w360 h300 , Preview
-Gui, 90A:Add, Text, x320 y76 w320 h250 vPreviewDOR, 
-Gui, 90A:Add, Text, x335 y358 w320 h250 , Please ensure your signature is attached before sending...
-Gui, 90A:Add, Button, x38 y288 w215 h30 , &Confirm
-Gui, 90A:Add, Button, x38 y328 w100 h30 , &Back
-Gui, 90A:Add, Button, x153 y328 w100 h30 , &Exit
-Gui, 90A:Show, %Gui_Cord% w686 h395, %A_Space%
-
-loop
-{
-    Gui, 90A:Submit, NoHide
-	FormatTime, Date,, yyyy/MM/dd
-	FormatTime, Time,, h:mmtt
-	
-    msgText = To: `t`t%Box4%`nSubject: `tInstallation Complete - %Box2% - Details Sent`n`n`nHi %Box1%`n`nThe installation for %Box2% has been completed and account details have been sent to the store.`n`n%Box3%`n`nKind Regards`n%Name%
-
-    if NOT (msgText == oldMsgText)
-    {
-       GuiControl, 90A:Text, PreviewDOR, %msgText%
-       oldMsgText := msgText
-    }
-
-    sleep 100
-}
-
-90AButtonExit:
-	reload
-return
-
-90AButtonBack:
-	Gui, 79:Destroy
-	gosub Q7
-return
-
-90AButtonConfirm:
-	Gui, Submit
-
-FormatTime, Date,, yyyy/MM/dd
-FormatTime, Time,, h:mmtt
-FormatTime, scripttime,, yyyyMM
-IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-If (!SCODE)
-	{
-	SCODE = NULLCODE
-	}
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Installation Complete Pending QA`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
-
-	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-	email.To := Box4
-	email.Cc := "brodie.creaser@intellipharm.com.au"
-	email.Subject := "Installation Complete - " Box2 " - Details Sent"
-	email.Body := "Hi " Box1 "`n`nThe installation for " Box2 " has been completed and account details have been sent to the store.`n`n" Box3 "`n`nKind Regards`n"
-	email.Display
-
-	reload
-return
-
-;================================ INSTALL COMPLETE PENDING QA END
-
-;================================ KNOCK BACK DATA OUT CONNECTION REQ
-
-7ButtonKnockBack(DataOutage):
-Gui, Destroy
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 90B:-SysMenu +Border
-Gui, 90B:Color, 1d1f21, 383D46
-Gui, 90B:font, s14 bold cE8EBF5, Segoe UI
-Gui, 90B:Add, Edit, x1920 y2490 w80 vPlacehold,
-Gui, 90B:Add, Text, x18 y18 w289 h50, KNOCK BACK (DATA OUTAGE)
-Gui, 90B:font,
-Gui, 90B:font, cE8EBF5, Segoe UI
-Gui, 90B:Add, Text, x18 y63 h30, Contact Email
-Gui, 90B:font, 
-Gui, 90B:font, s6 cE8EBF5, Segoe UI
-Gui, 90B:Add, Text, x98 y65 h30, (optional)
-Gui, 90B:font, 
-Gui, 90B:font, cE8EBF5, Segoe UI
-Gui, 90B:Add, Edit, -E0x200 x142 y60 w130 vBox4, 
-Gui, 90B:Add, Text, x18 y93 h30, Contact Name
-Gui, 90B:Add, Edit, -E0x200 x142 y90 w130 vBox1, 
-Gui, 90B:Add, Text, x18 y123 h30, Store Name
-Gui, 90B:Add, Edit, -E0x200 x142 y120 w130 vBox2,
-Gui, 90B:Add, Text, x18 y145 h30, Dates Connection`nAttempted
-Gui, 90B:Add, Edit, -E0x200 x142 y150 w130 vBox5,
-Gui, 90B:Add, Text, x38 y195 , Additional Information
-Gui, 90B:Add, Edit, -E0x200 x38 y220 w212 h50 -VScroll vBox3,
-Gui, 90B:Add, Groupbox, x300 y46 w360 h300 , Preview
-Gui, 90B:Add, Text, x320 y76 w330 h260 vPreviewDOR, 
-Gui, 90B:Add, Text, x335 y358 w340 h250 , Please ensure your signature is attached before sending...
-Gui, 90B:Add, Button, x38 y288 w215 h30 , &Confirm
-Gui, 90B:Add, Button, x38 y328 w100 h30 , &Back
-Gui, 90B:Add, Button, x153 y328 w100 h30 , &Exit
-Gui, 90B:Show, %Gui_Cord% w686 h395, %A_Space%
-
-loop
-{
-    Gui, 90B:Submit, NoHide
-	FormatTime, Date,, yyyy/MM/dd
-	FormatTime, Time,, h:mmtt
-	
-    msgText = To: `t`t%Box4%`nSubject: `tConnection Attempted - %Box2%`n`nHi %Box1%`n`nThe data is currently behind for %Box2%. We have contacted the store on %Box5% and have not been permitted to connect and install the software.`nTo help expedite the resolution of the data outage at this store, please arrange for the pharmacy to contact Intellipharm at their earliest convenience.`n`nIf you have any questions, please contact our support line on 1300 255 160.`n%Box3%`n`nKind Regards`n%Name%
-
-    if NOT (msgText == oldMsgText)
-    {
-       GuiControl, 90B:Text, PreviewDOR, %msgText%
-       oldMsgText := msgText
-    }
-
-    sleep 100
-}
-
-90BButtonExit:
-	reload
-return
-
-90BButtonBack:
-	Gui, 79:Destroy
-	gosub Q7
-return
-
-90BButtonConfirm:
-	Gui, Submit
-
-FormatTime, Date,, yyyy/MM/dd
-FormatTime, Time,, h:mmtt
-FormatTime, scripttime,, yyyyMM
-IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-If (!SCODE)
-	{
-	SCODE = NULLCODE
-	}
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Knock Back Data Out`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
-
-	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-	email.To := Box4
-	email.Cc := "brodie.creaser@intellipharm.com.au"
-	email.Subject := "Connection Attempted - " Box2
-	email.Body := "Hi " Box1 "`n`nThe data is currently behind for " Box2 ". We have contacted the store on " Box5 " and have not been permitted to connect and install the software.`nTo help expedite the resolution of the data outage at this store, please arrange for the pharmacy to contact Intellipharm at their earliest convenience.`n`nIf you have any questions, please contact our support line on 1300 255 160.`n " Box3 "`n`nKind Regards`n"
-	email.Display
-
-	reload
-return
-
-;================================ KNOCK BACK DATA OUT CONNECTION REQ END
-
-;================================ KNOCK BACK INSTALLATIONCONNECTION REQ
-
-7ButtonKnockBack(Installation):
-Gui, Destroy
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 90C:-SysMenu +Border
-Gui, 90C:Color, 1d1f21, 383D46
-Gui, 90C:font, s14 bold cE8EBF5, Segoe UI
-Gui, 90C:Add, Edit, x1920 y2490 w80 vPlacehold,
-Gui, 90C:Add, Text, x18 y18 w289 h50, KNOCK BACK (INSTALLATION)
-Gui, 90C:font,
-Gui, 90C:font, cE8EBF5, Segoe UI
-Gui, 90C:Add, Text, x18 y63 h30, Contact Email
-Gui, 90C:font, 
-Gui, 90C:font, s6 cE8EBF5, Segoe UI
-Gui, 90C:Add, Text, x98 y65 h30, (optional)
-Gui, 90C:font, 
-Gui, 90C:font, cE8EBF5, Segoe UI
-Gui, 90C:Add, Edit, -E0x200 x142 y60 w130 vBox4, 
-Gui, 90C:Add, Text, x18 y93 h30, Contact Name
-Gui, 90C:Add, Edit, -E0x200 x142 y90 w130 vBox1, 
-Gui, 90C:Add, Text, x18 y123 h30, Store Name
-Gui, 90C:Add, Edit, -E0x200 x142 y120 w130 vBox2,
-Gui, 90C:Add, Text, x18 y145 h30, Dates Connection`nAttempted
-Gui, 90C:Add, Edit, -E0x200 x142 y150 w130 vBox5,
-Gui, 90C:Add, Text, x38 y195 , Additional Information
-Gui, 90C:Add, Edit, -E0x200 x38 y220 w212 h50 -VScroll vBox3,
-Gui, 90C:Add, Groupbox, x300 y46 w360 h300 , Preview
-Gui, 90C:Add, Text, x320 y76 w330 h260 vPreviewDOR, 
-Gui, 90C:Add, Text, x335 y358 w340 h250 , Please ensure your signature is attached before sending...
-Gui, 90C:Add, Button, x38 y288 w215 h30 , &Confirm
-Gui, 90C:Add, Button, x38 y328 w100 h30 , &Back
-Gui, 90C:Add, Button, x153 y328 w100 h30 , &Exit
-Gui, 90C:Show, %Gui_Cord% w686 h395, %A_Space%
-
-loop
-{
-    Gui, 90C:Submit, NoHide
-	FormatTime, Date,, yyyy/MM/dd
-	FormatTime, Time,, h:mmtt
-	
-    msgText = To: `t`t%Box4%`nSubject: `tConnection Attempted - %Box2%`n`nHi %Box1%`n`nWe have not been able to complete the installation request for %Box2%. We have contacted the store on %Box5% and have not been permitted to connect and install the software.`nTo help expedite the resolution of the data outage at this store, please arrange for the pharmacy to contact Intellipharm at their earliest convenience.`n`nIf you have any questions, please contact our support line on 1300 255 160.`n%Box3%`n`nKind Regards`n%Name%
-
-    if NOT (msgText == oldMsgText)
-    {
-       GuiControl, 90C:Text, PreviewDOR, %msgText%
-       oldMsgText := msgText
-    }
-
-    sleep 100
-}
-
-90CButtonExit:
-	reload
-return
-
-90CButtonBack:
-	Gui, 90C:Destroy
-	gosub Q7
-return
-
-90CButtonConfirm:
-	Gui, Submit
-
-FormatTime, Date,, yyyy/MM/dd
-FormatTime, Time,, h:mmtt
-FormatTime, scripttime,, yyyyMM
-IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-If (!SCODE)
-	{
-	SCODE = NULLCODE
-	}
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Email Template for Knock Back Installation`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
-
-	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-	email.To := Box4
-	email.Cc := "brodie.creaser@intellipharm.com.au"
-	email.Subject := "Installation Complete - " Box2 " - Details Sent"
-	email.Body := "Hi " Box1 "`n`nThe installation for " Box2 " has been completed and account details have been sent to the store.`n`n" Box3 "`n`nKind Regards`n"
-	email.Display
-
-	reload
-return
-
-;================================ KNOCK BACK INSTALLATION CONNECTION REQ END
-
-;================================ POSBROWSER BATCH READER END
+;================================ POSBROWSER BATCH READER START
 
 BatchReader:
 Gui, Destroy
@@ -594,7 +168,8 @@ Webservice:
 Gui, Destroy
 Gui, 99:Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 76:-SysMenu -caption -Border
+Gui, 76:Add, Text, x0 y0 w323 h25 Center GuiMove,
+Gui, 76:-SysMenu -caption -Border %OnTopSetting%
 Gui, 76:Color, %BGColour%, 2b2e43
 Gui, 76:Add, Text, x0 y0 w910 h25 Center GuiMove,
 Gui, 76:Add, Picture, x0 y-75 , C:\AutoHotKey\Files\ui\back-sup.png
@@ -654,139 +229,6 @@ return
 
 ;=====================================================END MINFOS WEB
 
-;=====================================================ACNIELSEN
-
-7Button4ACNIELSENEmail:
-Gui, Destroy 
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-
-Gui, 53:Margin, 16, 16
-Gui, 53:Color, 1d1f21, 383D46 ;, 282a2e
-Gui, 53:-SysMenu +Border
-Gui, 53:Font, s11, Segoe UI
-
-Gui, 53:Add, Text, xm cc5c8c6 -E0x200 , Site Code
-Gui, 53:Add, Edit, y+5 w250 cc5c8c6 -E0x200 vBox1 , 
-Gui, 53:Add, Text, xm cc5c8c6 -E0x200 , Site Name
-Gui, 53:Add, Edit, y+5 w250 cc5c8c6 -E0x200 vBox2 , 
-Gui, 53:Add, Text, xm cc5c8c6 -E0x200 , Store Contact
-Gui, 53:Add, Edit, y+5 w250 cc5c8c6 -E0x200 vBox3 , 
-
-Gui, 53:Add, CheckBox, cc5c8c6 x290 y38 h20 vCb_1 , Reinstalled%A_Space%
-Gui, 53:Add, CheckBox, cc5c8c6 x290 y80 h20 vCb_2 , Installed%A_Space%
-
-Gui, 53:Add, Button, x290 y137 w120 h30 , &Confirm
-Gui, 53:Add, Button, x+10 w120 h30 , &Back
-Gui, 53:Add, Button, x290 y+10 w250 h30 , E&xit
-
-Gui, 53:Show, %Gui_Cord% , ACNIELSEN Email Template
-return
- 
-53ButtonBack:
-Gui, 53:Destroy
-gosub Q7
-return 
- 
-53ButtonConfirm:
-Gui, Submit,
-
-If(Cb_1=1)
- GuiControlGet, Cb_1_Text,, Cb_1, Text
-If(Cb_2=1)
- GuiControlGet, Cb_2_Text,, Cb_2, Text
- 
-FormatTime, Date,, yyyy/MM/dd
-FormatTime, Time,, h:mmtt
-FormatTime, scripttime,, yyyyMM
-IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - ACNIELSEN Install/Reinstall`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
-
-	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
-	email.To := "aaron.beecham@intellipharm.com.au"
-	email.Cc := "brodie.creaser@intellipharm.com.au"
-	email.Subject := "ACNIELSEN - " Box1 " " Box2
-	email.Body := "NIELSEN STORE UPDATE`n`nStore ID:`t`t" Box1 "`nStore Name:`t    " Box2 "`nAction taken:`t     " Cb_1_Text Cb_2_Text "`nCompleted by:`t   " Name "`n`n`n "
-	email.Display
-	reload
-return
-
-53ButtonExit:
-Reload
-return
-
-;=====================================================ACNIELSEN END
-
-;=====================================================GREENCROSS MISSING ZIPS
-
-7Button8GREENCROSSZIPs:
-Gui, Destroy 
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 45:Add, Text, x12 y9 w50 h20 , Site Code
-Gui, 45:Add, Text, x12 y39 w60 h20 , Site Name
-Gui, 45:Add, Text, x12 y69 w70 h20 , Client ID
-Gui, 45:Add, Text, x12 y99 w70 h20 , Store Contact
-Gui, 45:Add, Edit, x92 y9 w80 h20 vBox1,
-Gui, 45:Add, Edit, x92 y39 w80 h20 vBox2,
-Gui, 45:Add, Edit, x92 y69 w80 h20 vBox3,
-Gui, 45:Add, Edit, x92 y99 w80 h20 vBox4,
-Gui, 45:Add, CheckBox, x192 y9 w190 h20 vCb_1 , Attempted Intellipharm Extract EXE
-Gui, 45:Add, Text, x192 y39 w190 h20 , General Description:
-Gui, 45:Add, Edit, x192 y59 w190 h60 vBox5,
-Gui, 45:Add, Button, x12 y132 w120 h30 , &Accept
-Gui, 45:Add, Button, x138 y132 w120 h30 , &Back
-Gui, 45:Add, Button, x263 y132 w120 h30 , E&xit
-Gui, 45:Show, %Gui_Cord% w395 h170, Missing ZIPs
-return
-
-45ButtonBack:
-Gui, 45:Destroy
-gosub Q7
-return
- 
-45ButtonAccept:
-Gui, Submit,
-
-Gui, 71: -sysmenu
-Gui, 71:Font, S12 Bold CDefault, Verdana
-Gui, 71:Add, Text, x10 y18 w260 h70 ,Please wait...
-Gui, 71:Font,
-global WM_USER               := 0x00000400
-global PBM_SETMARQUEE        := WM_USER + 10
-global PBS_MARQUEE           := 0x00000008
-global PBS_SMOOTH            := 0x00000001
-;Flat marquee
-;Gui, Add, Progress, x178 y89 w300 h20 hwndMARQ1 +%PBS_MARQUEE%, 50
-;DllCall("User32.dll\SendMessage", "Ptr", MARQ1, "Int", PBM_SETMARQUEE, "Ptr", 1, "Ptr", 50)
-Gui, 71:Add, Progress, x10 y50 w180 h20 hwndMARQ4 -%PBS_SMOOTH% +%PBS_MARQUEE%, 50
-DllCall("User32.dll\SendMessage", "Ptr", MARQ4, "Int", PBM_SETMARQUEE, "Ptr", 1, "Ptr", 50)
-Gui, 71:Show, w200 h80, 
-
-If(Cb_1=1)
- GuiControlGet, Cb_1_Text,, Cb_1, Text
-
-FormatTime, Date,, yyyy/MM/dd
-FormatTime, Time,, h:mmtt
-FormatTime, scripttime,, yyyyMM
-IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - GREENCROSS MIssing ZIPs`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
-	Run G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\miszip.msg
-	Sleep 5000
-	WinActivate OUTLOOK.EXE
-	SendInput, Missing Loyalty ZIPs - %Box1% %Box2% 
-	sleep 500
-	SendInput, {Tab}%Box1%{Tab}%Box2%{Down}%Box3%{Down}%Box4%{Down}%Box5%{Down}{Enter}Regards{Enter}%Name%{Enter}
-Cb_1_Text=
-	reload
-return
-
-45ButtonExit:
-Reload
-return
-
-;=====================================================GREENCROSS MISSING ZIPS END
-
 ;=====================================================LOYALTY REINSTALLATION
 
 LoyRe:
@@ -794,7 +236,8 @@ Gui, Destroy
 Gui, 99:Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 list1 = %A_Space%|1|2|3|4|5|6|7|8
-Gui, 46:-SysMenu -caption -Border
+Gui, 46:Add, Text, x0 y0 w323 h25 Center GuiMove,
+Gui, 46:-SysMenu -caption -Border %OnTopSetting%
 Gui, 46:Color, %BGColour%, 2b2e43
 Gui, 46:Add, Text, x0 y0 w910 h25 Center GuiMove,
 Gui, 46:Add, Picture, x0 y100 , C:\AutoHotKey\Files\ui\back-sup-wide.png
@@ -917,9 +360,13 @@ FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalt
 
 	email := ComObjActive("Outlook.Application").CreateItem(0) ;0 is email, can use other stuff
 	email.To := "support@loyaltyone.com.au"
-	email.Subject := "Loyalty Reinstallation Requied - " SiteCode " " SiteName
+	email.Subject := "Loyalty Reinstallation Required - " SiteCode " " SiteName
 	email.Body := "Site Code:`t`t" Box1 "`nSite Name:`t`t" Box2 "`nStore Contact:`t`t" Box3 "`n`nPOS System:`t`t" Box4 "`n" POSChange "`t`t" Box5 "`t" Box6 "`nBackup:`t`t" Kept NotKept "`n`nIssue began around:`t" Box7 "`n`nReinstall locations:`t" MCT Choice1 MC T Choice2 "`n`nAdditional Information:`n" Cryp "`n" Comp "`n" AddT "`n`nAdditional Notes:`t" Box8
 	email.Send
+
+	clipboard := Time " LOYALTY REINSTALLATION: FORWARDED •• Reinstall Location: " MCT MC T " •• Information: " Cryp Comp AddT " •• " Box8
+	TrayTip, Clipboard Ready, %clipboard%, 5, 16
+	sleep 5000
 	reload
 return
 
@@ -942,7 +389,8 @@ Gui, 99:Destroy
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 
-Gui, 44:-SysMenu -caption -Border
+Gui, 44:Add, Text, x0 y0 w323 h25 Center GuiMove,
+Gui, 44:-SysMenu -caption -Border %OnTopSetting%
 Gui, 44:Color, %BGColour%, 2b2e43
 Gui, 44:Add, Text, x0 y0 w910 h25 Center GuiMove,
 Gui, 44:Add, Picture, x0 y260 , C:\AutoHotKey\Files\ui\back-sup.png
@@ -1055,6 +503,10 @@ FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - Loyalt
 	email.Subject := "Loyalty Call Escalation " SiteCode " " SiteName ;objects like this (the email code) use strange inverted variables. The stuff in commas is plain text, the text without commas are the above variables. To enter a new line it needs to be in commas as it's code. Without commas means it's looking for a variable.
 	email.Body := "Store Contact:`t`t" Contact "`n" "Issue With:`t`t" Cb_1_Text " " Cb_2_Text " " Cb_3_Text " " Cb_4_Text "`n" "Error Message:`t`t" Error "`n`n" "Card Number:`t`t" CardNo "`n" "Customer Name:`t`t" CustName "`n" "Docket Number:`t`t" DockNo "`n" "Details:`t`t`t" Desc "`n`n" "Steps Taken to Resolve:`t" Steps "`n`n - `n`n"
 	email.Send
+
+	clipboard := Time " LOYALTY ESCALATION: FORWARDED •• Error: " Error " •• Issue detailed: " Desc " •• Any Steps Taken to Resolve: " Steps
+	TrayTip, Clipboard Ready, %clipboard%, 5, 16
+	sleep 5000
 	reload
 return
 
@@ -1063,91 +515,6 @@ Reload
 return
 
 ;=====================================================LOYALTY CALL ESCALATION END
-
-;=====================================================HSNET ACCOUNT
-
-7ButtonHSNETAccountExistingInstallation:
-    Gosub, HAEI
-	WinWaitClose, ahk_class AutoHotkeyGUI
-IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-FormatTime, Date,, yyyy/MM/dd
-FormatTime, Time,, h:mmtt
-FormatTime, scripttime,, yyyyMM
-IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - HSNET Account EXISTING`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
-	Run G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\kye.msg
-	Sleep 5000
-	WinActivate OUTLOOK.EXE
-	SendInput, Existing Installation - %Box1% - Please confirm Hsnet Account Exists{TAB}Hi Kye,`n`nCan you please confirm that the Hsnet account is set up for %Box1% %Box2%`n`nIf the account does not exist, could you please set it up and Email me back when complete.`n`n%Box4%`n`nKind Regards`n%Name%`n
-	reload
-return
-
-HAEI:
-Gui, Destroy
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 40:font, s8, Segoe UI
-Gui, 40:font, s8, Segoe UI
-Gui, 40:Add, Text, x12 y9 w120 h20 , Site Code:
-Gui, 40:Add, Edit, x12 y29 w150 h20 vBox1, 
-Gui, 40:Add, Text, x12 y69 w120 h20 , Store Name:
-Gui, 40:Add, Edit, x12 y89 w150 h20 vBox2, 
-Gui, 40:Add, Text, x182 y9 w190 h20 , Additional notes you'd like to add:
-Gui, 40:Add, Edit, x182 y29 w190 h110 vBox4, 
-Gui, 40:Add, Text, x195 y251 w7 h14 , 
-Gui, 40:Add, Button, x182 y149 w90 h30 , &Accept
-Gui, 40:Add, Button, x283 y149 w90 h30 , E&xit
-Gui, 40:Show, %Gui_Cord% w386 h190, HSNET Existing
-return
-
-40ButtonAccept:
-	Gui, Submit
-return
-
-40ButtonExit:
-Reload
-return
-
-7ButtonHSNETAccountNEWInstallation:
-    Gosub, HANI
-	WinWaitClose, ahk_class AutoHotkeyGUI
-FormatTime, Date,, yyyy/MM/dd
-FormatTime, Time,, h:mmtt
-FormatTime, scripttime,, yyyyMM
-IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
-IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
-FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - HSNET Account NEW`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
-	Run G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\kye.msg
-	Sleep 5000
-	WinActivate OUTLOOK.EXE
-	SendInput, NEW Installation - %Box1% - Please set up Hsnet Account{TAB}Hi Kye,`n`nCould you please set up the Hsnet account for %Box1% %Box2%`n`n%Box4%`n`nKind Regards`n%Name%`n
-	reload
-return
-
-HANI:
-Gui, Destroy
-IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-Gui, 41:font, s8, Segoe UI
-Gui, 41:Add, Text, x12 y9 w120 h20 , Site Code:
-Gui, 41:Add, Edit, x12 y29 w150 h20 vBox1, 
-Gui, 41:Add, Text, x12 y69 w120 h20 , Store Name:
-Gui, 41:Add, Edit, x12 y89 w150 h20 vBox2, 
-Gui, 41:Add, Text, x182 y9 w190 h20 , Additional notes you'd like to add:
-Gui, 41:Add, Edit, x182 y29 w190 h110 vBox4, 
-Gui, 41:Add, Text, x195 y251 w7 h14 , 
-Gui, 41:Add, Button, x182 y149 w90 h30 , &Accept
-Gui, 41:Add, Button, x283 y149 w90 h30 , E&xit
-Gui, 41:Show, %Gui_Cord% w386 h190, HSNET New
-return
-
-41ButtonAccept:
-	Gui, Submit
-return
-
-41ButtonExit:
-Reload
-return
-
-;=====================================================HSNET END
 
 ;=====================================================FRED EXCEL
 

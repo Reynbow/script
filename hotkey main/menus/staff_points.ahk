@@ -122,7 +122,7 @@ IniRead, BrodieFri, G:\Support\Public Staff Folders\Aaron\points\Brodie\%fri%.in
 IniRead, JimFri, G:\Support\Public Staff Folders\Aaron\points\James\%fri%.ini, Count Points, Points, 0
 IniRead, JoelFri, G:\Support\Public Staff Folders\Aaron\points\Joel\%fri%.ini, Count Points, Points, 0
 IniRead, JayFri, G:\Support\Public Staff Folders\Aaron\points\Jay\%fri%.ini, Count Points, Points, 0
-IniRead, RenaeFri, G:\Support\Public Staff Folders\Aaron\points\Renae\%fri%.ini, Count Points, Points, 0
+;IniRead, RenaeFri, G:\Support\Public Staff Folders\Aaron\points\Renae\%fri%.ini, Count Points, Points, 0
 IniRead, RickFri, G:\Support\Public Staff Folders\Aaron\points\Rick\%fri%.ini, Count Points, Points, 0
 
 IniRead, AaronThu, G:\Support\Public Staff Folders\Aaron\points\Aaron\%thur%.ini, Count Points, Points, 0
@@ -131,7 +131,7 @@ IniRead, BrodieThu, G:\Support\Public Staff Folders\Aaron\points\Brodie\%thur%.i
 IniRead, JimThu, G:\Support\Public Staff Folders\Aaron\points\James\%thur%.ini, Count Points, Points, 0
 IniRead, JoelThu, G:\Support\Public Staff Folders\Aaron\points\Joel\%thur%.ini, Count Points, Points, 0
 IniRead, JayThu, G:\Support\Public Staff Folders\Aaron\points\Jay\%thur%.ini, Count Points, Points, 0
-IniRead, RenaeThu, G:\Support\Public Staff Folders\Aaron\points\Renae\%thur%.ini, Count Points, Points, 0
+;IniRead, RenaeThu, G:\Support\Public Staff Folders\Aaron\points\Renae\%thur%.ini, Count Points, Points, 0
 IniRead, RickThu, G:\Support\Public Staff Folders\Aaron\points\Rick\%thur%.ini, Count Points, Points, 0
 
 IniRead, AaronWed, G:\Support\Public Staff Folders\Aaron\points\Aaron\%wed%.ini, Count Points, Points, 0
@@ -140,7 +140,7 @@ IniRead, BrodieWed, G:\Support\Public Staff Folders\Aaron\points\Brodie\%wed%.in
 IniRead, JimWed, G:\Support\Public Staff Folders\Aaron\points\James\%wed%.ini, Count Points, Points, 0
 IniRead, JoelWed, G:\Support\Public Staff Folders\Aaron\points\Joel\%wed%.ini, Count Points, Points, 0
 IniRead, JayWed, G:\Support\Public Staff Folders\Aaron\points\Jay\%wed%.ini, Count Points, Points, 0
-IniRead, RenaeWed, G:\Support\Public Staff Folders\Aaron\points\Renae\%wed%.ini, Count Points, Points, 0
+;IniRead, RenaeWed, G:\Support\Public Staff Folders\Aaron\points\Renae\%wed%.ini, Count Points, Points, 0
 IniRead, RickWed, G:\Support\Public Staff Folders\Aaron\points\Rick\%wed%.ini, Count Points, Points, 0
 
 IniRead, AaronTue, G:\Support\Public Staff Folders\Aaron\points\Aaron\%tue%.ini, Count Points, Points, 0
@@ -149,7 +149,7 @@ IniRead, BrodieTue, G:\Support\Public Staff Folders\Aaron\points\Brodie\%tue%.in
 IniRead, JimTue, G:\Support\Public Staff Folders\Aaron\points\James\%tue%.ini, Count Points, Points, 0
 IniRead, JoelTue, G:\Support\Public Staff Folders\Aaron\points\Joel\%tue%.ini, Count Points, Points, 0
 IniRead, JayTue, G:\Support\Public Staff Folders\Aaron\points\Jay\%tue%.ini, Count Points, Points, 0
-IniRead, RenaeTue, G:\Support\Public Staff Folders\Aaron\points\Renae\%tue%.ini, Count Points, Points, 0
+;IniRead, RenaeTue, G:\Support\Public Staff Folders\Aaron\points\Renae\%tue%.ini, Count Points, Points, 0
 IniRead, RickTue, G:\Support\Public Staff Folders\Aaron\points\Rick\%tue%.ini, Count Points, Points, 0
 
 IniRead, AaronMon, G:\Support\Public Staff Folders\Aaron\points\Aaron\%mon%.ini, Count Points, Points, 0
@@ -158,7 +158,7 @@ IniRead, BrodieMon, G:\Support\Public Staff Folders\Aaron\points\Brodie\%mon%.in
 IniRead, JimMon, G:\Support\Public Staff Folders\Aaron\points\James\%mon%.ini, Count Points, Points, 0
 IniRead, JoelMon, G:\Support\Public Staff Folders\Aaron\points\Joel\%mon%.ini, Count Points, Points, 0
 IniRead, JayMon, G:\Support\Public Staff Folders\Aaron\points\Jay\%mon%.ini, Count Points, Points, 0
-IniRead, RenaeMon, G:\Support\Public Staff Folders\Aaron\points\Renae\%mon%.ini, Count Points, Points, 0
+;IniRead, RenaeMon, G:\Support\Public Staff Folders\Aaron\points\Renae\%mon%.ini, Count Points, Points, 0
 IniRead, RickMon, G:\Support\Public Staff Folders\Aaron\points\Rick\%mon%.ini, Count Points, Points, 0
 
 AaronTotal 		:= AaronFri + AaronThu + AaronWed + AaronTue + AaronMon
@@ -167,7 +167,7 @@ BrodieTotal 	:= BrodieFri + BrodieThu + BrodieWed + BrodieTue + BrodieMon
 JimTotal 		:= JimFri + JimThu + JimWed + JimTue + JimMon
 JoelTotal 		:= JoelFri + JoelThu + JoelWed + JoelTue + JoelMon
 JayTotal 		:= JayFri + JayThu + JayWed + JayTue + JayMon
-RenaeTotal 		:= RenaeFri + RenaeThu + RenaeWed + RenaeTue + RenaeMon
+;RenaeTotal 		:= RenaeFri + RenaeThu + RenaeWed + RenaeTue + RenaeMon
 RickTotal 		:= RickFri + RickThu + RickWed + RickTue + RickMon
 
 NiceMon = %a_now%
@@ -193,9 +193,9 @@ XL.Range("A3").Value := "Brodie"
 XL.Range("A4").Value := "Jay"
 XL.Range("A5").Value := "Jim"
 XL.Range("A6").Value := "Joel"
-XL.Range("A7").Value := "Matthew"
-XL.Range("A8").Value := "Renae"
-XL.Range("A9").Value := "Rick"
+XL.Range("A7").Value := "Matt"
+;XL.Range("A8").Value := "Renae"
+XL.Range("A8").Value := "Rick"
 
 XL.Range("B1").Value := Points
 XL.Range("B2").Value := AaronTotal
@@ -204,10 +204,10 @@ XL.Range("B4").Value := JayTotal
 XL.Range("B5").Value := JimTotal
 XL.Range("B6").Value := JoelTotal
 XL.Range("B7").Value := MatthewTotal
-XL.Range("B8").Value := RenaeTotal
-XL.Range("B9").Value := RickTotal
+;XL.Range("B8").Value := RenaeTotal
+XL.Range("B8").Value := RickTotal
 
-XL.Range("A1:B9").Select
+XL.Range("A1:B8").Select
 XL.ActiveSheet.Shapes.AddChart.Select
 XL.ActiveChart.ChartType := 51
 XL.ActiveChart.ClearToMatchStyle
@@ -220,7 +220,7 @@ XL.ActiveChart.SetElement(2)
 XL.ActiveChart.ChartTitle.Text := "CURRENT WEEK TOTALS"
 
 XL.ActiveSheet.ChartObjects("Chart 1").Activate
-XL.ActiveSheet.Shapes("Chart 1").ScaleWidth(1.21,0,0)  ;Magnified at 130%... use ".8" for 80% above
+XL.ActiveSheet.Shapes("Chart 1").ScaleWidth(1.09,0,0)  ;Magnified at 130%... use ".8" for 80% above
 XL.ActiveSheet.Shapes("Chart 1").ScaleHeight(1,0,0) ;;Magnified at 130%..
 
 XL.Worksheets("Sheet1").ChartObjects(1).Chart.Export("C:\AutoHotKey\Files\pic1.bmp")
@@ -230,14 +230,14 @@ XL.Quit
 
 Data_Source=
 (
- -Aaron-Brodie-Jay-James-Joel-Matthew-Renae-Rick
-Monday-%AaronMon%-%BrodieMon%-%JayMon%-%JimMon%-%JoelMon%-%MatthewMon%-%RenaeMon%-%RickMon%
-Tuesday-%AaronTue%-%BrodieTue%-%JayTue%-%JimTue%-%JoelTue%-%MatthewTue%-%RenaeTue%-%RickTue%
-Wednesday-%AaronWed%-%BrodieWed%-%JayWed%-%JimWed%-%JoelWed%-%MatthewWed%-%RenaeWed%-%RickWed%
-Thursday-%AaronThu%-%BrodieThu%-%JayThu%-%JimThu%-%JoelThu%-%MatthewThu%-%RenaeThu%-%RickThu%
-Friday-%AaronFri%-%BrodieFri%-%JayFri%-%JimFri%-%JoelFri%-%MatthewFri%-%RenaeFri%-%RickFri%
+ -Aaron-Brodie-Jay-James-Joel-Matt-Rick
+Monday-%AaronMon%-%BrodieMon%-%JayMon%-%JimMon%-%JoelMon%-%MatthewMon%-%RickMon%
+Tuesday-%AaronTue%-%BrodieTue%-%JayTue%-%JimTue%-%JoelTue%-%MatthewTue%-%RickTue%
+Wednesday-%AaronWed%-%BrodieWed%-%JayWed%-%JimWed%-%JoelWed%-%MatthewWed%-%RickWed%
+Thursday-%AaronThu%-%BrodieThu%-%JayThu%-%JimThu%-%JoelThu%-%MatthewThu%-%RickThu%
+Friday-%AaronFri%-%BrodieFri%-%JayFri%-%JimFri%-%JoelFri%-%MatthewFri%-%RickFri%
  - - - - - - - -
-TOTAL-%AaronTotal%-%BrodieTotal%-%JayTotal%-%JimTotal%-%JoelTotal%-%MatthewTotal%-%RenaeTotal%-%RickTotal%
+TOTAL-%AaronTotal%-%BrodieTotal%-%JayTotal%-%JimTotal%-%JoelTotal%-%MatthewTotal%-%RickTotal%
 )	
 ; Call the function 
 LV_Table(Data_Source)
@@ -272,7 +272,7 @@ GuiControl, -Redraw, MyListView  ; Improve performance by disabling redrawing du
 		IfLessOrEqual, k1,90,SetEnv,dCols,650 ;reset display columns if 
 		IfLessOrEqual, k1,10,SetEnv,dCols,400 ;reset display columns if 
 	rows:=obj.MaxIndex() ;this might help draw faster
-	Gui, Add, ListView, x10 y10 w559 h163 grid hwndHLV , % count%rows% SubStr(strHeader,2) ;define LIstview and headers- Remove firs Pipe
+	Gui, Add, ListView, x10 y10 w499 h163 grid hwndHLV , % count%rows% SubStr(strHeader,2) ;define LIstview and headers- Remove firs Pipe
    }  ;end of header section
 
    Else LV_Add("", Obj[k]*) ;add data rows- LV_Add is a variadic function
@@ -285,7 +285,7 @@ GuiControl, -Redraw, MyListView  ; Improve performance by disabling redrawing du
     LV_ModifyCol(6, 60)
 	LV_ModifyCol(7, 60)
 	LV_ModifyCol(8, 60)
-	LV_ModifyCol(9, 60)
+	;LV_ModifyCol(9, 60)
 
 	;LV_Colors.Row(HLV, A_Index, 0xFFECB0, 0x000000)
 
@@ -295,7 +295,7 @@ GuiControl, -Redraw, MyListView  ; Improve performance by disabling redrawing du
 Gui, +Border -MaximizeBox %OnTopSetting%
 ;Gui, Add, Button, x10 y185 w100 h25 gExport2Excel, Export to Excel
 Gui, Color, 000000
-Gui, Add, Button, x468 y395 w100 h25 gClose, Close
+Gui, Add, Button, x408 y395 w100 h25 gClose, Close
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 Cords := StrSplit(Gui_Cord, A_Space, "x" "y" A_Space)
@@ -304,6 +304,6 @@ YPOS := Cords[2]
 XPOS100 := (XPOS + 460)
 YPOS100 := (YPOS + 140)
 
-Gui, MyListView:Show, x%XPOS100% y%YPOS100% w580 h430, POINT COUNTER
+Gui, MyListView:Show, x%XPOS100% y%YPOS100% w520 h430, POINT COUNTER
 }
 return

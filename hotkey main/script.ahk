@@ -6,7 +6,7 @@ SetBatchLines, -1
 SendMode, Event
 SetKeyDelay 25, 10
 
-VersionNum = 3.6.04
+VersionNum = 3.6.06
 
 IniRead, StartPOS, C:\AutoHotKey\settings.ini, Starting Position, Start
 IniRead, OnTopSetting, C:\AutoHotKey\settings.ini, Always On Top, Active
@@ -57,9 +57,7 @@ gui, destroy
 gosub, script_settings
 return
 	}
-
 ;ACCOUNT NAMES
-
 IfNotExist, G:\
 {
 msgbox, CAN NOT LOCATE G:\`n`nPlease confirm you have access to the G drive and try again.
@@ -69,7 +67,6 @@ else
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, Surname
-
 FileReadLine, FirstName, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\names.txt, 1
 FileReadLine, SecondName, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\names.txt, 2
 
@@ -98,8 +95,8 @@ If Surname contains %SecondName%
 		return
 	}
 
-
 Q1:
+BGColour := "1f2130"
 Gui, Destroy
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, Surname
@@ -108,31 +105,20 @@ IniRead, Point_Cord, C:\AutoHotKey\settings.ini, window position, point_position
 IniRead, Count, C:\AutoHotKey\settings.ini, Use Count, Count
 
 IniRead, Dog, C:\AutoHotKey\settings.ini, UserName, Name
-
 Count++  ; This adds 1 to your variable TimesOpened.
 IniWrite, %Count%, C:\AutoHotKey\settings.ini, Use Count, Count
-
-IfNotExist, G:\Support\
-	{
-		BGColour := "8A2D2D" ;:= BGColour
-	}
-	else BGColour := "1f2130"
 
 Gui, 99:-SysMenu -caption -Border %OnTopSetting%
 Gui, 99:font,
 Gui, 99:font, s12 CWhite Bold , Segoe UI
-
 Gui, 99:Add, Button, x-500 Y-500 w118 h30 Left ,
-
 Gui, 99:Add, Text, x0 y0 w323 h25 Center GuiMove,
-
 AddImageTab("", "  S U P P O R T  |  L O Y A L T Y  ")
-
 Gui, 99:Tab, 1, 1
 Gui, 99:font,
 Gui, 99:font, s9 Bold, Segoe UI
 
-Gui, 99:Add, Button, x158 y61 w10 h33 Left hwndHBT37 gSTARTSONG , 
+Gui, 99:Add, Button, x158 y61 w10 h33 Left hwndHBT37 gSTARTSONG , ;EASTER EGG BUTTON
 
 Gui, 99:Add, Picture, x75 y60, C:\AutoHotKey\Files\ui\mainmenu_sup.png
 Gui, 99:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-sup.png
@@ -467,10 +453,19 @@ Gui, 99:Add, Button, x270 y670 w165 h30 Left hwndHBT28, % "   Exit"
 
 if Points > 19
 {
-Gui, 99:Add, Button, x12 y670 w165 h30 Left gBonusRound hwndHBT38, % "   LEVEL CLEAR!"
+	if Points := "None :("
+		{
+			gosub continuepastbonus
+		}
+		else{
+		Gui, 99:Add, Button, x12 y670 w165 h30 Left gBonusRound hwndHBT38, % "   LEVEL CLEAR!"
+		gosub continuepastbonus
+		Return
+		}
+	Return
+	}
 }
-
-}
+continuepastbonus:
 
 Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
 Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
@@ -630,12 +625,6 @@ return
 99ButtonTillConfig:
 FileRead, CONPoints, G:\Support\Public Staff Folders\Aaron\points\%Name%\%date% Till Config.txt
 clipboard = %CONPoints%
-return
-
-99GuiClose:
-WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
-IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
-reload
 return
 
 99ButtonExit:

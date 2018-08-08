@@ -12,7 +12,7 @@ sleep 50
 ;Gui, LoyIN:+AlwaysOnTop
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
+FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
 
 Gui, LoyIN:-SysMenu -caption -Border
 Gui, LoyIN:Color, %BGColour%, 2b2e43

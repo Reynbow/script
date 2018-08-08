@@ -7,7 +7,7 @@ SetKeyDelay, -1, -1
 SetMouseDelay, -1
 SetWinDelay, -1
 
-FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Sitecodes\codelist.txt
+FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
 IniRead, UserName, C:\AutoHotKey\settings.ini, UserName, name
 
 ;========================= HEADER
