@@ -7,11 +7,11 @@ SendMode, Event
 SetKeyDelay 25, 10
 
 FileReadLine, oldver, C:\AutoHotKey\version.txt, 1
-FileReadLine, newver, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, 1
-FileRead, update, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\change.txt
+FileReadLine, newver, G:\Support\Public Staff Folders\Aaron\Update\version.txt, 1
+FileRead, update, G:\Support\Public Staff Folders\Aaron\Update\change.txt
 	
 Gui, A1:-SysMenu -caption -Border
-Gui, A1:Add, Picture, x-150 y-100 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\ui\back-sup-wide.png
+Gui, A1:Add, Picture, x-150 y-100 , G:\Support\Public Staff Folders\Aaron\Update\files\ui\back-sup-wide.png
 Gui, A1:Color, 1f2130, 2b2e43
 Gui, A1:Add, Text, x0 y0 w408 h25 Center GuiMove,
 
@@ -63,13 +63,13 @@ DllCall("User32.dll\SendMessage", "Ptr", MARQ4, "Int", PBM_SETMARQUEE, "Ptr", 1,
 Gui, Show, w200 h80,Updating...
 
         Process, Close, script.exe
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, C:\AutoHotKey\version.txt,1
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\script.exe, C:\AutoHotKey\script.exe,1
-		;FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\LoyaltyInstall.exe, C:\AutoHotKey\Files\LoyaltyInstall.exe,1
-		;FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\QAComplete.exe, C:\AutoHotKey\Files\QAComplete.exe,1
+		FileCopy, G:\Support\Public Staff Folders\Aaron\Update\version.txt, C:\AutoHotKey\version.txt,1
+		FileCopy, G:\Support\Public Staff Folders\Aaron\Update\script.exe, C:\AutoHotKey\script.exe,1
+		;FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\LoyaltyInstall.exe, C:\AutoHotKey\Files\LoyaltyInstall.exe,1
+		;FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\QAComplete.exe, C:\AutoHotKey\Files\QAComplete.exe,1
 		;FileCopy, G:\Support\Public Staff Folders\Aaron\Tools\Loyalty TWCM.exe, C:\AutoHotKey\Files\Loyalty TWCM.exe,1
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\Staff Logs.exe, C:\AutoHotKey\Files\Staff Logs.exe,1
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\all_tag_6.png, C:\AutoHotKey\Files\all_tag_6.png,1
+		FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\Staff Logs.exe, C:\AutoHotKey\Files\Staff Logs.exe,1
+		FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\all_tag_6.png, C:\AutoHotKey\Files\all_tag_6.png,1
 
 		IfNotExist, C:\AutoHotKey\settings.ini
 		{
@@ -79,7 +79,7 @@ Gui, Show, w200 h80,Updating...
 		}
 		
 		;======= UI FILES
-		FileCopyDir, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\ui, C:\AutoHotKey\Files\ui ,1
+		FileCopyDir, G:\Support\Public Staff Folders\Aaron\Update\files\ui, C:\AutoHotKey\Files\ui ,1
 
 		sleep 1500
 		Gui, Destroy

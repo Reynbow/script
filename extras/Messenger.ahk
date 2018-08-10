@@ -1,4 +1,4 @@
-File=G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\data.txt ;Change this to what ever directory is being shared with the other computer.
+File=G:\Support\Public Staff Folders\Aaron\Update\data.txt ;Change this to what ever directory is being shared with the other computer.
 IniRead, vName, C:\AutoHotKey\settings.ini, UserName, name
 ;Name:=%vName% ;Comment this if you want to choose your own name in the chat. This is just to make things more simple.
 ;InputBox, Name, Username, Please enter a username. ;Uncomment this to choose your own name.

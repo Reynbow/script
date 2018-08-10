@@ -95,7 +95,7 @@ Return
 Gui, 98:Destroy
 Gui, 99P:Destroy
 do_lines_pre = 0
-gosub Q1
+gosub MAINMENU
 Return
 
 98ButtonSave:

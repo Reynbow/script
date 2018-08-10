@@ -4,31 +4,31 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 
 IfNotExist, C:\Autohotkey\Files\issues.png
 {
-FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\buttons\issues.png, C:\Autohotkey\Files\issues.png
+FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\buttons\issues.png, C:\Autohotkey\Files\issues.png
 }
 
 IfNotExist, C:\Autohotkey\Files\fix.png
 {
-FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\fix.png, C:\Autohotkey\Files\fix.png
+FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\fix.png, C:\Autohotkey\Files\fix.png
 }
 
 Loop,
  {
-  FileReadLine, Tags%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\data out tags.txt, %A_Index%
+  FileReadLine, Tags%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\data out tags.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
  Loop,
  {
-  FileReadLine, TagDesc%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\data out descriptions.txt, %A_Index%
+  FileReadLine, TagDesc%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\data out descriptions.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
 
 Gui, Destroy
-FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
+FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Update\codelist.txt
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 list2GF = |Top Right|Bottom Right|Top Left|Bottom Left|Random
 list3GF = |Yes|No|NA
@@ -252,7 +252,7 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 Gui, 15:Destroy
 Gui, 99P:Destroy
 do_lines_pre = 0
-gosub Q1
+gosub MAINMENU
 return
 
 15ButtonConfirm:
@@ -450,24 +450,24 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 
 IfNotExist, C:\Autohotkey\Files\issues.png
 {
-FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\buttons\issues.png, C:\Autohotkey\Files\issues.png
+FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\buttons\issues.png, C:\Autohotkey\Files\issues.png
 }
 
 IfNotExist, C:\Autohotkey\Files\fix.png
 {
-FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\fix.png, C:\Autohotkey\Files\fix.png
+FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\fix.png, C:\Autohotkey\Files\fix.png
 }
 
 Loop,
  {
-  FileReadLine, Tags%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\data out tags.txt, %A_Index%
+  FileReadLine, Tags%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\data out tags.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
  Loop,
  {
-  FileReadLine, TagDesc%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\data out descriptions.txt, %A_Index%
+  FileReadLine, TagDesc%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\data out descriptions.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
@@ -560,21 +560,21 @@ Gui, 15EDIT:Show, %Gui_Cord% h595, Data Out Tags
 return
 
 OPENhashDO:
-run, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\data out tags.txt
+run, G:\Support\Public Staff Folders\Aaron\Update\tags\data out tags.txt
 return
 
 
 OPENdescDO:
-run, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\data out descriptions.txt
+run, G:\Support\Public Staff Folders\Aaron\Update\tags\data out descriptions.txt
 return
 
 SAVEdo:
 Gui, 15EDIT:Submit
-FileDelete, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\data out descriptions.txt
-FileDelete, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\data out tags.txt
+FileDelete, G:\Support\Public Staff Folders\Aaron\Update\tags\data out descriptions.txt
+FileDelete, G:\Support\Public Staff Folders\Aaron\Update\tags\data out tags.txt
 
-FileAppend, %Tags1%`n%Tags2%`n%Tags3%`n%Tags4%`n%Tags5%`n%Tags6%`n%Tags7%`n%Tags8%`n%Tags9%`n%Tags10%`n%Tags11%`n%Tags12%`n%Tags13%`n%Tags14%`n%Tags15%`n%Tags16%`n%Tags17%`n%Tags18%`n%Tags19%`n%Tags20%`n%Tags21%`n%Tags22%`n%Tags23%`n%Tags24% ,G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\data out tags.txt
-FileAppend, %TagDesc1%`n%TagDesc2%`n%TagDesc3%`n%TagDesc4%`n%TagDesc5%`n%TagDesc6%`n%TagDesc7%`n%TagDesc8%`n%TagDesc9%`n%TagDesc10%`n%TagDesc11%`n%TagDesc12%`n%TagDesc13%`n%TagDesc14%`n%TagDesc15%`n%TagDesc16%`n%TagDesc17%`n%TagDesc18%`n%TagDesc19%`n%TagDesc20%`n%TagDesc21%`n%TagDesc22%`n%TagDesc23%`n%TagDesc24%,G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\data out descriptions.txt
+FileAppend, %Tags1%`n%Tags2%`n%Tags3%`n%Tags4%`n%Tags5%`n%Tags6%`n%Tags7%`n%Tags8%`n%Tags9%`n%Tags10%`n%Tags11%`n%Tags12%`n%Tags13%`n%Tags14%`n%Tags15%`n%Tags16%`n%Tags17%`n%Tags18%`n%Tags19%`n%Tags20%`n%Tags21%`n%Tags22%`n%Tags23%`n%Tags24% ,G:\Support\Public Staff Folders\Aaron\Update\tags\data out tags.txt
+FileAppend, %TagDesc1%`n%TagDesc2%`n%TagDesc3%`n%TagDesc4%`n%TagDesc5%`n%TagDesc6%`n%TagDesc7%`n%TagDesc8%`n%TagDesc9%`n%TagDesc10%`n%TagDesc11%`n%TagDesc12%`n%TagDesc13%`n%TagDesc14%`n%TagDesc15%`n%TagDesc16%`n%TagDesc17%`n%TagDesc18%`n%TagDesc19%`n%TagDesc20%`n%TagDesc21%`n%TagDesc22%`n%TagDesc23%`n%TagDesc24%,G:\Support\Public Staff Folders\Aaron\Update\tags\data out descriptions.txt
 
 Msgbox, 0, UPDATE TAGS, Update Complete
 reload

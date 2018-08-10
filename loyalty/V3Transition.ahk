@@ -56,7 +56,7 @@ Gui, +AlwaysOnTop
 Gui, font, s8, Helvetica
 Gui, Add, Text, x18 y22 h15, PLEASE SELECT CELL "B2"
 Gui, Add, Text, x18, PICTURE BELOW
-Gui, Add, Picture, x18 y75 w579 h83 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\apitemplate.png
+Gui, Add, Picture, x18 y75 w579 h83 , G:\Support\Public Staff Folders\Aaron\Update\files\apitemplate.png
 Gui, Add, Text, x18, `nAFTER SELECTING "B2", CLICK CONFIRM, THEN WAIT
 Gui, Add, Button, x415 y208 w90 h30, &Next
 Gui, Add, Button, x515 y208 w90 h30, E&xit
@@ -69,8 +69,8 @@ Gui, +AlwaysOnTop
 Gui, Add, Text, x102 y19 w320 h20 , If there is another Till`, select the next Till Tab and select cell B2
 Gui, Add, Button, x412 y159 w60 h30 , Next
 Gui, Add, Button, x482 y159 w100 h30 , END
-Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till.png
-Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till2.png
+Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Public Staff Folders\Aaron\Update\files\till.png
+Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Public Staff Folders\Aaron\Update\files\till2.png
 Gui, Show, w600 h207, TILL 2
 return
 
@@ -80,8 +80,8 @@ Gui, +AlwaysOnTop
 Gui, Add, Text, x102 y19 w320 h20 , If there is another Till`, select the next Till Tab and select cell B2
 Gui, Add, Button, x412 y159 w60 h30 , Next
 Gui, Add, Button, x482 y159 w100 h30 , END
-Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till.png
-Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till2.png
+Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Public Staff Folders\Aaron\Update\files\till.png
+Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Public Staff Folders\Aaron\Update\files\till2.png
 Gui, Show, w600 h207, TILL 3
 return
 
@@ -91,8 +91,8 @@ Gui, +AlwaysOnTop
 Gui, Add, Text, x102 y19 w320 h20 , If there is another Till`, select the next Till Tab and select cell B2
 Gui, Add, Button, x412 y159 w60 h30 , Next
 Gui, Add, Button, x482 y159 w100 h30 , END
-Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till.png
-Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till2.png
+Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Public Staff Folders\Aaron\Update\files\till.png
+Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Public Staff Folders\Aaron\Update\files\till2.png
 Gui, Show, w600 h207, TILL 4
 return
 
@@ -102,8 +102,8 @@ Gui, +AlwaysOnTop
 Gui, Add, Text, x102 y19 w320 h20 , If there is another Till`, select the next Till Tab and select cell B2
 Gui, Add, Button, x412 y159 w60 h30 , Next
 Gui, Add, Button, x482 y159 w100 h30 , END
-Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till.png
-Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till2.png
+Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Public Staff Folders\Aaron\Update\files\till.png
+Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Public Staff Folders\Aaron\Update\files\till2.png
 Gui, Show, w600 h207, TILL 5
 return
 
@@ -113,8 +113,8 @@ Gui, +AlwaysOnTop
 Gui, Add, Text, x102 y19 w320 h20 , If there is another Till`, select the next Till Tab and select cell B2
 Gui, Add, Button, x412 y159 w60 h30 , Next
 Gui, Add, Button, x482 y159 w100 h30 , END
-Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till.png
-Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till2.png
+Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Public Staff Folders\Aaron\Update\files\till.png
+Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Public Staff Folders\Aaron\Update\files\till2.png
 Gui, Show, w600 h207, TILL 6
 return
 
@@ -124,8 +124,8 @@ Gui, +AlwaysOnTop
 Gui, Add, Text, x102 y19 w320 h20 , If there is another Till`, select the next Till Tab and select cell B2
 Gui, Add, Button, x412 y159 w60 h30 , Next
 Gui, Add, Button, x482 y159 w100 h30 , END
-Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till.png
-Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till2.png
+Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Public Staff Folders\Aaron\Update\files\till.png
+Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Public Staff Folders\Aaron\Update\files\till2.png
 Gui, Show, w600 h207, TILL 7
 return
 
@@ -135,8 +135,8 @@ Gui, +AlwaysOnTop
 Gui, Add, Text, x102 y19 w320 h20 , If there is another Till`, select the next Till Tab and select cell B2
 Gui, Add, Button, x412 y159 w60 h30 , Next
 Gui, Add, Button, x482 y159 w100 h30 , END
-Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till.png
-Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\till2.png
+Gui, Add, Picture, x12 y9 w80 h50 , G:\Support\Public Staff Folders\Aaron\Update\files\till.png
+Gui, Add, Picture, x12 y69 w579 h80 , G:\Support\Public Staff Folders\Aaron\Update\files\till2.png
 Gui, Show, w600 h207, TILL 8
 return
 
@@ -181,9 +181,9 @@ Gui, Add, Text, x395 y38 w90 h20 , *
 Gui, Add, Edit, x290 y35 w100 h20 vTills,
 Gui, Add, Text, x410 y13 w80 h20 , Loyalty Mode:
 Gui, Add, DropDownList, x490 y13 w100 vLoyMode, %loylist%
-Gui, Add, Picture, x0 y340 w210 h9 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\sep3.png
-Gui, Add, Picture, x210 y340 w210 h9 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\sep3.png
-Gui, Add, Picture, x420 y340 w210 h9 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\sep3.png
+Gui, Add, Picture, x0 y340 w210 h9 , G:\Support\Public Staff Folders\Aaron\Update\files\sep3.png
+Gui, Add, Picture, x210 y340 w210 h9 , G:\Support\Public Staff Folders\Aaron\Update\files\sep3.png
+Gui, Add, Picture, x420 y340 w210 h9 , G:\Support\Public Staff Folders\Aaron\Update\files\sep3.png
 Gui, font, s12 bold, Helvetica
 Gui, Add, Text, x10 y370 h20 , V3 Transition Comment Template
 Gui, font,
@@ -198,7 +198,7 @@ Gui, Add, Edit, x170 y530 w100 h20 vTrainedName,
 Gui, Add, Checkbox, x10 y550 h20 vCb_Document, Transition document attached to LOYV3 Client
 Gui, Add, Checkbox, x290 y380 h20 vCb_Addition, Still to be completed:
 Gui, Add, Edit, x290 y400 w300 h95 vNotes ,
-Gui, Add, Picture, x318 y498 w95 h95 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\all_tag_6.png
+Gui, Add, Picture, x318 y498 w95 h95 , G:\Support\Public Staff Folders\Aaron\Update\files\all_tag_6.png
 Gui, Add, Text, x435 y365 h20 ,*
 Gui, Add, Button, x443 y360 w146 h30 , &Comment Only
 Gui, Add, Button, x443 y515 w146 h30 , &Confirm

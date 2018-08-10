@@ -12,7 +12,7 @@ sleep 50
 ;Gui, LoyIN:+AlwaysOnTop
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
+FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Update\codelist.txt
 
 Gui, LoyIN:-SysMenu -caption -Border
 Gui, LoyIN:Color, %BGColour%, 2b2e43
@@ -483,7 +483,7 @@ FormatTime, Time,, h:mmtt
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
 
-FileReadLine, VersionNum, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, 1
+FileReadLine, VersionNum, G:\Support\Public Staff Folders\Aaron\Update\version.txt, 1
 
 IniRead Prefix, C:\AutoHotKey\settings.ini, Loyalty, Prefix
 IniRead, Sitecode, C:\AutoHotKey\settings.ini, Loyalty, Sitecode

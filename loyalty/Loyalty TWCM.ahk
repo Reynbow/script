@@ -7,7 +7,7 @@ SetKeyDelay, -1, -1
 SetMouseDelay, -1
 SetWinDelay, -1
 
-FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
+FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Update\codelist.txt
 IniRead, UserName, C:\AutoHotKey\settings.ini, UserName, name
 
 ;========================= HEADER
@@ -202,7 +202,7 @@ FormatTime, Time,, h:mmtt
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
 
-FileReadLine, VersionNum, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, 1
+FileReadLine, VersionNum, G:\Support\Public Staff Folders\Aaron\Update\version.txt, 1
 
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - TWCM Loyalty Install `n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt
 

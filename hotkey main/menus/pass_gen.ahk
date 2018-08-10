@@ -42,7 +42,7 @@ return
 Gui, 87:Destroy
 Gui, 99P:Destroy
 do_lines_pre = 0
-gosub Q1
+gosub MAINMENU
 return
 ;---------------
 GenPass:

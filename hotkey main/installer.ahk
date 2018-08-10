@@ -62,17 +62,17 @@ Gui, Show, w200 h80,Updating...
 
 		FileCreateDir, C:\AutoHotKey\
 		
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, C:\AutoHotKey\version.txt,1
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\script.exe, C:\AutoHotKey\script.exe,1
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\Staff Logs.exe, C:\AutoHotKey\Files\Staff Logs.exe,1
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\all_tag_6.png, C:\AutoHotKey\Files\all_tag_6.png,1
+		FileCopy, G:\Support\Public Staff Folders\Aaron\Update\version.txt, C:\AutoHotKey\version.txt,1
+		FileCopy, G:\Support\Public Staff Folders\Aaron\Update\script.exe, C:\AutoHotKey\script.exe,1
+		FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\Staff Logs.exe, C:\AutoHotKey\Files\Staff Logs.exe,1
+		FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\all_tag_6.png, C:\AutoHotKey\Files\all_tag_6.png,1
 
 		IniWrite x20 y20, C:\AutoHotKey\settings.ini, window position, gui_position		
 		IniWrite x20 y760, C:\AutoHotKey\settings.ini, window position, point_position	
 		IniWrite x250 y20, C:\AutoHotKey\settings.ini, window position, weekly_position
 		
 		;======= UI FILES
-		FileCopyDir, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\ui, C:\AutoHotKey\Files\ui ,1
+		FileCopyDir, G:\Support\Public Staff Folders\Aaron\Update\files\ui, C:\AutoHotKey\Files\ui ,1
 
 		sleep 1500
 		Gui, Destroy

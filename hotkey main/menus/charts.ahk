@@ -128,7 +128,7 @@ Gui, 86:Destroy
 Gui Wmp:Color, 1d1f21, 383D46
 Gui Wmp: +LastFound
 Gui Wmp: Add, ActiveX, w1280 h784 vWmp, WMPLayer.OCX
-Wmp.Url := "G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\groupaccount.mp4"
+Wmp.Url := "G:\Support\Public Staff Folders\Aaron\Update\files\groupaccount.mp4"
 ;Gui Wmp:Add, Button, x1080 y800 w200 h30 , EXIT
 Gui Wmp: Show, , How to create a Group User account
 return
@@ -146,7 +146,7 @@ Return
 Gui, 86:Destroy
 Gui, 99P:Destroy
 do_lines_pre = 0
-gosub Q1
+gosub MAINMENU
 return
 
 86ButtonExit:

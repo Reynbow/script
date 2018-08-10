@@ -57,7 +57,7 @@ return
 Gui, 7:Destroy
 Gui, 99P:Destroy
 do_lines_pre = 0
-gosub Q1
+gosub MAINMENU
 return
 
 7ButtonClose:
@@ -697,7 +697,7 @@ gui, submit
 
 IfNotExist, C:\AutoHotKey\Files\FRED.xlsx
 {
-FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\FRED.xlsx, C:\AutoHotKey\Files\FRED.xlsx, 1
+FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\FRED.xlsx, C:\AutoHotKey\Files\FRED.xlsx, 1
 }
 
 FormatTime, Date,, yyyy/MM/dd

@@ -48,7 +48,7 @@ Return
 Gui, 55:Destroy
 Gui, 99P:Destroy
 do_lines_pre = 0
-gosub Q1
+gosub MAINMENU
 return
 
 55ButtonClose:

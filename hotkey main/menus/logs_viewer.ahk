@@ -3,7 +3,7 @@ Gui, 99:Destroy
 
 IfNotExist, C:\AutoHotKey\logsettings.ini
 	{
-	FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\logsettings.ini, C:\AutoHotKey\logsettings.ini, 1
+	FileCopy, G:\Support\Public Staff Folders\Aaron\Update\logsettings.ini, C:\AutoHotKey\logsettings.ini, 1
 	}
 
 IniRead, dispdrive, C:\AutoHotKey\logsettings.ini, drives, dispx

@@ -1,5 +1,5 @@
 ﻿InitialInstall:
-Gui, Add, Picture, x0 y0 w164 h314 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\installer.png
+Gui, Add, Picture, x0 y0 w164 h314 , G:\Support\Public Staff Folders\Aaron\Update\files\installer.png
 Gui, Font, S14 cE8EBF5, Verdana
 Gui, Color, 1d1f21, 383D46
 Gui, Add, Text, x178 y9 w260 h70 , Welcome to 🔥🔑 Setup
@@ -21,7 +21,7 @@ return
 
 page2:
 Gui, Destroy
-Gui, 54:Add, Picture, x0 y0 w164 h314 , G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\installer.png
+Gui, 54:Add, Picture, x0 y0 w164 h314 , G:\Support\Public Staff Folders\Aaron\Update\files\installer.png
 ;Gui, 54:font, cE8EBF5, Segoe UI
 Gui, 54:Color, 1d1f21, 383D46
 Gui, 54:Font, S14 cE8EBF5, Segoe UI
@@ -43,8 +43,8 @@ Gui, 54:Show, h314,🔥🔑 Setup
 
 FileCreateDir, C:\AutoHotKey\Files\
 sleep 2000
-FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, C:\AutoHotKey\version.txt,1
-FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\script.exe, C:\AutoHotKey\script.exe,1
+FileCopy, G:\Support\Public Staff Folders\Aaron\Update\version.txt, C:\AutoHotKey\version.txt,1
+FileCopy, G:\Support\Public Staff Folders\Aaron\Update\script.exe, C:\AutoHotKey\script.exe,1
 FileCopy, G:\Support\Public Staff Folders\Aaron\tools\LoyaltyInstall.exe, C:\AutoHotKey\Files\LoyaltyInstall.exe,1
 FileCopy, G:\Support\Public Staff Folders\Aaron\tools\QAComplete.exe, C:\AutoHotKey\Files\QAComplete.exe,1
 FileCreateShortcut, C:\AutoHotKey\script.exe, %A_Desktop%\Script.lnk

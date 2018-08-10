@@ -89,7 +89,7 @@ return
 
 LQAButtonBack:
 Gui, LQA:Destroy
-gosub Q1
+gosub MAINMENU
 return
 
 LQAButtonExit:

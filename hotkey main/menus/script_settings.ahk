@@ -2,7 +2,7 @@
 Gui, Destroy
 Gui, 99:Destroy
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
-FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
+FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Update\codelist.txt
 Gui, Set:Add, Edit, x-1000 y-1000 w280 cc5c8c6 -E0x200 , Placeholder
 
 Gui, Set:-SysMenu -caption -Border %OnTopSetting%
@@ -54,7 +54,7 @@ Gui, Set:Add, Button, xp-180 yp+40 w125 h25 hwndSet3 gForceUpdate, Manual Update
 Gui, Set:Add, Button, yp+40 w125 h30 hwndSet1 gSetSave, Save
 Gui, Set:Add, Button, xp+145 w125 h30 hwndSet2 gExit , Exit
 
-FileRead, ChangeLog, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\changelog.txt
+FileRead, ChangeLog, G:\Support\Public Staff Folders\Aaron\Update\changelog.txt
 Gui, Set:Add, Edit, readonly -tabstop VScroll -E0x200 x315 y0 w337 h310 , %ChangeLog%
 
 Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]

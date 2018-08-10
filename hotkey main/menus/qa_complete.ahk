@@ -1,7 +1,7 @@
 ﻿SupportQAs:
 Gui, Destroy
 Gui, QA:Destroy
-FileReadLine, VerNum, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt, 1
+FileReadLine, VerNum, G:\Support\Public Staff Folders\Aaron\Update\version.txt, 1
 IniRead, gui_position, C:\AutoHotKey\settings.ini, window position, QA_position, Center
 
 Gui, QA: %OnTopSetting%

@@ -1,5 +1,5 @@
 ﻿RemoteReset:
-FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
+FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Update\codelist.txt
 
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position

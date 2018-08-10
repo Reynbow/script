@@ -3,7 +3,7 @@ WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
 Gui, Destroy
-FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
+FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Update\codelist.txt
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 Gui, LT:-SysMenu -caption -Border %OnTopSetting%
 Gui, LT:Color, %BGColour%, 2b2e43
@@ -88,7 +88,7 @@ ImageButton.Create(LoyConfig1, Opt1, Opt2, , , Opt5)
 ImageButton.Create(LoyConfig2, Opt1, Opt2, , , Opt5)
 ImageButton.Create(LoyConfig3, Opt1, Opt2, , , Opt5)
 
-Gui, LT:Add, Picture, x450 y48 w64 h64, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\loylogo.png
+Gui, LT:Add, Picture, x450 y48 w64 h64, G:\Support\Public Staff Folders\Aaron\Update\files\loylogo.png
 
 Gui, LT:Show, %Gui_Cord% h480 w660, %A_Space%
 Gui, 2:Destroy
@@ -150,7 +150,7 @@ LTButtonback:
 Gui, LT:Destroy
 Gui, 99P:Destroy
 do_lines_pre = 0
-gosub Q1
+gosub MAINMENU
 return
 
 LTButtonConfirm:

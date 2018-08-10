@@ -4,54 +4,54 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 
 IfNotExist, C:\AutoHotKey\Files\all_tag_6.png
 {
-	FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\all_tag_6.png, C:\AutoHotKey\Files\all_tag_6.png
+	FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\all_tag_6.png, C:\AutoHotKey\Files\all_tag_6.png
 }
 
 Loop,
  {
-  FileReadLine, AID%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin issues desc.txt, %A_Index%
+  FileReadLine, AID%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\admin issues desc.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
 Loop,
  {
-  FileReadLine, AIT%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin issues tag.txt, %A_Index%
+  FileReadLine, AIT%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\admin issues tag.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
 Loop,
  {
-  FileReadLine, APD%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin prod desc.txt, %A_Index%
+  FileReadLine, APD%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\admin prod desc.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
 Loop,
  {
-  FileReadLine, APT%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin prod tag.txt, %A_Index%
+  FileReadLine, APT%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\admin prod tag.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
 Loop,
  {
-  FileReadLine, AinD%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin install desc.txt, %A_Index%
+  FileReadLine, AinD%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\admin install desc.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
 Loop,
  {
-  FileReadLine, AinT%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin install tag.txt, %A_Index%
+  FileReadLine, AinT%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\admin install tag.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
 Gui, Destroy
 
-FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
+FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Update\codelist.txt
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 Gui, 74:-SysMenu -caption -Border %OnTopSetting%
@@ -300,7 +300,7 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 Gui, 74:Destroy
 Gui, 99P:Destroy
 do_lines_pre = 0
-gosub Q1
+gosub MAINMENU
 return
 
 74ButtonConfirm:
@@ -340,47 +340,47 @@ Gui, Destroy
 
 Loop,
  {
-  FileReadLine, AID%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin issues desc.txt, %A_Index%
+  FileReadLine, AID%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\admin issues desc.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
 Loop,
  {
-  FileReadLine, AIT%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin issues tag.txt, %A_Index%
+  FileReadLine, AIT%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\admin issues tag.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
 Loop,
  {
-  FileReadLine, APD%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin prod desc.txt, %A_Index%
+  FileReadLine, APD%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\admin prod desc.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
 Loop,
  {
-  FileReadLine, APT%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin prod tag.txt, %A_Index%
+  FileReadLine, APT%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\admin prod tag.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
 Loop,
  {
-  FileReadLine, AinD%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin install desc.txt, %A_Index%
+  FileReadLine, AinD%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\admin install desc.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
 Loop,
  {
-  FileReadLine, AinT%A_Index%, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin install tag.txt, %A_Index%
+  FileReadLine, AinT%A_Index%, G:\Support\Public Staff Folders\Aaron\Update\tags\admin install tag.txt, %A_Index%
   If Errorlevel <> 0
      Break
  }
 
-FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
+FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Update\codelist.txt
 
 IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 Gui, 74EDIT:-SysMenu +Border
@@ -516,12 +516,12 @@ return
 
 ADMINsave:
 Gui, 74EDIT:Submit
-FileDelete, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin install tag.txt
-FileDelete, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin prod tag.txt
-FileDelete, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin issues tag.txt
-FileDelete, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin install desc.txt
-FileDelete, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin prod desc.txt
-FileDelete, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin issues desc.txt
+FileDelete, G:\Support\Public Staff Folders\Aaron\Update\tags\admin install tag.txt
+FileDelete, G:\Support\Public Staff Folders\Aaron\Update\tags\admin prod tag.txt
+FileDelete, G:\Support\Public Staff Folders\Aaron\Update\tags\admin issues tag.txt
+FileDelete, G:\Support\Public Staff Folders\Aaron\Update\tags\admin install desc.txt
+FileDelete, G:\Support\Public Staff Folders\Aaron\Update\tags\admin prod desc.txt
+FileDelete, G:\Support\Public Staff Folders\Aaron\Update\tags\admin issues desc.txt
 
 FileAppend, 
 (
@@ -531,7 +531,7 @@ FileAppend,
 %IN3%
 %IN4%
 %IN5%
-), G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin install tag.txt
+), G:\Support\Public Staff Folders\Aaron\Update\tags\admin install tag.txt
 
 FileAppend,
 (
@@ -544,7 +544,7 @@ FileAppend,
 %P7%
 %P8%
 %P9%
-), G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin prod tag.txt
+), G:\Support\Public Staff Folders\Aaron\Update\tags\admin prod tag.txt
 
 FileAppend,
 (
@@ -572,7 +572,7 @@ FileAppend,
 %I21%
 %I22%
 %I23%
-), G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin issues tag.txt
+), G:\Support\Public Staff Folders\Aaron\Update\tags\admin issues tag.txt
 
 FileAppend,
 (
@@ -582,7 +582,7 @@ Software installation
 %INd3%
 %INd4%
 %INd5%
-), G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin install desc.txt
+), G:\Support\Public Staff Folders\Aaron\Update\tags\admin install desc.txt
 
 FileAppend,
 (
@@ -595,7 +595,7 @@ FileAppend,
 %PD7%
 %PD8%
 %PD9%
-), G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin prod desc.txt
+), G:\Support\Public Staff Folders\Aaron\Update\tags\admin prod desc.txt
 
 FileAppend,
 (
@@ -623,7 +623,7 @@ Use this tag for all data issues
 %ID21%
 %ID22%
 %ID23%
-), G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin issues desc.txt
+), G:\Support\Public Staff Folders\Aaron\Update\tags\admin issues desc.txt
 
 Msgbox, 0, UPDATE TAGS, Update Complete
 
@@ -631,25 +631,25 @@ RELOAD
 return
 
 OPENadminINSTALLt:
-run, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin install tag.txt
+run, G:\Support\Public Staff Folders\Aaron\Update\tags\admin install tag.txt
 return
 
 OPENadminPRODUCTSt:
-run, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin prod tag.txt
+run, G:\Support\Public Staff Folders\Aaron\Update\tags\admin prod tag.txt
 return
 
 OPENadminISSUESt:
-run, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin issues tag.txt
+run, G:\Support\Public Staff Folders\Aaron\Update\tags\admin issues tag.txt
 return
 
 OPENadminINSTALLd:
-run, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin install desc.txt
+run, G:\Support\Public Staff Folders\Aaron\Update\tags\admin install desc.txt
 return
 
 OPENadminPRODUCTSd:
-run, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin prod desc.txt
+run, G:\Support\Public Staff Folders\Aaron\Update\tags\admin prod desc.txt
 return
 
 OPENadminISSUESd:
-run, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\tags\admin issues desc.txt
+run, G:\Support\Public Staff Folders\Aaron\Update\tags\admin issues desc.txt
 return

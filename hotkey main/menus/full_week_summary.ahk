@@ -442,7 +442,7 @@ return
 /*
 IfNotExist, C:\AutoHotKey\Files\pointstemplate.xlsx
 	{
-		FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\pointstemplate.xlsx, C:\AutoHotKey\Files\pointstemplate.xlsx, 1
+		FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\pointstemplate.xlsx, C:\AutoHotKey\Files\pointstemplate.xlsx, 1
 	}
 
 FileCopy, C:\AutoHotKey\Files\pointstemplate.xlsx, C:\AutoHotKey\Files\%Name% - %mon% - WEEKLY POINTS.xlsx

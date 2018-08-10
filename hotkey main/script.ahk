@@ -19,7 +19,7 @@ IniRead, OnTopSetting, C:\AutoHotKey\settings.ini, Always On Top, Active
 	return
 
 	ForceUpdate:
-	Run G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\updater_v2.exe
+	Run G:\Support\Public Staff Folders\Aaron\Update\updater_v2.exe
 	Return
 
 	Hello:
@@ -67,8 +67,8 @@ else
 
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, Surname
-FileReadLine, FirstName, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\names.txt, 1
-FileReadLine, SecondName, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\names.txt, 2
+FileReadLine, FirstName, G:\Support\Public Staff Folders\Aaron\Update\names.txt, 1
+FileReadLine, SecondName, G:\Support\Public Staff Folders\Aaron\Update\names.txt, 2
 
 If Name contains %FirstName%
 	{
@@ -85,7 +85,7 @@ If Name contains %FirstName%
 NamePart2:
 If Surname contains %SecondName%
 	{
-	gosub, Q1
+	gosub, MAINMENU
 	return
 	}
 	else
@@ -95,7 +95,7 @@ If Surname contains %SecondName%
 		return
 	}
 
-Q1:
+MAINMENU:
 BGColour := "1f2130"
 Gui, Destroy
 IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
@@ -156,7 +156,7 @@ Gui, 99:font, s9 , Segoe UI
 Gui, 99:Add, Button, xp+135 yp-40 w118 h30 Right gCardOrders hwndHBT35, % "Card Orders   "
 Gui, 99:Add, Button, yp+40 w118 h30 Right gLoyaltyCancelation hwndHBT36, % "Loyalty Cancel   "
 
-FileRead, ForceUpdate, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\version.txt
+FileRead, ForceUpdate, G:\Support\Public Staff Folders\Aaron\Update\version.txt
 do_lines_pre = 
 Gui, 99:Tab 
 Gui, 99:font, bold cE8EBF5 s24, Segoe UI
@@ -504,9 +504,9 @@ DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt
 return
 
 BonusRound:
-SoundPlay, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\bonus.mp3
+SoundPlay, G:\Support\Public Staff Folders\Aaron\Update\files\bonus.mp3
 
-Img = G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\sonic.gif
+Img = G:\Support\Public Staff Folders\Aaron\Update\files\sonic.gif
 Gui New, +HwndhGUI +AlwaysOnTop -SysMenu -caption +Border
 gif1 := SonicGif( hGUI, Img, 0, 0, 272, 316,, "MyGif", "myGif_" )
 
@@ -634,7 +634,7 @@ Reload
 return
 
 UPDATENOW:
-run G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\updater_v2.exe
+run G:\Support\Public Staff Folders\Aaron\Update\updater_v2.exe
 ExitApp
 
 ;=====================================================SUB MENUS
@@ -898,10 +898,10 @@ return
 !UP::Media_Play_Pause
 
 STARTSONG:
-SoundPlay, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\music.mp3
+SoundPlay, G:\Support\Public Staff Folders\Aaron\Update\files\music.mp3
 SysGet, Mon, MonitorCount
 
-Img = G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\gif.gif
+Img = G:\Support\Public Staff Folders\Aaron\Update\files\gif.gif
 Gui New, +HwndhGUI +AlwaysOnTop -SysMenu -caption +Border
 gif1 := AnimatedGif( hGUI, Img, 0, 0, 560, 560,, "MyGif", "myGif_" )
 Gui Show, %Gui_Cord% h560 w560

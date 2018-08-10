@@ -4,20 +4,20 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 
 IfNotExist, C:\AutoHotKey\Files\thumbsup.png
 {
-	FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\thumbsup.png, C:\AutoHotKey\Files\thumbsup.png
+	FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\thumbsup.png, C:\AutoHotKey\Files\thumbsup.png
 }
 IfNotExist, C:\AutoHotKey\Files\bau.png
 {
-	FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\buttons\bau.png, C:\AutoHotKey\Files\bau.png
+	FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\buttons\bau.png, C:\AutoHotKey\Files\bau.png
 }
 
 IfNotExist, C:\AutoHotKey\Files\flash.png
 {
-	FileCopy, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\files\flash.png, C:\AutoHotKey\Files\flash.png
+	FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\flash.png, C:\AutoHotKey\Files\flash.png
 }
 
 Gui, Destroy 
-FileRead, codelist, G:\Support\Shared Tech Resources\TOOLS\Auto Hotkey\Update\codelist.txt
+FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Update\codelist.txt
 Gui, 18:-SysMenu -caption -Border %OnTopSetting%
 
 ;Gui, 18:Add, Picture, x0 y75 , C:\AutoHotKey\Files\back-sup.png
@@ -135,7 +135,7 @@ IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_po
 Gui, 18:Destroy
 Gui, 99P:Destroy
 do_lines_pre = 0
-gosub Q1
+gosub MAINMENU
 return
 
 18ButtonExit:
