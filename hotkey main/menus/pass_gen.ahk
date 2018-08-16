@@ -9,11 +9,11 @@ Gui, 87:Add, Text, x0 y0 w910 h25 Center GuiMove,
 Gui, 87:Add, Picture, x0 y75 , C:\AutoHotKey\Files\ui\back-sup.png
 Gui, 87:Font, s8 cE8EBF5, Segoe UI
 Gui, 87:Add, GroupBox, x16 y30 w130 h140,password contains...
-Gui, 87:Add, Checkbox, x26 y47 w115 h30 vCheck1 checked,lower case letters
-Gui, 87:Add, Checkbox, x26 y77 w115 h30 vCheck2 checked,capital letters
-Gui, 87:Add, Checkbox, x26 y107 w115 h30 vCheck3 checked,digits
-Gui, 87:Add, Checkbox, x26 y137 w115 h30 vCheck4,special chars
-Gui, 87:Add, GroupBox, x154 y30 w100 h50,password length
+Gui, 87:Add, Checkbox, x26 y47 w115 h30 vCheck1 checked,a-z
+Gui, 87:Add, Checkbox, x26 y77 w115 h30 vCheck2 checked,A-Z
+Gui, 87:Add, Checkbox, x26 y107 w115 h30 vCheck3 checked,0-9
+Gui, 87:Add, Checkbox, x26 y137 w115 h30 vCheck4 checked,!@#$^&*
+Gui, 87:Add, GroupBox, x154 y30 w100 h50,Password Length
 Gui, 87:Add, Edit, -E0x200 x164 y50 w80 h20 vPasslen, 16
 Gui, 87:Add, GroupBox, x154 y82 w100 h88, Info
 Gui, 87:Add, Text, x161 y97 w90 h69 , generated password will automatically copied to clipboard!
@@ -50,7 +50,7 @@ Gui, 87:Submit, NoHide ; Save the values of the check buttons.
 if (passlen <= 0) 
 {
   msgbox,16, Well aren't you a special snowflake..., You want a password with 0 characters? What are you... a Pharmacist?
-  GuiControl,, Passlen, 8
+  GuiControl,, Passlen, 16
   GuiControl,, NewPass,
   Clipboard = 
   return
@@ -68,7 +68,7 @@ pass =
 chAlpha1 = abcdefghijklmnopqrstuvwxyz
 chAlpha2 = ABCDEFGHIJKLMNOPQRSTUVWXYZ
 chNumeric = 1234567890
-chExtra = !"£$`%^&*()_-=+{}[]`;:``@'#~<>,./?\|¬¦
+chExtra = !@#$^&*
 if (check1 = 0) and (check2 = 0) and (check3 = 0) and (check4 = 0)
 {
   msgbox,64, Info,Please check a minimum of 1 checkbox !
