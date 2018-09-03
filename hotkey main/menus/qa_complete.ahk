@@ -9,20 +9,20 @@ Gui, QA:Color, %BGColour%, 2b2e43
 ;Gui, QA:Add, Text, x0 y0 w910 h25 Center GuiMove,
 Gui, QA:Add, Picture, x0 y310 , C:\AutoHotKey\Files\ui\back-sup-wide.png
 
-Gui, QA:font, cc5c8c6, Segoe UI
+Gui, QA:font, cWHITE, Segoe UI
 
 ;Gui, QA:Add, Text , x14 y460 w280 h70 0x800000 ,
 Gui, QA:Add, Edit, -E0x200 x15 y473 w295 h57 -VScroll vQANotes,
 Gui, QA:Add, Text , yp-20, Additional Notes
  
-Gui, QA:font, bold cc5c8c6, Segoe UI
+Gui, QA:font, bold cWHITE, Segoe UI
 
 ;Gui, QA:Add, Text , x300 y460 w160 h70 0x800000 ,
 Gui, QA:Add, Edit, -E0x200 x330 y473 w120 h57 -VScroll vSCODE,
 Gui, QA:Add, Text , yp-20, SITE CODE
 
 Gui, QA:font, 
-Gui, QA:font, cc5c8c6, Segoe UI
+Gui, QA:font, cWHITE, Segoe UI
 
 Gui, QA:Add, Groupbox, x14 y540 w607 h120 , QAPreview
 Gui, QA:Add, Text, x16 y560 w50 h98 
@@ -39,10 +39,10 @@ Gui, QA:Add, Tab2, x12 y10 w610 h430 , Sanofi POS and DISP|Sanofi DISP ONLY|Stor
 ;---- TAB SANOFI POS AND DISP
 Gui, QA:Tab, Sanofi POS and DISP
 
-Gui, QA:font, s12 bold cc5c8c6, Segoe UI
+Gui, QA:font, s12 bold cWHITE, Segoe UI
 Gui, QA:Add, Text, x380 y80 , SANOFI POS AND DISP
 Gui, QA:font,
-Gui, QA:font, s8 cc5c8c6, Segoe UI
+Gui, QA:font, s8 cWHITE, Segoe UI
 ;---- EDIT BOXES
 Gui, QA:Add, Edit, -E0x200 x40 y90  h20 vMonths1, 
 Gui, QA:Add, Text , yp-20, Months on Website
@@ -51,10 +51,10 @@ Gui, QA:Add, Text , yp-20, Months in Baldrick
 Gui, QA:Add, Edit, -E0x200 x40 y140  h20 vDispDept1, 
 Gui, QA:Add, Text , yp-20, Dispense Departments
 ;---- BUTTON RESOURCES
-Gui, QA:Font, bold cc5c8c6, Segoe UI
+Gui, QA:Font, bold cWHITE, Segoe UI
 Gui, QA:Add, Button, x230 y145 w170 h30 , BALDRICK
 Gui, QA:Add, Button, x430 y145 w170 h30 , SANOFI CENTRAL
-Gui, QA:Font, cc5c8c6, Segoe UI
+Gui, QA:Font, cWHITE, Segoe UI
 ;---- GENERAL OPTIONS
 Gui, QA:Add, Text , x30 y190 w170 h235 0x800000 ,
 Gui, QA:Add, Text , xp+10 yp-7, General Options
@@ -93,10 +93,10 @@ Gui, QA:Add, Text, c616771 x458 yp+22  h20 vT1_OVER, - Overview Available
 
 ;---- TAB Sanofi DISP ONLY
 Gui, QA:Tab, Sanofi DISP ONLY
-Gui, QA:font, s12 bold cc5c8c6, Segoe UI
+Gui, QA:font, s12 bold cWHITE, Segoe UI
 Gui, QA:Add, Text, x380 y80 , SANOFI DISP ONLY
 Gui, QA:font,
-Gui, QA:font, s8 cc5c8c6, Segoe UI
+Gui, QA:font, s8 cWHITE, Segoe UI
 ;---- EDIT BOXES
 Gui, QA:Add, Edit, -E0x200 x40 y90  h20 vMonths2, 
 Gui, QA:Add, Text , yp-20, Months on Website
@@ -105,10 +105,10 @@ Gui, QA:Add, Text , yp-20, Months in Baldrick
 Gui, QA:Add, Edit, -E0x200 x40 y140  h20 vDispDept2, 
 Gui, QA:Add, Text , yp-20, Dispense Departments
 ;---- BUTTON RESOURCES
-Gui, QA:Font, bold cc5c8c6, Segoe UI
+Gui, QA:Font, bold cWHITE, Segoe UI
 Gui, QA:Add, Button, x230 y145 w170 h30 , BALDRICK
 Gui, QA:Add, Button, x430 y145 w170 h30 , SANOFI CENTRAL
-Gui, QA:Font, cc5c8c6, Segoe UI
+Gui, QA:Font, cWHITE, Segoe UI
 ;---- GENERAL OPTIONS
 Gui, QA:Add, Text , x30 y190 w170 h235 0x800000 ,
 Gui, QA:Add, Text , xp+10 yp-7, General Options
@@ -147,10 +147,10 @@ Gui, QA:Add, Text, c616771 x458 yp+22  h20 vT2_OVER, - Overview Available
 
 ;---- TAB Store IQ
 Gui, QA:Tab, Store IQ
-Gui, QA:font, s12 bold cc5c8c6, Segoe UI
+Gui, QA:font, s12 bold cWHITE, Segoe UI
 Gui, QA:Add, Text, x380 y80 , STORE IQ
 Gui, QA:font,
-Gui, QA:font, s8 cc5c8c6, Segoe UI
+Gui, QA:font, s8 cWHITE, Segoe UI
 ;---- EDIT BOXES
 ;---- EDIT BOXES
 Gui, QA:Add, Edit, -E0x200 x40 y90  h20 vMonths3, 
@@ -160,11 +160,11 @@ Gui, QA:Add, Text , yp-20, Months in Baldrick
 Gui, QA:Add, Edit, -E0x200 x40 y140  h20 vDispDept3, 
 Gui, QA:Add, Text , yp-20, Dispense Departments
 ;---- BUTTON RESOURCES
-Gui, QA:Font, bold cc5c8c6, Segoe UI
+Gui, QA:Font, bold cWHITE, Segoe UI
 Gui, QA:Add, Button, x230 y145 w170 h30 , BALDRICK
 Gui, QA:Add, Button, x430 y145 w85 h30 , STORE IQ 2
 Gui, QA:Add, Button, x515 y145 w85 h30 , STORE IQ 3
-Gui, QA:Font, cc5c8c6, Segoe UI
+Gui, QA:Font, cWHITE, Segoe UI
 ;---- GENERAL OPTIONS
 Gui, QA:Add, Text , x30 y190 w170 h235 0x800000 ,
 Gui, QA:Add, Text , xp+10 yp-7, General Options
@@ -203,10 +203,10 @@ Gui, QA:Add, Text, c616771 x458 yp+22  h20 vT3_OVER, - Overview Available
 
 ;---- TAB Apotex POS and DISP
 Gui, QA:Tab, Apotex POS and DISP
-Gui, QA:font, s12 bold cc5c8c6, Segoe UI
+Gui, QA:font, s12 bold cWHITE, Segoe UI
 Gui, QA:Add, Text, x380 y80 , APOTEX POS AND DISP
 Gui, QA:font,
-Gui, QA:font, s8 cc5c8c6, Segoe UI
+Gui, QA:font, s8 cWHITE, Segoe UI
 ;---- EDIT BOXES
 Gui, QA:Add, Edit, -E0x200 x40 y90  h20 vMonths4, 
 Gui, QA:Add, Text , yp-20, Months on Website
@@ -215,10 +215,10 @@ Gui, QA:Add, Text , yp-20, Months in Baldrick
 Gui, QA:Add, Edit, -E0x200 x40 y140  h20 vDispDept4, 
 Gui, QA:Add, Text , yp-20, Dispense Departments
 ;---- BUTTON RESOURCES
-Gui, QA:Font, bold cc5c8c6, Segoe UI
+Gui, QA:Font, bold cWHITE, Segoe UI
 Gui, QA:Add, Button, x230 y145 w170 h30 , BALDRICK
 Gui, QA:Add, Button, x430 y145 w170 h30 , APOTEX
-Gui, QA:Font, cc5c8c6, Segoe UI
+Gui, QA:Font, cWHITE, Segoe UI
 ;---- GENERAL OPTIONS
 Gui, QA:Add, Text , x30 y190 w170 h235 0x800000 ,
 Gui, QA:Add, Text , xp+10 yp-7, General Options
@@ -257,10 +257,10 @@ Gui, QA:Add, Text, c616771 x458 yp+22  h20 vT4_OVER, - Overview Available
 
 ;---- TAB Apotex POS ONLY
 Gui, QA:Tab, Apotex POS ONLY
-Gui, QA:font, s12 bold cc5c8c6, Segoe UI
+Gui, QA:font, s12 bold cWHITE, Segoe UI
 Gui, QA:Add, Text, x380 y80 , APOTEX POS ONLY
 Gui, QA:font,
-Gui, QA:font, s8 cc5c8c6, Segoe UI
+Gui, QA:font, s8 cWHITE, Segoe UI
 ;---- EDIT BOXES
 Gui, QA:Add, Edit, -E0x200 x40 y90  h20 vMonths5, 
 Gui, QA:Add, Text , yp-20, Months on Website
@@ -269,10 +269,10 @@ Gui, QA:Add, Text , yp-20, Months in Baldrick
 Gui, QA:Add, Edit, -E0x200 x40 y140  h20 vDispDept5, 
 Gui, QA:Add, Text , yp-20, Dispense Departments
 ;---- BUTTON RESOURCES
-Gui, QA:Font, bold cc5c8c6, Segoe UI
+Gui, QA:Font, bold cWHITE, Segoe UI
 Gui, QA:Add, Button, x230 y145 w170 h30 , BALDRICK
 Gui, QA:Add, Button, x430 y145 w170 h30 , APOTEX
-Gui, QA:Font, cc5c8c6, Segoe UI
+Gui, QA:Font, cWHITE, Segoe UI
 ;---- GENERAL OPTIONS
 Gui, QA:Add, Text , x30 y190 w170 h235 0x800000 ,
 Gui, QA:Add, Text , xp+10 yp-7, General Options
@@ -311,10 +311,10 @@ Gui, QA:Add, Text, c616771 x458 yp+22  h20 vT5_OVER, - Overview Available
 
 ;---- TAB Apotex DISP ONLY
 Gui, QA:Tab, Apotex DISP ONLY
-Gui, QA:font, s12 bold cc5c8c6, Segoe UI
+Gui, QA:font, s12 bold cWHITE, Segoe UI
 Gui, QA:Add, Text, x380 y80 , APOTEX DISP ONLY
 Gui, QA:font,
-Gui, QA:font, s8 cc5c8c6, Segoe UI
+Gui, QA:font, s8 cWHITE, Segoe UI
 ;---- EDIT BOXES
 ;---- EDIT BOXES
 Gui, QA:Add, Edit, -E0x200 x40 y90  h20 vMonths6, 
@@ -324,10 +324,10 @@ Gui, QA:Add, Text , yp-20, Months in Baldrick
 Gui, QA:Add, Edit, -E0x200 x40 y140  h20 vDispDept6, 
 Gui, QA:Add, Text , yp-20, Dispense Departments 
 ;---- BUTTON RESOURCES
-Gui, QA:Font, bold cc5c8c6, Segoe UI
+Gui, QA:Font, bold cWHITE, Segoe UI
 Gui, QA:Add, Button, x230 y145 w170 h30 , BALDRICK
 Gui, QA:Add, Button, x430 y145 w170 h30 , APOTEX
-Gui, QA:Font, cc5c8c6, Segoe UI
+Gui, QA:Font, cWHITE, Segoe UI
 ;---- GENERAL OPTIONS
 Gui, QA:Add, Text , x30 y190 w170 h235 0x800000 ,
 Gui, QA:Add, Text , xp+10 yp-7, General Options
@@ -366,10 +366,10 @@ Gui, QA:Add, Text, c616771 x458 yp+22  h20 vT6_OVER, - Overview Available
 
 ;---- TAB Ranbaxy
 Gui, QA:Tab, Ranbaxy
-Gui, QA:font, s12 bold cc5c8c6, Segoe UI
+Gui, QA:font, s12 bold cWHITE, Segoe UI
 Gui, QA:Add, Text, x380 y80 , RANBAXY
 Gui, QA:font,
-Gui, QA:font, s8 cc5c8c6, Segoe UI
+Gui, QA:font, s8 cWHITE, Segoe UI
 ;---- EDIT BOXES
 Gui, QA:Add, Edit, -E0x200 x40 y90  h20 vMonths7, 
 Gui, QA:Add, Text , yp-20, Months on Website
@@ -378,10 +378,10 @@ Gui, QA:Add, Text , yp-20, Months in Baldrick
 Gui, QA:Add, Edit, -E0x200 x40 y140  h20 vDispDept7, 
 Gui, QA:Add, Text , yp-20, Dispense Departments
 ;---- BUTTON RESOURCES
-Gui, QA:Font, bold cc5c8c6, Segoe UI
+Gui, QA:Font, bold cWHITE, Segoe UI
 Gui, QA:Add, Button, x230 y145 w170 h30 , BALDRICK
 Gui, QA:Add, Button, x430 y145 w170 h30 , RANBAXY
-Gui, QA:Font, cc5c8c6, Segoe UI
+Gui, QA:Font, cWHITE, Segoe UI
 ;---- GENERAL OPTIONS
 Gui, QA:Add, Text , x30 y190 w170 h235 0x800000 ,
 Gui, QA:Add, Text , xp+10 yp-7, General Options
@@ -420,10 +420,10 @@ Gui, QA:Add, Text, c616771 x458 yp+22  h20 vT7_OVER, - Overview Available
 
 ;---- TAB Sandoz
 Gui, QA:Tab, Sandoz
-Gui, QA:font, s12 bold cc5c8c6, Segoe UI
+Gui, QA:font, s12 bold cWHITE, Segoe UI
 Gui, QA:Add, Text, x380 y80 , SANDOZ
 Gui, QA:font,
-Gui, QA:font, s8 cc5c8c6, Segoe UI
+Gui, QA:font, s8 cWHITE, Segoe UI
 ;---- EDIT BOXES
 Gui, QA:Add, Edit, -E0x200 x40 y90  h20 vMonths8, 
 Gui, QA:Add, Text , yp-20, Months on Website
@@ -432,10 +432,10 @@ Gui, QA:Add, Text , yp-20, Months in Baldrick
 Gui, QA:Add, Edit, -E0x200 x40 y140  h20 vDispDept8, 
 Gui, QA:Add, Text , yp-20, Dispense Departments
 ;---- BUTTON RESOURCES
-Gui, QA:Font, bold cc5c8c6, Segoe UI
+Gui, QA:Font, bold cWHITE, Segoe UI
 Gui, QA:Add, Button, x230 y145 w170 h30 , BALDRICK
 Gui, QA:Add, Button, x430 y145 w170 h30 , SANDOZ
-Gui, QA:Font, cc5c8c6, Segoe UI
+Gui, QA:Font, cWHITE, Segoe UI
 ;---- GENERAL OPTIONS
 Gui, QA:Add, Text , x30 y190 w170 h235 0x800000 ,
 Gui, QA:Add, Text , xp+10 yp-7, General Options
@@ -474,10 +474,10 @@ Gui, QA:Add, Text, c616771 x458 yp+22  h20 vT8_OVER, - Overview Available
 
 ;---- TAB Private Label
 Gui, QA:Tab, Private Label
-Gui, QA:font, s12 bold cc5c8c6, Segoe UI
+Gui, QA:font, s12 bold cWHITE, Segoe UI
 Gui, QA:Add, Text, x380 y80 , PRIVATE LABEL
 Gui, QA:font,
-Gui, QA:font, s8 cc5c8c6, Segoe UI
+Gui, QA:font, s8 cWHITE, Segoe UI
 ;---- EDIT BOXES
 Gui, QA:Add, Edit, -E0x200 x40 y90  h20 vMonths9, 
 Gui, QA:Add, Text , yp-20, Months on Website
@@ -486,10 +486,10 @@ Gui, QA:Add, Text , yp-20, Months in Baldrick
 Gui, QA:Add, Edit, -E0x200 x40 y140  h20 vDispDept9, 
 Gui, QA:Add, Text , yp-20, Dispense Departments
 ;---- BUTTON RESOURCES
-Gui, QA:Font, bold cc5c8c6, Segoe UI
+Gui, QA:Font, bold cWHITE, Segoe UI
 Gui, QA:Add, Button, x230 y145 w170 h30 , BALDRICK
 Gui, QA:Add, Button, x430 y145 w170 h30 , PRIVATE LABEL
-Gui, QA:Font, cc5c8c6, Segoe UI
+Gui, QA:Font, cWHITE, Segoe UI
 ;---- GENERAL OPTIONS
 Gui, QA:Add, Text , x30 y190 w170 h235 0x800000 ,
 Gui, QA:Add, Text , xp+10 yp-7, General Options
@@ -528,10 +528,10 @@ Gui, QA:Add, Text, c616771 x458 yp+22  h20 vT9_OVER, - Overview Available
 
 ;---- TAB API
 Gui, QA:Tab, API
-Gui, QA:font, s12 bold cc5c8c6, Segoe UI
+Gui, QA:font, s12 bold cWHITE, Segoe UI
 Gui, QA:Add, Text, x380 y80 , API
 Gui, QA:font,
-Gui, QA:font, s8 cc5c8c6, Segoe UI
+Gui, QA:font, s8 cWHITE, Segoe UI
 ;---- EDIT BOXES
 Gui, QA:Add, Edit, -E0x200 x40 y90  h20 vMonths10, 
 Gui, QA:Add, Text , yp-20, Months on Website
@@ -540,10 +540,10 @@ Gui, QA:Add, Text , yp-20, Months in Baldrick
 Gui, QA:Add, Edit, -E0x200 x40 y140  h20 vDispDept10, 
 Gui, QA:Add, Text , yp-20, Dispense Departments
 ;---- BUTTON RESOURCES
-Gui, QA:Font, bold cc5c8c6, Segoe UI
+Gui, QA:Font, bold cWHITE, Segoe UI
 Gui, QA:Add, Button, x230 y145 w170 h30 , BALDRICK
 Gui, QA:Add, Button, x430 y145 w170 h30 , API
-Gui, QA:Font, cc5c8c6, Segoe UI
+Gui, QA:Font, cWHITE, Segoe UI
 ;---- GENERAL OPTIONS
 Gui, QA:Add, Text , x30 y190 w170 h235 0x800000 ,
 Gui, QA:Add, Text , xp+10 yp-7, General Options
@@ -869,7 +869,7 @@ run, https://storeiq3.intellipharm.com.au/
 return
 
 Complete:
-
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 WinGetPos, gui_x, gui_y,,, ahk_id %gui_id%
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, QA_position
 

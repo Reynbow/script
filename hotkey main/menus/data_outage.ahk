@@ -256,7 +256,7 @@ gosub MAINMENU
 return
 
 15ButtonConfirm:
-
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 Clipboard = %msgText%
 
 If clipboard Contains #NEWPC

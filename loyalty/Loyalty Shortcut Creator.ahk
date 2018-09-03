@@ -49,9 +49,9 @@ FileInstall C:\Users\Aaron.Beecham\Documents\AutoHotkey\tools\source\Loyalty Sho
 		Gui, 1:Add, Text, xm w280 cff0000 -E0x200 , Chrome NOT Installed ❌
 		}
 
-	Gui, 1:Add, Text, xm w280 cc5c8c6 -E0x200 , Would you like to add the Intellipharm Help shortcut to the desktop?
-	Gui, 1:Add, Button, xm w130 cc5c8c6 -E0x200 +default gYesIntIcon, Yes
-	Gui, 1:Add, Button, xp+150 w130 cc5c8c6 -E0x200 gNoIntIcon, No
+	Gui, 1:Add, Text, xm w280 cWHITE -E0x200 , Would you like to add the Intellipharm Help shortcut to the desktop?
+	Gui, 1:Add, Button, xm w130 cWHITE -E0x200 +default gYesIntIcon, Yes
+	Gui, 1:Add, Button, xp+150 w130 cWHITE -E0x200 gNoIntIcon, No
     Gui, 1:Show,, Loyalty Selection
 	return
 
@@ -67,10 +67,10 @@ Gui, 2:Margin, 16, 16
 Gui, 2:Color, 1d1f21, 383D46, 282a2e
 Gui, 2:-SysMenu +Border
 Gui, 2:Font, s11, Segoe UI
-Gui, 2:Add, Text, xm w280 cc5c8c6 -E0x200 , Would you like to add the Loyalty shortcut to the desktop?`nIf Yes, please select from the drop down menu.
-Gui, 2:Add, DropDownList, xm w280 cc5c8c6 -E0x200 vLoyChoice, LO|br.|CML|CWL|S+R|RR|RR3|Custom
-Gui, 2:Add, Button, xm w130 cc5c8c6 -E0x200 +default gYesLoyIcon, Yes
-Gui, 2:Add, Button, xp+150 w130 cc5c8c6 -E0x200 gBatch, No
+Gui, 2:Add, Text, xm w280 cWHITE -E0x200 , Would you like to add the Loyalty shortcut to the desktop?`nIf Yes, please select from the drop down menu.
+Gui, 2:Add, DropDownList, xm w280 cWHITE -E0x200 vLoyChoice, LO|br.|CML|CWL|S+R|RR|RR3|Custom
+Gui, 2:Add, Button, xm w130 cWHITE -E0x200 +default gYesLoyIcon, Yes
+Gui, 2:Add, Button, xp+150 w130 cWHITE -E0x200 gBatch, No
 Gui, 2:Show,, Loyalty Selection
 return
 
@@ -119,23 +119,23 @@ Gui, 3:Margin, 16, 16
 Gui, 3:Color, 1d1f21, 383D46, 282a2e
 Gui, 3:-SysMenu +Border
 Gui, 3:Font, s11, Segoe UI
-Gui, 3:Add, Text, xm w280 cc5c8c6 -E0x200 , Shortcut Name
-Gui, 3:Add, Edit, xm w280 cc5c8c6 -E0x200 vCustomName, Loyalty
-Gui, 3:Add, Text, xm w280 cc5c8c6 -E0x200 , Shortcut URL
-Gui, 3:Add, Edit, xm w280 cc5c8c6 -E0x200 vCustomURL, https://pharmacy.loyaltyone.com.au/
-Gui, 3:Add, Text, xm w280 cc5c8c6 -E0x200 , Please choose the preferred icon.
-Gui, 3:Add, Radio, x10 y210 w20 h20 cc5c8c6 -E0x200 vBR,
-Gui, 3:Add, Radio, xp+60 w20 h20 cc5c8c6 -E0x200 vCR,
-Gui, 3:Add, Radio, xp+60 w20 h20 cc5c8c6 -E0x200 vLO,
-Gui, 3:Add, Radio, xp+60 w20 h20 cc5c8c6 -E0x200 vRR,
-Gui, 3:Add, Radio, xp+60 w20 h20 cc5c8c6 -E0x200 vSR,
+Gui, 3:Add, Text, xm w280 cWHITE -E0x200 , Shortcut Name
+Gui, 3:Add, Edit, xm w280 cWHITE -E0x200 vCustomName, Loyalty
+Gui, 3:Add, Text, xm w280 cWHITE -E0x200 , Shortcut URL
+Gui, 3:Add, Edit, xm w280 cWHITE -E0x200 vCustomURL, https://pharmacy.loyaltyone.com.au/
+Gui, 3:Add, Text, xm w280 cWHITE -E0x200 , Please choose the preferred icon.
+Gui, 3:Add, Radio, x10 y210 w20 h20 cWHITE -E0x200 vBR,
+Gui, 3:Add, Radio, xp+60 w20 h20 cWHITE -E0x200 vCR,
+Gui, 3:Add, Radio, xp+60 w20 h20 cWHITE -E0x200 vLO,
+Gui, 3:Add, Radio, xp+60 w20 h20 cWHITE -E0x200 vRR,
+Gui, 3:Add, Radio, xp+60 w20 h20 cWHITE -E0x200 vSR,
 Gui, 3:Add, Picture, x30 y205 w32 h32 , %A_WorkingDir%\Files\images\better_rewards.png
 Gui, 3:Add, Picture, xp+60 w32 h32 , %A_WorkingDir%\Files\images\chemmart_rewards.png
 Gui, 3:Add, Picture, xp+60 w32 h32 , %A_WorkingDir%\Files\images\loyalty_one.png
 Gui, 3:Add, Picture, xp+60 w32 h32 , %A_WorkingDir%\Files\images\restore_rewards.png
 Gui, 3:Add, Picture, xp+60 w32 h32 , %A_WorkingDir%\Files\images\soul_rewards.png
-Gui, 3:Add, Button, xm w130 cc5c8c6 -E0x200 +default gCustomDone, Done
-Gui, 3:Add, Button, xp+150 w130 cc5c8c6 -E0x200 gExit, Exit
+Gui, 3:Add, Button, xm w130 cWHITE -E0x200 +default gCustomDone, Done
+Gui, 3:Add, Button, xp+150 w130 cWHITE -E0x200 gExit, Exit
 Gui, 3:Show,, Loyalty Selection
 Return
 
@@ -203,16 +203,16 @@ Gui, 4:Margin, 16, 16
 Gui, 4:Color, 1d1f21, 383D46, 282a2e
 Gui, 4:-SysMenu +Border
 Gui, 4:Font, s11, Segoe UI
-Gui, 4:Add, Text, xm w280 cc5c8c6 -E0x200 , Back Office PC
-Gui, 4:Add, Edit, yp+25 w280 cc5c8c6 -E0x200 vPCName,
-Gui, 4:Add, Text, xm w280 cc5c8c6 -E0x200 , Username:
-Gui, 4:Add, Edit, yp+25 w280 cc5c8c6 -E0x200 vUsername,
-Gui, 4:Add, Text, xm w280 cc5c8c6 -E0x200 , Password:
-Gui, 4:Add, Edit, yp+25 w280 cc5c8c6 -E0x200 vPassword,
-Gui, 4:Add, Text, xm w280 cc5c8c6 -E0x200 , Please choose the required Batch file
-Gui, 4:Add, DropDownList, yp+25 w280 cc5c8c6 -E0x200 vBatchFile, STANDARD|STANDARD - AUTO SERVER LOGIN|LOTS|LOTS - AUTO SERVER LOGIN
-Gui, 4:Add, Button, xm w130 cc5c8c6 -E0x200 +default gContinue, Complete
-Gui, 4:Add, Button, xp+150 w130 cc5c8c6 -E0x200 gExit, Exit
+Gui, 4:Add, Text, xm w280 cWHITE -E0x200 , Back Office PC
+Gui, 4:Add, Edit, yp+25 w280 cWHITE -E0x200 vPCName,
+Gui, 4:Add, Text, xm w280 cWHITE -E0x200 , Username:
+Gui, 4:Add, Edit, yp+25 w280 cWHITE -E0x200 vUsername,
+Gui, 4:Add, Text, xm w280 cWHITE -E0x200 , Password:
+Gui, 4:Add, Edit, yp+25 w280 cWHITE -E0x200 vPassword,
+Gui, 4:Add, Text, xm w280 cWHITE -E0x200 , Please choose the required Batch file
+Gui, 4:Add, DropDownList, yp+25 w280 cWHITE -E0x200 vBatchFile, STANDARD|STANDARD - AUTO SERVER LOGIN|LOTS|LOTS - AUTO SERVER LOGIN
+Gui, 4:Add, Button, xm w130 cWHITE -E0x200 +default gContinue, Complete
+Gui, 4:Add, Button, xp+150 w130 cWHITE -E0x200 gExit, Exit
 Gui, 4:Show,, Loyalty Selection
 return
 

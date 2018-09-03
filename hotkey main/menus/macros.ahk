@@ -25,7 +25,7 @@ Gui, 98:Add, Picture, x0 y390 , C:\AutoHotKey\Files\ui\back-sup.png
 Gui, 98:Add, Text, x15 y15 w450, MACROS
 
 Gui, 98:Font,
-Gui, 98:Font, s11 cc5c8c6 , Segoe UI
+Gui, 98:Font, s11 cWHITE , Segoe UI
 Gui, 98:Add, Text, yp+50 w400,  This window enables you to type any length of text in the fields next to a numbered Macro. Once saved, you can then type ]# to output the information you have saved.
 
 Gui, 98:Add, Text, x15 y156 h20 , ] 0
@@ -39,7 +39,7 @@ Gui, 98:Add, Text, yp+45 h20 , ] 7
 Gui, 98:Add, Text, yp+45 h20 , ] 8
 Gui, 98:Add, Text, yp+45 h20 , ] 9
 
-Gui, 98:Font, s8 cc5c8c6, Segoe UI
+Gui, 98:Font, s8 cWHITE, Segoe UI
 Gui, 98:Add, Edit, x45 y150 w390 h37 -E0x200 vCTRL0, %vMacro0%
 Gui, 98:Add, Edit, yp+45 w390 h37 -E0x200 vCTRL1, %vMacro1%
 Gui, 98:Add, Edit, yp+45 w390 h37 -E0x200 vCTRL2, %vMacro2%
@@ -51,7 +51,7 @@ Gui, 98:Add, Edit, yp+45 w390 h37 -E0x200 vCTRL7, %vMacro7%
 Gui, 98:Add, Edit, yp+45 w390 h37 -E0x200 vCTRL8, %vMacro8%
 Gui, 98:Add, Edit, yp+45 w390 h37 -E0x200 vCTRL9, %vMacro9%
 
-Gui, 98:Font, S8 cc5c8c6, Segoe UI
+Gui, 98:Font, S8 cWHITE, Segoe UI
 Gui, 98:Add, Text, x8 y620 h50 w188 
 Gui, 98:Add, Text, x12 yp+4 w180 , For key functions, like entering a new line, type {ENTER}. To see more key shortcuts
 Gui, 98:Font, S8 CAqua Underline

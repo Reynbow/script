@@ -4,16 +4,16 @@
 	
 Gui, -SysMenu -caption -Border
 Gui, Color, 1f2130, 2b2e43
-Gui, Add, Text, x0 y0 w308 h25 Center GuiMove,
-
-Gui, font, cE8EBF5 Bold s18, SegoeUI
-Gui, Add, Text, xp+20 yp+20, HOTKEY INSTALLER
+Gui, Add, Text, x0 y0 w178 h25 Center GuiMove,
+Gui, Add, Picture, x0 y-70 , G:\Support\Public Staff Folders\Aaron\Update\files\ui\back-sup.png
+Gui, font, cE8EBF5 s18 Bold, SegoeUI
+Gui, Add, Text, xp+20 yp+90, HOTKEY`nINSTALLER
 Gui, font,
 Gui, font, cE8EBF5 , SegoeUI
-Gui, Add, Text, yp+50, Please confirm details below.
-Gui, Add, Text, yp+30, First Name
+Gui, Add, Text, yp+80, Please confirm details below.
+Gui, Add, Text, yp+40 BackgroundTrans, First Name
 Gui, Add, Edit, xp+60 yp-3 h18 -E0x200 vFirstName, 
-Gui, Add, Text, xp-60 yp+30, Surname
+Gui, Add, Text, xp-60 yp+30 BackgroundTrans, Surname
 Gui, Add, Edit, xp+60 yp-3 h18 -E0x200 vSurname,
 Gui, font, 
 Gui, font, cE8EBF5 s10, SegoeUI
@@ -21,7 +21,7 @@ Gui, Add, Button, xp-60 yp+70 w180 h30 hwndUP1 gInstall, Install
 
 Gui, font,
 Gui, font, s14 CWhite Bold , Segoe UI
-Gui, Add, Button, x308 y0 w42 h28 Left gExit hwndHBT99, %A_Space%%A_Space%✖
+Gui, Add, Button, x178 y0 w42 h28 Left gExit hwndHBT99, %A_Space%%A_Space%✖
 
 Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
 Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
@@ -35,7 +35,7 @@ Opt5 := [ ,            ,       , "WHITE"]
 ImageButton.Create(HBT99, Opt1, Opt2, , , Opt5)
 
 DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 0)
-Gui, Show, w350 h500, INSTALLER
+Gui, Show, w220 h285, INSTALLER
 DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 1)
 return
 
@@ -45,6 +45,7 @@ GuiClose:
 ExitApp
 
 Install:
+Gui, Submit
 Gui, Destroy
 Gui, +AlwaysOnTop -sysmenu
 Gui, Font, S12 Bold CDefault, Verdana
@@ -67,16 +68,22 @@ Gui, Show, w200 h80,Updating...
 		FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\Staff Logs.exe, C:\AutoHotKey\Files\Staff Logs.exe,1
 		FileCopy, G:\Support\Public Staff Folders\Aaron\Update\files\all_tag_6.png, C:\AutoHotKey\Files\all_tag_6.png,1
 
+		IniWrite, %FirstName%, C:\AutoHotKey\settings.ini, UserName, Name
+		IniWrite, %Surname%, C:\AutoHotKey\settings.ini, UserName, Surname
+
 		IniWrite x20 y20, C:\AutoHotKey\settings.ini, window position, gui_position		
 		IniWrite x20 y760, C:\AutoHotKey\settings.ini, window position, point_position	
 		IniWrite x250 y20, C:\AutoHotKey\settings.ini, window position, weekly_position
+
+		IniWrite Choose1, C:\AutoHotKey\settings.ini, Starting Position, Start
+		IniWrite -AlwaysOnTop, C:\AutoHotKey\settings.ini, Always On Top, Active
 		
 		;======= UI FILES
 		FileCopyDir, G:\Support\Public Staff Folders\Aaron\Update\files\ui, C:\AutoHotKey\Files\ui ,1
 
 		sleep 1500
 		Gui, Destroy
-		MsgBox,  0, Update Complete, The script has updated succesfully.`nYou may now run the script again using the hotkey.
+		MsgBox,  0, Update Complete, The script has installed succesfully.`nYou may now run the script by pressing CTRL+PGDN
 		Run, C:\AutoHotKey\script.exe
 ExitApp
 

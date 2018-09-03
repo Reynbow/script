@@ -1,4 +1,11 @@
 ﻿WeekPoints:
+
+
+Loop, 7{
+    NUMM++
+FileReadLine, Employee%NUMM%, G:\Support\Public Staff Folders\Aaron\Update\staff_points_list.txt, %NUMM%
+}
+
 FormatTime, Day,, dddd
 
 If Day = Friday
@@ -116,59 +123,53 @@ If Day = Monday
     FormatTime, mon, %mon%, yyyyMMdd
     }
 
-IniRead, AaronFri, G:\Support\Public Staff Folders\Aaron\points\Aaron\%fri%.ini, Count Points, Points, 0
-IniRead, MatthewFri, G:\Support\Public Staff Folders\Aaron\points\Matthew\%fri%.ini, Count Points, Points, 0
-IniRead, BrodieFri, G:\Support\Public Staff Folders\Aaron\points\Brodie\%fri%.ini, Count Points, Points, 0
-IniRead, JimFri, G:\Support\Public Staff Folders\Aaron\points\James\%fri%.ini, Count Points, Points, 0
-IniRead, JoelFri, G:\Support\Public Staff Folders\Aaron\points\Joel\%fri%.ini, Count Points, Points, 0
-IniRead, JayFri, G:\Support\Public Staff Folders\Aaron\points\Jay\%fri%.ini, Count Points, Points, 0
-;IniRead, RenaeFri, G:\Support\Public Staff Folders\Aaron\points\Renae\%fri%.ini, Count Points, Points, 0
-IniRead, RickFri, G:\Support\Public Staff Folders\Aaron\points\Rick\%fri%.ini, Count Points, Points, 0
+IniRead, Employee1Fri, G:\Support\Public Staff Folders\Aaron\points\%Employee1%\%fri%.ini, Count Points, Points, 0
+IniRead, Employee2Fri, G:\Support\Public Staff Folders\Aaron\points\%Employee2%\%fri%.ini, Count Points, Points, 0
+IniRead, Employee3Fri, G:\Support\Public Staff Folders\Aaron\points\%Employee3%\%fri%.ini, Count Points, Points, 0
+IniRead, Employee4Fri, G:\Support\Public Staff Folders\Aaron\points\%Employee4%\%fri%.ini, Count Points, Points, 0
+IniRead, Employee5Fri, G:\Support\Public Staff Folders\Aaron\points\%Employee5%\%fri%.ini, Count Points, Points, 0
+IniRead, Employee6Fri, G:\Support\Public Staff Folders\Aaron\points\%Employee6%\%fri%.ini, Count Points, Points, 0
+IniRead, Employee7Fri, G:\Support\Public Staff Folders\Aaron\points\%Employee7%\%fri%.ini, Count Points, Points, 0
 
-IniRead, AaronThu, G:\Support\Public Staff Folders\Aaron\points\Aaron\%thur%.ini, Count Points, Points, 0
-IniRead, MatthewThu, G:\Support\Public Staff Folders\Aaron\points\Matthew\%thur%.ini, Count Points, Points, 0
-IniRead, BrodieThu, G:\Support\Public Staff Folders\Aaron\points\Brodie\%thur%.ini, Count Points, Points, 0
-IniRead, JimThu, G:\Support\Public Staff Folders\Aaron\points\James\%thur%.ini, Count Points, Points, 0
-IniRead, JoelThu, G:\Support\Public Staff Folders\Aaron\points\Joel\%thur%.ini, Count Points, Points, 0
-IniRead, JayThu, G:\Support\Public Staff Folders\Aaron\points\Jay\%thur%.ini, Count Points, Points, 0
-;IniRead, RenaeThu, G:\Support\Public Staff Folders\Aaron\points\Renae\%thur%.ini, Count Points, Points, 0
-IniRead, RickThu, G:\Support\Public Staff Folders\Aaron\points\Rick\%thur%.ini, Count Points, Points, 0
+IniRead, Employee1Thu, G:\Support\Public Staff Folders\Aaron\points\%Employee1%\%thur%.ini, Count Points, Points, 0
+IniRead, Employee2Thu, G:\Support\Public Staff Folders\Aaron\points\%Employee2%\%thur%.ini, Count Points, Points, 0
+IniRead, Employee3Thu, G:\Support\Public Staff Folders\Aaron\points\%Employee3%\%thur%.ini, Count Points, Points, 0
+IniRead, Employee4Thu, G:\Support\Public Staff Folders\Aaron\points\%Employee4%\%thur%.ini, Count Points, Points, 0
+IniRead, Employee5Thu, G:\Support\Public Staff Folders\Aaron\points\%Employee5%\%thur%.ini, Count Points, Points, 0
+IniRead, Employee6Thu, G:\Support\Public Staff Folders\Aaron\points\%Employee6%\%thur%.ini, Count Points, Points, 0
+IniRead, Employee7Thu, G:\Support\Public Staff Folders\Aaron\points\%Employee7%\%thur%.ini, Count Points, Points, 0
 
-IniRead, AaronWed, G:\Support\Public Staff Folders\Aaron\points\Aaron\%wed%.ini, Count Points, Points, 0
-IniRead, MatthewWed, G:\Support\Public Staff Folders\Aaron\points\Matthew\%wed%.ini, Count Points, Points, 0
-IniRead, BrodieWed, G:\Support\Public Staff Folders\Aaron\points\Brodie\%wed%.ini, Count Points, Points, 0
-IniRead, JimWed, G:\Support\Public Staff Folders\Aaron\points\James\%wed%.ini, Count Points, Points, 0
-IniRead, JoelWed, G:\Support\Public Staff Folders\Aaron\points\Joel\%wed%.ini, Count Points, Points, 0
-IniRead, JayWed, G:\Support\Public Staff Folders\Aaron\points\Jay\%wed%.ini, Count Points, Points, 0
-;IniRead, RenaeWed, G:\Support\Public Staff Folders\Aaron\points\Renae\%wed%.ini, Count Points, Points, 0
-IniRead, RickWed, G:\Support\Public Staff Folders\Aaron\points\Rick\%wed%.ini, Count Points, Points, 0
+IniRead, Employee1Wed, G:\Support\Public Staff Folders\Aaron\points\%Employee1%\%wed%.ini, Count Points, Points, 0
+IniRead, Employee2Wed, G:\Support\Public Staff Folders\Aaron\points\%Employee2%\%wed%.ini, Count Points, Points, 0
+IniRead, Employee3Wed, G:\Support\Public Staff Folders\Aaron\points\%Employee3%\%wed%.ini, Count Points, Points, 0
+IniRead, Employee4Wed, G:\Support\Public Staff Folders\Aaron\points\%Employee4%\%wed%.ini, Count Points, Points, 0
+IniRead, Employee5Wed, G:\Support\Public Staff Folders\Aaron\points\%Employee5%\%wed%.ini, Count Points, Points, 0
+IniRead, Employee6Wed, G:\Support\Public Staff Folders\Aaron\points\%Employee6%\%wed%.ini, Count Points, Points, 0
+IniRead, Employee7Wed, G:\Support\Public Staff Folders\Aaron\points\%Employee7%\%wed%.ini, Count Points, Points, 0
 
-IniRead, AaronTue, G:\Support\Public Staff Folders\Aaron\points\Aaron\%tue%.ini, Count Points, Points, 0
-IniRead, MatthewTue, G:\Support\Public Staff Folders\Aaron\points\Matthew\%tue%.ini, Count Points, Points, 0
-IniRead, BrodieTue, G:\Support\Public Staff Folders\Aaron\points\Brodie\%tue%.ini, Count Points, Points, 0
-IniRead, JimTue, G:\Support\Public Staff Folders\Aaron\points\James\%tue%.ini, Count Points, Points, 0
-IniRead, JoelTue, G:\Support\Public Staff Folders\Aaron\points\Joel\%tue%.ini, Count Points, Points, 0
-IniRead, JayTue, G:\Support\Public Staff Folders\Aaron\points\Jay\%tue%.ini, Count Points, Points, 0
-;IniRead, RenaeTue, G:\Support\Public Staff Folders\Aaron\points\Renae\%tue%.ini, Count Points, Points, 0
-IniRead, RickTue, G:\Support\Public Staff Folders\Aaron\points\Rick\%tue%.ini, Count Points, Points, 0
+IniRead, Employee1Tue, G:\Support\Public Staff Folders\Aaron\points\%Employee1%\%tue%.ini, Count Points, Points, 0
+IniRead, Employee2Tue, G:\Support\Public Staff Folders\Aaron\points\%Employee2%\%tue%.ini, Count Points, Points, 0
+IniRead, Employee3Tue, G:\Support\Public Staff Folders\Aaron\points\%Employee3%\%tue%.ini, Count Points, Points, 0
+IniRead, Employee4Tue, G:\Support\Public Staff Folders\Aaron\points\%Employee4%\%tue%.ini, Count Points, Points, 0
+IniRead, Employee5Tue, G:\Support\Public Staff Folders\Aaron\points\%Employee5%\%tue%.ini, Count Points, Points, 0
+IniRead, Employee6Tue, G:\Support\Public Staff Folders\Aaron\points\%Employee6%\%tue%.ini, Count Points, Points, 0
+IniRead, Employee7Tue, G:\Support\Public Staff Folders\Aaron\points\%Employee7%\%tue%.ini, Count Points, Points, 0
 
-IniRead, AaronMon, G:\Support\Public Staff Folders\Aaron\points\Aaron\%mon%.ini, Count Points, Points, 0
-IniRead, MatthewMon, G:\Support\Public Staff Folders\Aaron\points\Matthew\%mon%.ini, Count Points, Points, 0
-IniRead, BrodieMon, G:\Support\Public Staff Folders\Aaron\points\Brodie\%mon%.ini, Count Points, Points, 0
-IniRead, JimMon, G:\Support\Public Staff Folders\Aaron\points\James\%mon%.ini, Count Points, Points, 0
-IniRead, JoelMon, G:\Support\Public Staff Folders\Aaron\points\Joel\%mon%.ini, Count Points, Points, 0
-IniRead, JayMon, G:\Support\Public Staff Folders\Aaron\points\Jay\%mon%.ini, Count Points, Points, 0
-;IniRead, RenaeMon, G:\Support\Public Staff Folders\Aaron\points\Renae\%mon%.ini, Count Points, Points, 0
-IniRead, RickMon, G:\Support\Public Staff Folders\Aaron\points\Rick\%mon%.ini, Count Points, Points, 0
+IniRead, Employee1Mon, G:\Support\Public Staff Folders\Aaron\points\%Employee1%\%mon%.ini, Count Points, Points, 0
+IniRead, Employee2Mon, G:\Support\Public Staff Folders\Aaron\points\%Employee2%\%mon%.ini, Count Points, Points, 0
+IniRead, Employee3Mon, G:\Support\Public Staff Folders\Aaron\points\%Employee3%\%mon%.ini, Count Points, Points, 0
+IniRead, Employee4Mon, G:\Support\Public Staff Folders\Aaron\points\%Employee4%\%mon%.ini, Count Points, Points, 0
+IniRead, Employee5Mon, G:\Support\Public Staff Folders\Aaron\points\%Employee5%\%mon%.ini, Count Points, Points, 0
+IniRead, Employee6Mon, G:\Support\Public Staff Folders\Aaron\points\%Employee6%\%mon%.ini, Count Points, Points, 0
+IniRead, Employee7Mon, G:\Support\Public Staff Folders\Aaron\points\%Employee7%\%mon%.ini, Count Points, Points, 0
 
-AaronTotal 		:= AaronFri + AaronThu + AaronWed + AaronTue + AaronMon
-MatthewTotal 	:= MatthewFri + MatthewThu + MatthewWed + MatthewTue + MatthewMon
-BrodieTotal 	:= BrodieFri + BrodieThu + BrodieWed + BrodieTue + BrodieMon
-JimTotal 		:= JimFri + JimThu + JimWed + JimTue + JimMon
-JoelTotal 		:= JoelFri + JoelThu + JoelWed + JoelTue + JoelMon
-JayTotal 		:= JayFri + JayThu + JayWed + JayTue + JayMon
-;RenaeTotal 		:= RenaeFri + RenaeThu + RenaeWed + RenaeTue + RenaeMon
-RickTotal 		:= RickFri + RickThu + RickWed + RickTue + RickMon
+Employee1Total 		:= Employee1Fri + Employee1Thu + Employee1Wed + Employee1Tue + Employee1Mon
+Employee2Total 	    := Employee2Fri + Employee2Thu + Employee2Wed + Employee2Tue + Employee2Mon
+Employee3Total 		:= Employee3Fri + Employee3Thu + Employee3Wed + Employee3Tue + Employee3Mon
+Employee4Total 		:= Employee4Fri + Employee4Thu + Employee4Wed + Employee4Tue + Employee4Mon
+Employee5Total 		:= Employee5Fri + Employee5Thu + Employee5Wed + Employee5Tue + Employee5Mon
+Employee6Total 	    := Employee6Fri + Employee6Thu + Employee6Wed + Employee6Tue + Employee6Mon
+Employee7Total 		:= Employee7Fri + Employee7Thu + Employee7Wed + Employee7Tue + Employee7Mon
 
 NiceMon = %a_now%
 NiceMon += -4, days
@@ -188,24 +189,22 @@ FormatTime, NiceFri, %NiceFri%, dd/MM/yyyy
 XL := ComObjCreate("Excel.Application")
 XL.WorkBooks.Add
 
-XL.Range("A2").Value := "Aaron"
-XL.Range("A3").Value := "Brodie"
-XL.Range("A4").Value := "Jay"
-XL.Range("A5").Value := "Jim"
-XL.Range("A6").Value := "Joel"
-XL.Range("A7").Value := "Matt"
-;XL.Range("A8").Value := "Renae"
-XL.Range("A8").Value := "Rick"
+XL.Range("A2").Value := Employee1
+XL.Range("A3").Value := Employee2
+XL.Range("A4").Value := Employee3
+XL.Range("A5").Value := Employee4
+XL.Range("A6").Value := Employee5
+XL.Range("A7").Value := Employee6
+XL.Range("A8").Value := Employee7
 
 XL.Range("B1").Value := Points
-XL.Range("B2").Value := AaronTotal
-XL.Range("B3").Value := BrodieTotal
-XL.Range("B4").Value := JayTotal
-XL.Range("B5").Value := JimTotal
-XL.Range("B6").Value := JoelTotal
-XL.Range("B7").Value := MatthewTotal
-;XL.Range("B8").Value := RenaeTotal
-XL.Range("B8").Value := RickTotal
+XL.Range("B2").Value := Employee1Total
+XL.Range("B3").Value := Employee2Total
+XL.Range("B4").Value := Employee3Total
+XL.Range("B5").Value := Employee4Total
+XL.Range("B6").Value := Employee5Total
+XL.Range("B7").Value := Employee6Total
+XL.Range("B8").Value := Employee7Total
 
 XL.Range("A1:B8").Select
 XL.ActiveSheet.Shapes.AddChart.Select
@@ -230,14 +229,14 @@ XL.Quit
 
 Data_Source=
 (
- -Aaron-Brodie-Jay-James-Joel-Matt-Rick
-Monday-%AaronMon%-%BrodieMon%-%JayMon%-%JimMon%-%JoelMon%-%MatthewMon%-%RickMon%
-Tuesday-%AaronTue%-%BrodieTue%-%JayTue%-%JimTue%-%JoelTue%-%MatthewTue%-%RickTue%
-Wednesday-%AaronWed%-%BrodieWed%-%JayWed%-%JimWed%-%JoelWed%-%MatthewWed%-%RickWed%
-Thursday-%AaronThu%-%BrodieThu%-%JayThu%-%JimThu%-%JoelThu%-%MatthewThu%-%RickThu%
-Friday-%AaronFri%-%BrodieFri%-%JayFri%-%JimFri%-%JoelFri%-%MatthewFri%-%RickFri%
+ -%Employee1%-%Employee2%-%Employee3%-%Employee4%-%Employee5%-%Employee6%-%Employee7%
+Monday-%Employee1Mon%-%Employee2Mon%-%Employee3Mon%-%Employee4Mon%-%Employee5Mon%-%Employee6Mon%-%Employee7Mon%
+Tuesday-%Employee1Tue%-%Employee2Tue%-%Employee3Tue%-%Employee4Tue%-%Employee5Tue%-%Employee6Tue%-%Employee7Tue%
+Wednesday-%Employee1Wed%-%Employee2Wed%-%Employee3Wed%-%Employee4Wed%-%Employee5Wed%-%Employee6Wed%-%Employee7Wed%
+Thursday-%Employee1Thu%-%Employee2Thu%-%Employee3Thu%-%Employee4Thu%-%Employee5Thu%-%Employee6Thu%-%Employee7Thu%
+Friday-%Employee1Fri%-%Employee2Fri%-%Employee3Fri%-%Employee4Fri%-%Employee5Fri%-%Employee6Fri%-%Employee7Fri%
  - - - - - - - -
-TOTAL-%AaronTotal%-%BrodieTotal%-%JayTotal%-%JimTotal%-%JoelTotal%-%MatthewTotal%-%RickTotal%
+TOTAL-%Employee1Total%-%Employee2Total%-%Employee3Total%-%Employee4Total%-%Employee5Total%-%Employee6Total%-%Employee7Total%
 )	
 ; Call the function 
 LV_Table(Data_Source)

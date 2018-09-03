@@ -82,6 +82,8 @@ msgbox, 16, Warning, Please enter a SITE CODE ID,
 return
 }
 
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
+
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt
 FormatTime, scripttime,, yyyyMM

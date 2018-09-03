@@ -145,6 +145,7 @@ Reload
 return
 
 18ButtonConfirm:
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 if (!SCODE){

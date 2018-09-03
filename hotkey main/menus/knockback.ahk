@@ -82,6 +82,7 @@ return
 return
 
 21ButtonConfirm:
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 Gui, Submit, NoHide
 
 if (!SCODE){

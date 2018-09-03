@@ -6,7 +6,7 @@ SetBatchLines, -1
 SendMode, Event
 SetKeyDelay 25, 10
 
-VersionNum = 3.6.06
+VersionNum = 3.6.08
 
 IniRead, StartPOS, C:\AutoHotKey\settings.ini, Starting Position, Start
 IniRead, OnTopSetting, C:\AutoHotKey\settings.ini, Always On Top, Active
@@ -35,6 +35,7 @@ Return
 
 +PGDN::reload
 ^PGDN::
+
 Gui, 99:Destroy
 IfNotExist, C:\AutoHotKey\settings.ini
 	{
@@ -42,7 +43,7 @@ Gui, 45:Margin, 16, 16
 Gui, 45:Color, 1d1f21, 383D46, 282a2e
 Gui, 45:-SysMenu +Border %OnTopSetting%
 Gui, 45:Font, s11, Segoe UI
-Gui, 45:Add, Text, cc5c8c6 xm w230 , Looks like you have not assigned your name.`n`nYou will need to set this before you can use the script. Would you like to set it now?
+Gui, 45:Add, Text, cWHITE xm w230 , Looks like you have not assigned your name.`n`nYou will need to set this before you can use the script. Would you like to set it now?
 Gui, 45:Add, Button, xm w120 h30, Yes
 Gui, 45:Add, Button, x+10 w120 h30, No
 Gui, 45:Show, , Name Selection
@@ -60,7 +61,44 @@ return
 ;ACCOUNT NAMES
 IfNotExist, G:\
 {
-msgbox, CAN NOT LOCATE G:\`n`nPlease confirm you have access to the G drive and try again.
+
+Gui, Destroy
+Gui, 99:Destroy
+IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
+FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Update\codelist.txt
+IniRead, FirstName, C:\AutoHotKey\settings.ini, UserName, Name
+IniRead, SecondName, C:\AutoHotKey\settings.ini, UserName, Surname
+Gui, G:-SysMenu -caption -Border %OnTopSetting%
+Gui, G:Color, 1f2130, 2b2e43
+Gui, G:Add, Text, x0 y0 w910 h25 Center GuiMove,
+Gui, G:Add, Picture, x0 y0 , C:\AutoHotKey\Files\ui\back-sup.png
+Gui, G:font, s16 bold cWHITE, Segoe UI
+Gui, G:Add, Text, x20 y18 , WARNING! `nCANNOT LOCATE G:\
+Gui, G:font, 
+Gui, G:font, cWHITE, Segoe UI
+Gui, G:Add, Text, x20 yp+80 , Would you like to connect to G drive now?
+Gui, G:Add, Text, x20 yp+40 w275 BackgroundTrans, The script will not function without access to G drive. You will be unable to use the scipt until a connection to G drive has been made. Please log in below or connect to G drive manually.
+Gui, G:Add, Text, yp+80 cWHITE -E0x200 , USERNAME:
+Gui, G:Add, Edit, xp+80 w195 cWHITE -E0x200 vUsername, pharmacy\%FirstName%.%SecondName%
+Gui, G:Add, Text, xp-80 yp+35 cWHITE -E0x200 BackgroundTrans, PASSWORD:
+Gui, G:Add, Edit, xp+80 w195 cWHITE -E0x200 vPassword,
+Gui, G:Add, Button, xp-80 yp+40 w130 h30 hwndG1 gConnectG, % "CONNECT"
+Gui, G:Add, Button, xp+146 w130 h30 hwndG2 gCloseG, % "CLOSE"
+GuiControl, G:Focus, Password
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(G1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(G2, Opt1, Opt2, , , Opt5)
+
+DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 0)
+Gui, G:Show, %Gui_Cord% w314 h340, %A_Space%
+DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 1)
+
+;msgbox, CAN NOT LOCATE G:\`n`nPlease confirm you have access to the G drive and try again.
+; run, cmd /C net use g: \\10.7.134.14\group /USER:pharmacy\aaron.beecham "SxwDM8asd&swd20EDe" /PERSISTENT:NO
 Return
 }
 else
@@ -81,6 +119,16 @@ If Name contains %FirstName%
 		gosub script_settings
 		return
 	}
+
+CloseG:
+Reload
+Return
+
+ConnectG:
+Gui, Submit
+run, %comspec% /C net use g: \\10.7.134.14\group /USER:pharmacy\%FirstName%.%SecondName% "%Password%" /PERSISTENT:NO
+reload
+Return
 
 NamePart2:
 If Surname contains %SecondName%
@@ -104,7 +152,7 @@ IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
 IniRead, Point_Cord, C:\AutoHotKey\settings.ini, window position, point_position, x1 y1
 IniRead, Count, C:\AutoHotKey\settings.ini, Use Count, Count
 
-IniRead, Dog, C:\AutoHotKey\settings.ini, UserName, Name
+IniRead, Admin, C:\AutoHotKey\settings.ini, UserName, Name
 Count++  ; This adds 1 to your variable TimesOpened.
 IniWrite, %Count%, C:\AutoHotKey\settings.ini, Use Count, Count
 
@@ -439,11 +487,11 @@ Gui, 99:Add, Button, x322 y670 w115 h30 gUPDATENOW hwndHBT27, UPDATE NOW
 }
 Else
 {
-	If Dog = Brodie
+	If Admin = Brodie
 	{
 	Gui, 99:Add, Button, x184 y670 w80 h30 gTicketCounter hwndHBT19, TICKET COUNT
 	}
-	If Dog = Aaron
+	If Admin = Aaron
 	{
 	Gui, 99:Add, Button, x184 y670 w80 h30 gTicketCounter hwndHBT20, TICKET COUNT
 	}
@@ -480,6 +528,15 @@ ImageButton.Create(HBT%NUM%, Opt1, Opt2, , , Opt5)
 Gui, 99:font,
 Gui, 99:font, s11 CWhite Bold , Segoe UI
 Gui, 99:Add, Button, x323 y0 w85 h28 gscript_settings hwndHBT98, SETTINGS
+If Admin = Brodie
+	{
+	Gui, 99:Add, Button, x314 y114 w120 h28 gscript_admin hwndHBT97, ADMIN PANEL
+	}
+	If Admin = Aaron
+	{
+	Gui, 99:Add, Button, x314 y114 w120 h28 gscript_admin hwndHBT97, ADMIN PANEL
+	}
+;Gui, 99:Add, Button, x314 y114 w120 h28 gscript_admin hwndHBT97, ADMIN PANEL
 Gui, 99:font,
 Gui, 99:font, s14 CWhite Bold , Segoe UI
 Gui, 99:Add, Button, x408 y0 w42 h28 Left gExit hwndHBT99, %A_Space%%A_Space%✖
@@ -490,6 +547,7 @@ Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 1]
 Opt5 := [ ,            ,       , "WHITE"]        
 ImageButton.Create(HBT99, Opt1, Opt2, , , Opt5)
 ImageButton.Create(HBT98, Opt1, Opt2, , , Opt5)
+ImageButton.Create(HBT97, Opt1, Opt2, , , Opt5)
 ;================================
 
 IfEqual, Gui_Cord, x y
@@ -502,6 +560,97 @@ DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt
 Gui, 99:Show, %Gui_Cord% w450 h715 , MAIN MENU
 DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 1)
 return
+
+script_Admin:
+WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
+IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
+Gui, Destroy
+FileRead, codelist, G:\Support\Public Staff Folders\Aaron\Update\codelist.txt
+IniRead, Gui_Cord, C:\AutoHotKey\settings.ini, window position, gui_position
+Gui, AdminP:Add, Edit, x-100 y-100 w10 h10,
+Gui, AdminP:-SysMenu -caption -Border %OnTopSetting%
+Gui, AdminP:Add, Text, x0 y0 w408 h25 Center GuiMove,
+Gui, AdminP:font, s16 bold cE8EBF5, Segoe UI
+Gui, AdminP:Color, %BGColour%, 2b2e43
+Gui, AdminP:Add, Picture, x0 y54 , C:\AutoHotKey\Files\ui\back-sup-wide.png
+Gui, AdminP:Add, Text, x20 y18 , ADMIN PANEL
+Gui, AdminP:font,
+Gui, AdminP:font, s8 cE8EBF5 bold, Segoe UI
+
+
+Gui, AdminP:Add, Text, yp+50, STAFF LOGIN STRING:
+Gui, AdminP:font,
+Gui, AdminP:font, s8 cE8EBF5, Segoe UI
+Gui, AdminP:Add, Text, yp+20 , (First names on first line. Second names on second line.)
+FileRead, LoginString, G:\Support\Public Staff Folders\Aaron\Update\names.txt
+Gui, AdminP:Add, Edit, yp+30 w410 h50 -E0x200 -VScroll vLoginString, %LoginString%
+
+Gui, AdminP:font,
+Gui, AdminP:font, s8 cE8EBF5 bold, Segoe UI
+Gui, AdminP:Add, Text, yp+100, STAFF POINTS AND GRAPH LIST:
+Gui, AdminP:font,
+Gui, AdminP:font, s8 cE8EBF5, Segoe UI
+Loop, 7{
+    NUMM++
+FileReadLine, Employee%NUMM%, G:\Support\Public Staff Folders\Aaron\Update\staff_points_list.txt, %NUMM%
+}
+Gui, AdminP:Add, Edit, yp+25 -E0x200 -VScroll w80 h20 vEmployee1, % Employee1
+Gui, AdminP:Add, Edit, yp+25 -E0x200 -VScroll w80 h20 vEmployee2, % Employee2
+Gui, AdminP:Add, Edit, yp+25 -E0x200 -VScroll w80 h20 vEmployee3, % Employee3
+Gui, AdminP:Add, Edit, yp+25 -E0x200 -VScroll w80 h20 vEmployee4, % Employee4
+Gui, AdminP:Add, Edit, yp+25 -E0x200 -VScroll w80 h20 vEmployee5, % Employee5
+Gui, AdminP:Add, Edit, yp+25 -E0x200 -VScroll w80 h20 vEmployee6, % Employee6
+Gui, AdminP:Add, Edit, yp+25 -E0x200 -VScroll w80 h20 vEmployee7, % Employee7
+
+Gui, AdminP:Add, Button, xp+228 yp-150 w180 h30 hwndAdmin1 gOpenAdmin, Open Admin Folder
+Gui, AdminP:Add, Button, yp+95 w180 h30 hwndAdmin2 gSaveAdmin, Confirm and Save Settings
+Gui, AdminP:Add, Button, yp+44 w180 h30 hwndAdmin3 gClose, Close
+
+Gui, AdminP:font,
+Gui, AdminP:font, s14 CWhite Bold , Segoe UI
+Gui, AdminP:Add, Button, x408 y2 w42 h35 Left gExit hwndClose, %A_Space%%A_Space%✖
+
+Opt1 := [0, "WHITE"    ,       , 0x0C131E , , , "WHITE", 2]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 2]
+Opt5 := [ ,            ,       , 0x0C131E]        
+
+ImageButton.Create(Admin1, Opt1, Opt2, , , Opt5)
+ImageButton.Create(Admin2, Opt1, Opt2, , , Opt5)
+ImageButton.Create(Admin3, Opt1, Opt2, , , Opt5)
+
+Opt1 := [0, 0x1F2130    ,       , "WHITE" , , , 0x1F2130, 1]
+Opt2 := [ , 0x2b2e43   ,       ,  "WHITE" , , , 0x2b2e43, 1]
+Opt5 := [ ,            ,       , "WHITE"]        
+ImageButton.Create(Close, Opt1, Opt2, , , Opt5)
+
+DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 0)
+Gui, AdminP:Show, %Gui_Cord% w450 h432 , MAIN MENU
+DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 1)
+return
+
+OpenAdmin:
+Run, G:\Support\Public Staff Folders\Aaron\Update\
+Return
+
+SaveAdmin:
+Gui, AdminP:Submit
+
+FileDelete, G:\Support\Public Staff Folders\Aaron\Update\names.txt
+FileAppend, %LoginString%, G:\Support\Public Staff Folders\Aaron\Update\names.txt
+
+FileDelete, G:\Support\Public Staff Folders\Aaron\Update\staff_points_list.txt
+FileAppend, 
+(
+%Employee1%
+%Employee2%
+%Employee3%
+%Employee4%
+%Employee5%
+%Employee6%
+%Employee7%
+), G:\Support\Public Staff Folders\Aaron\Update\staff_points_list.txt
+Reload
+Return
 
 BonusRound:
 SoundPlay, G:\Support\Public Staff Folders\Aaron\Update\files\bonus.mp3

@@ -16,7 +16,7 @@ Else FileRead, STORE, C:\INTPHARM\DISPX\sitecode.txt
 ;IniRead, STORE, C:\INTPHARM\DISPX\dispx.ini, Settings, SiteCode
 Gui, -SysMenu -caption +Border
 Gui, Color, 1d1f21, 383D46, 282a2e
-Gui, Font, cc5c8c6, Segoe UI
+Gui, Font, cWHITE, Segoe UI
 Gui, Add, Edit, -E0x200 readonly x10 y10 w427 h180 vConsole
 Gui, Show, x100 y100 w420 h200, HSNET Config
 
@@ -74,7 +74,7 @@ Gui, Color, 1d1f21, 383D46, 282a2e
 Gui, Font, c00ff00, Segoe UI
 Gui, Add, Text, x15 y215 vText1, Please set the time you would like HSNET SCHEDULE TASK to start.`nFormat is '12:00' in 24 hour time.
 Gui, Font, s11 c00ff00, Segoe UI
-Gui, Add, Edit, x15 y255 w120 h20 cc5c8c6 -E0x200 vcount, 22:30
+Gui, Add, Edit, x15 y255 w120 h20 cWHITE -E0x200 vcount, 22:30
 Gui, Font,
 Gui, Font, c00ff00, Segoe UI
 Gui, Show, x100 y100 w420 h290, HSNET Config
@@ -179,7 +179,7 @@ Gui, Color, 1d1f21, 383D46, 282a2e
 Gui, Font, c00ff00, Segoe UI
 Gui, Add, Text, x15 y215 vText2, Please set the time you would like HSNET to start.`nFormat is '12:00' in 24 hour time.
 Gui, Font, s11 c00ff00, Segoe UI
-Gui, Add, Edit, x15 y255 w120 h20 cc5c8c6 -E0x200 vcount2, 00:15
+Gui, Add, Edit, x15 y255 w120 h20 cWHITE -E0x200 vcount2, 00:15
 Gui, Font,
 Gui, Font, c00ff00, Segoe UI
 GuiControl, Focus, count2

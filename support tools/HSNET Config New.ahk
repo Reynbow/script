@@ -18,7 +18,7 @@ Else FileRead, STORE, C:\INTPHARM\DISPX\sitecode.txt
 ;-- Build/Show GUI
 Gui, -SysMenu -caption +Border
 Gui, Color, 1d1f21, 383D46, 282a2e
-Gui, Font, cc5c8c6, Segoe UI
+Gui, Font, cWHITE, Segoe UI
 gui Add,Edit,-E0x200 readonly hwndhEdit w420 r15
 gui Font
 

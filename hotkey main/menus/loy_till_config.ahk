@@ -154,6 +154,7 @@ gosub MAINMENU
 return
 
 LTButtonConfirm:
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 if (!SCODE){
 msgbox, 16, Warning, Please enter a SITE CODE ID, 
 return

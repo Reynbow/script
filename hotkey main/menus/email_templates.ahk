@@ -137,6 +137,7 @@ return
 return
 
 90DButtonConfirm:
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 	Gui, Submit
 
 FormatTime, Date,, yyyy/MM/dd
@@ -326,6 +327,7 @@ loop
 return
 
 46ButtonSend:
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 Gui, Submit
 
 If(Cb_1=1)
@@ -475,6 +477,7 @@ gosub Q7
 return
  
 44ButtonForwardEscalation:
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 Gui, Submit
 
 If(Cb_1=1)
@@ -691,6 +694,7 @@ gosub Q7
 return
 
 47ButtonConfirm:
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 gui, submit
 
 ;WinWaitClose, ahk_class AutoHotkeyGUI

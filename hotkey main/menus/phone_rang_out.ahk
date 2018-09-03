@@ -76,6 +76,7 @@ return
 return
 
 67ButtonConfirm:
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 	Gui, Submit
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt

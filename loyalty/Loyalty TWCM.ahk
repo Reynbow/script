@@ -12,16 +12,16 @@ IniRead, UserName, C:\AutoHotKey\settings.ini, UserName, name
 
 ;========================= HEADER
 Gui,-SysMenu +ToolWindow +Border
-Gui, font, s16 bold cc5c8c6, Segoe UI
+Gui, font, s16 bold cWHITE, Segoe UI
 Gui, Color, 1d1f21, 383D46
 Gui, Add, Text, x10 y6 , TERRYWHITE`nCHEMMART
-Gui, font, s8 bold cc5c8c6, Segoe UI
+Gui, font, s8 bold cWHITE, Segoe UI
 
 ;========================= SITE CODE AND STORE NAME
 
 Gui, Add, Text, x10 y90 h20 w220 vPreviewCODE,
 Gui, font, 
-Gui, font, s8 cc5c8c6, Segoe UI
+Gui, font, s8 cWHITE, Segoe UI
 Gui, Add, Text, yp+25 h20 , SITE CODE:
 Gui, Add, Text, yp+25 w60 h20 , Spoke to:
 Gui, Add, Edit, xp+75 yp-25 w100 h20 -E0x200 vSCODE,

@@ -304,6 +304,7 @@ gosub MAINMENU
 return
 
 74ButtonConfirm:
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 WinGetPos, gui_x, gui_y,,, ahk_class AutoHotkeyGUI
 IniWrite, x%gui_x% y%gui_y%, C:\AutoHotKey\settings.ini, window position, gui_position
 
@@ -324,9 +325,6 @@ IniRead, Name, C:\AutoHotKey\settings.ini, UserName, name
 IniRead, Surname, C:\AutoHotKey\settings.ini, UserName, surname
 FileAppend, %Date% - %VersionNum% - %SCODE% - %Time% - %Name% %Surname% - General Full Tags`n, G:\Support\Public Staff Folders\Aaron\Logs\scriptlog%scripttime%.txt	
 ;FileAppend, Technician - [[ %Name% ]]`n%Clipboard%`n`n`n, G:\Support\Public Staff Folders\Aaron\notes\note_log.txt
-
-;WRITE THE MACRO
-IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 
 reload
 Return

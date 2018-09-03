@@ -6,6 +6,12 @@ SetBatchLines, -1
 SendMode, Event
 SetKeyDelay 25, 10
 
+; Disable Fading Effect On Guis
+DllCall("SystemParametersInfo","UInt",0x1043,"UInt",0,"UInt",0)
+Progress, 100,
+Progress, Off
+DllCall("SystemParametersInfo","UInt",0x1043,"UInt",0,"UInt",1)
+
 FileReadLine, oldver, C:\AutoHotKey\version.txt, 1
 FileReadLine, newver, G:\Support\Public Staff Folders\Aaron\Update\version.txt, 1
 FileRead, update, G:\Support\Public Staff Folders\Aaron\Update\change.txt
@@ -22,7 +28,7 @@ Gui, A1:font, cE8EBF5 , SegoeUI
 Gui, A1:Add, Text, x17 y45 BackGroundTrans, You are on version %oldver%.
 Gui, A1:Add, Text, x17 y60 BackGroundTrans, The current versions is %newver%.
 Gui, A1:Add, Text, x19 y90 BackGroundTrans, Changes: ;`n%update%
-Gui, A1:Add, Edit, readonly -tabstop -VScroll -E0x200 x17 y108 w476 h105, %update%
+Gui, A1:Add, Edit, readonly -tabstop -E0x200 x17 y108 w476 h105, %update%
 Gui, A1:font, 
 Gui, A1:font, cE8EBF5 s7 , Helvetica
 Gui, A1:Add, Text, x14 y239 BackGroundTrans, Written by 
@@ -41,7 +47,9 @@ Opt5 := [ ,            ,       , 0x0C131E]
 ImageButton.Create(UP1, Opt1, Opt2, , , Opt5)
 ImageButton.Create(UP2, Opt1, Opt2, , , Opt5)
 
+DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 0)
 Gui, A1:Show, w509 h259, 🔥🔑 Updater
+DllCall("SystemParametersInfo", UInt, SPI_SETCLIENTAREAANIMATION := 0x1043, UInt, 0, UInt, 1)
 return
 
 A1ButtonClose:

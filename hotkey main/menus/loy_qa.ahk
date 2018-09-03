@@ -71,6 +71,7 @@ loop
 return
 
 LQAButtonConfirm:
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 Gui, LQA:Submit
 FormatTime, Date,, yyyy/MM/dd
 FormatTime, Time,, h:mmtt

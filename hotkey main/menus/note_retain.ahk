@@ -1,0 +1,1 @@
+﻿IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9

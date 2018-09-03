@@ -112,8 +112,8 @@ if (!SCODE){
 msgbox, 16, Warning, Please enter a SITE CODE ID, 
 return
 }
-
-
+;WRITE THE MACRO
+IniWrite %msgText%, C:\AutoHotKey\settings.ini, MACROLIST, MACRO9
 Clipboard = %msgText%
 
 	If clipboard Contains #SANCEN
